@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "442198639508",
+    "project_id": "umbrellahealthcare-5038a",
+    "storage_bucket": "umbrellahealthcare-5038a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442198639508:android:3cf661f78d53f98dea8581",
+        "android_client_info": {
+          "package_name": "com.med.medservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442198639508-o2s1enmghs2bth5lnsmdgsb4oj25d4k6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.med.medservice",
+            "certificate_hash": "12bb57e91e3c03f00299f48906525b895cbe9e8c"
+          }
+        },
+        {
+          "client_id": "442198639508-lq7ma8kkmsblu0ttvhi34gtqltulbsor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCMR3EqBWE9vteg0iaFxLVY7tMtHFQe3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442198639508-lq7ma8kkmsblu0ttvhi34gtqltulbsor.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

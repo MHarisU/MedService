@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Umbrella HCS</string>
+
+    <string-array name="symptoms_list">
+
+        <item>Headache</item>
+        <item>Fever</item>
+        <item>Flu</item>
+        <item>Nausea</item>
+        <item>Other</item>
+
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MedDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_background_button"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="7dp"
+            android:onClick="Close"
+            android:padding="10dp"
+            android:src="@drawable/ic_back_white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/geo_sans_light"
+                    android:gravity="center"
+                    android:text="Medicine Detail"
+                    android:textColor="@color/White"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+
+            <ImageView
+                android:onClick="OpenHome"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="0dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_home" />
+
+            <RelativeLayout
+
+                android:padding="5dp"
+                android:onClick="OpenCart"
+                android:layout_alignParentEnd="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+
+
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_shopping_cart" />
+
+                <TextView
+                    android:id="@+id/cartNumberView"
+                    android:textSize="16sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:textColor="@color/yellow"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/Black30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_above="@+id/addtocart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:id="@+id/MedicineImageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_marginTop="0dp"
+                            android:padding="10dp"
+                            android:src="@drawable/vitamic_c" />
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+
+                                android:id="@+id/MedicineNameView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/geo_sans_light"
+                                android:gravity="start"
+                                android:text="Vitamin C, Effervescent"
+                                android:textColor="@color/Gray"
+                                android:textSize="25sp"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="20dp">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:gravity="end"
+                                    android:text=""
+                                    android:textColor="@color/Gray"
+                                    android:textSize="16sp"
+                                    android:textStyle="" />
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+
+                                android:id="@+id/MedicineShortDesc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="start"
+                                android:text="Powdered Drink Mix"
+                                android:textColor="@color/Gray"
+                                android:textSize="14sp"
+                                android:textStyle="" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+
+                                android:id="@+id/MedicinePriceView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/geo_sans_light"
+                                android:gravity="start"
+                                android:text="$35.00"
+                                android:textColor="@color/skybluedark"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:onClick="AddToCart"
+                            app:cardCornerRadius="2dp"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+
+                                android:layout_height="match_parent"
+                                android:background="@drawable/blue_background_button"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_marginEnd="0dp"
+                                    android:padding="7dp"
+                                    android:src="@drawable/ic_add_cart" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:fontFamily="@font/geo_sans_light"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="ADD TO CART"
+                                    android:textColor="@color/White"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/black_stock_white_background">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Quantity"
+                                android:textColor="@color/Black"
+                                android:textSize="17sp" />
+
+                            <ImageView
+                                android:id="@+id/addItem"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="20dp"
+                                android:onClick="IncreaseQuantity"
+                                android:src="@drawable/ic_add"
+                                android:text=".Rs"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/productQuantityText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_toStartOf="@+id/addItem"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/Black"
+                                android:textSize="20sp" />
+
+                            <ImageView
+                                android:id="@+id/removeItem"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_toStartOf="@+id/productQuantityText"
+                                android:onClick="DecreaseQuantity"
+                                android:src="@drawable/ic_remove"
+                                android:text="100"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="17sp" />
+
+
+                        </RelativeLayout>
+
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="DETAILS"
+                            android:textColor="@color/Gray"
+                            android:textSize="16sp"
+                            android:textStyle="" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/geo_sans_light"
+                            android:gravity="start"
+                            android:text="This medicine contains paracetamol. It belongs to a group of medicines called analgesics (painkillers) and is used to treat pain (including headache, toothache, back and period pain) and cold or flu symptoms."
+                            android:textColor="@color/Gray"
+                            android:textSize="16sp"
+                            android:textStyle="" />
+
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="WARNINGS"
+                            android:textColor="@color/Gray"
+                            android:textSize="16sp"
+                            android:textStyle="" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/geo_sans_light"
+                            android:gravity="start"
+                            android:text="Do not take paracetamol and tell your doctor if:
+
+You are allergic to the active substance or any of the other ingredients in your medicine (listed in Section 6). Signs of an allergic reaction include a rash and breathing problems. There can also be swelling of the legs, arms, face, throat or tongue Children
+
+Paracetamol 500mg Tablets must not be given to children under 10 years of age."
+                            android:textColor="@color/Gray"
+                            android:textSize="16sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addtocart"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:onClick="AddToCart"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blue_background_button"
+                android:fontFamily="@font/geo_sans_light"
+                android:gravity="center"
+                android:text="ADD TO CART"
+                android:textColor="@color/White"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

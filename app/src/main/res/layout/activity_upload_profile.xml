@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".UploadProfileActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/White">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="Finish"
+                android:padding="10dp"
+                android:src="@drawable/ic_back_black" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Profile Picture"
+                android:textColor="@color/Gray"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/uploadImageIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:onClick="uploadPhoto"
+                android:padding="10dp"
+                android:src="@drawable/ic_done_finish_complete_blue"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/iconUser"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="150dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/profileView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/blue_background_button"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_user_white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/WhiteLowOpc50"
+                android:fontFamily="@font/open_sans_regular"
+                android:gravity="center"
+                android:onClick="SelectPhoto"
+                android:paddingTop="15dp"
+                android:paddingBottom="25dp"
+                android:text="Select Photo"
+                android:textColor="@color/Gray"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:onClick="SelectPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/geo_sans_light"
+        android:gravity="center"
+        android:text="Select a image from your\nGallery to upload"
+        android:textColor="@color/blue"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/selectImageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="select image"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:textStyle="bold"
+            android:textColor="@color/White"
+            android:textSize="22sp"
+            android:fontFamily="@font/geo_sans_light"
+            android:visibility="gone"
+            android:id="@+id/uploadImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/blue_background_button"
+            android:text="CHANGE" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@color/gray20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:textColor="@color/Gray"
+            android:id="@+id/selectedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/geo_sans_light"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="06-12-2020"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/closeDialog"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_exit" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray20" />
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:gravity="start"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:text="Set Time  "
+        android:textColor="@color/Gray"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:gravity="start"
+        android:paddingStart="20dp"
+        android:paddingBottom="0dp"
+        android:text="Set your available time"
+        android:textColor="@color/Gray"
+        android:textSize="16sp"
+        android:textStyle="" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:gravity="start"
+        android:text="Start"
+        android:textColor="@color/Gray"
+        android:textSize="18sp"
+        android:textStyle="" />
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/from_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/black_stock_white_background"
+            android:fontFamily="@font/open_sans_regular"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:text="9:00 AM"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" To  " />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/to_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/black_stock_white_background"
+            android:fontFamily="@font/open_sans_regular"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:text="10:00 AM"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:gravity="start"
+        android:text="End"
+        android:textColor="@color/Gray"
+        android:textSize="18sp"
+        android:textStyle="" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="7dp">
+
+
+        <Spinner
+
+            android:id="@+id/spinner_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/black_stock_white_background"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_down" />
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+
+        <TextView
+            android:id="@+id/setAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/green_bg"
+            android:fontFamily="@font/geo_sans_light"
+            android:gravity="center"
+            android:text="Set Availability"
+            android:textColor="@color/White"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

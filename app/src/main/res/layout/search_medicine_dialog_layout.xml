@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:maxHeight="400dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MEDICINES"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textColor="@color/White"
+        android:fontFamily="@font/open_sans_regular"
+        android:background="@drawable/red_bg"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <EditText
+            android:id="@+id/searchEditView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_toStartOf="@+id/closeButton"
+            android:background="@drawable/black_stock_white_background"
+            android:fontFamily="@font/open_sans_regular"
+            android:hint=" Search"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:elevation="7dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_exit" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/gray50" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/medicinesSearchRecycler"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

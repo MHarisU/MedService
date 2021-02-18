@@ -1,0 +1,1153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DoctorsPatientListActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_background_button"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:elevation="7dp"
+                android:onClick="Close"
+                android:padding="10dp"
+                android:src="@drawable/ic_back_white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/geo_sans_light"
+                        android:gravity="center"
+                        android:text="Patients"
+                        android:textColor="@color/White"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/Black30" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/checkout_layout">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1.4"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:gravity="start"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+
+                                <TextView
+
+
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="0dp"
+                                    android:fontFamily="@font/geo_sans_light"
+                                    android:gravity="start"
+                                    android:padding="5dp"
+                                    android:text="Hey,"
+                                    android:textColor="@color/Gray"
+                                    android:textSize="20sp"
+                                    android:textStyle="" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="0dp"
+                                    android:fontFamily="@font/geo_sans_light"
+                                    android:gravity="start"
+                                    android:padding="5dp"
+                                    android:text="Haris"
+                                    android:textColor="@color/Gray"
+                                    android:textSize="22sp"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:fontFamily="@font/geo_sans_light"
+                                    android:gravity="start"
+                                    android:text="These are your regular patients."
+                                    android:textColor="@color/Gray"
+                                    android:textSize="22sp"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1.6"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/evisit_low" />
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="25dp"
+                        app:cardElevation="2dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="20sp"
+                                android:layout_toLeftOf="@+id/searchButton"
+                                android:background="@color/Transparent"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center_vertical"
+                                android:hint=" Search"
+                                android:textSize="16sp" />
+
+
+                            <ImageView
+                                android:id="@+id/searchButton"
+                                android:layout_width="40dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="10dp"
+                                android:padding="5dp"
+                                android:src="@drawable/ic_search" />
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:text="Filter By:  "
+                            android:textColor="@color/Black"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/filter_bg_blue"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:paddingStart="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="5dp"
+                            android:text="Recent"
+                            android:textColor="@color/White"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="10dp"
+                            android:text="|   Oldest   |"
+                            android:textColor="@color/BlackLighter"
+                            android:textSize="15sp"
+                            android:textStyle="" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="10dp"
+                            android:text=" Last 15 days  "
+                            android:textColor="@color/BlackLighter"
+                            android:textSize="15sp"
+                            android:textStyle="" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="center"
+                        android:text="All Patients"
+                        android:textColor="@color/Gray"
+                        android:textSize="20sp"
+                        android:textStyle="" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="5dp"
+                                        app:cardCornerRadius="50dp"
+                                        app:cardElevation="5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/profile_low" />
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="15dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+
+                                        >
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="0dp"
+                                                android:layout_weight="1"
+                                                android:fontFamily="@font/open_sans_regular"
+                                                android:gravity="center"
+                                                android:text="Haris, M."
+                                                android:textColor="@color/Gray"
+                                                android:textSize="20sp"
+                                                android:textStyle="" />
+
+
+                                        </LinearLayout>
+
+
+                                        <TextView
+
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="center"
+                                            android:text="Last visited:\n9th, Dec 2020"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:onClick="OpenPatientView"
+                                            app:cardCornerRadius="10dp"
+                                            app:cardElevation="0dp">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@drawable/yellow_bg_invert"
+                                                android:orientation="vertical"
+                                                android:padding="10dp">
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:fontFamily="@font/open_sans_regular"
+                                                    android:gravity="center"
+                                                    android:text="View Patient"
+                                                    android:textColor="@color/White"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+
+
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="5dp"
+                                        app:cardCornerRadius="50dp"
+                                        app:cardElevation="5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/hadi_profile" />
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="15dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+
+                                        >
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="0dp"
+                                                android:layout_weight="1"
+                                                android:fontFamily="@font/open_sans_regular"
+                                                android:gravity="center"
+                                                android:text="Hadi, A."
+                                                android:textColor="@color/Gray"
+                                                android:textSize="20sp"
+                                                android:textStyle="" />
+
+
+                                        </LinearLayout>
+
+
+                                        <TextView
+
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="center"
+                                            android:text="Last visited:\n9th, Dec 2020"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            app:cardCornerRadius="10dp"
+                                            app:cardElevation="0dp">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@drawable/green_bg"
+                                                android:orientation="vertical"
+                                                android:padding="10dp">
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:fontFamily="@font/open_sans_regular"
+                                                    android:gravity="center"
+                                                    android:text="View Patient"
+                                                    android:textColor="@color/White"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+
+
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="5dp"
+                                        app:cardCornerRadius="50dp"
+                                        app:cardElevation="5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/baqir_profile" />
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="15dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+
+                                        >
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="0dp"
+                                                android:layout_weight="1"
+                                                android:fontFamily="@font/open_sans_regular"
+                                                android:gravity="center"
+                                                android:text="Baqir, R."
+                                                android:textColor="@color/Gray"
+                                                android:textSize="20sp"
+                                                android:textStyle="" />
+
+
+                                        </LinearLayout>
+
+
+                                        <TextView
+
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="center"
+                                            android:text="Last visited:\n9th, Dec 2020"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            app:cardCornerRadius="10dp"
+                                            app:cardElevation="0dp">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@drawable/blue_background_button"
+                                                android:orientation="vertical"
+                                                android:padding="10dp">
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:fontFamily="@font/open_sans_regular"
+                                                    android:gravity="center"
+                                                    android:text="View Patient"
+                                                    android:textColor="@color/White"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+
+
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="5dp"
+                                        app:cardCornerRadius="50dp"
+                                        app:cardElevation="5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/shah_profile" />
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="15dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+
+                                        >
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="0dp"
+                                                android:layout_weight="1"
+                                                android:fontFamily="@font/open_sans_regular"
+                                                android:gravity="center"
+                                                android:text="Shahzaib, K."
+                                                android:textColor="@color/Gray"
+                                                android:textSize="20sp"
+                                                android:textStyle="" />
+
+
+                                        </LinearLayout>
+
+
+                                        <TextView
+
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="center"
+                                            android:text="Last visited:\n9th, Dec 2020"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            app:cardCornerRadius="10dp"
+                                            app:cardElevation="0dp">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@drawable/orange_background"
+                                                android:orientation="vertical"
+                                                android:padding="10dp">
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:fontFamily="@font/open_sans_regular"
+                                                    android:gravity="center"
+                                                    android:text="View Patient"
+                                                    android:textColor="@color/White"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+
+
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="5dp"
+                                        app:cardCornerRadius="50dp"
+                                        app:cardElevation="5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:background="@color/gray50"
+                                            android:src="@drawable/ic_user_white" />
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="15dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+
+                                        >
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="0dp"
+                                                android:layout_weight="1"
+                                                android:fontFamily="@font/open_sans_regular"
+                                                android:gravity="center"
+                                                android:text="Haris, M."
+                                                android:textColor="@color/Gray"
+                                                android:textSize="20sp"
+                                                android:textStyle="" />
+
+
+                                        </LinearLayout>
+
+
+                                        <TextView
+
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="center"
+                                            android:text="Last visited:\n9th, Dec 2020"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            app:cardCornerRadius="10dp"
+                                            app:cardElevation="0dp">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@drawable/yellow_bg_invert"
+                                                android:orientation="vertical"
+                                                android:padding="10dp">
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:fontFamily="@font/open_sans_regular"
+                                                    android:gravity="center"
+                                                    android:text="View Patient"
+                                                    android:textColor="@color/White"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+
+
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="5dp"
+                                        app:cardCornerRadius="50dp"
+                                        app:cardElevation="5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/profile_low" />
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="15dp"
+                                        android:layout_marginBottom="15dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+
+                                        >
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="0dp"
+                                                android:layout_weight="1"
+                                                android:fontFamily="@font/open_sans_regular"
+                                                android:gravity="center"
+                                                android:text="Haris, M."
+                                                android:textColor="@color/Gray"
+                                                android:textSize="20sp"
+                                                android:textStyle="" />
+
+
+                                        </LinearLayout>
+
+
+                                        <TextView
+
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="center"
+                                            android:text="Last visited:\n9th, Dec 2020"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            app:cardCornerRadius="10dp"
+                                            app:cardElevation="0dp">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@drawable/green_bg"
+                                                android:orientation="vertical"
+                                                android:padding="10dp">
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:fontFamily="@font/open_sans_regular"
+                                                    android:gravity="center"
+                                                    android:text="View Patient"
+                                                    android:textColor="@color/White"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+
+
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

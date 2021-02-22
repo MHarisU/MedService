@@ -26,6 +26,7 @@ public class LabHorizAdapter extends RecyclerView.Adapter<LabHorizAdapter.LabsHo
     Context context;
     View view;
 
+
     public LabHorizAdapter() {
     }
 

@@ -42,7 +42,11 @@
         <activity android:name=".SubcategoryProductsActivity" />
         <activity android:name=".CategoryProductsActivity" />
         <activity android:name=".DoctorRegisterActivity" />
-        <activity android:name=".PatientRegisterActivity" />
+        <activity android:name=".PatientRegisterActivity" >
+
+
+
+        </activity>
         <activity android:name=".ChooseRegisterActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".InboxActivity" />
@@ -56,7 +60,11 @@
         <activity android:name=".EvisitActivity"></activity>
         <activity android:name=".BookAppointmentActivity" />
         <activity android:name=".LabDetailActivity" />
-        <activity android:name=".LabsActivity" />
+        <activity android:name=".LabsActivity" >
+
+
+
+        </activity>
         <activity android:name=".CheckoutActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".MedDetailActivity" />
@@ -69,11 +77,13 @@
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".MainActivity" />
 

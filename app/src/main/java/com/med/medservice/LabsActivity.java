@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.med.medservice.Models.Category.CategoryAdapter;
 import com.med.medservice.Models.Category.CategoryList;
+import com.med.medservice.Models.Category.CategorySquareAdapter;
 import com.med.medservice.Models.ProductLabs.LabHorizAdapter;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.Models.ProductLabs.LabsListAdapter;
@@ -110,28 +111,9 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
 
                     CategoryList selectedCategory = categoryList.get(GetItemPosition);
 
-
-                    /*
-                    try {
-                        if (selectedCourse.getLessons_ids().get(0) != null && !selectedCourse.getLessons_ids().get(0).equals("")) {
-                            Intent i = new Intent(getActivity(), CourseActivity.class);
-                            i.putExtra("selectedCourse", selectedCourse);
-                            startActivity(i);
-
-                        } else {
-                            Toast.makeText(getActivity(), "Fetching Course Contents Please Wait...", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (NullPointerException e) {
-                        Toast.makeText(getActivity(), "Fetching Course Contents Please Wait...", Toast.LENGTH_SHORT).show();
-                    }
-
-                     */
-                    // Log.d("CLICKED", selectedCategory.getCategory_name());
-                    // Toast.makeText(getApplicationContext(), "" + selectedCategory.getCategory_name(), Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), LabsCategoryActivity.class);
                     i.putExtra("selectedCategory", selectedCategory);
                     startActivity(i);
-                    //  startActivity(new Intent(getApplicationContext(), CategoryProductsActivity.class));
 
                 }
                 return false;
@@ -181,7 +163,7 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
 
                         }
 
-                        CategoryAdapter adapter = new CategoryAdapter(categoryList, getApplicationContext());
+                        CategorySquareAdapter adapter = new CategorySquareAdapter(categoryList, getApplicationContext());
                         categoryRecycler.setAdapter(adapter);
 
                     }

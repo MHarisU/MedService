@@ -20,8 +20,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/mainLinearLayout"
             android:layout_width="match_parent"
@@ -253,6 +253,45 @@
                     android:textColor="#000"
                     android:textSize="15sp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/citytext"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/black_stock_white_background"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" City"
+                        android:inputType="textPostalAddress"
+                        android:paddingStart="15dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/ziptext"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/black_stock_white_background"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" Zip"
+                        android:inputType="number"
+                        android:paddingStart="15dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -348,12 +387,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -386,7 +425,6 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
 
 
@@ -395,15 +433,15 @@
 
     <LinearLayout
 
-        android:visibility="gone"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
-        android:onClick="OpenLogin">
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:onClick="OpenLogin"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="40dp"

@@ -35,6 +35,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -65,7 +67,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        
+
         statesSpinner = findViewById(R.id.spinner_state);
 
         SetupDoctorSpinner();
@@ -86,13 +88,48 @@ public class PatientRegisterActivity extends AppCompatActivity {
 
     }
 
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("states_json.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
     private void SetupDoctorSpinner() {
-        stateNames = new String[5];
-        stateNames[0] = "Select Your State";
-        stateNames[1] = "Alaska";
-        stateNames[2] = "Arizona Arkansas";
-        stateNames[3] = "California";
-        stateNames[4] = "Colorado";
+
+        try {
+
+            JSONArray parent = new JSONArray(loadJSONFromAsset());
+            stateNames = new String[parent.length()+1];
+
+            stateNames[0] = "Select Your State";
+            for (int i = 0; i < parent.length(); i++) {
+
+
+                JSONObject child = parent.getJSONObject(i);
+                stateNames[i+1] = child.getString("name");
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+//
+//        stateNames[0] = "Select Your State";
+//        stateNames[1] = "Alaska";
+//        stateNames[2] = "Arizona Arkansas";
+//        stateNames[3] = "California";
+//        stateNames[4] = "Colorado";
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.spinner_item, stateNames);
@@ -334,7 +371,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
             }
         };
 
-        new DatePickerDialog(PatientRegisterActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+        new DatePickerDialog(PatientRegisterActivity.this, AlertDialog.THEME_HOLO_LIGHT, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
 
 
     }

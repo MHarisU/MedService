@@ -2,6 +2,8 @@ package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,11 +13,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.med.medservice.Utils.CartDBHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 public class CheckoutActivity extends AppCompatActivity {
@@ -116,5 +122,29 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     public void SelectDateTime(View view) {
+        final TextView date_time = findViewById(R.id.date_time);
+
+        final Calendar calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, day);
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+               // selected_date_of_birht = simpleDateFormat.format(calendar.getTime());
+
+                date_time.setText("Date of Birth: " + simpleDateFormat.format(calendar.getTime()));
+
+
+            }
+        };
+
+        new DatePickerDialog(CheckoutActivity.this, AlertDialog.THEME_HOLO_LIGHT, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
     }
 }

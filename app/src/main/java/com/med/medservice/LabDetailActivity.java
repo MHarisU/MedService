@@ -1,6 +1,9 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -16,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.med.medservice.Models.PanelLabs.PanelLabsList;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
@@ -31,6 +35,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LabDetailActivity extends AppCompatActivity implements UpdateCartInterface {
@@ -153,6 +158,14 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
     }
 
     private void FetchPanels() {
+
+        ArrayList<PanelLabsList> popularLabsList;
+        RecyclerView popularMedsRecycler;
+
+        popularMedsRecycler = findViewById(R.id.labsRecycler);
+        // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        popularMedsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        popularLabsList = new ArrayList<PanelLabsList>();
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_lab_panels.php?panel_id=" + lab_id,
                 new ApiCallerNew.AsyncApiResponse() {

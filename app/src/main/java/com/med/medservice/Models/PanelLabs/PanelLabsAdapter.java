@@ -21,14 +21,14 @@ import java.util.Random;
 public class PanelLabsAdapter extends RecyclerView.Adapter<PanelLabsAdapter.LabsHolder> {
 
 
-    ArrayList<CategoryList> list;
+    ArrayList<PanelLabsList> list;
     Context context;
     View view;
 
     public PanelLabsAdapter() {
     }
 
-    public PanelLabsAdapter(ArrayList<CategoryList> list, Context context) {
+    public PanelLabsAdapter(ArrayList<PanelLabsList> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -36,7 +36,7 @@ public class PanelLabsAdapter extends RecyclerView.Adapter<PanelLabsAdapter.Labs
     @NonNull
     @Override
     public LabsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(context).inflate(R.layout.category_row, parent, false);
+        view = LayoutInflater.from(context).inflate(R.layout.panel_lab_row, parent, false);
 
 
         return new LabsHolder(view);
@@ -45,44 +45,16 @@ public class PanelLabsAdapter extends RecyclerView.Adapter<PanelLabsAdapter.Labs
     @Override
     public void onBindViewHolder(@NonNull LabsHolder holder, int position) {
 
-        final CategoryList currentData = list.get(position);
+        final PanelLabsList currentData = list.get(position);
 
-        String category_name = currentData.getCategory_name();
-        String category_image = currentData.getCategory_image();
-
-        //   category_name = category_name.replace("&#8211;", "-");
-
-
-        List<String> colors;
-
-        colors=new ArrayList<String>();
-
-        colors.add("#f2453d");
-        colors.add("#fd9727");
-        colors.add("#fdc02f");
-        colors.add("#50ae54");
-        colors.add("#2c98f0");
-        colors.add("#4054b2");
-        colors.add("#9a30ae");
-        colors.add("#e72564");
-
-        Random r = new Random();
-        int i1 = r.nextInt(7- 0) + 0;
-
-        GradientDrawable draw = new GradientDrawable();
-        draw.setShape(GradientDrawable.RECTANGLE);
-        draw.setColor(Color.parseColor(colors.get(i1)));
+        String lab_name = currentData.getLab_name();
+        String lab_price = currentData.getLab_price();
+        String lab_cpt = currentData.getLab_cpt();
 
 
-        Random rnd = new Random();
-        int currentColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-     //   holder.category_image_view.setBackgroundColor(currentColor);
-
-        holder.category_image_view.setBackground(draw); //textview
-        holder.category_image_view.setText(category_name.substring(0, 1));
-
-
-        holder.category_name_view.setText(category_name);
+        holder.labName.setText(lab_name);
+        holder.labPrice.setText(lab_price);
+        holder.labCpt.setText(lab_cpt);
 
 
     }
@@ -95,15 +67,17 @@ public class PanelLabsAdapter extends RecyclerView.Adapter<PanelLabsAdapter.Labs
 
     public class LabsHolder extends RecyclerView.ViewHolder {
 
-        TextView category_name_view;
-        TextView category_image_view;
+        TextView labName;
+        TextView labPrice;
+        TextView labCpt;
 
 
         public LabsHolder(@NonNull View itemView) {
             super(itemView);
 
-            category_name_view = itemView.findViewById(R.id.category_name_view);
-            category_image_view = itemView.findViewById(R.id.category_image_view);
+            labName = itemView.findViewById(R.id.labName);
+            labPrice = itemView.findViewById(R.id.labPrice);
+            labCpt = itemView.findViewById(R.id.labCpt);
 
 
         }

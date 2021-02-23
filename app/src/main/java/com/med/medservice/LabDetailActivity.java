@@ -3,9 +3,11 @@ package com.med.medservice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.Window;
@@ -15,11 +17,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.med.medservice.Models.ProductLabs.LabsList;
+import com.med.medservice.Models.ProductMedicine.MedicineList;
+import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
+import com.med.medservice.Utils.ApiCallerNew;
 import com.med.medservice.Utils.CartDBHelper;
+import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
 import com.med.medservice.Utils.ViewDialog;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -121,16 +131,16 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
 
         labsNameView.setText(lab_name);
         String sentence = labsNameView.getText().toString();
-        String search  = "Panel";
+        String search = "Panel";
 
-        if ( sentence.toLowerCase().indexOf(search.toLowerCase()) != -1 ) {
+        if (sentence.toLowerCase().indexOf(search.toLowerCase()) != -1) {
             System.out.println("I found the keyword");
-        }
-        else {
+            FetchPanels();
+        } else {
             panelTest.setVisibility(View.GONE);
         }
 
-        labsPriceView.setText("$"+ lab_price +".00");
+        labsPriceView.setText("$" + lab_price + ".00");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             labsShortDesc.setText(Html.fromHtml(lab_desc, Html.FROM_HTML_MODE_COMPACT));
@@ -140,6 +150,76 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
         }
 
 
+    }
+
+    private void FetchPanels() {
+
+        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_lab_panels.php?panel_id=" + lab_id,
+                new ApiCallerNew.AsyncApiResponse() {
+
+                    @Override
+                    public void processFinish(String response) {
+                        try {
+                            try {
+
+
+                                try {
+
+                                    JSONArray parent = new JSONArray(response);
+
+                                    String including_test = null;
+                                    for (int i = 0; i < parent.length(); i++) {
+                                        JSONObject child = parent.getJSONObject(i);
+                                        including_test = child.getString("including_test");
+                                        Log.d("PanelsApiResponse", including_test);
+
+                                        /*String name = child.getString("name");
+                                        String parent_category = child.getString("parent_category");
+                                        String sub_category = child.getString("sub_category");
+
+                                        popularMedsList.add(new MedicineList(id, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                                quantity, short_description, description, stock_status));*/
+
+                                    }
+
+                                    JSONArray parent1 = new JSONArray(including_test);
+
+                                    for (int i = 0; i < parent1.length(); i++) {
+                                        JSONObject child = parent1.getJSONObject(i);
+                                        String test_name = child.getString("test_name");
+                                        String price = child.getString("price");
+                                        String slug = child.getString("slug");
+                                        String cpt_code = child.getString("cpt_code");
+
+//                                        popularMedsList.add(new MedicineList(id, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+//                                                quantity, short_description, description, stock_status));
+
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            } catch (NullPointerException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        } catch (Exception e) {
+                            Log.d("EXCEPTION", e.toString());
+
+                        }
+
+/*
+                        MedicineListAdapter adapter = new MedicineListAdapter(popularMedsList, SearchActivity.this);
+                        popularMedsRecycler.setAdapter(adapter);*/
+
+                    }
+
+                });
+
+        // asyncTask.execute();
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
 
@@ -186,7 +266,7 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
         mydb.insertCartItem(user_id, lab_id, lab_name, ProductQuantity.getText().toString(), lab_price, "0", "lab-test", lab_image);
 
         ViewDialog alert = new ViewDialog();
-        alert.showDialog(this, "("+ProductQuantity.getText().toString()+") "+ lab_name +"\nAdded in Cart");
+        alert.showDialog(this, "(" + ProductQuantity.getText().toString() + ") " + lab_name + "\nAdded in Cart");
 
         UpdateCart();
 

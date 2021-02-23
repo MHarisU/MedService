@@ -366,6 +366,7 @@
                         </RelativeLayout>
 
                         <LinearLayout
+                            android:visibility="gone"
                             android:id="@+id/panelTest"
                             android:layout_width="match_parent"
                             android:orientation="vertical"

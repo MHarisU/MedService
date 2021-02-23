@@ -146,6 +146,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void OpenCheckout(View view) {
+        finish();
         startActivity(new Intent(getApplicationContext(), CheckoutActivity.class));
     }
 

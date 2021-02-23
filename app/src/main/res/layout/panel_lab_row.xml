@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/open_sans_regular"
             android:gravity="start"
-            android:text="Paternity Informational"
+            android:text="--"
             android:textColor="@color/Gray"
             android:textSize="16sp"
             android:textStyle="" />
@@ -39,7 +39,7 @@
             android:layout_weight="1.6"
             android:fontFamily="@font/open_sans_regular"
             android:gravity="start"
-            android:text="$179.00"
+            android:text="$00.00"
             android:textColor="@color/Gray"
             android:textSize="16sp"
             android:textStyle="" />
@@ -54,7 +54,7 @@
             android:layout_weight="1.6"
             android:fontFamily="@font/open_sans_regular"
             android:gravity="start"
-            android:text="78467"
+            android:text="--"
             android:textColor="@color/Gray"
             android:textSize="16sp"
             android:textStyle="" />

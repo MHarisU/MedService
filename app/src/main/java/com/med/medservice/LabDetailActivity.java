@@ -18,7 +18,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.med.medservice.Models.PanelLabs.PanelLabsAdapter;
 import com.med.medservice.Models.PanelLabs.PanelLabsList;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.Models.ProductMedicine.MedicineList;
@@ -135,15 +137,8 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
         //  holder.medicine_image_view.setText(medicine_name.substring(0, 1));
 
         labsNameView.setText(lab_name);
-        String sentence = labsNameView.getText().toString();
-        String search = "Panel";
+        FetchPanels();
 
-        if (sentence.toLowerCase().indexOf(search.toLowerCase()) != -1) {
-            System.out.println("I found the keyword");
-            FetchPanels();
-        } else {
-            panelTest.setVisibility(View.GONE);
-        }
 
         labsPriceView.setText("$" + lab_price + ".00");
 
@@ -159,13 +154,13 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
 
     private void FetchPanels() {
 
-        ArrayList<PanelLabsList> popularLabsList;
-        RecyclerView popularMedsRecycler;
+        final ArrayList<PanelLabsList> labsList;
+        final RecyclerView labsRecycler;
 
-        popularMedsRecycler = findViewById(R.id.labsRecycler);
+        labsRecycler = findViewById(R.id.labsRecycler);
         // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        popularMedsRecycler.setLayoutManager(new LinearLayoutManager(this));
-        popularLabsList = new ArrayList<PanelLabsList>();
+        labsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        labsList = new ArrayList<PanelLabsList>();
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_lab_panels.php?panel_id=" + lab_id,
                 new ApiCallerNew.AsyncApiResponse() {
@@ -197,20 +192,28 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
 
                                     JSONArray parent1 = new JSONArray(including_test);
 
-                                    for (int i = 0; i < parent1.length(); i++) {
-                                        JSONObject child = parent1.getJSONObject(i);
-                                        String test_name = child.getString("test_name");
-                                        String price = child.getString("price");
-                                        String slug = child.getString("slug");
-                                        String cpt_code = child.getString("cpt_code");
+                                    if (parent1.length() > 0) {
 
-//                                        popularMedsList.add(new MedicineList(id, name, parent_category, sub_category, featured_image, sale_price, regular_price,
-//                                                quantity, short_description, description, stock_status));
+                                        panelTest.setVisibility(View.VISIBLE);
 
+                                        for (int i = 0; i < parent1.length(); i++) {
+                                            JSONObject child = parent1.getJSONObject(i);
+                                            String test_name = child.getString("test_name");
+                                            String price = child.getString("price");
+                                            String slug = child.getString("slug");
+                                            String cpt_code = child.getString("cpt_code");
+
+                                            labsList.add(new PanelLabsList(test_name, price, slug, cpt_code));
+
+                                        }
+                                    } else {
+                                        panelTest.setVisibility(View.GONE);
                                     }
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
+                                    panelTest.setVisibility(View.GONE);
+
                                 }
 
                             } catch (NullPointerException e) {
@@ -223,9 +226,9 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
 
                         }
 
-/*
-                        MedicineListAdapter adapter = new MedicineListAdapter(popularMedsList, SearchActivity.this);
-                        popularMedsRecycler.setAdapter(adapter);*/
+
+                        PanelLabsAdapter adapter = new PanelLabsAdapter(labsList, LabDetailActivity.this);
+                        labsRecycler.setAdapter(adapter);
 
                     }
 

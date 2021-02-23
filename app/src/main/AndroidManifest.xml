@@ -25,9 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PrescriptionActivity"></activity>
-        <activity android:name=".PatientVideoActivity"></activity>
-        <activity android:name=".DoctorVideoActivity"></activity>
+        <activity android:name=".OrderHistoryActivity"></activity>
+        <activity android:name=".PrescriptionActivity" />
+        <activity android:name=".PatientVideoActivity" />
+        <activity android:name=".DoctorVideoActivity" />
         <activity android:name=".SendInvitationActivity" />
         <activity android:name=".CreditCardPaymentActivity" />
         <activity android:name=".EvisitFormActivity" />
@@ -42,30 +43,22 @@
         <activity android:name=".SubcategoryProductsActivity" />
         <activity android:name=".CategoryProductsActivity" />
         <activity android:name=".DoctorRegisterActivity" />
-        <activity android:name=".PatientRegisterActivity" >
-
-
-
-        </activity>
+        <activity android:name=".PatientRegisterActivity"></activity>
         <activity android:name=".ChooseRegisterActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".InboxActivity" />
         <activity android:name=".DoctorsPatientViewableProfileActivity" />
         <activity android:name=".DoctorsPatientListActivity" />
-        <activity android:name=".WaitingRoomActivity"></activity>
+        <activity android:name=".WaitingRoomActivity" />
         <activity android:name=".DoctorScheduleActivity" />
         <activity android:name=".DoctorCalendarScheduleActivity" />
         <activity android:name=".SessionDetailActivity" />
         <activity android:name=".SessionActivity" />
-        <activity android:name=".EvisitActivity"></activity>
+        <activity android:name=".EvisitActivity" />
         <activity android:name=".BookAppointmentActivity" />
         <activity android:name=".LabDetailActivity" />
-        <activity android:name=".LabsActivity" >
-
-
-
-        </activity>
-        <activity android:name=".CheckoutActivity" />
+        <activity android:name=".LabsActivity"></activity>
+        <activity android:name=".CheckoutActivity"></activity>
         <activity android:name=".CartActivity" />
         <activity android:name=".MedDetailActivity" />
         <activity android:name=".PharmacyActivity" />
@@ -76,17 +69,13 @@
         <activity android:name=".DoctorMainActivity" />
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".LoginActivity" />
-
         <activity android:name=".SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity android:name=".MainActivity" />
 
         <service

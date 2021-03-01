@@ -64,7 +64,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
     @NonNull
     @Override
     public LabsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(context).inflate(R.layout.medicine_list_row, parent, false);
+        view = LayoutInflater.from(context).inflate(R.layout.labs_list_row, parent, false);
 
 
         return new LabsHolder(view);

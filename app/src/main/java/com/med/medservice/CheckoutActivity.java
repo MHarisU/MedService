@@ -209,6 +209,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
 
     private void SetupSwitchButton() {
+        final TextView medicineDeliveryText = findViewById(R.id.medicineDeliveryText);
         switchButton = findViewById(R.id.switchButton);
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -218,12 +219,18 @@ public class CheckoutActivity extends AppCompatActivity {
 
                     ShippingAddressSwitchCard.setVisibility(View.VISIBLE);
 
+                    medicineDeliveryText.setText("Yes");
+                    medicineDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.green_bg));
+
 
                 } else {
 
                     ShippingAddressSwitchCard.setVisibility(View.GONE);
                     ShippingAddressCard.setVisibility(View.GONE);
                     switchButton2.setChecked(true);
+
+                    medicineDeliveryText.setText("No");
+                    medicineDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.red_bg));
 
                 }
 
@@ -233,6 +240,7 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     private void SetupSwitchButton2() {
+        final TextView sameDeliveryText = findViewById(R.id.sameDeliveryText);
         switchButton2 = findViewById(R.id.switchButton2);
         switchButton2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -242,9 +250,16 @@ public class CheckoutActivity extends AppCompatActivity {
 
                     ShippingAddressCard.setVisibility(View.GONE);
 
+
+                    sameDeliveryText.setText("Yes");
+                    sameDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.green_bg));
+
                 } else {
 
                     ShippingAddressCard.setVisibility(View.VISIBLE);
+
+                    sameDeliveryText.setText("No");
+                    sameDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.red_bg));
 
                 }
 

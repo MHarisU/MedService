@@ -1222,7 +1222,7 @@
                                 android:layout_marginBottom="20dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:onClick="OpenEvisit"
+                                android:onClick="OpenPharmacy"
                                 app:cardCornerRadius="20dp"
                                 app:cardElevation="0dp">
 
@@ -1240,7 +1240,7 @@
                                         android:layout_height="80dp"
                                         android:layout_gravity="center"
                                         android:padding="10dp"
-                                        android:src="@drawable/aid_simpler" />
+                                        android:src="@drawable/dermatology" />
 
 
                                     <TextView
@@ -1254,7 +1254,7 @@
                                         android:paddingStart="10dp"
                                         android:paddingEnd="10dp"
                                         android:paddingBottom="10dp"
-                                        android:text="First Aid"
+                                        android:text="Dermatology"
                                         android:textColor="@color/White"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
@@ -1275,7 +1275,7 @@
                                 android:layout_marginBottom="20dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:onClick="OpenInbox"
+                                android:onClick="OpenPharmacy"
                                 app:cardCornerRadius="20dp"
                                 app:cardElevation="0dp">
 
@@ -1290,10 +1290,10 @@
 
                                     <ImageView
                                         android:layout_width="80dp"
-                                        android:layout_height="80dp"
+                                        android:layout_height="70dp"
                                         android:layout_gravity="center"
-                                        android:padding="10dp"
-                                        android:src="@drawable/inbox_simple" />
+                                        android:padding="0dp"
+                                        android:src="@drawable/substance_abuse" />
 
 
                                     <TextView
@@ -1306,8 +1306,8 @@
                                         android:gravity="center"
                                         android:paddingStart="10dp"
                                         android:paddingEnd="10dp"
-                                        android:paddingBottom="10dp"
-                                        android:text="Inbox"
+                                        android:paddingBottom="0dp"
+                                        android:text="Substance Abuse"
                                         android:textColor="@color/White"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />

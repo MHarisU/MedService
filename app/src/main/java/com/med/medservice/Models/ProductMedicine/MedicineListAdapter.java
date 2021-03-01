@@ -166,8 +166,10 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
                 mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price, "0", "medicine", medicine_image);
 
+
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(context, "Product Added in Cart");
+                alert.showDialog(context, "" + medicine_name + "\nAdded in Cart");
+
                 if (context instanceof UpdateCartInterface) {
                     ((UpdateCartInterface) context).UpdateCart();
                 }

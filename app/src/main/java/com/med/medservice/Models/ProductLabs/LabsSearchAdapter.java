@@ -118,7 +118,7 @@ public class LabsSearchAdapter extends RecyclerView.Adapter<LabsSearchAdapter.La
 
          */
 
-        holder.lab_image_view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.test_lab));
+        holder.lab_image_view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.flask_icon));
 
 
         holder.lab_name_view.setText(lab_name);

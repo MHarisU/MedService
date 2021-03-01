@@ -1,6 +1,8 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
@@ -16,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -48,11 +51,13 @@ public class CheckoutActivity extends AppCompatActivity {
 
     String[] stateNames;
     String[] cityNames;
-    Spinner statesSpinner, citySpinner, spinner_time;
+    Spinner statesSpinner,statesSpinner2, citySpinner,citySpinner2, spinner_time;
 
     ArrayList<String> slotArray;
     String[] timeSlots;
 
+
+    SwitchCompat switchButton, switchButton2;
 
     ArrayList<PharmaciesList> pharmaciesList;
     RecyclerView pharmaciesRecycler;
@@ -63,6 +68,10 @@ public class CheckoutActivity extends AppCompatActivity {
 
     int queryCount = 0;
 
+    CardView ShippingAddressSwitchCard, MedicinesSwitchCard, ShippingAddressCard, PharmacyZipCard, LabZipCard;
+
+    CartDBHelper mydb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +81,34 @@ public class CheckoutActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_checkout);
 
+        SetupCardSwitches();
+
         SetupStatesSpinner();
+
+        SetupStatesSpinner2();
+
+        SetupSwitchButton();
+
+        SetupSwitchButton2();
+
+        mydb = new CartDBHelper(this);
+        if (mydb.numberOfRowsMedicines() >0) {
+            MedicinesSwitchCard.setVisibility(View.VISIBLE);
+            PharmacyZipCard.setVisibility(View.VISIBLE);
+
+        }else {
+            MedicinesSwitchCard.setVisibility(View.GONE);
+            PharmacyZipCard.setVisibility(View.GONE);
+
+        }
+
+        if (mydb.numberOfRowsLabs() >0) {
+
+            LabZipCard.setVisibility(View.VISIBLE);
+
+        }else {
+            LabZipCard.setVisibility(View.GONE);
+        }
 
         try {
             SetupTimeSlots();
@@ -118,6 +154,17 @@ public class CheckoutActivity extends AppCompatActivity {
         });
     }
 
+    private void SetupCardSwitches() {
+
+        MedicinesSwitchCard = findViewById(R.id.MedicinesSwitchCard);
+        ShippingAddressSwitchCard = findViewById(R.id.ShippingAddressSwitchCard);
+        ShippingAddressCard = findViewById(R.id.ShippingAddressCard);
+        LabZipCard = findViewById(R.id.LabZipCard);
+        PharmacyZipCard = findViewById(R.id.PharmacyZipCard);
+
+
+    }
+
     private void SetupTimeSlots() throws ParseException {
 
         String format = "yyyy-dd-MM HH:mm:SS";
@@ -157,6 +204,52 @@ public class CheckoutActivity extends AppCompatActivity {
             ViewDialog viewDialog = new ViewDialog();
             viewDialog.showDialog(CheckoutActivity.this, "No timeslots available on this date");
         }
+
+    }
+
+
+    private void SetupSwitchButton() {
+        switchButton = findViewById(R.id.switchButton);
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (b) {
+
+                    ShippingAddressSwitchCard.setVisibility(View.VISIBLE);
+
+
+                } else {
+
+                    ShippingAddressSwitchCard.setVisibility(View.GONE);
+                    ShippingAddressCard.setVisibility(View.GONE);
+                    switchButton2.setChecked(true);
+
+                }
+
+            }
+        });
+
+    }
+
+    private void SetupSwitchButton2() {
+        switchButton2 = findViewById(R.id.switchButton2);
+        switchButton2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (b) {
+
+                    ShippingAddressCard.setVisibility(View.GONE);
+
+                } else {
+
+                    ShippingAddressCard.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
 
     }
 
@@ -225,12 +318,64 @@ public class CheckoutActivity extends AppCompatActivity {
                 // if (positions != 0)
                 //Toast.makeText(BookAppointmentActivity.this, "" + courseName[positions], Toast.LENGTH_SHORT).show();
                 if (stateNames[positions].equals("Select Your State")) {
-                    Toast.makeText(CheckoutActivity.this, "Select a state please", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(CheckoutActivity.this, "Select a state please", Toast.LENGTH_SHORT).show();
                 } else {
                    // selected_state = stateNames[positions];
                     Toast.makeText(CheckoutActivity.this, "" + stateNames[positions], Toast.LENGTH_SHORT).show();
 
                     SetupCitySpinner(stateNames[positions]);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+
+    private void SetupStatesSpinner2() {
+        statesSpinner2 = findViewById(R.id.spinner_state2);
+
+        try {
+
+            JSONArray parent = new JSONArray(loadStatesJSONFromAsset());
+            stateNames = new String[parent.length()+1];
+
+            stateNames[0] = "Select Your State";
+            for (int i = 0; i < parent.length(); i++) {
+
+
+                JSONObject child = parent.getJSONObject(i);
+                stateNames[i+1] = child.getString("name");
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_item, stateNames);
+
+        statesSpinner2.setAdapter(adapter);
+
+        statesSpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                int positions = statesSpinner2.getSelectedItemPosition();
+                //   Toast.makeText(PrefenceActivity.this, "" + itemsID[positions], Toast.LENGTH_SHORT).show();
+                // courseSpinnerID = courseID[positions];
+                // if (positions != 0)
+                //Toast.makeText(BookAppointmentActivity.this, "" + courseName[positions], Toast.LENGTH_SHORT).show();
+                if (stateNames[positions].equals("Select Your State")) {
+                  //  Toast.makeText(CheckoutActivity.this, "Select a state please", Toast.LENGTH_SHORT).show();
+                } else {
+                    // selected_state = stateNames[positions];
+                    Toast.makeText(CheckoutActivity.this, "" + stateNames[positions], Toast.LENGTH_SHORT).show();
+
+                    SetupCitySpinner2(stateNames[positions]);
                 }
             }
 
@@ -295,6 +440,62 @@ public class CheckoutActivity extends AppCompatActivity {
 
     }
 
+    private void SetupCitySpinner2(String stateName) {
+
+        citySpinner2 = findViewById(R.id.spinner_city2);
+
+        try {
+
+            JSONObject parent = new JSONObject(loadCityJSONFromAsset());
+            JSONArray city = parent.getJSONArray(stateName);
+            cityNames = new String[city.length()+1];
+
+            cityNames[0] = "Select Your City";
+            for (int i = 0; i < city.length(); i++) {
+
+
+                //JSONObject child = city.getJSONObject(i);
+                cityNames[i+1] = city.getString(i);
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_item, cityNames);
+
+        citySpinner2.setAdapter(adapter);
+
+        citySpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                int positions = citySpinner2.getSelectedItemPosition();
+                //   Toast.makeText(PrefenceActivity.this, "" + itemsID[positions], Toast.LENGTH_SHORT).show();
+                // courseSpinnerID = courseID[positions];
+                // if (positions != 0)
+                //Toast.makeText(BookAppointmentActivity.this, "" + courseName[positions], Toast.LENGTH_SHORT).show();
+                if (cityNames[positions].equals("Select Your City")) {
+                    Toast.makeText(CheckoutActivity.this, "Select a city please", Toast.LENGTH_SHORT).show();
+                } else {
+                    // selected_state = stateNames[positions];
+                    Toast.makeText(CheckoutActivity.this, "" + cityNames[positions], Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+
+    }
+
+
     public String loadCityJSONFromAsset() {
         String json = null;
         try {
@@ -358,7 +559,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        finish();
     }
 
     public void OpenPharmacy(View view) {
@@ -402,7 +603,14 @@ public class CheckoutActivity extends AppCompatActivity {
 
     }
 
-    public void setPharmacy(String selected_pharmacy_id, String selected_pharmacy_name, String selected_pharmacy_address) {
+    public void setLab(String selected_pharmacy_id, String selected_pharmacy_name, String selected_pharmacy_address) {
+        TextView labSelectedNameView = findViewById(R.id.labSelectedNameView);
+
+        labSelectedNameView.setText(selected_pharmacy_name +", "+selected_pharmacy_address);
+
+    }
+
+    public void setMed(String selected_pharmacy_id, String selected_pharmacy_name, String selected_pharmacy_address) {
         TextView pharmacySelectedNameView = findViewById(R.id.pharmacySelectedNameView);
 
         pharmacySelectedNameView.setText(selected_pharmacy_name +", "+selected_pharmacy_address);
@@ -412,6 +620,12 @@ public class CheckoutActivity extends AppCompatActivity {
     public void SearchZip(View view) {
 
         SearchLabDialogCheck searchLabDialog = new SearchLabDialogCheck();
-        searchLabDialog.showSearchLabsDialog(CheckoutActivity.this);
+        searchLabDialog.showSearchLabsDialog(CheckoutActivity.this, "lab");
+    }
+
+    public void SearchZip2(View view) {
+
+        SearchLabDialogCheck searchLabDialog = new SearchLabDialogCheck();
+        searchLabDialog.showSearchLabsDialog(CheckoutActivity.this, "med");
     }
 }

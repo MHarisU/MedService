@@ -120,7 +120,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
 
          */
 
-        holder.lab_image_view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.test_lab));
+        holder.lab_image_view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.flask_icon));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             holder.lab_name_view.setText(Html.fromHtml(lab_name, Html.FROM_HTML_MODE_COMPACT));
@@ -186,8 +186,11 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
 
                 mydb.insertCartItem(user_id, lab_id, lab_name, "1", lab_price, "0", "lab-test", lab_image);
 
+                /*ViewDialog alert = new ViewDialog();
+                alert.showDialog(context, "Lab added in Cart");*/
+
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(context, "Lab added in Cart");
+                alert.showDialog(context, "" + lab_name + "\nAdded in Cart");
 
                 if (context instanceof UpdateCartInterface) {
                     ((UpdateCartInterface) context).UpdateCart();

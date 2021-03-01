@@ -82,6 +82,18 @@ public class CartDBHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
+    public int numberOfRowsLabs() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, TABLE_CART_ITEMS, "TYPE = ?", new String[]{"lab-test"});
+        return numRows;
+    }
+
+    public int numberOfRowsMedicines() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, TABLE_CART_ITEMS, "TYPE = ?", new String[]{"medicine"});
+        return numRows;
+    }
+
     public boolean updateQuantity(Integer ID, String QUANTITY) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

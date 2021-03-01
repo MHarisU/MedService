@@ -99,138 +99,14 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <LinearLayout
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_weight="1.4"
-                            android:orientation="vertical">
 
 
-                            <LinearLayout
-
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:gravity="start"
-                                android:orientation="horizontal"
-                                android:visibility="gone">
 
 
-                                <TextView
-
-
-                                    android:layout_width="wrap_content"
-
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="0dp"
-                                    android:fontFamily="@font/geo_sans_light"
-                                    android:gravity="start"
-                                    android:padding="5dp"
-                                    android:text="Hey,"
-                                    android:textColor="@color/Gray"
-                                    android:textSize="20sp"
-                                    android:textStyle="" />
-
-                                <TextView
-
-                                    android:layout_width="wrap_content"
-
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="0dp"
-                                    android:fontFamily="@font/geo_sans_light"
-                                    android:gravity="start"
-                                    android:padding="5dp"
-                                    android:text="Haris"
-                                    android:textColor="@color/Gray"
-                                    android:textSize="22sp"
-                                    android:textStyle="" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="0dp"
-                                android:layout_marginTop="0dp"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-
-                                <TextView
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="5dp"
-                                    android:fontFamily="@font/geo_sans_light"
-                                    android:gravity="start"
-                                    android:text="Almost done\nPlease fill address and payment details"
-                                    android:textColor="@color/Gray"
-                                    android:textSize="22sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-
-                        <com.airbnb.lottie.LottieAnimationView
-                            android:id="@+id/animation_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="180dp"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="10dp"
-                            android:layout_weight="1.2"
-                            android:scaleType="fitCenter"
-                            app:lottie_autoPlay="true"
-                            app:lottie_fileName="payment.json"
-                            app:lottie_loop="true" />
-
-                    </LinearLayout>
-
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="20dp"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:gravity="center"
-                        android:text="Payment Details"
-                        android:textColor="@color/Gray"
-                        android:textSize="22sp"
-                        android:textStyle="" />
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:gravity="center"
-                        android:text="Fill your card details to make payment"
-                        android:textColor="@color/Gray"
-                        android:textSize="16sp"
-                        android:textStyle="" />
-
+                    <!-- Payment Card design -->
                     <androidx.cardview.widget.CardView
 
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -793,10 +669,11 @@
                     <androidx.cardview.widget.CardView
 
 
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="1dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="15dp"
                         android:visibility="visible"
@@ -817,11 +694,52 @@
                                 android:layout_marginStart="0dp"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:gravity="center"
-                                android:text="Billing Address"
+                                android:gravity="start"
+                                android:text="Billing Information"
                                 android:textColor="@color/Gray"
-                                android:textSize="22sp"
+                                android:textSize="20sp"
                                 android:textStyle="" />
+
+                            <LinearLayout
+
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
+                                <EditText
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:text="Muhammad Haris"
+                                    android:textColor="#000"
+                                    android:textSize="16sp" />
+
+                                <EditText
+                                    android:layout_marginStart="5dp"
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:hint="Middle Name (opt)"
+                                    android:textColor="#000"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
 
                             <EditText
                                 android:layout_width="match_parent"
@@ -829,15 +747,73 @@
                                 android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/black_stock_white_background"
-                                android:clickable="false"
-                                android:focusable="false"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:inputType="none"
+                                android:inputType="text"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
-                                android:text="Muhammad Haris"
+                                android:text="Rohail"
                                 android:textColor="#000"
                                 android:textSize="16sp" />
+
+
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/black_stock_white_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:inputType="number"
+                                android:padding="10dp"
+                                android:paddingStart="15dp"
+                                android:hint="Card Number"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+
+                            <LinearLayout
+
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
+                                <EditText
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:hint="Expiry Date: 10/22"
+                                    android:textColor="#000"
+                                    android:textSize="16sp" />
+
+                                <EditText
+                                    android:layout_marginStart="5dp"
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:inputType="number"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:hint="CVC"
+                                    android:textColor="#000"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+
+
 
                             <EditText
                                 android:layout_width="match_parent"
@@ -972,8 +948,373 @@
 
                     </androidx.cardview.widget.CardView>
 
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/MedicinesSwitchCard"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+
+
+                            <TextView
+
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingStart="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:fontFamily="@font/geo_sans_light"
+                                android:gravity="start"
+                                android:text="Medicines Delivery"
+                                android:textColor="@color/blue"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+
+
+
+
+                            <LinearLayout
+
+                                android:layout_marginStart="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start">
+
+                                <androidx.appcompat.widget.SwitchCompat
+                                    android:id="@+id/switchButton"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="40dp"/>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
 
+                        android:visibility="gone"
+                        android:id="@+id/ShippingAddressSwitchCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+
+
+                            <TextView
+
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingStart="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:fontFamily="@font/geo_sans_light"
+                                android:gravity="start"
+                                android:text="Shipping Address for Medicines"
+                                android:textColor="@color/blue"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+
+
+
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_marginStart="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start">
+
+                                <androidx.appcompat.widget.SwitchCompat
+                                    android:checked="true"
+                                    android:id="@+id/switchButton2"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"/>
+
+                                <TextView
+
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingStart="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="0dp"
+                                    android:layout_marginTop="0dp"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Same as Billing Address"
+                                    android:textColor="@color/greenDarker"
+                                    android:textSize="14sp"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+
+                        android:id="@+id/ShippingAddressCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center"
+                                android:text=""
+                                android:textColor="@color/Gray"
+                                android:textSize="22sp"
+                                android:textStyle="" />
+
+                            <LinearLayout
+
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
+                                <EditText
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:hint="First Name"
+                                    android:textColor="#000"
+                                    android:textSize="16sp" />
+
+                                <EditText
+                                    android:layout_marginStart="5dp"
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:inputType="text"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:hint="Middle Name (opt)"
+                                    android:textColor="#000"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/black_stock_white_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:inputType="text"
+                                android:padding="10dp"
+                                android:paddingStart="15dp"
+                                android:hint="Last Name"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+
+
+
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/black_stock_white_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:inputType="number"
+                                android:padding="10dp"
+                                android:paddingStart="15dp"
+                                android:hint="Phone"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/black_stock_white_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:inputType="textEmailAddress"
+                                android:padding="10dp"
+                                android:paddingStart="15dp"
+                                android:hint="Email"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/black_stock_white_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Address"
+                                android:inputType="textPostalAddress"
+                                android:padding="10dp"
+                                android:paddingStart="15dp"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="0dp"
+                                android:layout_marginBottom="0dp">
+
+
+                                <Spinner
+
+                                    android:id="@+id/spinner_state2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:spinnerMode="dropdown" />
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="5dp"
+                                    android:src="@drawable/ic_down" />
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="5dp"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="0dp"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_marginEnd="0dp"
+                                    android:layout_marginBottom="0dp">
+
+
+                                    <Spinner
+
+                                        android:id="@+id/spinner_city2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/black_stock_white_background"
+                                        android:spinnerMode="dropdown" />
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginEnd="5dp"
+                                        android:src="@drawable/ic_down" />
+
+                                </RelativeLayout>
+
+                                <EditText
+                                    android:layout_width="match_parent"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+
+                                    android:layout_weight="1"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:hint="Zip"
+                                    android:inputType="number"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:textColor="#000"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                    <androidx.cardview.widget.CardView
+
+                        android:id="@+id/LabZipCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -997,10 +1338,10 @@
                                 android:layout_marginStart="0dp"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:gravity="center"
-                                android:text="Lab Test Details"
+                                android:gravity="start"
+                                android:text="Select nearby Lab &amp; Appointment"
                                 android:textColor="@color/Gray"
-                                android:textSize="22sp"
+                                android:textSize="20sp"
                                 android:textStyle="" />
 
 
@@ -1070,8 +1411,74 @@
 
                                 <TextView
 
-                                    android:id="@+id/pharmacySelectedNameView"
+                                    android:id="@+id/labSelectedNameView"
                                     android:onClick="SearchZip"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="center_vertical"
+                                    android:hint=" Zip Code"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:textSize="15sp" />
+
+
+
+
+                            </RelativeLayout>
+
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/PharmacyZipCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="start"
+                                android:text="Select nearby Pharmacy"
+                                android:textColor="@color/Gray"
+                                android:textSize="20sp"
+                                android:textStyle="" />
+
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
+
+                                <TextView
+
+                                    android:id="@+id/pharmacySelectedNameView"
+                                    android:onClick="SearchZip2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:background="@drawable/black_stock_white_background"

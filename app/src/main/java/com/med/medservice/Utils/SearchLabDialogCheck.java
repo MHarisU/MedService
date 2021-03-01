@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.CheckoutActivity;
-import com.med.medservice.DoctorVideoActivity;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesAdapter;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
 import com.med.medservice.R;
@@ -46,10 +45,14 @@ public class SearchLabDialogCheck {
     Dialog dialog;
     Context context;
 
+    String type;
+
     public SearchLabDialogCheck() {
     }
 
-    public void showSearchLabsDialog(final Context activity) {
+    public void showSearchLabsDialog(final Context activity, String type) {
+
+        this.type = type;
         context = activity;
         dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -186,10 +189,20 @@ public class SearchLabDialogCheck {
                     String selected_Pharmacy_address = selectedPharmacy.getPharmacy_address();
 
                     if (context instanceof CheckoutActivity) {
-                        ((CheckoutActivity) context).setPharmacy(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
-                        ViewDialog viewDialog = new ViewDialog();
-                        dialog.dismiss();
-                        viewDialog.showDialog(context, "Lab selected");
+
+                        if (type.equals("lab")) {
+                            ((CheckoutActivity) context).setLab(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
+                            ViewDialog viewDialog = new ViewDialog();
+                            dialog.dismiss();
+                            viewDialog.showDialog(context, "Lab selected");
+                        }
+                        else if (type.equals("med")){
+
+                            ((CheckoutActivity) context).setMed(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
+                            ViewDialog viewDialog = new ViewDialog();
+                            dialog.dismiss();
+                            viewDialog.showDialog(context, "Pharmacy selected");
+                        }
                     }
 
 

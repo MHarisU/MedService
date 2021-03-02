@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
 import com.med.medservice.Utils.CartDBHelper;
+import com.med.medservice.Utils.SearchBillingZip;
 import com.med.medservice.Utils.SearchLabDialogCheck;
 import com.med.medservice.Utils.ViewDialog;
 
@@ -625,6 +626,17 @@ public class CheckoutActivity extends AppCompatActivity {
 
     }
 
+    public void setBillingCityState(String zip ,String city, String state, String abb) {
+        TextView billingAddressZip = findViewById(R.id.billingAddressZip);
+        TextView billingCity = findViewById(R.id.billingCity);
+        TextView billingState = findViewById(R.id.billingState);
+
+        billingAddressZip.setText(zip);
+        billingCity.setText(city);
+        billingState.setText(state);
+
+    }
+
     public void setMed(String selected_pharmacy_id, String selected_pharmacy_name, String selected_pharmacy_address) {
         TextView pharmacySelectedNameView = findViewById(R.id.pharmacySelectedNameView);
 
@@ -636,6 +648,12 @@ public class CheckoutActivity extends AppCompatActivity {
 
         SearchLabDialogCheck searchLabDialog = new SearchLabDialogCheck();
         searchLabDialog.showSearchLabsDialog(CheckoutActivity.this, "lab");
+    }
+
+    public void SearchBillingZip(View view) {
+
+        SearchBillingZip searchLabDialog = new SearchBillingZip();
+        searchLabDialog.showSearchLabsDialog(CheckoutActivity.this, "bill");
     }
 
     public void SearchZip2(View view) {

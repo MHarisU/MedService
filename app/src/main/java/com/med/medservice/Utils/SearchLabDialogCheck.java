@@ -187,6 +187,8 @@ public class SearchLabDialogCheck {
                     String selected_Pharmacy_id = selectedPharmacy.getPharmacy_id();
                     String selected_Pharmacy_name = selectedPharmacy.getPharmacy_name();
                     String selected_Pharmacy_address = selectedPharmacy.getPharmacy_address();
+                    String selected_Pharmacy_lat = selectedPharmacy.getPharmacy_lat();
+                    String selected_Pharmacy_long = selectedPharmacy.getPharmacy_long();
 
                     if (context instanceof CheckoutActivity) {
 
@@ -199,6 +201,7 @@ public class SearchLabDialogCheck {
                         else if (type.equals("med")){
 
                             ((CheckoutActivity) context).setMed(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
+                            ((CheckoutActivity) context).setPharmacyMarker(selected_Pharmacy_name, selected_Pharmacy_lat, selected_Pharmacy_long);
                             ViewDialog viewDialog = new ViewDialog();
                             dialog.dismiss();
                             viewDialog.showDialog(context, "Pharmacy selected");

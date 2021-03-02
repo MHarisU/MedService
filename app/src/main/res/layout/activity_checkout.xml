@@ -840,19 +840,6 @@
                                 android:textColor="#000"
                                 android:textSize="16sp" />
 
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/black_stock_white_background"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:hint="Address"
-                                android:inputType="textPostalAddress"
-                                android:padding="10dp"
-                                android:paddingStart="15dp"
-                                android:textColor="#000"
-                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/billingAddressZip"
@@ -863,7 +850,7 @@
                                 android:layout_marginStart="0dp"
                                 android:background="@drawable/black_stock_white_background"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:hint="Zip"
+                                android:hint="Zip Code"
                                 android:inputType="number"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
@@ -912,6 +899,20 @@
                                     android:textSize="16sp" />
 
                             </LinearLayout>
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/black_stock_white_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Street address"
+                                android:inputType="textPostalAddress"
+                                android:padding="10dp"
+                                android:paddingStart="15dp"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
 
 
                             <RelativeLayout
@@ -1601,6 +1602,25 @@
 
 
                             </RelativeLayout>
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/pharmacyMapLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+
+                                <fragment
+
+                                    android:layout_marginTop="10dp"
+                                    android:id="@+id/fragmentMap"
+                                    class="com.google.android.gms.maps.SupportMapFragment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="200dp"/>
+
+                            </LinearLayout>
+
 
 
                         </LinearLayout>

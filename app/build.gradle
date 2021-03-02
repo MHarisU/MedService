@@ -69,5 +69,9 @@ dependencies {
     //Easy Permission
     implementation 'com.google.firebase:firebase-database:19.6.0'
 
+    // google maps sdk
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+
 
 }

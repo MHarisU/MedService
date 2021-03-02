@@ -26,6 +26,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.SearchBillingZip;
@@ -44,7 +51,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CheckoutActivity extends AppCompatActivity {
+public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     LinearLayout payment_done_layout;
     EditText date_expiry;
@@ -72,6 +79,10 @@ public class CheckoutActivity extends AppCompatActivity {
     CardView ShippingAddressSwitchCard, MedicinesSwitchCard, ShippingAddressCard, PharmacyZipCard, LabZipCard;
 
     CartDBHelper mydb;
+
+
+    GoogleMap googleMap;
+
 
 
     @Override
@@ -153,6 +164,15 @@ public class CheckoutActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        LoadMap();
+    }
+
+    private void LoadMap() {
+
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMap);
+        supportMapFragment.getMapAsync(this);
     }
 
     private void SetupCardSwitches() {
@@ -661,4 +681,29 @@ public class CheckoutActivity extends AppCompatActivity {
         SearchLabDialogCheck searchLabDialog = new SearchLabDialogCheck();
         searchLabDialog.showSearchLabsDialog(CheckoutActivity.this, "med");
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+
+        this.googleMap = googleMap;
+
+    }
+
+    public void setPharmacyMarker(String name, String lat, String long_){
+
+        LinearLayout pharmacyMapLayout = findViewById(R.id.pharmacyMapLayout);
+        pharmacyMapLayout.setVisibility(View.VISIBLE);
+
+        LatLng latLng = new LatLng(Double.parseDouble(lat), Double.parseDouble(long_));
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.title(name);
+        markerOptions.position(latLng);
+        googleMap.addMarker(markerOptions);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 10);
+        googleMap.animateCamera(cameraUpdate);
+
+    }
+
+
 }

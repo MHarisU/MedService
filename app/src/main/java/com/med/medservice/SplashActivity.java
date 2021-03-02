@@ -60,6 +60,7 @@ public class SplashActivity extends AppCompatActivity {
                     .withPermissions(
                             Manifest.permission.READ_EXTERNAL_STORAGE,
                             Manifest.permission.USE_BIOMETRIC,
+                            Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.CAMERA,
                             Manifest.permission.RECORD_AUDIO,
                             Manifest.permission.MODIFY_AUDIO_SETTINGS

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,6 +23,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         login_button = findViewById(R.id.login_button);
 
         globalUrlApi = new GlobalUrlApi();
-        URL_Login = globalUrlApi.getUrlAppFolder() + "login.php";
+        URL_Login = globalUrlApi.getNewBaseUrl() + "login_from_app";
 
 
         sessionManager = new SessionManager(this);
@@ -122,88 +125,81 @@ public class LoginActivity extends AppCompatActivity {
 
     private void Login(final String email, final String password) {
 
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("email", email);
+            jsonBody.put("password", password);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        final String requestBody = jsonBody.toString();
+
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_Login,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        Log.d("sign_api_response", response);
+
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("login");
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+                            JSONObject jsonData = jsonResponse.getJSONObject("data");
+                            String jsonToken = jsonResponse.getString("token");
+                            String jsonStatus = jsonResponse.getString("status");
 
-                            if (success.equals("1")) {
+                            if (jsonStatus.equals("logged_inn")){
 
-                                for (int i = 0; i < jsonArray.length(); i++) {
 
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                                String id = jsonData.getString("id").trim();
+                                String first_name = jsonData.getString("name").trim();
+                                String last_name = jsonData.getString("last_name").trim();
+                                String email = jsonData.getString("email").trim();
+                                String user_type = jsonData.getString("user_type").trim();
+                                String phone = jsonData.getString("phone_number").trim();
 
-                                    String id = object.getString("id").trim();
-                                    String first_name = object.getString("name").trim();
-                                    String last_name = object.getString("last_name").trim();
-                                    String email = object.getString("email").trim();
-                                    String user_type = object.getString("user_type").trim();
-                                    String phone = object.getString("phone_number").trim();
+                                sessionManager.createSession(id, first_name, last_name, email, password, user_type, phone);
 
-                                    sessionManager.createSession(id, first_name, last_name, email, password, user_type, phone);
+                                String android_id = Settings.Secure.getString(getContentResolver(),
+                                        Settings.Secure.ANDROID_ID);
 
-                                    String android_id = Settings.Secure.getString(getContentResolver(),
-                                            Settings.Secure.ANDROID_ID);
+                                rootNode = FirebaseDatabase.getInstance();
+                                reference = rootNode.getReference("users");
 
-                                    rootNode = FirebaseDatabase.getInstance();
-                                    reference = rootNode.getReference("users");
+                                FirebaseUserModel userModel = new FirebaseUserModel(id, first_name+" "+last_name, email, android_id);
+                                reference.child(id).setValue(userModel);
 
-                                    FirebaseUserModel userModel = new FirebaseUserModel(id, first_name+" "+last_name, email, android_id);
-                                    reference.child(id).setValue(userModel);
+                                //   Toast.makeText(LoginActivity.this, id + "\n" + first_name + "\n" + last_name + "\n" + email + "\n" + user_type + "\n" + phone, Toast.LENGTH_LONG).show();
 
-                                    //   Toast.makeText(LoginActivity.this, id + "\n" + first_name + "\n" + last_name + "\n" + email + "\n" + user_type + "\n" + phone, Toast.LENGTH_LONG).show();
+                                if (user_type.equals("doctor")) {
 
-                                    if (user_type.equals("doctor")) {
+                                    Intent intent = new Intent(getApplicationContext(), DoctorMainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else if (user_type.equals("patient")) {
 
-                                        Intent intent = new Intent(getApplicationContext(), DoctorMainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else if (user_type.equals("patient")) {
-
-                                        Intent intent = new Intent(getApplicationContext(), PatientMainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-
-                                    //  Toast.makeText(LoginActivity.this, name+"\n"+id, Toast.LENGTH_SHORT).show();
-
-                                    login_button.setVisibility(View.VISIBLE);
-                                    progress_bar.setVisibility(View.GONE);
-
+                                    Intent intent = new Intent(getApplicationContext(), PatientMainActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
 
-                            } else if (success.equals("0")) {
+                                //  Toast.makeText(LoginActivity.this, name+"\n"+id, Toast.LENGTH_SHORT).show();
+
+                                login_button.setVisibility(View.VISIBLE);
+                                progress_bar.setVisibility(View.GONE);
+
+                            }
+                            else  {
 
                                 login_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
                                         .setTitle("Warning!")
-                                        .setMessage("Incorrect Password")
-                                        .setCancelable(false)
-                                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                                                login_button.setVisibility(View.VISIBLE);
-                                                progress_bar.setVisibility(View.GONE);
-
-                                            }
-                                        });
-                                //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
-                                dialog.show();
-
-
-                            } else if (success.equals("2")) {
-
-                                login_button.setVisibility(View.VISIBLE);
-                                progress_bar.setVisibility(View.GONE);
-                                AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
-                                        .setTitle("Warning!")
-                                        .setMessage("Incorrect Email ")
+                                        .setMessage("Incorrect Email or Password")
                                         .setCancelable(false)
                                         .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                             @Override
@@ -238,19 +234,44 @@ public class LoginActivity extends AppCompatActivity {
                         //  login_button.setVisibility(View.VISIBLE);
                         //  progress_bar.setVisibility(View.GONE);
                         //  Toast.makeText(LoginActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(LoginActivity.this, "Trying login please wait", Toast.LENGTH_SHORT).show();
-                        Login(email, password);
+                        //Toast.makeText(LoginActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+                        //Login(email, password);
                         //    login_text.setVisibility(View.VISIBLE);
                         //   login_text.setText("Error from php");
+
+                        login_button.setVisibility(View.VISIBLE);
+                        progress_bar.setVisibility(View.GONE);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
+                                .setTitle("Warning!")
+                                .setMessage("Incorrect Email or Password")
+                                .setCancelable(false)
+                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        login_button.setVisibility(View.VISIBLE);
+                                        progress_bar.setVisibility(View.GONE);
+
+                                    }
+                                });
+                        //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+                        dialog.show();
 
                     }
                 }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("email", email);
-                params.put("password", password);
-                return params;
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                    return null;
+                }
             }
         };
 

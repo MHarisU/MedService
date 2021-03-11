@@ -87,7 +87,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
         patient_register_button = findViewById(R.id.patient_register_button);
 
         globalUrlApi = new GlobalUrlApi();
-        URL_Register = globalUrlApi.getNewBaseUrl() + "signup_from_app  ";
+        URL_Register = globalUrlApi.getNewBaseUrl() + "signup_from_app";
 
 
     }

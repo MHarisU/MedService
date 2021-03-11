@@ -164,12 +164,28 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editText_first"
+
+                    android:id="@+id/editText_username"
 
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="0dp"
+                    android:background="@drawable/black_stock_white_background"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:hint=" Username"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/editText_first"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/black_stock_white_background"
                     android:fontFamily="@font/open_sans_regular"
                     android:hint=" First Name"

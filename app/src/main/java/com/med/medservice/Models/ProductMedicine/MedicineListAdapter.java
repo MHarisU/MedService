@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.med.medservice.MedDetailActivity;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
+import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
 import com.med.medservice.Utils.ViewDialog;
@@ -92,6 +95,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
         final String medicine_name = currentData.getMedicine_name();
         final String medicine_desc = currentData.getMedicine_short_desc();
         final String medicine_price = currentData.getMedicine_regular_price();
+        final String medicine_price_sale = currentData.getMedicine_sale_price();
         final String medicine_image = currentData.getMedicine_image();
 
         //   category_name = category_name.replace("&#8211;", "-");
@@ -120,7 +124,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
        // holder.medicine_image_view.setBackground(draw); //textview
 
         Picasso.get()
-                .load(medicine_image)
+                .load(new GlobalUrlApi().getNewHomeUrl()+"uploads/"+medicine_image)
                // .placeholder(context.getResources().getDrawable(R.drawable.ic))
                 .into(holder.medicine_image_view, new com.squareup.picasso.Callback() {
                     @Override
@@ -139,8 +143,17 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
       //  holder.medicine_image_view.setText(medicine_name.substring(0, 1));
 
         holder.medicine_name_view.setText(medicine_name);
-        holder.medicine_short_desc.setText(medicine_desc);
-        holder.medicine_price_view.setText("$"+medicine_price+".00");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            holder.medicine_short_desc.setText(Html.fromHtml(medicine_desc, Html.FROM_HTML_MODE_COMPACT));
+
+        } else {
+            holder.medicine_short_desc.setText(Html.fromHtml(medicine_desc));
+
+        }        if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")){
+            holder.medicine_price_view.setText("$"+medicine_price_sale+".00");
+
+        }else
+            holder.medicine_price_view.setText("$"+medicine_price+".00");
 
         holder.medicine_name_view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,8 +177,11 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
             @Override
             public void onClick(View view) {
 
-                mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price, "0", "medicine", medicine_image);
+                if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")) {
+                    mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price_sale, "0", "medicine", medicine_image);
 
+                } else
+                    mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price, "0", "medicine", medicine_image);
 
                 ViewDialog alert = new ViewDialog();
                 alert.showDialog(context, "" + medicine_name + "\nAdded in Cart");

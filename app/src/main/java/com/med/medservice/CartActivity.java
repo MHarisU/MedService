@@ -43,8 +43,8 @@ public class CartActivity extends AppCompatActivity {
 
         mydb = new CartDBHelper(this);
         if (mydb.numberOfRows() < 1) {
-          //  mydb.insertCartItem("1", "2", "Carline", "4", "55", "66", "medicine", "URL");
-         //   mydb.insertCartItem("1", "3", "Name4", "5", "66", "77", "medicine", "URL");
+            //  mydb.insertCartItem("1", "2", "Carline", "4", "55", "66", "medicine", "URL");
+            //   mydb.insertCartItem("1", "3", "Name4", "5", "66", "77", "medicine", "URL");
         }
         cartItemsLists = mydb.getAllItems();
 
@@ -87,12 +87,11 @@ public class CartActivity extends AppCompatActivity {
 
     public void CalculateTotal(ArrayList<CartItemsList> cartItemsLists) {
 
-        int Total=0;
+        int Total = 0;
 
         TextView subTotalPrice = findViewById(R.id.subTotalPrice);
         TextView totalPrice = findViewById(R.id.totalPrice);
         TextView shippingTextView = findViewById(R.id.shippingTextView);
-
 
 
         for (int i = 0; i < cartItemsLists.size(); i++) {
@@ -102,17 +101,23 @@ public class CartActivity extends AppCompatActivity {
             String quantity = currentData.getQUANTITY();
             String price = currentData.getPRICE();
 
-            Total = Total + ((Integer.parseInt(price)) * (Integer.parseInt(quantity)));
+            try {
+
+                Total = Total + ((Integer.parseInt(price)) * (Integer.parseInt(quantity)));
+
+            } catch (NumberFormatException e) {
+
+            }
 
         }
 
-        if (Total < 1){
+        if (Total < 1) {
             shippingTextView.setText("$00.00");
             totalPrice.setText("$" + (Total) + ".00");
             subTotalPrice.setText("$" + Total + ".00");
 
             //ViewDialog alert = new ViewDialog();
-           // alert.showDialog(CartActivity.this, "Cart is empty");
+            // alert.showDialog(CartActivity.this, "Cart is empty");
 
             final Dialog dialog = new Dialog(this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -133,7 +138,7 @@ public class CartActivity extends AppCompatActivity {
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
 
-        }else {
+        } else {
 
             subTotalPrice.setText("$" + Total + ".00");
             totalPrice.setText("$" + (Total + 20) + ".00");

@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -20,8 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.AuthService;
 import com.med.medservice.Utils.CartDBHelper;
+import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.MyCountDownTimer;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
@@ -81,6 +84,17 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
         TextView Name;
         Name = findViewById(R.id.patName);
         Name.setText(name);
+
+        /*new ApiTokenCaller(PatientMainActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProductParentCategories?id=3",
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                    }
+                }
+        );*/
+
 
     }
 

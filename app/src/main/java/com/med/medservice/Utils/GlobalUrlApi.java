@@ -5,12 +5,14 @@ public class GlobalUrlApi {
     private String UrlAppFolder;
     private String BaseUrl;
     private String newBaseUrl;
+    private String newHomeUrl;
     private String HomeUrl;
 
     public GlobalUrlApi() {
         UrlAppFolder ="http://harisdev.com/medical/";
         BaseUrl ="http://harisdev.com/medical/";
         newBaseUrl ="https://umbrellamd.com/api/";
+        newHomeUrl ="https://umbrellamd.com/";
         HomeUrl ="http://harisdev.com/";
     }
 
@@ -21,6 +23,11 @@ public class GlobalUrlApi {
     public String getNewBaseUrl() {
         return newBaseUrl;
     }
+
+    public String getNewHomeUrl() {
+        return newHomeUrl;
+    }
+
     public String getBaseUrl() {
         return BaseUrl;
     }

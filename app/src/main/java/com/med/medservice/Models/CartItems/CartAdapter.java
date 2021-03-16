@@ -19,6 +19,7 @@ import com.med.medservice.CartActivity;
 import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
+import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.ViewDialog;
 import com.squareup.picasso.Picasso;
 
@@ -77,7 +78,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder> {
 
         if (type.equals("medicine")) {
             Picasso.get()
-                    .load(image)
+                    .load(new GlobalUrlApi().getNewHomeUrl() + "uploads/" + image)
                     // .placeholder(context.getResources().getDrawable(R.drawable.ic))
                     .into(holder.cartImageView, new com.squareup.picasso.Callback() {
                         @Override

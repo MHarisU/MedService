@@ -26,6 +26,7 @@ public class SessionManager {
     public static final String PASSWORD = "PASSWORD";
     public static final String ID = "ID";
     public static final String PHONE = "PHONE";
+    public static final String TOKEN = "TOKEN";
 
     public SessionManager(Context context) {
         this.context = context;
@@ -33,7 +34,7 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String id, String fist_name,String last_name, String email, String password,  String user_type, String phone) {
+    public void createSession(String id, String fist_name,String last_name, String email, String password,  String user_type, String phone, String token) {
         editor.putBoolean(LOGIN, true);
         editor.putString(ID, id);
         editor.putString(FIRST_NAME, fist_name);
@@ -42,6 +43,8 @@ public class SessionManager {
         editor.putString(EMAIL, email);
         editor.putString(PASSWORD, password);
         editor.putString(PHONE, phone);
+        editor.putString(TOKEN, token);
+
 
         editor.apply();
 
@@ -85,10 +88,15 @@ public class SessionManager {
         user.put(PASSWORD, sharedPreferences.getString(PASSWORD, null));
         user.put(USER_TYPE, sharedPreferences.getString(USER_TYPE, null));
         user.put(PHONE, sharedPreferences.getString(PHONE, null));
+        user.put(TOKEN, sharedPreferences.getString(TOKEN, null));
 
 
 
         return user;
+    }
+
+    public String getToken(){
+        return sharedPreferences.getString(TOKEN,null);
     }
 
     public void logout() {

@@ -1,20 +1,12 @@
-package com.med.medservice;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.med.medservice.Utils;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -26,13 +18,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.med.medservice.Utils.FirebaseUserModel;
-import com.med.medservice.Utils.GlobalUrlApi;
-import com.med.medservice.Utils.SessionManager;
+import com.med.medservice.DoctorMainActivity;
+import com.med.medservice.LoginActivity;
+import com.med.medservice.PatientMainActivity;
+import com.med.medservice.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,117 +31,48 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
+public class ApiTokenCaller {
 
-    EditText editText_email, editText_password;
-
-    ProgressBar progress_bar;
-    Button login_button;
-
-    private static String URL_Login;
-    GlobalUrlApi globalUrlApi;
-    //  SessionManagerPatient sessionManager;
-    SessionManager sessionManager;
+    String URL_Link;
+    Context mContext;
 
 
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
-
-        editText_email = findViewById(R.id.editText_email);
-        editText_password = findViewById(R.id.editText_password);
-        progress_bar = findViewById(R.id.progress_bar);
-        login_button = findViewById(R.id.login_button);
-
-        globalUrlApi = new GlobalUrlApi();
-        URL_Login = globalUrlApi.getNewBaseUrl() + "login_from_app";
-
-
-        sessionManager = new SessionManager(this);
+    public interface AsyncApiResponse {
+        void processFinish(String response);
     }
 
-    public void LoginButtonClick(View view) {
+    public AsyncApiResponse delegate = null;
 
+    public ApiTokenCaller(Context mContext, String URL_Link, ApiTokenCaller.AsyncApiResponse delegate){
+        this.mContext = mContext;
+        this.delegate = delegate;
+        this.URL_Link = URL_Link;
 
-        progress_bar.setVisibility(View.VISIBLE);
-        login_button.setVisibility(View.GONE);
-
-        final String email = editText_email.getText().toString();
-        final String password = editText_password.getText().toString();
-
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (email != null && !email.equals("") && password != null && !password.equals("")) {
-
-
-                    Login(email, password);
-
-                } else {
-                    Toast.makeText(LoginActivity.this, "Please enter Email and Password.", Toast.LENGTH_SHORT).show();
-
-                    progress_bar.setVisibility(View.GONE);
-                    login_button.setVisibility(View.VISIBLE);
-                }
-            }
-        }, 10);
-
-        /*
-        EditText editText_email = findViewById(R.id.editText_email);
-        if (editText_email.getText().toString().equals("pat@test.com")){
-            startActivity(new Intent(LoginActivity.this, PatientMainActivity.class));
-            finish();
-
-        }
-        else if (editText_email.getText().toString().equals("doc@test.com")){
-            startActivity(new Intent(LoginActivity.this, DoctorMainActivity.class));
-            finish();
-        }
-        else {
-            Toast.makeText(this, "Enter correct email", Toast.LENGTH_SHORT).show();
-        }
-
-        */
+        callApi();
     }
 
 
-    private void Login(final String email, final String password) {
-
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("email", email);
-            jsonBody.put("password", password);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        final String requestBody = jsonBody.toString();
+    private void callApi() {
 
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_Login,
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_Link,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        Log.d("sign_api_response", response);
 
+                        delegate.processFinish(response);
 
+/*
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONObject jsonResponse = jsonObject.getJSONObject("Response");
-                            JSONObject jsonData = jsonResponse.getJSONObject("Data");
-                            String jsonToken = jsonResponse.getString("Token");
-                            String jsonStatus = jsonResponse.getString("Status");
+                            JSONObject jsonData = jsonResponse.getJSONObject("data");
+                            String jsonToken = jsonResponse.getString("token");
+                            String jsonStatus = jsonResponse.getString("status");
 
                             if (jsonStatus.equals("logged_inn")){
 
@@ -162,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String user_type = jsonData.getString("user_type").trim();
                                 String phone = jsonData.getString("phone_number").trim();
 
-                                sessionManager.createSession(id, first_name, last_name, email, password, user_type, phone, jsonToken);
+                                sessionManager.createSession(id, first_name, last_name, email, password, user_type, phone);
 
                                 String android_id = Settings.Secure.getString(getContentResolver(),
                                         Settings.Secure.ANDROID_ID);
@@ -225,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Server not responding", Toast.LENGTH_SHORT).show();
                             //  login_text.setVisibility(View.VISIBLE);
                             // login_text.setText("JSON Error");
-                        }
+                        }*/
                     }
                 },
                 new Response.ErrorListener() {
@@ -234,45 +156,78 @@ public class LoginActivity extends AppCompatActivity {
                         //  login_button.setVisibility(View.VISIBLE);
                         //  progress_bar.setVisibility(View.GONE);
                         //  Toast.makeText(LoginActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
+                        Log.e("api_error", error.toString());
                         //Toast.makeText(LoginActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
                         //Login(email, password);
                         //    login_text.setVisibility(View.VISIBLE);
                         //   login_text.setText("Error from php");
 
-                        login_button.setVisibility(View.VISIBLE);
-                        progress_bar.setVisibility(View.GONE);
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
-                                .setTitle("Warning!")
-                                .setMessage("Incorrect Email or Password")
-                                .setCancelable(false)
-                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                        login_button.setVisibility(View.VISIBLE);
-                                        progress_bar.setVisibility(View.GONE);
-
-                                    }
-                                });
-                        //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
-                        dialog.show();
+//                        login_button.setVisibility(View.VISIBLE);
+//                        progress_bar.setVisibility(View.GONE);
+//                        AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
+//                                .setTitle("Warning!")
+//                                .setMessage("Incorrect Email or Password")
+//                                .setCancelable(false)
+//                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                        login_button.setVisibility(View.VISIBLE);
+//                                        progress_bar.setVisibility(View.GONE);
+//
+//                                    }
+//                                });
+//                        //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+//                        dialog.show();
 
                     }
                 }) {
+
+
+/*
             @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headerMap = new HashMap<String, String>();
+                headerMap.put("Content-Type", "application/json");
+                headerMap.put("Authorization", "Bearer " + new SessionManager(mContext).getToken());
+                return headerMap;
+            }*/
+
+         /*   @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String> ();
+                //TokenService tokenservice = new TokenService(ctx);
+                String accesstoken = new SessionManager(mContext).getToken();
+                headers.put("Authorization", "Bearer " + accesstoken);
+                return headers;
+            }*/
+
+            //This is for Headers If You Needed
+           /* @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Authorization", "Bearer " + new SessionManager(mContext).getToken());
+                return params;
+            }*/
+
+           /* @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                // Basic Authentication
+                //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
+
+                headers.put("Authorization", "Bearer "  + new SessionManager(mContext).getToken());
+                return headers;
+            }*/
 
             @Override
-            public byte[] getBody() throws AuthFailureError {
-                try {
-                    return requestBody == null ? null : requestBody.getBytes("utf-8");
-                } catch (UnsupportedEncodingException uee) {
-                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
-                    return null;
-                }
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                String auth = "Bearer " + new SessionManager(mContext).getToken();
+                headers.put("Authorization", auth);
+                return headers;
             }
+
         };
 
         stringRequest.setRetryPolicy(new RetryPolicy() {
@@ -292,14 +247,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         requestQueue.add(stringRequest);
 
     }
 
-    public void OpenRegisterChooser(View view) {
-         startActivity(new Intent(getApplicationContext(), ChooseRegisterActivity.class));
-
-    }
 
 }

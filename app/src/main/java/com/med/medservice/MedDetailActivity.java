@@ -6,7 +6,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Utils.CartDBHelper;
+import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
 import com.med.medservice.Utils.ViewDialog;
@@ -34,6 +37,7 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
     String medicine_name;// = currentData.getMedicine_name();
     String medicine_desc;// = currentData.getMedicine_short_desc();
     String medicine_price;// = currentData.getMedicine_regular_price();
+    String medicine_price_sale;// = currentData.getMedicine_regular_price();
     String medicine_image;
 
     CartDBHelper mydb;
@@ -79,7 +83,7 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
         MedicinePriceView = findViewById(R.id.MedicinePriceView);
 
         Picasso.get()
-                .load(medicine_image)
+                .load(new GlobalUrlApi().getNewHomeUrl()+"uploads/"+medicine_image)
                 // .placeholder(context.getResources().getDrawable(R.drawable.ic))
                 .into(MedicineImageView, new com.squareup.picasso.Callback() {
                     @Override
@@ -96,8 +100,19 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
         //  holder.medicine_image_view.setText(medicine_name.substring(0, 1));
 
         MedicineNameView.setText(medicine_name);
-        MedicineShortDesc.setText(medicine_desc);
-        MedicinePriceView.setText("$"+medicine_price+".00");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            MedicineShortDesc.setText(Html.fromHtml(medicine_desc, Html.FROM_HTML_MODE_COMPACT));
+
+        } else {
+            MedicineShortDesc.setText(Html.fromHtml(medicine_desc));
+
+        }
+        if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")){
+            MedicinePriceView.setText("$"+medicine_price_sale+".00");
+
+        }else
+            MedicinePriceView.setText("$"+medicine_price+".00");
 
 
 
@@ -117,7 +132,10 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
         }
         if (currentData != null) {
             medicine_price = currentData.getMedicine_regular_price();
+        }if (currentData != null) {
+            medicine_price_sale = currentData.getMedicine_sale_price();
         }
+
         if (currentData != null) {
             medicine_image = currentData.getMedicine_image();
         }
@@ -163,7 +181,12 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
 
     public void AddToCart(View view) {
 
-        mydb.insertCartItem(user_id, medicine_id, medicine_name, ProductQuantity.getText().toString(), medicine_price, "0", "medicine", medicine_image);
+        if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")) {
+            mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price_sale, "0", "medicine", medicine_image);
+
+        } else
+            mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price, "0", "medicine", medicine_image);
+
 
         ViewDialog alert = new ViewDialog();
         alert.showDialog(this, "("+ProductQuantity.getText().toString()+") "+medicine_name+"\nAdded in Cart");

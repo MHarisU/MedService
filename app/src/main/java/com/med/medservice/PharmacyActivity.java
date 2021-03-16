@@ -553,7 +553,7 @@ public class PharmacyActivity extends AppCompatActivity implements UpdateCartInt
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
 
-        new ApiTokenCaller(PharmacyActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProductParentCategories",
+        new ApiTokenCaller(PharmacyActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProductParentCategories?category_type=medicine",
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {

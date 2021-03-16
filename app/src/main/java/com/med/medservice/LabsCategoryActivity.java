@@ -21,6 +21,7 @@ import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.Models.ProductLabs.LabsListAdapter;
 import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.UpdateCartInterface;
@@ -82,6 +83,9 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
         popularLabsRecycler.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
         popularLabsList = new ArrayList<LabsList>();
+
+        //old api
+        /*
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_lab_by_category.php?cat_id="+selectedCategory.getCategory_id(),
                 new ApiCallerNew.AsyncApiResponse() {
@@ -151,6 +155,71 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
 
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+*/
+
+
+        new ApiTokenCaller(LabsCategoryActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?parent_category="+selectedCategory.getCategory_id(),
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String id = child.getString("id");
+                                String name = child.getString("name");
+                                String panel_name = child.getString("panel_name");
+                                String parent_category = child.getString("parent_category");
+                                String sub_category = child.getString("sub_category");
+                                String featured_image = child.getString("featured_image");
+                                String sale_price = child.getString("sale_price");
+                                String regular_price = child.getString("regular_price");
+                                String quantity = child.getString("quantity");
+                                String short_description = child.getString("short_description");
+                                String description = child.getString("description");
+                                String stock_status = child.getString("stock_status");
+
+                                popularLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                        quantity, short_description, description, stock_status));
+
+
+                            }
+
+
+
+
+
+                            LabsListAdapter adapter = new LabsListAdapter(popularLabsList, LabsCategoryActivity.this);
+                            popularLabsRecycler.setAdapter(adapter);
+
+
+                            Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                                    R.anim.slide_up);
+                            cardProgress.setVisibility(View.GONE);
+                            layoutMain.setVisibility(View.VISIBLE);
+                            layoutMain.startAnimation(slide_up);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
+
 
     }
 

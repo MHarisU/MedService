@@ -95,7 +95,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder> {
         }
         else if (type.equals("lab-test")){
 
-            holder.cartImageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.test_lab));
+            holder.cartImageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.flask_icon));
 
             holder.quantityLayout.setVisibility(View.GONE);
             holder.tagText.setText("Lab");

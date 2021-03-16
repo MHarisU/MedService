@@ -31,6 +31,7 @@ import com.med.medservice.Models.ProductMedicine.MedicineAdapter;
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
 import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.UpdateCartInterface;
@@ -81,7 +82,7 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
         try {
             GetCategories();
 
-            GetRecent();
+            //GetRecent();
 
             GetPopular();
         } catch (NullPointerException e) {
@@ -129,6 +130,9 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
         });
 
 
+        //old api
+        /*
+
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_labs_category.php",
                 new ApiCallerNew.AsyncApiResponse() {
 
@@ -172,6 +176,50 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
 
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+*/
+
+
+        new ApiTokenCaller(LabsActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProductParentCategories?category_type=lab-test",
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        //Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+                                String id = child.getString("id");
+                                String name = child.getString("name");
+                                String category_type = child.getString("category_type");
+                                String description = child.getString("description");
+                                String thumbnail = child.getString("thumbnail");
+
+                                categoryList.add(new CategoryList(id, name, category_type, description, thumbnail));
+
+
+                            }
+
+
+
+                            CategorySquareAdapter adapter = new CategorySquareAdapter(categoryList, getApplicationContext());
+                            categoryRecycler.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
 
     }
 
@@ -249,6 +297,8 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
 
         popularLabsList = new ArrayList<LabsList>();
 
+        // old
+        /*
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_labs.php",
                 new ApiCallerNew.AsyncApiResponse() {
 
@@ -316,7 +366,68 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                 });
 
         // asyncTask.execute();
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
+
+        new ApiTokenCaller(LabsActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=lab-test&limit=6",
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        //Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String id = child.getString("id");
+                                String name = child.getString("name");
+                                String panel_name = child.getString("panel_name");
+                                String parent_category = child.getString("parent_category");
+                                String sub_category = child.getString("sub_category");
+                                String featured_image = child.getString("featured_image");
+                                String sale_price = child.getString("sale_price");
+                                String regular_price = child.getString("regular_price");
+                                String quantity = child.getString("quantity");
+                                String short_description = child.getString("short_description");
+                                String description = child.getString("description");
+                                String stock_status = child.getString("stock_status");
+
+                                popularLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                        quantity, short_description, description, stock_status));
+
+
+                            }
+
+
+
+
+                            LabsListAdapter adapter = new LabsListAdapter(popularLabsList, LabsActivity.this);
+                            popularLabsRecycler.setAdapter(adapter);
+
+
+                            Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                                    R.anim.slide_up);
+                            cardProgress.setVisibility(View.GONE);
+                            layoutMain.setVisibility(View.VISIBLE);
+                            layoutMain.startAnimation(slide_up);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
 
     }
 

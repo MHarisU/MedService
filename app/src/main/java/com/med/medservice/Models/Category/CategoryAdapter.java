@@ -81,7 +81,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.category_image_view.setBackground(draw); //textview
         holder.category_image_view.setText(category_name.substring(0, 1));
 
-
         holder.category_name_view.setText(category_name);
 
 

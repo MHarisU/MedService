@@ -95,7 +95,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
         SetupCardSwitches();
 
-        SetupStatesSpinner();
+        //SetupStatesSpinner();
 
         SetupStatesSpinner2();
 

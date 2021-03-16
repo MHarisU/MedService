@@ -66,159 +66,19 @@ public class ApiTokenCaller {
 
                         delegate.processFinish(response);
 
-/*
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
-                            JSONObject jsonData = jsonResponse.getJSONObject("data");
-                            String jsonToken = jsonResponse.getString("token");
-                            String jsonStatus = jsonResponse.getString("status");
-
-                            if (jsonStatus.equals("logged_inn")){
-
-
-                                String id = jsonData.getString("id").trim();
-                                String first_name = jsonData.getString("name").trim();
-                                String last_name = jsonData.getString("last_name").trim();
-                                String email = jsonData.getString("email").trim();
-                                String user_type = jsonData.getString("user_type").trim();
-                                String phone = jsonData.getString("phone_number").trim();
-
-                                sessionManager.createSession(id, first_name, last_name, email, password, user_type, phone);
-
-                                String android_id = Settings.Secure.getString(getContentResolver(),
-                                        Settings.Secure.ANDROID_ID);
-
-                                rootNode = FirebaseDatabase.getInstance();
-                                reference = rootNode.getReference("users");
-
-                                FirebaseUserModel userModel = new FirebaseUserModel(id, first_name+" "+last_name, email, android_id);
-                                reference.child(id).setValue(userModel);
-
-                                //   Toast.makeText(LoginActivity.this, id + "\n" + first_name + "\n" + last_name + "\n" + email + "\n" + user_type + "\n" + phone, Toast.LENGTH_LONG).show();
-
-                                if (user_type.equals("doctor")) {
-
-                                    Intent intent = new Intent(getApplicationContext(), DoctorMainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else if (user_type.equals("patient")) {
-
-                                    Intent intent = new Intent(getApplicationContext(), PatientMainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-
-                                //  Toast.makeText(LoginActivity.this, name+"\n"+id, Toast.LENGTH_SHORT).show();
-
-                                login_button.setVisibility(View.VISIBLE);
-                                progress_bar.setVisibility(View.GONE);
-
-                            }
-                            else  {
-
-                                login_button.setVisibility(View.VISIBLE);
-                                progress_bar.setVisibility(View.GONE);
-                                AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
-                                        .setTitle("Warning!")
-                                        .setMessage("Incorrect Email or Password")
-                                        .setCancelable(false)
-                                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                                                login_button.setVisibility(View.VISIBLE);
-                                                progress_bar.setVisibility(View.GONE);
-
-                                            }
-                                        });
-                                //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
-                                dialog.show();
-
-
-                            }
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            login_button.setVisibility(View.VISIBLE);
-                            progress_bar.setVisibility(View.GONE);
-                            // Toast.makeText(LoginActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(LoginActivity.this, "Server not responding", Toast.LENGTH_SHORT).show();
-                            //  login_text.setVisibility(View.VISIBLE);
-                            // login_text.setText("JSON Error");
-                        }*/
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //  login_button.setVisibility(View.VISIBLE);
-                        //  progress_bar.setVisibility(View.GONE);
-                        //  Toast.makeText(LoginActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("api_error", error.toString());
-                        //Toast.makeText(LoginActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
-                        //Login(email, password);
-                        //    login_text.setVisibility(View.VISIBLE);
-                        //   login_text.setText("Error from php");
 
-//                        login_button.setVisibility(View.VISIBLE);
-//                        progress_bar.setVisibility(View.GONE);
-//                        AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
-//                                .setTitle("Warning!")
-//                                .setMessage("Incorrect Email or Password")
-//                                .setCancelable(false)
-//                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                                        login_button.setVisibility(View.VISIBLE);
-//                                        progress_bar.setVisibility(View.GONE);
-//
-//                                    }
-//                                });
-//                        //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
-//                        dialog.show();
+                        Log.e("api_error", error.toString());
+
 
                     }
                 }) {
 
 
-/*
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headerMap = new HashMap<String, String>();
-                headerMap.put("Content-Type", "application/json");
-                headerMap.put("Authorization", "Bearer " + new SessionManager(mContext).getToken());
-                return headerMap;
-            }*/
-
-         /*   @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String, String> ();
-                //TokenService tokenservice = new TokenService(ctx);
-                String accesstoken = new SessionManager(mContext).getToken();
-                headers.put("Authorization", "Bearer " + accesstoken);
-                return headers;
-            }*/
-
-            //This is for Headers If You Needed
-           /* @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("Authorization", "Bearer " + new SessionManager(mContext).getToken());
-                return params;
-            }*/
-
-           /* @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                // Basic Authentication
-                //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
-
-                headers.put("Authorization", "Bearer "  + new SessionManager(mContext).getToken());
-                return headers;
-            }*/
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

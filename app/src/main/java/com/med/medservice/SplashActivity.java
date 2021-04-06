@@ -135,8 +135,9 @@ public class SplashActivity extends AppCompatActivity {
                 if (sessionManager.isLogin()) {
 
                     finish();
-                    Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
-                    intent.putExtra("checkActivity", "fronSplash");
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                 //   Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
+                 //   intent.putExtra("checkActivity", "fronSplash");
                     startActivity(intent);
 
                 } else {
@@ -222,8 +223,9 @@ public class SplashActivity extends AppCompatActivity {
                         if (sessionManager.isLogin()) {
 
                             finish();
-                            Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
-                            intent.putExtra("checkActivity", "fronSplash");
+                            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                           /* Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
+                            intent.putExtra("checkActivity", "fronSplash");*/
                             startActivity(intent);
 
                         } else {

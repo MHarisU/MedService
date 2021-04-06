@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -21,15 +20,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.med.medservice.Models.Category.CategoryAdapter;
 import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.Models.Category.CategorySquareAdapter;
 import com.med.medservice.Models.ProductLabs.LabHorizAdapter;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.Models.ProductLabs.LabsListAdapter;
-import com.med.medservice.Models.ProductMedicine.MedicineAdapter;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
+import com.med.medservice.Models.ProductLabs.LabsPanelAdapter;
 import com.med.medservice.Utils.ApiCallerNew;
 import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
@@ -82,7 +78,7 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
         try {
             GetCategories();
 
-            //GetRecent();
+            GetPanels();
 
             GetPopular();
         } catch (NullPointerException e) {
@@ -207,6 +203,8 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                             }
 
 
+                            categoryList.add(new CategoryList("0", "Other", "lab-test", "none", "thumbnail"));
+
 
                             CategorySquareAdapter adapter = new CategorySquareAdapter(categoryList, getApplicationContext());
                             categoryRecycler.setAdapter(adapter);
@@ -224,13 +222,14 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
     }
 
 
-    private void GetRecent() {
+    private void GetPanels() {
 
         commonLabsRecycler = findViewById(R.id.recentBoughtRecycler);
         commonLabsRecycler.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.HORIZONTAL, false));
         commonLabsList = new ArrayList<LabsList>();
 
-
+        //old api
+        /*
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "search_lab_by_name.php?q=panel",
                 new ApiCallerNew.AsyncApiResponse() {
 
@@ -283,7 +282,66 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                 });
 
         // asyncTask.execute();
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
+
+
+        new ApiTokenCaller(LabsActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=lab-test&limit=6&test_type=panel",
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        //Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String id = child.getString("id");
+                                String name = child.getString("name");
+                                String panel_name = child.getString("panel_name");
+                                String parent_category = child.getString("parent_category");
+                                String sub_category = child.getString("sub_category");
+                                String featured_image = child.getString("featured_image");
+                                String sale_price = child.getString("sale_price");
+                                String regular_price = child.getString("regular_price");
+                                String quantity = child.getString("quantity");
+                                String short_description = child.getString("short_description");
+                                String description = child.getString("description");
+                                String stock_status = child.getString("stock_status");
+
+                                if (!name.equals("Shahzaib Test Panel"))
+                                commonLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                        quantity, short_description, description, stock_status));
+
+
+                            }
+
+
+/*
+                            LabHorizAdapter adapter = new LabHorizAdapter(commonLabsList, LabsActivity.this);
+                            commonLabsRecycler.setAdapter(adapter);*/
+
+
+                            LabsPanelAdapter adapter = new LabsPanelAdapter(commonLabsList, LabsActivity.this);
+                            commonLabsRecycler.setAdapter(adapter);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
 
 
     }
@@ -368,7 +426,7 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
 
-        new ApiTokenCaller(LabsActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=lab-test&limit=6",
+        new ApiTokenCaller(LabsActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=lab-test&limit=10&test_type=lab-test",
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {

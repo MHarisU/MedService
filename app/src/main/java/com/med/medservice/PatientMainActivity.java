@@ -48,7 +48,10 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
 
     Boolean checkAuthQueue = false;
 
+    // goto this class if you want to find the origin of AuthService Start
     MyCountDownTimer countDownTimer;
+
+
     private long startTime = 1* 20 * 1000; // 15 MINS IDLE TIME
     private final long interval = 1 * 1000;
 
@@ -297,7 +300,7 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
         }
     }
 
-
+/*
     private class AuthAsyncTask extends AsyncTask<String, String, String> {
 
 
@@ -331,5 +334,5 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
         }
 
 
-    }
+    }*/
 }

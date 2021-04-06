@@ -2194,7 +2194,7 @@
 
             <LinearLayout
 
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -2235,7 +2235,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/recentBoughtRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

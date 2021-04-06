@@ -161,8 +161,10 @@ public class LoginActivity extends AppCompatActivity {
                                 String email = jsonData.getString("email").trim();
                                 String user_type = jsonData.getString("user_type").trim();
                                 String phone = jsonData.getString("phone_number").trim();
+                                String date_of_birth = jsonData.getString("date_of_birth").trim();
+                                String office_address = jsonData.getString("office_address").trim();
 
-                                sessionManager.createSession(id, first_name, last_name, email, password, user_type, phone, jsonToken);
+                                sessionManager.createSession(id, first_name, last_name, email, password, user_type, phone, jsonToken, date_of_birth, office_address);
 
                                 String android_id = Settings.Secure.getString(getContentResolver(),
                                         Settings.Secure.ANDROID_ID);
@@ -222,7 +224,7 @@ public class LoginActivity extends AppCompatActivity {
                             login_button.setVisibility(View.VISIBLE);
                             progress_bar.setVisibility(View.GONE);
                             // Toast.makeText(LoginActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(LoginActivity.this, "Server not responding", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Api not responding.", Toast.LENGTH_SHORT).show();
                             //  login_text.setVisibility(View.VISIBLE);
                             // login_text.setText("JSON Error");
                         }

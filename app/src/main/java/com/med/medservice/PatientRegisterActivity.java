@@ -250,13 +250,13 @@ public class PatientRegisterActivity extends AppCompatActivity {
 
                             JSONObject jsonObject = new JSONObject(response);
                             JSONObject jsonResponse = jsonObject.getJSONObject("Response");
-                            String status = jsonResponse.getString("status");
+                            String status = jsonResponse.getString("Status");
 
-                            if (status.equals("false")){
+                            if (status.equals("False")){
                                 patient_register_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(PatientRegisterActivity.this, R.style.DialogTheme)
-                                        .setTitle("Warning!")
+                                        .setTitle("Info!")
                                         .setMessage("User / Email already registered")
                                         .setCancelable(false)
                                         .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
@@ -271,7 +271,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                                 //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
                                 dialog.show();
                             }
-                            else if (status.equals("true")){
+                            else if (status.equals("True")){
 
                                 patient_register_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);

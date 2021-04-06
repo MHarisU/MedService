@@ -27,7 +27,8 @@ public class MyCountDownTimer extends CountDownTimer {
             @Override
             public void run() {
 
-                context.startService(new Intent(context, AuthService.class));
+                //
+                //context.startService(new Intent(context, AuthService.class));
               //  checkAuthQueue = false;
             }
         }, 2000);

@@ -18,12 +18,24 @@
         android:layout_height="match_parent"
         android:src="@drawable/splash_designs2"/>
 
-    <ImageView
-
+    <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/login_banner"/>
+        android:background="@drawable/sp_new">
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerInside"
+            android:layout_width="150dp"
+            android:background="@color/WhiteLowOpc50"
+            android:layout_height="150dp"
+            android:src="@drawable/um_new_logo_mar"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+
+
 
 
     <LinearLayout
@@ -47,7 +59,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="160dp"
+                android:layout_marginTop="180dp"
                 android:layout_marginBottom="0dp"
                 android:background="@color/WhiteLowOpc50"
                 android:orientation="vertical">

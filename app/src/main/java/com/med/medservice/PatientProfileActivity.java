@@ -92,10 +92,13 @@ public class PatientProfileActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
         final HashMap<String, String> user = sessionManager.getUserDetail();
-        // name = user.get(sessionManager.FIRST_NAME);
-        //  name = name + " " + user.get(sessionManager.LAST_NAME);
-        //  email = user.get(sessionManager.EMAIL);
+         name = user.get(sessionManager.FIRST_NAME);
+         name = name + " " + user.get(sessionManager.LAST_NAME);
+         email = user.get(sessionManager.EMAIL);
         user_id = user.get(sessionManager.ID);
+        date_of_birth = user.get(sessionManager.DOB);
+        phone_number = user.get(sessionManager.PHONE);
+        office_address = user.get(sessionManager.ADDRESS);
 
 
         progressBarProfile = findViewById(R.id.progressBarProfile);
@@ -107,8 +110,15 @@ public class PatientProfileActivity extends AppCompatActivity {
         dateView = findViewById(R.id.dateView);
         nameView = findViewById(R.id.nameView);
 
+        nameView.setText(name);
+        emailView.setText(email);
+        dateView.setText(date_of_birth);
+        phoneView.setText(phone_number);
+        addressView.setText(office_address);
 
-        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "/get_user_details.php?id=" + user_id,
+
+        //loading online profile
+        /*ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "/get_user_details.php?id=" + user_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
@@ -175,7 +185,7 @@ public class PatientProfileActivity extends AppCompatActivity {
 
                 });
         // asyncTask.execute();
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
 
 
     }

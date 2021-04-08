@@ -1021,6 +1021,7 @@
 
 
                     <androidx.cardview.widget.CardView
+
                         android:id="@+id/MedicinesSwitchCard"
 
                         android:layout_width="match_parent"
@@ -1258,12 +1259,14 @@
 
                             <LinearLayout
 
+                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
                                 <EditText
+                                    android:id="@+id/shippingFirstName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -1297,13 +1300,14 @@
 
 
                             <EditText
+                                android:id="@+id/shippingFullName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/black_stock_white_background"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:hint="Last Name"
+                                android:hint="Full Name"
                                 android:inputType="text"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
@@ -1312,6 +1316,7 @@
 
 
                             <EditText
+                                android:id="@+id/shippingPhone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -1326,6 +1331,7 @@
                                 android:textSize="16sp" />
 
                             <EditText
+                                android:id="@+id/shippingEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -1340,6 +1346,7 @@
                                 android:textSize="16sp" />
 
                             <EditText
+                                android:id="@+id/shippingAddress"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -1417,6 +1424,8 @@
                                 </RelativeLayout>
 
                                 <EditText
+
+                                    android:id="@+id/shippingZip"
                                     android:layout_width="match_parent"
 
                                     android:layout_height="wrap_content"
@@ -1696,6 +1705,7 @@
 
         <TextView
 
+            android:id="@+id/orderCompleteMessageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

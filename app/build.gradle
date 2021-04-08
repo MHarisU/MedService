@@ -74,7 +74,7 @@ dependencies {
 
 
     //month and year picker for expiry date
-    implementation 'com.github.kal72:RackMonthPicker:1.6.1'
+    implementation 'com.github.kal72:RackMonthPicker:1.6.0'
 
 
 }

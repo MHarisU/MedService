@@ -10,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -118,6 +119,14 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     TextView billingCity;
     TextView billingState;
 
+    TextView lab_appointment_date_time;
+    String selected_lab_appointment_date;
+    TextView pharmacySelectedNameView;
+    TextView labSelectedNameView;
+
+    String appointment_time;
+
+    EditText shippingFullName, shippingPhone, shippingEmail, shippingAddress, shippingZip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +138,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
         Intent intent = getIntent();
 
-       // total = Integer.parseInt(intent.getStringExtra("price"));
+        // total = Integer.parseInt(intent.getStringExtra("price"));
 
         getUser();
 
@@ -230,6 +239,15 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         lastName.setText(last_name);
         phoneNumber.setText(phone);
         emailAddress.setText(email);
+
+
+        shippingFullName = findViewById(R.id.shippingFullName);
+        shippingPhone = findViewById(R.id.shippingPhone);
+        shippingEmail = findViewById(R.id.shippingEmail);
+        shippingAddress = findViewById(R.id.shippingAddress);
+        shippingZip = findViewById(R.id.shippingZip);
+
+
 
     }
 
@@ -382,6 +400,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                 //   Toast.makeText(PrefenceActivity.this, "" + itemsID[positions], Toast.LENGTH_SHORT).show();
                 // courseSpinnerID = courseID[positions];
                 //  if (positions != 0)
+                appointment_time = timeSlots[position];
                 //selectedDoctorId = timeSlots[positions];
                 //selectedTime = timeSlots[positions];
                 //Toast.makeText(BookAppointmentActivity.this, "" + timeSlots[positions], Toast.LENGTH_SHORT).show();
@@ -670,39 +689,39 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
             billingObject.put("first_name", first_name);
             billingObject.put("middle_name", null);
             billingObject.put("last_name", last_name);
-            billingObject.put("address", "House 251");
-            billingObject.put("state", "Alaska");
+            billingObject.put("address", billingAddressFull.getText().toString());
+            billingObject.put("state", billingState.getText().toString());
             billingObject.put("state_code", "AK");
-            billingObject.put("city", "Aleutians East Borough");
-            billingObject.put("zip_code", "19701");
-            billingObject.put("phone_number", "0987654321");
-            billingObject.put("email_address", "baqir@umbrellamd.com");
+            billingObject.put("city", billingCity.getText().toString());
+            billingObject.put("zip_code", billingAddressZip.getText().toString());
+            billingObject.put("phone_number", phoneNumber.getText().toString());
+            billingObject.put("email_address", emailAddress.getText().toString());
             billingObject.put("medicines_delivery", "on");
-            billingObject.put("pharmacy_zipcode", "19701");
+            billingObject.put("pharmacy_zipcode", pharmacySelectedNameView.getText().toString());
             billingObject.put("pharmacy_nearby_location", "404");
-            billingObject.put("lab_appointment_date", "24/03/2021");
-            billingObject.put("lab_appointment_time", "2:00 PM");
-            billingObject.put("lab_zipcode", "19701");
+            billingObject.put("lab_appointment_date", selected_lab_appointment_date);
+            billingObject.put("lab_appointment_time", appointment_time);
+            billingObject.put("lab_zipcode", labSelectedNameView.getText().toString());
             billingObject.put("lab_nearby_location", "410");
 
             orderJsonObject.put("billing", billingObject);
 
             JSONObject shippingObject = new JSONObject();
 
-            shippingObject.put("full_name", "Ibad");
-            shippingObject.put("email_address", null);
-            shippingObject.put("phone_number", "Unar");
-            shippingObject.put("address", "House 251");
+            shippingObject.put("full_name", shippingFullName.getText().toString());
+            shippingObject.put("email_address", shippingEmail.getText().toString());
+            shippingObject.put("phone_number", shippingPhone.getText().toString());
+            shippingObject.put("address", shippingAddress.getText().toString());
             shippingObject.put("state", "Florida");
             shippingObject.put("state_code", "FL");
-            shippingObject.put("zip_code", "19701");
+            shippingObject.put("zip_code", shippingZip.getText().toString());
 
             orderJsonObject.put("shipping", shippingObject);
 
             JSONObject paymentObject = new JSONObject();
 
             paymentObject.put("card_number", "5105105105105100");
-            paymentObject.put("card_expiry", "01/25");
+            paymentObject.put("card_expiry", expiryDate.getText().toString());
             paymentObject.put("cvc", "123");
             paymentObject.put("payment_method", "online_bank_transfer");
             paymentObject.put("payment_method_title", "Direct Bank Transfer / Online Payment");
@@ -774,6 +793,8 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                                 Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
                                         R.anim.slide_up);
 
+                                TextView orderCompleteMessageView = findViewById(R.id.orderCompleteMessageView);
+                                orderCompleteMessageView.setText("Thank you\nOrder Successfully Placed\nYour ORDER ID is "+OrderID);
 
                                 payment_done_layout.setVisibility(View.VISIBLE);
                                 payment_done_layout.startAnimation(slide_up);
@@ -905,7 +926,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     public void OpenPharmacy(View view) {
-        Intent intent = new Intent(this, OrderHistoryActivity.class);
+        Intent intent = new Intent(this, PatientMainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
         startActivity(intent);
@@ -919,7 +940,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     public void SelectDateTime(View view) {
-        final TextView date_time = findViewById(R.id.date_time);
+        lab_appointment_date_time = findViewById(R.id.date_time);
 
         final Calendar calendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -931,10 +952,12 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                 calendar.set(Calendar.DAY_OF_MONTH, day);
 
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
 
                 // selected_date_of_birht = simpleDateFormat.format(calendar.getTime());
 
-                date_time.setText("Date of Birth: " + simpleDateFormat.format(calendar.getTime()));
+                lab_appointment_date_time.setText("Date of Birth: " + simpleDateFormat.format(calendar.getTime()));
+                selected_lab_appointment_date = ""+simpleDateFormat2.format(calendar.getTime());
 
 
             }
@@ -946,7 +969,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     public void setLab(String selected_pharmacy_id, String selected_pharmacy_name, String selected_pharmacy_address) {
-        TextView labSelectedNameView = findViewById(R.id.labSelectedNameView);
+        labSelectedNameView = findViewById(R.id.labSelectedNameView);
 
         labSelectedNameView.setText(selected_pharmacy_name + ", " + selected_pharmacy_address);
 
@@ -964,7 +987,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     public void setMed(String selected_pharmacy_id, String selected_pharmacy_name, String selected_pharmacy_address) {
-        TextView pharmacySelectedNameView = findViewById(R.id.pharmacySelectedNameView);
+        pharmacySelectedNameView = findViewById(R.id.pharmacySelectedNameView);
 
         pharmacySelectedNameView.setText(selected_pharmacy_name + ", " + selected_pharmacy_address);
 
@@ -1013,16 +1036,23 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
 
     public void selectExpiry(View view) {
-       // createDialogWithoutDateField().show();
-        new RackMonthPicker(this)
+        // createDialogWithoutDateField().show();
+        RackMonthPicker picker = new RackMonthPicker(this);
+
+                picker
                 .setLocale(Locale.ENGLISH)
+                        .setColorTheme(Color.BLUE)
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
 
 
+                        year = year - 2000;
+                        if (month < 10)
+                            expiryDate.setText("0" + month + "/" + year);
+                        else
+                            expiryDate.setText(month + "/" + year);
 
-                        expiryDate.setText(month+"/"+year);
                     }
                 })
                 .setNegativeButton(new OnCancelMonthDialogListener() {
@@ -1053,8 +1083,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                     }
                 }
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
         }
         return dpd;
     }

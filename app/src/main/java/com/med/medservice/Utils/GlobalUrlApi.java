@@ -9,10 +9,14 @@ public class GlobalUrlApi {
     private String HomeUrl;
 
     public GlobalUrlApi() {
+       // newBaseUrl ="https://umbrellamd.com/api/";
+        newBaseUrl ="https://medical.suunnoo.com/api/";
+       // newHomeUrl ="https://umbrellamd.com/";
+        newHomeUrl ="https://medical.suunnoo.com/";
+
+        
         UrlAppFolder ="http://harisdev.com/medical/";
         BaseUrl ="http://harisdev.com/medical/";
-        newBaseUrl ="https://umbrellamd.com/api/";
-        newHomeUrl ="https://umbrellamd.com/";
         HomeUrl ="http://harisdev.com/";
     }
 

@@ -704,22 +704,26 @@
                                 android:orientation="horizontal">
 
                                 <EditText
+                                    android:id="@+id/firstName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginEnd="5dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/black_stock_white_background"
+                                    android:clickable="false"
+                                    android:focusable="false"
                                     android:fontFamily="@font/open_sans_regular"
-                                    android:inputType="text"
+                                    android:hint="First Name"
+                                    android:inputType="none"
                                     android:padding="10dp"
                                     android:paddingStart="15dp"
-                                    android:text="Muhammad Haris"
-                                    android:hint="First Name"
+                                    android:text=""
                                     android:textColor="#000"
                                     android:textSize="16sp" />
 
                                 <EditText
+                                    android:id="@+id/middleName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -738,22 +742,26 @@
 
 
                             <EditText
+                                android:id="@+id/lastName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/black_stock_white_background"
+                                android:clickable="false"
+                                android:focusable="false"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:inputType="text"
+                                android:hint="Last Name"
+                                android:inputType="none"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
-                                android:text="Rohail"
-                                android:hint="Last Name"
+                                android:text=""
                                 android:textColor="#000"
                                 android:textSize="16sp" />
 
 
                             <EditText
+                                android:id="@+id/cardNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -775,7 +783,8 @@
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
-                                <EditText
+                                <TextView
+                                    android:id="@+id/expiryDate"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -784,13 +793,14 @@
                                     android:background="@drawable/black_stock_white_background"
                                     android:fontFamily="@font/open_sans_regular"
                                     android:hint="Expiry Date: 10/22"
-                                    android:inputType="text"
+                                    android:onClick="selectExpiry"
                                     android:padding="10dp"
                                     android:paddingStart="15dp"
                                     android:textColor="#000"
                                     android:textSize="16sp" />
 
                                 <EditText
+                                    android:id="@+id/cvcNumber"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -809,6 +819,7 @@
 
 
                             <EditText
+                                android:id="@+id/phoneNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -817,14 +828,16 @@
                                 android:clickable="false"
                                 android:focusable="false"
                                 android:fontFamily="@font/open_sans_regular"
+                                android:hint="Phone Number"
                                 android:inputType="none"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
-                                android:text="+923473647030"
+                                android:text=""
                                 android:textColor="#000"
                                 android:textSize="16sp" />
 
                             <EditText
+                                android:id="@+id/emailAddress"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -833,25 +846,26 @@
                                 android:clickable="false"
                                 android:focusable="false"
                                 android:fontFamily="@font/open_sans_regular"
+                                android:hint="Email"
                                 android:inputType="none"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
-                                android:text="rhunar007@gmail.com"
+                                android:text=""
                                 android:textColor="#000"
                                 android:textSize="16sp" />
 
 
                             <TextView
                                 android:id="@+id/billingAddressZip"
-                                android:onClick="SearchBillingZip"
-                                android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="0dp"
+                                android:layout_marginTop="10dp"
                                 android:background="@drawable/black_stock_white_background"
                                 android:fontFamily="@font/open_sans_regular"
                                 android:hint="Zip Code"
                                 android:inputType="number"
+                                android:onClick="SearchBillingZip"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
                                 android:textColor="#000"
@@ -867,11 +881,11 @@
                                 <TextView
 
                                     android:id="@+id/billingCity"
-                                    android:layout_weight="1"
-                                    android:layout_marginTop="10dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
                                     android:layout_marginEnd="5dp"
+                                    android:layout_weight="1"
                                     android:background="@drawable/black_stock_white_background"
                                     android:fontFamily="@font/open_sans_regular"
                                     android:hint="City"
@@ -884,11 +898,11 @@
                                 <TextView
                                     android:id="@+id/billingState"
 
-                                    android:layout_weight="1"
-                                    android:layout_marginTop="10dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_weight="1"
                                     android:background="@drawable/black_stock_white_background"
                                     android:fontFamily="@font/open_sans_regular"
                                     android:hint="State"
@@ -901,6 +915,7 @@
                             </LinearLayout>
 
                             <EditText
+                                android:id="@+id/billingAddressFull"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -916,13 +931,13 @@
 
 
                             <RelativeLayout
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="45dp"
                                 android:layout_marginStart="0dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginEnd="0dp"
-                                android:layout_marginBottom="0dp">
+                                android:layout_marginBottom="0dp"
+                                android:visibility="gone">
 
 
                                 <Spinner
@@ -944,13 +959,13 @@
                             </RelativeLayout>
 
                             <LinearLayout
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="5dp"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:visibility="gone">
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
@@ -997,7 +1012,6 @@
                                     android:textSize="16sp" />
 
                             </LinearLayout>
-
 
 
                         </LinearLayout>
@@ -1604,23 +1618,22 @@
                             </RelativeLayout>
 
                             <LinearLayout
-                                android:visibility="gone"
                                 android:id="@+id/pharmacyMapLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:visibility="gone">
 
 
                                 <fragment
 
-                                    android:layout_marginTop="10dp"
                                     android:id="@+id/fragmentMap"
                                     class="com.google.android.gms.maps.SupportMapFragment"
                                     android:layout_width="match_parent"
-                                    android:layout_height="200dp"/>
+                                    android:layout_height="200dp"
+                                    android:layout_marginTop="10dp" />
 
                             </LinearLayout>
-
 
 
                         </LinearLayout>

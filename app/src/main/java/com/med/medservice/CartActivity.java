@@ -32,6 +32,9 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView cartRecycler;
     ArrayList<CartItemsList> cartItemsLists;
 
+    int Total = 0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +90,6 @@ public class CartActivity extends AppCompatActivity {
 
     public void CalculateTotal(ArrayList<CartItemsList> cartItemsLists) {
 
-        int Total = 0;
 
         TextView subTotalPrice = findViewById(R.id.subTotalPrice);
         TextView totalPrice = findViewById(R.id.totalPrice);
@@ -151,8 +153,10 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void OpenCheckout(View view) {
+        Intent intent= new Intent(getApplicationContext(), CheckoutActivity.class);
+        intent.putExtra("price", Total);
         finish();
-        startActivity(new Intent(getApplicationContext(), CheckoutActivity.class));
+        startActivity(intent);
     }
 
     public void OpenHome(View view) {

@@ -103,7 +103,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
         List<String> colors;
 
-        colors=new ArrayList<String>();
+        colors = new ArrayList<String>();
 
         colors.add("#f2453d");
         colors.add("#fd9727");
@@ -115,23 +115,23 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
         colors.add("#e72564");
 
         Random r = new Random();
-        int i1 = r.nextInt(7- 0) + 0;
+        int i1 = r.nextInt(7 - 0) + 0;
 
         GradientDrawable draw = new GradientDrawable();
         draw.setShape(GradientDrawable.RECTANGLE);
         draw.setColor(Color.parseColor(colors.get(i1)));
 
-       // holder.medicine_image_view.setBackground(draw); //textview
+        // holder.medicine_image_view.setBackground(draw); //textview
 
         Picasso.get()
-                .load(new GlobalUrlApi().getNewHomeUrl()+"uploads/"+medicine_image)
-               // .placeholder(context.getResources().getDrawable(R.drawable.ic))
+                .load(new GlobalUrlApi().getNewHomeUrl() + "uploads/" + medicine_image)
+                // .placeholder(context.getResources().getDrawable(R.drawable.ic))
                 .into(holder.medicine_image_view, new com.squareup.picasso.Callback() {
                     @Override
                     public void onSuccess() {
-                       // if (holderr.Course_Progress != null) {
-                      //      holderr.Course_Progress.setVisibility(View.GONE);
-                      //  }
+                        // if (holderr.Course_Progress != null) {
+                        //      holderr.Course_Progress.setVisibility(View.GONE);
+                        //  }
                     }
 
                     @Override
@@ -140,7 +140,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
                     }
 
                 });
-      //  holder.medicine_image_view.setText(medicine_name.substring(0, 1));
+        //  holder.medicine_image_view.setText(medicine_name.substring(0, 1));
 
         holder.medicine_name_view.setText(medicine_name);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -149,11 +149,12 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
         } else {
             holder.medicine_short_desc.setText(Html.fromHtml(medicine_desc));
 
-        }        if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")){
-            holder.medicine_price_view.setText("$"+medicine_price_sale+".00");
+        }
+        if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")) {
+            holder.medicine_price_view.setText("$" + medicine_price_sale + ".00");
 
-        }else
-            holder.medicine_price_view.setText("$"+medicine_price+".00");
+        } else
+            holder.medicine_price_view.setText("$" + medicine_price + ".00");
 
         holder.medicine_name_view.setOnClickListener(new View.OnClickListener() {
             @Override

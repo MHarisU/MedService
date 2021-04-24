@@ -77,4 +77,8 @@ dependencies {
     implementation 'com.github.kal72:RackMonthPicker:1.6.0'
 
 
+    //Gson by google
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+
 }

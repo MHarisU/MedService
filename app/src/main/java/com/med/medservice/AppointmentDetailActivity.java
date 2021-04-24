@@ -18,6 +18,8 @@ public class AppointmentDetailActivity extends AppCompatActivity {
 
     TextView doctorName, appoitmentTime, appointmentDate, appointmentStatus, appointmentDay;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

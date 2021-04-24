@@ -1,6 +1,7 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +19,10 @@ import com.med.medservice.Models.PatientAppointments.AppointmentAdapter;
 import com.med.medservice.Models.PatientAppointments.AppointmentList;
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
+import com.med.medservice.Models.SessionsPatient.SessionsAdapter;
+import com.med.medservice.Models.SessionsPatient.SessionsList;
 import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
@@ -27,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class PatientAppointmentsActivity extends AppCompatActivity {
@@ -51,7 +56,7 @@ public class PatientAppointmentsActivity extends AppCompatActivity {
         user_id = user.get(sessionManager.ID);
 
 
-       // GetAppoitments();
+        GetAppoitments();
     }
 
 
@@ -65,6 +70,8 @@ public class PatientAppointmentsActivity extends AppCompatActivity {
         appointmentRecycler.setLayoutManager(new LinearLayoutManager(this));
         appointmentList = new ArrayList<AppointmentList>();
 
+        //old api
+        /*
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_patient_appointments.php?patient_id="+user_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
@@ -131,7 +138,67 @@ public class PatientAppointmentsActivity extends AppCompatActivity {
                 });
 
         // asyncTask.execute();
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
+
+
+        new ApiTokenCaller(PatientAppointmentsActivity.this, new GlobalUrlApi().getNewBaseUrl() +
+                "getPatientAppointment?patient_id="+ new SessionManager(PatientAppointmentsActivity.this).getUserId(),
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String id = child.getString("id");
+                                String patient_id = child.getString("patient_id");
+                                String doctor_id = child.getString("doctor_id");
+                                String patient_name = child.getString("patient_name");
+                                String doctor_name = child.getString("doctor_name");
+                                String email = child.getString("email");
+                                String phone = child.getString("phone");
+                                String date = child.getString("date");
+                                String time = child.getString("time");
+                                String problem = child.getString("problem");
+                                String status = child.getString("status");
+                                String day = child.getString("day");
+
+                                appointmentList.add(new AppointmentList(id, patient_id, doctor_id, patient_name, doctor_name, email, phone,
+                                        date, time, problem, status,day));
+
+                            }
+
+                            Collections.reverse(appointmentList);
+
+
+                            AppointmentAdapter adapter = new AppointmentAdapter(appointmentList, PatientAppointmentsActivity.this);
+                            appointmentRecycler.setAdapter(adapter);
+
+
+                            Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                                    R.anim.slide_up);
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
 
     }
 
@@ -154,6 +221,6 @@ public class PatientAppointmentsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        GetAppoitments();
+       // GetAppoitments();
     }
 }

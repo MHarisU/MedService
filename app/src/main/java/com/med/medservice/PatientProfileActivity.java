@@ -5,29 +5,22 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.med.medservice.Models.ProductMedicine.MedicineAdapter;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.UpdateCartInterface;
 import com.med.medservice.Utils.ViewDialog;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +52,10 @@ public class PatientProfileActivity extends AppCompatActivity {
     String office_address;
     String user_image;
 
+    String allergies;
+    String previous_symp;
+    String family_history;
+
     private static PatientProfileActivity instance;
 
     public static PatientProfileActivity getInstance() {
@@ -85,16 +82,122 @@ public class PatientProfileActivity extends AppCompatActivity {
 
         LoadProfile();
 
+        getMedicalDetails();
+
 
     }
+
+
+    private void getMedicalDetails() {
+        //  sessionsRecycler = findViewById(R.id.sessionRecycler);
+        //  sessionsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        //  sessionsLists = new ArrayList<SessionsList>();
+
+        new ApiTokenCaller(PatientProfileActivity.this, new GlobalUrlApi().getNewBaseUrl() +
+                "getMedicalProfile?user_id=" + new SessionManager(PatientProfileActivity.this).getUserId(),
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String id = child.getString("id");
+                                String user_id = child.getString("user_id");
+                                allergies = child.getString("allergies");
+                                previous_symp = child.getString("previous_symp");
+                                family_history = child.getString("family_history");
+                                String created_at = child.getString("created_at");
+                                String comment = child.getString("comment");
+
+
+                                //   sessionsLists.add(new SessionsList(session_id, start_time, end_time, provider_notes, created_at, session_status, diagnosis,
+                                //           symptom_id, doctor_first_name, doctor_last_name, symptoms_headache, symptoms_fever, symptoms_flu, symptoms_nausea, symptoms_others, symptoms_description));
+
+
+                            }
+
+
+                            LoadMedicalHistoryUI();
+
+                            //   SessionsAdapter adapter = new SessionsAdapter(sessionsLists, PatientProfileActivity.this);
+                            //   sessionsRecycler.setAdapter(adapter);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }
+        );
+    }
+
+    private void LoadMedicalHistoryUI() throws JSONException {
+
+        TextView allergiesView, medicalHistoryView, familyHistory;
+        allergiesView = findViewById(R.id.allergiesView);
+        medicalHistoryView = findViewById(R.id.medicalHistoryView);
+        familyHistory = findViewById(R.id.familyHistory);
+
+        CardView cardProgress = findViewById(R.id.cardProgress);
+        CardView medicalInfoCard = findViewById(R.id.medicalInfoCard);
+
+        allergiesView.setText(allergies);
+
+        previous_symp = previous_symp.replace("hyper", " * Hyper");
+        previous_symp = previous_symp.replace("diab", " * Diab");
+        previous_symp = previous_symp.replace("canc", " * Canc");
+        previous_symp = previous_symp.replace("hear", " * Hear");
+        previous_symp = previous_symp.replace("ches", " * Chest");
+
+        previous_symp = previous_symp.replace("short", " * Short");
+        previous_symp = previous_symp.replace("swol", " * Swol");
+        previous_symp = previous_symp.replace("palp", " * Palp");
+        previous_symp = previous_symp.replace("stro", " * Stro");
+
+        medicalHistoryView.setText(previous_symp.replace(",", "\n"));
+
+        family_history = family_history.replace("\\", "");
+        JSONArray familyArray = new JSONArray(family_history);
+
+        String family = "";
+
+        for (int i = 0; i < familyArray.length(); i++) {
+            JSONObject object = familyArray.getJSONObject(i);
+            family = family +
+                    "Relation: " + object.getString("family") +"\n"+
+                    "Age: " + object.getString("age")+"\n"+
+                    "Disease: " + object.getString("disease")+"\n\n";
+
+        }
+
+        familyHistory.setText(family);
+
+        cardProgress.setVisibility(View.GONE);
+        medicalInfoCard.setVisibility(View.VISIBLE);
+
+    }
+
 
     private void LoadProfile() {
 
         sessionManager = new SessionManager(this);
         final HashMap<String, String> user = sessionManager.getUserDetail();
-         name = user.get(sessionManager.FIRST_NAME);
-         name = name + " " + user.get(sessionManager.LAST_NAME);
-         email = user.get(sessionManager.EMAIL);
+        name = user.get(sessionManager.FIRST_NAME);
+        name = name + " " + user.get(sessionManager.LAST_NAME);
+        email = user.get(sessionManager.EMAIL);
         user_id = user.get(sessionManager.ID);
         date_of_birth = user.get(sessionManager.DOB);
         phone_number = user.get(sessionManager.PHONE);
@@ -217,6 +320,8 @@ public class PatientProfileActivity extends AppCompatActivity {
     }
 
     public void TimelineClick(View view) {
+
+        /*
         personal_info.setVisibility(View.GONE);
         medical_bio.setVisibility(View.GONE);
         patient_timeline.setVisibility(View.VISIBLE);
@@ -224,6 +329,8 @@ public class PatientProfileActivity extends AppCompatActivity {
         profileButton.setBackgroundColor(Color.parseColor("#CC111111"));
         medicalButton.setBackgroundColor(Color.parseColor("#CC111111"));
         timelineButton.setBackgroundColor(Color.parseColor("#2c98f0"));
+        */
+        startActivity(new Intent(PatientProfileActivity.this, SessionActivity.class));
     }
 
 

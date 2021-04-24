@@ -4,37 +4,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.med.medservice.Models.Orders.Billing;
 import com.med.medservice.Models.Orders.CartItem;
 import com.med.medservice.Models.Orders.OrderAdapter;
+import com.med.medservice.Models.Orders.OrderItemsAdapter;
 import com.med.medservice.Models.Orders.OrderList;
 import com.med.medservice.Models.Orders.Shipping;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
 import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.GlobalUrlApi;
-import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class OrderHistoryActivity extends AppCompatActivity {
+public class OrderDetailActivity extends AppCompatActivity {
 
+    String unique_order_id;
+    OrderList currentOrder;
 
-    ArrayList<OrderList> ordersList;
-    RecyclerView orderRecycler;
+    TextView orderIdView, billingFirstName, billingMiddleName, billingLastName, billingAddress, billingState, billingCity, billingZip,
+            billingPhone, billingEmail,billingPaymentMethod, billingPaymentTitle;
+
+    TextView shippingFullName, shippingAddress, shippingState, shippingZip, shippingPhone, shippingEmail;
+
+    TextView grandTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +46,57 @@ public class OrderHistoryActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_order_history);
+        setContentView(R.layout.activity_order_detail);
 
+        IniUI();
 
-        getOrders();
+        getOrder();
+
     }
 
-    private void getOrders() {
-        orderRecycler = findViewById(R.id.ordersRecycler);
-        // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        orderRecycler.setLayoutManager(new LinearLayoutManager(this));
-        ordersList = new ArrayList<OrderList>();
+    private void IniUI() {
+        orderIdView = findViewById(R.id.orderId);
+        billingFirstName = findViewById(R.id.billingFirstName);
+        billingMiddleName = findViewById(R.id.billingMiddleName);
+        billingLastName = findViewById(R.id.billingLastName);
+        billingAddress = findViewById(R.id.billingAddress);
+        billingState = findViewById(R.id.billingState);
+        billingCity = findViewById(R.id.billingCity);
+        billingZip = findViewById(R.id.billingZip);
+        billingPhone = findViewById(R.id.billingPhone);
+        billingEmail = findViewById(R.id.billingEmail);
+        billingPaymentMethod = findViewById(R.id.billingPaymentMethod);
+        billingPaymentTitle = findViewById(R.id.billingPaymentTitle);
 
-        new ApiTokenCaller(OrderHistoryActivity.this, new GlobalUrlApi().getNewBaseUrl() +
-                "getOrders?customer_id="+ new SessionManager(OrderHistoryActivity.this).getUserId(),
+
+        shippingFullName = findViewById(R.id.shippingFullName);
+        shippingAddress = findViewById(R.id.shippingAddress);
+        shippingState = findViewById(R.id.shippingState);
+        shippingZip = findViewById(R.id.shippingZip);
+        shippingPhone = findViewById(R.id.shippingPhone);
+        shippingEmail = findViewById(R.id.shippingEmail);
+
+        grandTotal = findViewById(R.id.grandTotal);
+
+
+
+
+
+    }
+
+    private void getOrder() {
+        Intent intent = getIntent();
+        unique_order_id = intent.getStringExtra("orderID");
+        //Toast.makeText(this, ""+ unique_order_id, Toast.LENGTH_SHORT).show();
+
+        getOrderDetails(unique_order_id);
+    }
+
+    private void getOrderDetails(String orderId) {
+
+
+        new ApiTokenCaller(OrderDetailActivity.this, new GlobalUrlApi().getNewBaseUrl() +
+                "getOrders?id="+orderId,
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -134,17 +175,25 @@ public class OrderHistoryActivity extends AppCompatActivity {
                                 String order_status = child.getString("order_status");
                                 String created_at = child.getString("created_at");
 
-                                ordersList.add(new OrderList(id, order_id, customer_id, total, billing, shipping, payment_title,
-                                        payment_method, cart_items, order_status, created_at));
+                                currentOrder =new OrderList(id, order_id, customer_id, total, billing, shipping, payment_title,
+                                        payment_method, cart_items, order_status, created_at);
+
+
+                                orderIdView.setText(order_id);
+                                setupBillingUI(billing);
+                                billingPaymentMethod.setText(payment_method);
+                                billingPaymentTitle.setText(payment_title);
+                                setupShippingUI(shipping);
+
+                                loadPurchaseditems(cart_items);
+
+                                grandTotal.setText("$"+total+".00");
 
 
                             }
 
 
 
-
-                            OrderAdapter adapter = new OrderAdapter(ordersList, OrderHistoryActivity.this);
-                            orderRecycler.setAdapter(adapter);
 
 
 
@@ -157,6 +206,40 @@ public class OrderHistoryActivity extends AppCompatActivity {
                     }
                 }
         );
+
+    }
+
+    private void loadPurchaseditems(ArrayList<CartItem> cart_items) {
+        RecyclerView itemRecycler = findViewById(R.id.itemRecycler);
+        // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        itemRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        OrderItemsAdapter adapter = new OrderItemsAdapter(cart_items, OrderDetailActivity.this);
+        itemRecycler.setAdapter(adapter);
+    }
+
+    private void setupShippingUI(Shipping shipping) {
+
+        shippingFullName.setText(shipping.full_name);
+        shippingAddress.setText(shipping.address);
+        shippingState.setText(shipping.state);
+        shippingZip.setText(shipping.zip_code);
+        shippingPhone.setText(shipping.phone_number);
+        shippingEmail.setText(shipping.email_address);
+
+
+
+    }
+
+    private void setupBillingUI(Billing billing) {
+        billingFirstName.setText(billing.first_name);
+        billingMiddleName.setText(billing.middle_name);
+        billingLastName.setText(billing.last_name);
+        billingState.setText(billing.state);
+        billingCity.setText(billing.city);
+        billingZip.setText(billing.zip_code);
+        billingPhone.setText(billing.phone_number);
+        billingEmail.setText(billing.email_address);
     }
 
     public void Close(View view) {

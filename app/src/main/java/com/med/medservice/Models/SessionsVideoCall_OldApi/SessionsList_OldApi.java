@@ -1,8 +1,8 @@
-package com.med.medservice.Models.SessionsVideoCall;
+package com.med.medservice.Models.SessionsVideoCall_OldApi;
 
 import java.io.Serializable;
 
-public class SessionsList implements Serializable {
+public class SessionsList_OldApi implements Serializable {
 
     String session_id, doctor_id, session_date, doctor_first_name, doctor_last_name;
 
@@ -26,10 +26,10 @@ public class SessionsList implements Serializable {
         return doctor_last_name;
     }
 
-    public SessionsList() {
+    public SessionsList_OldApi() {
     }
 
-    public SessionsList(String session_id, String doctor_id, String session_date, String doctor_first_name, String doctor_last_name) {
+    public SessionsList_OldApi(String session_id, String doctor_id, String session_date, String doctor_first_name, String doctor_last_name) {
         this.session_id = session_id;
         this.doctor_id = doctor_id;
         this.session_date = session_date;

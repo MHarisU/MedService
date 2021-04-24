@@ -49,6 +49,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
+import com.med.medservice.Models.CartItems.CartItemsList;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.GlobalUrlApi;
@@ -101,13 +102,14 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     CardView ShippingAddressSwitchCard, MedicinesSwitchCard, ShippingAddressCard, PharmacyZipCard, LabZipCard;
 
     CartDBHelper mydb;
+    ArrayList<CartItemsList> cartItemsLists;
 
 
     GoogleMap googleMap;
 
     ProgressDialog progressDialog;
 
-    int total = 0;
+    String total = "0";
 
 
     String first_name, last_name, user_id, email, phone;
@@ -128,6 +130,9 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
     EditText shippingFullName, shippingPhone, shippingEmail, shippingAddress, shippingZip;
 
+    String success_order_id;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,7 +143,8 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
         Intent intent = getIntent();
 
-        // total = Integer.parseInt(intent.getStringExtra("price"));
+        total = intent.getStringExtra("price");
+        Toast.makeText(this, ""+total, Toast.LENGTH_SHORT).show();
 
         getUser();
 
@@ -155,6 +161,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         SetupSwitchButton2();
 
         mydb = new CartDBHelper(this);
+        cartItemsLists = mydb.getAllItems();
         if (mydb.numberOfRowsMedicines() > 0) {
             MedicinesSwitchCard.setVisibility(View.VISIBLE);
             PharmacyZipCard.setVisibility(View.VISIBLE);
@@ -246,7 +253,6 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         shippingEmail = findViewById(R.id.shippingEmail);
         shippingAddress = findViewById(R.id.shippingAddress);
         shippingZip = findViewById(R.id.shippingZip);
-
 
 
     }
@@ -731,7 +737,22 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
             orderJsonObject.put("payment", paymentObject);
 
             JSONArray cartItemsArray = new JSONArray();
-            JSONObject cartItem1 = new JSONObject();
+            for (int i = 0; i < cartItemsLists.size(); i++) {
+                JSONObject cartItem1 = new JSONObject();
+                CartItemsList items = cartItemsLists.get(i);
+                cartItem1.put("product_id", items.getITEM_ID());
+                cartItem1.put("product_qty", items.getQUANTITY());
+
+                cartItem1.put("pres_id", "111");
+                cartItem1.put("doc_session_id", "144");
+                cartItem1.put("product_mode", items.getTYPE());
+                cartItem1.put("item_type", "session");
+
+                cartItemsArray.put(cartItem1);
+
+
+            }
+            /*JSONObject cartItem1 = new JSONObject();
             cartItem1.put("product_id", "41");
             cartItem1.put("product_qty", "2");
             cartItem1.put("pres_id", "111");
@@ -750,7 +771,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
             cartItem2.put("product_mode", "lab-test");
             cartItem2.put("item_type", "db");
 
-            cartItemsArray.put(cartItem2);
+            cartItemsArray.put(cartItem2);*/
 
             orderJsonObject.put("cart_items", cartItemsArray);
 
@@ -794,7 +815,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                                         R.anim.slide_up);
 
                                 TextView orderCompleteMessageView = findViewById(R.id.orderCompleteMessageView);
-                                orderCompleteMessageView.setText("Thank you\nOrder Successfully Placed\nYour ORDER ID is "+OrderID);
+                                orderCompleteMessageView.setText("Thank you\nOrder Successfully Placed\nYour ORDER ID is " + OrderID);
 
                                 payment_done_layout.setVisibility(View.VISIBLE);
                                 payment_done_layout.startAnimation(slide_up);
@@ -957,7 +978,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                 // selected_date_of_birht = simpleDateFormat.format(calendar.getTime());
 
                 lab_appointment_date_time.setText("Date of Birth: " + simpleDateFormat.format(calendar.getTime()));
-                selected_lab_appointment_date = ""+simpleDateFormat2.format(calendar.getTime());
+                selected_lab_appointment_date = "" + simpleDateFormat2.format(calendar.getTime());
 
 
             }
@@ -1039,9 +1060,9 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         // createDialogWithoutDateField().show();
         RackMonthPicker picker = new RackMonthPicker(this);
 
-                picker
+        picker
                 .setLocale(Locale.ENGLISH)
-                        .setColorTheme(Color.BLUE)
+                .setColorTheme(Color.BLUE)
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {

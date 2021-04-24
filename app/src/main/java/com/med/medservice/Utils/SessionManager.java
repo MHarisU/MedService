@@ -105,6 +105,10 @@ public class SessionManager {
         return sharedPreferences.getString(TOKEN,null);
     }
 
+    public String getUserId(){
+        return sharedPreferences.getString(ID,null);
+    }
+
     public void logout() {
         editor.clear();
         editor.commit();

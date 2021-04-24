@@ -139,6 +139,14 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
                         startActivity(launchBrowser);
                         break;
 
+                    case R.id.nav_orders:
+
+                        Intent j = new Intent(PatientMainActivity.this, OrderHistoryActivity.class);
+                        // i.putExtra("studentInfo", studentList);
+                        startActivity(j);
+                        break;
+
+
 
                     case R.id.nav_logout:
                         sessionManager.logoutPatient();

@@ -1,4 +1,4 @@
-package com.med.medservice.Models.SessionsVideoCall;
+package com.med.medservice.Models.SessionsPatient;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.med.medservice.Models.SubCategory.SubCategoryAdapter;
-import com.med.medservice.Models.SubCategory.SubCategoryList;
+import com.med.medservice.Models.SessionsVideoCall_OldApi.SessionsList_OldApi;
 import com.med.medservice.R;
 import com.med.medservice.SessionDetailActivity;
 
@@ -44,19 +44,23 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.Sessio
     @Override
     public void onBindViewHolder(@NonNull SessionHolder holder, int position) {
 
-        SessionsList currentData = list.get(position);
+        final SessionsList currentData = list.get(position);
 
         String first_name = currentData.getDoctor_first_name();
         String last_name = currentData.getDoctor_last_name();
-        String date = currentData.getSession_date();
+        String date = currentData.getCreated_at();
 
-        holder.doctorName.setText(first_name+" "+last_name);
+        holder.doctorName.setText("Dr."+first_name+" "+last_name);
         holder.dateView.setText(date);
 
         holder.sessionCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //context.startActivity(new Intent(context, SessionDetailActivity.class));
+
+                //Toast.makeText(context, ""+currentData.getSession_id(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, SessionDetailActivity.class);
+                intent.putExtra("session", currentData);
+                context.startActivity(intent);
 
             }
         });

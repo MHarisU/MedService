@@ -29,16 +29,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.med.medservice.Models.SessionsVideoCall.SessionsAdapter;
-import com.med.medservice.Models.SessionsVideoCall.SessionsList;
-import com.med.medservice.Models.SubCategory.SubCategoryList;
+import com.med.medservice.Models.SessionsVideoCall_OldApi.SessionsAdapter_OldApi;
+import com.med.medservice.Models.SessionsVideoCall_OldApi.SessionsList_OldApi;
 import com.med.medservice.Utils.ApiCallerNew;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.GlobalUrlApi;
@@ -94,7 +92,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
     CountDownTimer downTimer;
 
 
-    ArrayList<SessionsList> sessionsLists;
+    ArrayList<SessionsList_OldApi> sessionsListOldApis;
     RecyclerView sessionRecycler;
 
     @Override
@@ -319,7 +317,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
         sessionRecycler = findViewById(R.id.sessionsRecycler);
         sessionRecycler.setLayoutManager(new LinearLayoutManager(this));
-        sessionsLists = new ArrayList<SessionsList>();
+        sessionsListOldApis = new ArrayList<SessionsList_OldApi>();
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_all_sessions_except_current.php?" +
                 "patient_id=" + pat_id +
@@ -348,7 +346,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
                                     String name = child.getString("name");
                                     String last_name = child.getString("last_name");
 
-                                    sessionsLists.add(new SessionsList(session_id, doctor_id, date, name, last_name));
+                                    sessionsListOldApis.add(new SessionsList_OldApi(session_id, doctor_id, date, name, last_name));
 
 
                                 }
@@ -365,7 +363,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
                         }
 
 
-                        SessionsAdapter adapter = new SessionsAdapter(sessionsLists, DoctorVideoActivity.this);
+                        SessionsAdapter_OldApi adapter = new SessionsAdapter_OldApi(sessionsListOldApis, DoctorVideoActivity.this);
                         sessionRecycler.setAdapter(adapter);
 
                     }

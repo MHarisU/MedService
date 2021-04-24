@@ -6,10 +6,7 @@
     <color name="colorAccentLight">#4AA6FF</color>
 
 
-
     <color name="background_white_gray">#F3F5F8</color>
-
-
 
 
     <color name="Black80">#CC111111</color>
@@ -17,8 +14,6 @@
     <color name="Black50">#80111111</color>
     <color name="Black30">#4D111111</color>
     <color name="Black10">#1A111111</color>
-
-
 
 
     <color name="Gray">#232323</color>
@@ -44,11 +39,7 @@
     <color name="test">#F3866C</color>
 
 
-
-
-
     //color for gradients
-
 
 
     <color name="brown">#785549</color>
@@ -93,7 +84,6 @@
     <color name="blue">#014277</color>
     <color name="bluelight">#035498</color>
     <color name="bluelighter">#026AC1</color>
-
 
 
     <color name="cyan">#009691</color>

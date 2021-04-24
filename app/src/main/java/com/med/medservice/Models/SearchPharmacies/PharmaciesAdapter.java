@@ -7,11 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.med.medservice.Models.SessionsVideoCall.SessionsAdapter;
-import com.med.medservice.Models.SessionsVideoCall.SessionsList;
 import com.med.medservice.R;
 
 import java.util.ArrayList;

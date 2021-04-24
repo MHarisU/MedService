@@ -8,11 +8,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -30,7 +28,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderHistoryActivity"></activity>
+        <activity android:name=".OrderDetailActivity"></activity>
+        <activity android:name=".OrderHistoryActivity">
+
+        </activity>
         <activity android:name=".PrescriptionActivity" />
         <activity android:name=".PatientVideoActivity" />
         <activity android:name=".DoctorVideoActivity" />
@@ -48,7 +49,7 @@
         <activity android:name=".SubcategoryProductsActivity" />
         <activity android:name=".CategoryProductsActivity" />
         <activity android:name=".DoctorRegisterActivity" />
-        <activity android:name=".PatientRegisterActivity"></activity>
+        <activity android:name=".PatientRegisterActivity" />
         <activity android:name=".ChooseRegisterActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".InboxActivity" />
@@ -58,23 +59,31 @@
         <activity android:name=".DoctorScheduleActivity" />
         <activity android:name=".DoctorCalendarScheduleActivity" />
         <activity android:name=".SessionDetailActivity" />
-        <activity android:name=".SessionActivity" />
+        <activity android:name=".SessionActivity" >
+
+
+
+
+
+        </activity>
         <activity android:name=".EvisitActivity" />
         <activity android:name=".BookAppointmentActivity" />
         <activity android:name=".LabDetailActivity" />
-        <activity android:name=".LabsActivity"></activity>
-        <activity android:name=".CheckoutActivity">
-
-
-            
-        </activity>
+        <activity android:name=".LabsActivity" />
+        <activity android:name=".CheckoutActivity"></activity>
         <activity android:name=".CartActivity" />
         <activity android:name=".MedDetailActivity" />
         <activity android:name=".PharmacyActivity" />
         <activity android:name=".DoctorAppointmentsActivity" />
         <activity android:name=".PatientAppointmentsActivity" />
         <activity android:name=".DoctorProfileActivity" />
-        <activity android:name=".PatientProfileActivity" />
+        <activity android:name=".PatientProfileActivity" >
+
+
+
+
+
+        </activity>
         <activity android:name=".DoctorMainActivity" />
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".LoginActivity" />

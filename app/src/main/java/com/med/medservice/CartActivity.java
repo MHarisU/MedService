@@ -143,7 +143,7 @@ public class CartActivity extends AppCompatActivity {
         } else {
 
             subTotalPrice.setText("$" + Total + ".00");
-            totalPrice.setText("$" + (Total + 20) + ".00");
+            totalPrice.setText("$" + (Total ) + ".00");
         }
 
     }
@@ -154,9 +154,10 @@ public class CartActivity extends AppCompatActivity {
 
     public void OpenCheckout(View view) {
         Intent intent= new Intent(getApplicationContext(), CheckoutActivity.class);
-        intent.putExtra("price", Total);
-        finish();
+        intent.putExtra("price", ""+Total);
         startActivity(intent);
+        finish();
+
     }
 
     public void OpenHome(View view) {

@@ -2,7 +2,7 @@ package com.med.medservice.Models.PatientAppointments;
 
 import java.io.Serializable;
 
-public class AppointmentList  implements Serializable {
+public class    AppointmentList  implements Serializable {
 
     String id, patient_id, doctor_id, patient_name, doctor_name, email_pat, phone_pat, date, time, problem, status, day;
 

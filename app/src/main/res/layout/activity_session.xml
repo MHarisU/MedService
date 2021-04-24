@@ -221,6 +221,8 @@
 
                     </LinearLayout>
 
+
+                    <!--
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -3461,7 +3463,34 @@
 
                         </LinearLayout>
 
+                    </androidx.cardview.widget.CardView>-->
+
+                    <androidx.cardview.widget.CardView
+                        android:padding="5dp"
+                        android:id="@+id/cardProgress"
+                        android:layout_marginBottom="30dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp"
+                        app:cardCornerRadius="25dp"
+                        app:cardElevation="10dp"
+                        >
+
+                        <ProgressBar
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
                     </androidx.cardview.widget.CardView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sessionRecycler">
+
+
+                    </androidx.recyclerview.widget.RecyclerView>
 
 
                 </LinearLayout>

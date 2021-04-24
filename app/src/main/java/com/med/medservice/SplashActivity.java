@@ -135,7 +135,12 @@ public class SplashActivity extends AppCompatActivity {
                 if (sessionManager.isLogin()) {
 
                     finish();
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    Intent intent = null;// = new Intent(SplashActivity.this, LoginActivity.class);
+                    if (role.equals("patient")){
+                        intent = new Intent(SplashActivity.this, PatientMainActivity.class);
+                    }else if (role.equals("doctor")){
+                        intent = new Intent(SplashActivity.this, DoctorMainActivity.class);
+                    }
                  //   Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
                  //   intent.putExtra("checkActivity", "fronSplash");
                     startActivity(intent);

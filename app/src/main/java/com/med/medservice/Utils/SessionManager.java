@@ -105,6 +105,18 @@ public class SessionManager {
         return sharedPreferences.getString(TOKEN,null);
     }
 
+    public String getPassword(){
+        return sharedPreferences.getString(PASSWORD,null);
+    }
+
+    public void setPassword(String password) {
+
+        editor.putString(PASSWORD, password);
+
+        editor.apply();
+
+    }
+
     public String getUserId(){
         return sharedPreferences.getString(ID,null);
     }

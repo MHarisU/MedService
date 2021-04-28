@@ -343,7 +343,7 @@ public class PatientProfileActivity extends AppCompatActivity {
     public void settingProfile(View view) {
         PopupMenu menu = new PopupMenu(this, view);
 
-        menu.getMenu().add("Change Profile");
+     //   menu.getMenu().add("Change Profile");
         menu.getMenu().add("Edit Account");
         menu.getMenu().add("Change Password");
 

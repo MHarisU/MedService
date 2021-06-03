@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -20,6 +22,15 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,11 +48,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class WaitingRoomActivity extends AppCompatActivity {
@@ -122,6 +135,8 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
     private void GetDoctorStatus() {
 
+        //old api
+        /*
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_doctor_status.php?" +
                 "doctor_id=" + user_id ,
@@ -162,12 +177,12 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+*/
 
 
         new ApiTokenCaller(WaitingRoomActivity.this, new GlobalUrlApi().getNewBaseUrl() +
-                "getAppointmentDoctorsAvailability?" +
-                "doctor_id=" +selectedDoctorId+
-                "&date=" +selectDate,
+                "getDoctorStatus?" +
+                "doctor_id=" +user_id,
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -178,60 +193,20 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
                             JSONObject jsonResponse = jsonObject.getJSONObject("Response");
 
-                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+                            String arrayData = jsonResponse.getString("Data");
 
 
 
-                            for (int i = 0; i < arrayData.length(); i++) {
-                                JSONObject child = arrayData.getJSONObject(i);
-
-
-                                String slotStartTime = child.getString("slotStartTime");
-                                String slotEndTime = child.getString("slotEndTime");
-
-
-                                String format = "yyyy-dd-MM HH:mm:SS";
-
-                                SimpleDateFormat sdf = new SimpleDateFormat(format);
-
-                                Date dateObj1 = sdf.parse(selectDate + " " + slotStartTime);
-                                Date dateObj2 = sdf.parse(selectDate + " " + slotEndTime);
-                                // Date dateObj1 = sdf.parse( slotStartTime);
-                                //  Date dateObj2 = sdf.parse( slotEndTime);
-                                System.out.println("Date Start: " + dateObj1);
-                                System.out.println("Date End: " + dateObj2);
-
-                                slotArray = new ArrayList<>();
-                                long dif = dateObj1.getTime();
-                                while (dif <= dateObj2.getTime()) {
-                                    Date slot = new Date(dif);
-
-                                    // SimpleDateFormat form = new SimpleDateFormat("HH:mm:ss");
-                                    SimpleDateFormat form = new SimpleDateFormat("hh:mm a");
-                                    slotArray.add("" + form.format(slot));
-
-                                    System.out.println("Minute Slot ---> " + form.format(slot) + " SIZE:" + slotArray.size());
-                                    dif += 600000;
-                                }
-
-
+                            if (arrayData.equals("Online")){
+                                switchButton.setChecked(true);
+                            }else if (arrayData.equals("Offline")){
+                                switchButton.setChecked(false);
                             }
-
-                            try {
-
-                                timeSlots = new String[slotArray.size()];
-
-                                for (int jj = 0; jj < slotArray.size(); jj++) {
-                                    timeSlots[jj] = slotArray.get(jj);
-                                }
-                                SetupTimeSpinner();
-                            } catch (NullPointerException e) {
-                                ViewDialog viewDialog = new ViewDialog();
-                                viewDialog.showDialog(BookAppointmentActivity.this, "No timeslots available on this date");
-                            }
+                            Toast.makeText(WaitingRoomActivity.this, ""+arrayData, Toast.LENGTH_SHORT).show();
 
 
-                        } catch (JSONException | ParseException e) {
+
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
@@ -253,12 +228,14 @@ public class WaitingRoomActivity extends AppCompatActivity {
                 if (b) {
                     doctorOnlineView.setText("Online");
                     doctorOnlineView.setBackgroundDrawable(getResources().getDrawable(R.drawable.green_bg));
-                    UpdateStatus("online");
+                    //UpdateStatus("online");
+                    UpdateStatus("1");
 
                 } else {
                     doctorOnlineView.setText("Offline");
                     doctorOnlineView.setBackgroundDrawable(getResources().getDrawable(R.drawable.red_bg));
-                    UpdateStatus("offline");
+                   // UpdateStatus("offline");
+                    UpdateStatus("0");
 
                 }
 
@@ -267,7 +244,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
     }
 
-    public void UpdateStatus(String status) {
+    public void UpdateStatu(String status) {
 
 
 
@@ -346,6 +323,135 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
 
     }
+
+    private void UpdateStatus(String status) {
+
+        JSONObject orderJsonObject = new JSONObject();
+        try {
+            orderJsonObject.put("active", status);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        final String requestBody = orderJsonObject.toString();
+        // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, new GlobalUrlApi().getNewBaseUrl() + "updateDoctorStatus/"+user_id,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.d("order_api_response", response);
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+                            //JSONObject jsonData = jsonResponse.getJSONObject("Data");
+                            String jsonStatus = jsonResponse.getString("Status");
+
+                            if (jsonStatus.equals("True")) {
+
+
+                                Toast.makeText(WaitingRoomActivity.this, "Status Updated", Toast.LENGTH_SHORT).show();
+
+
+                            } 
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            //   login_button.setVisibility(View.VISIBLE);
+                            //   progress_bar.setVisibility(View.GONE);
+                            // Toast.makeText(LoginActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WaitingRoomActivity.this, "Json Error.", Toast.LENGTH_SHORT).show();
+                            // progressDialog.dismiss();
+                            //  login_text.setVisibility(View.VISIBLE);
+                            // login_text.setText("JSON Error");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //  login_button.setVisibility(View.VISIBLE);
+                        //  progress_bar.setVisibility(View.GONE);
+                        //  Toast.makeText(LoginActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+                        //Login(email, password);
+                        //    login_text.setVisibility(View.VISIBLE);
+                        //   login_text.setText("Error from php");
+
+                        //  login_button.setVisibility(View.VISIBLE);
+                        // progress_bar.setVisibility(View.GONE);
+                        //progressDialog.dismiss();
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(WaitingRoomActivity.this, R.style.DialogTheme)
+                                .setTitle("Warning!")
+                                .setMessage("Volley Error")
+                                .setCancelable(false)
+                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        //  login_button.setVisibility(View.VISIBLE);
+                                        //  progress_bar.setVisibility(View.GONE);
+
+                                    }
+                                });
+                        //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+                        dialog.show();
+
+                    }
+                }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                    return null;
+                }
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                String auth = "Bearer " + new SessionManager(WaitingRoomActivity.this).getToken();
+                headers.put("Authorization", auth);
+                return headers;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 10000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 0; //retry turn off
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
 
 
     public void Close(View view) {

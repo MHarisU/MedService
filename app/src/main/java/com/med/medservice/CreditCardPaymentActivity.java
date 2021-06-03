@@ -112,6 +112,8 @@ public class CreditCardPaymentActivity extends AppCompatActivity {
 
                             if (jsonStatus.equals("True")) {
 
+                                Toast.makeText(CreditCardPaymentActivity.this, ""+SessionID, Toast.LENGTH_SHORT).show();
+
                                 Intent intent = new Intent(CreditCardPaymentActivity.this, SendInvitationActivity.class);
                                 intent.putExtra("session_id", SessionID);
                                 intent.putExtra("symptoms_id", symptoms_id);

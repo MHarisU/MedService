@@ -50,7 +50,7 @@ public class SendInvitationActivity extends AppCompatActivity {
     boolean checkCallStarted = false;
 
 
-    String symptoms_id, desc;
+    String symptoms_id, desc, session_id;
     Boolean sendInvitationCheck =false;
 
 
@@ -86,6 +86,7 @@ public class SendInvitationActivity extends AppCompatActivity {
         Intent intent = getIntent();
         currentData = (OnlineDoctorsList) intent.getSerializableExtra("selectedDoctor");
         symptoms_id = intent.getStringExtra("symptoms_id");
+        session_id = intent.getStringExtra("session_id");
         desc = intent.getStringExtra("desc");
 
         doctorName = findViewById(R.id.doctorName);

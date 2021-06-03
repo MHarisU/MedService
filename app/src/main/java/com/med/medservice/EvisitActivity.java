@@ -1,6 +1,7 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +21,12 @@ import com.med.medservice.Models.OnlineDoctors.OnlineDoctorAdapter;
 import com.med.medservice.Models.OnlineDoctors.OnlineDoctorsList;
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
+import com.med.medservice.Models.SessionsPatient.SessionsAdapter;
+import com.med.medservice.Models.SessionsPatient.SessionsList;
 import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -117,7 +122,8 @@ public class EvisitActivity extends AppCompatActivity {
         tempOnlineDoctorsList = new ArrayList<OnlineDoctorsList>();
 
 
-
+        // old api
+        /*
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_online_doctors.php",
                 new ApiCallerNew.AsyncApiResponse() {
@@ -194,6 +200,73 @@ public class EvisitActivity extends AppCompatActivity {
 
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+*/
+
+
+        new ApiTokenCaller(EvisitActivity.this, new GlobalUrlApi().getNewBaseUrl() +
+                "getOnlineDoctors",
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String id = child.getString("id");
+                                String name = child.getString("name");
+                                String last_name = child.getString("last_name");
+                                String email = child.getString("email");
+                                String specialization = child.getString("specialization");
+
+                                String full_name = "Dr. "+name + " " + last_name;
+
+                                //onlineDoctorsLists.add(new OnlineDoctorsList(id, full_name, email, specialization));
+                                tempOnlineDoctorsList.add(new OnlineDoctorsList(id, full_name, email, specialization));
+
+
+                            }
+
+
+                            pullToRefresh.setRefreshing(false);
+                            if (tempOnlineDoctorsList != onlineDoctorsLists){
+
+                                onlineDoctorsRecycler = null;
+                                onlineDoctorsLists = null;
+
+
+                                onlineDoctorsRecycler = findViewById(R.id.onlineDoctorsRecycler);
+                                // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                                onlineDoctorsRecycler.setLayoutManager(new LinearLayoutManager(EvisitActivity.this));
+                                onlineDoctorsLists = tempOnlineDoctorsList;
+                                OnlineDoctorAdapter adapter = new OnlineDoctorAdapter(onlineDoctorsLists, EvisitActivity.this);
+                                onlineDoctorsRecycler.setAdapter(adapter);
+
+                            }
+
+
+
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
 
     }
 

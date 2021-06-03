@@ -113,7 +113,7 @@ public class PatientVideoActivity extends AppCompatActivity{
 
         //load website by URL
 
-        myWebView.loadUrl("https://suunnoo.com/pages/r.html?room=abcdefgh&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vc3V1bm5vby5jb20vIiwiZGlzYWJsZVZpZGVvIjowLCJkaXNhYmxlQXVkaW8iOjAsImRpc2FibGVTY3JlZW5TaGFyZSI6MSwiZGlzYWJsZVdoaXRlYm9hcmQiOjAsImRpc2FibGVUcmFuc2ZlciI6MSwiYXV0b0FjY2VwdFZpZGVvIjoxLCJhdXRvQWNjZXB0QXVkaW8iOjF9");
+        myWebView.loadUrl("https://umbrellamd.com/video_chat/pages/r.html?room=tcgij5htuo&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vdW1icmVsbGFtZC5jb20vdmlkZW9fY2hhdC8iLCJkaXNhYmxlVmlkZW8iOjAsImRpc2FibGVBdWRpbyI6MCwiZGlzYWJsZVNjcmVlblNoYXJlIjoxLCJkaXNhYmxlV2hpdGVib2FyZCI6MCwiZGlzYWJsZVRyYW5zZmVyIjoxLCJhdXRvQWNjZXB0VmlkZW8iOjEsImF1dG9BY2NlcHRBdWRpbyI6MX0");
         //register token for notification
 
         // this.onStart();

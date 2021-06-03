@@ -63,7 +63,8 @@ public class DoctorMainActivity extends AppCompatActivity {
         Name.setText(name);
 
 
-        UpdateStatus("offline");
+        /*Update doctor online status for e-visit   */
+        //UpdateStatus("offline");
 
     }
 

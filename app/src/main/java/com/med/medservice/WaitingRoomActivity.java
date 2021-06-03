@@ -27,14 +27,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.FirebaseUserModel;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
+import com.med.medservice.Utils.ViewDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -156,6 +162,84 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+
+        new ApiTokenCaller(WaitingRoomActivity.this, new GlobalUrlApi().getNewBaseUrl() +
+                "getAppointmentDoctorsAvailability?" +
+                "doctor_id=" +selectedDoctorId+
+                "&date=" +selectDate,
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String slotStartTime = child.getString("slotStartTime");
+                                String slotEndTime = child.getString("slotEndTime");
+
+
+                                String format = "yyyy-dd-MM HH:mm:SS";
+
+                                SimpleDateFormat sdf = new SimpleDateFormat(format);
+
+                                Date dateObj1 = sdf.parse(selectDate + " " + slotStartTime);
+                                Date dateObj2 = sdf.parse(selectDate + " " + slotEndTime);
+                                // Date dateObj1 = sdf.parse( slotStartTime);
+                                //  Date dateObj2 = sdf.parse( slotEndTime);
+                                System.out.println("Date Start: " + dateObj1);
+                                System.out.println("Date End: " + dateObj2);
+
+                                slotArray = new ArrayList<>();
+                                long dif = dateObj1.getTime();
+                                while (dif <= dateObj2.getTime()) {
+                                    Date slot = new Date(dif);
+
+                                    // SimpleDateFormat form = new SimpleDateFormat("HH:mm:ss");
+                                    SimpleDateFormat form = new SimpleDateFormat("hh:mm a");
+                                    slotArray.add("" + form.format(slot));
+
+                                    System.out.println("Minute Slot ---> " + form.format(slot) + " SIZE:" + slotArray.size());
+                                    dif += 600000;
+                                }
+
+
+                            }
+
+                            try {
+
+                                timeSlots = new String[slotArray.size()];
+
+                                for (int jj = 0; jj < slotArray.size(); jj++) {
+                                    timeSlots[jj] = slotArray.get(jj);
+                                }
+                                SetupTimeSpinner();
+                            } catch (NullPointerException e) {
+                                ViewDialog viewDialog = new ViewDialog();
+                                viewDialog.showDialog(BookAppointmentActivity.this, "No timeslots available on this date");
+                            }
+
+
+                        } catch (JSONException | ParseException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
 
     }
 

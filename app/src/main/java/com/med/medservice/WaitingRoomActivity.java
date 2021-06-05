@@ -71,6 +71,9 @@ public class WaitingRoomActivity extends AppCompatActivity {
     SwitchCompat switchButton;
     TextView doctorOnlineView;
 
+    String symptoms_id, desc, session_id;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +116,32 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
                     patNameView.setText(snapshot.getValue().toString());
                     onlinePatCard.setVisibility(View.VISIBLE);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        Query session_node = reference.child("calling").child(user_id).child("session_id");
+        session_node.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                try {
+                    //TextView patNameView = findViewById(R.id.patNameView);
+                   // CardView onlinePatCard = findViewById(R.id.onlinePatCard);
+
+                    Toast.makeText(WaitingRoomActivity.this, ""+snapshot.getValue().toString()+" Session ID", Toast.LENGTH_SHORT).show();
+
+                    session_id = snapshot.getValue().toString();
+                   // patNameView.setText(snapshot.getValue().toString());
+                   // onlinePatCard.setVisibility(View.VISIBLE);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -463,7 +492,9 @@ public class WaitingRoomActivity extends AppCompatActivity {
     public void StartVideo(View view) {
         reference.child("calling").child(user_id).child("connID").setValue(uniqueId);
         reference.child("calling").child(user_id).child("isAvailable").setValue(true);
-        startActivity(new Intent(WaitingRoomActivity.this, DoctorVideoActivity.class));
+        Intent intent = new Intent(WaitingRoomActivity.this, DoctorVideoActivity.class);
+        intent.putExtra("session_id", session_id);
+        startActivity(intent);
         finish();
     }
 }

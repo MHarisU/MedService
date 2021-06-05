@@ -79,7 +79,7 @@ public class CreditCardPaymentActivity extends AppCompatActivity {
 
         JSONObject orderJsonObject = new JSONObject();
         try {
-            orderJsonObject.put("symptoms_id", symptoms_id);
+            orderJsonObject.put("symptom_id", symptoms_id);
             orderJsonObject.put("patient_id", new SessionManager(CreditCardPaymentActivity.this).getUserId());
             orderJsonObject.put("doctor_id", currentData.getDoctor_id());
 

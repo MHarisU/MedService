@@ -102,6 +102,8 @@ public class SendInvitationActivity extends AppCompatActivity {
 
             reference.child("calling").child(currentData.getDoctor_id()).child("incoming").setValue(user_id);
             reference.child("calling").child(currentData.getDoctor_id()).child("pat_name").setValue(name);
+            reference.child("calling").child(currentData.getDoctor_id()).child("session_id").setValue(session_id);
+
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override

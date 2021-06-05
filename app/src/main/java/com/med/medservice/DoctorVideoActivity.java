@@ -35,9 +35,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.med.medservice.Models.OnlineDoctors.OnlineDoctorAdapter;
+import com.med.medservice.Models.OnlineDoctors.OnlineDoctorsList;
 import com.med.medservice.Models.SessionsVideoCall_OldApi.SessionsAdapter_OldApi;
 import com.med.medservice.Models.SessionsVideoCall_OldApi.SessionsList_OldApi;
 import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.OpenPrescribedItems;
@@ -95,11 +98,19 @@ public class DoctorVideoActivity extends AppCompatActivity {
     ArrayList<SessionsList_OldApi> sessionsListOldApis;
     RecyclerView sessionRecycler;
 
+    String symptoms_id, desc, session_id;
+
+    String patient_name;
+    String patient_age;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_video);
         EmptyCart();
+
+        getSessionID();
 
         SetupButton();
 
@@ -139,7 +150,8 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
         //load website by URL
 
-        myWebView.loadUrl("https://umbrellamd.com/video_chat/pages/r.html?room=tcgij5htuo&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vdW1icmVsbGFtZC5jb20vdmlkZW9fY2hhdC8iLCJkaXNhYmxlVmlkZW8iOjAsImRpc2FibGVBdWRpbyI6MCwiZGlzYWJsZVNjcmVlblNoYXJlIjoxLCJkaXNhYmxlV2hpdGVib2FyZCI6MCwiZGlzYWJsZVRyYW5zZmVyIjoxLCJhdXRvQWNjZXB0VmlkZW8iOjEsImF1dG9BY2NlcHRBdWRpbyI6MSwiaXNBZG1pbiI6MX0&isAdmin=1");
+        //  myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=tcgij5htuo&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vdW1icmVsbGFtZC5jb20vdmlkZW9fY2hhdC8iLCJkaXNhYmxlVmlkZW8iOjAsImRpc2FibGVBdWRpbyI6MCwiZGlzYWJsZVNjcmVlblNoYXJlIjoxLCJkaXNhYmxlV2hpdGVib2FyZCI6MCwiZGlzYWJsZVRyYW5zZmVyIjoxLCJhdXRvQWNjZXB0VmlkZW8iOjEsImF1dG9BY2NlcHRBdWRpbyI6MSwiaXNBZG1pbiI6MX0&isAdmin=1");
+        myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=abcd123&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxfQ&isAdmin=1");
         //register token for notification
 
         // this.onStart();
@@ -208,8 +220,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
                     try {
                         dialog.show();
-                    }
-                    catch (WindowManager.BadTokenException e) {
+                    } catch (WindowManager.BadTokenException e) {
                         //use a log message
                     }
 
@@ -229,8 +240,63 @@ public class DoctorVideoActivity extends AppCompatActivity {
         });
 
 
-        GetPatientDetails();
+        //GetPatientDetails();
+        getPatientAndSessionDetails();
 
+    }
+
+    private void getPatientAndSessionDetails() {
+
+        new ApiTokenCaller(DoctorVideoActivity.this, new GlobalUrlApi().getNewBaseUrl() +
+                "getPatientDetailForSession?session_id=" + session_id,
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONObject data = jsonResponse.getJSONObject("Data");
+
+
+
+                            patient_name = data.getString("patient_name");
+                            patient_age = data.getString("patient_age");
+                            setPatNameAndAge(patient_name, patient_age);
+
+
+                            String last_name = child.getString("last_name");
+                            String email = child.getString("email");
+                            String specialization = child.getString("specialization");
+
+                            String full_name = "Dr. " + name + " " + last_name;
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }
+        );
+
+    }
+
+    private void setPatNameAndAge(String patient_name, String patient_age) {
+        TextView nameView = findViewById(R.id.nameView);
+        TextView dateView = findViewById(R.id.dateView);
+
+        nameView.setText(patient_name);
+        dateView.setText(patient_age);
+    }
+
+    private void getSessionID() {
+        Intent intent = getIntent();
+        session_id = intent.getStringExtra("session_id");
     }
 
     private void GetPatientDetails() {
@@ -264,7 +330,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_session.php?" +
                 "patient_id=" + pat_id +
-                "&doctor_id=" +user_id,
+                "&doctor_id=" + user_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
@@ -321,13 +387,13 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_all_sessions_except_current.php?" +
                 "patient_id=" + pat_id +
-                "&session_id=" +session_id,
+                "&session_id=" + session_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
                     public void processFinish(String response) {
                         try {
-                             Log.d("SessionsAll", response);
+                            Log.d("SessionsAll", response);
 
                             try {
 
@@ -350,7 +416,6 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
 
                                 }
-
 
 
                             } catch (JSONException e) {
@@ -379,7 +444,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_symptoms.php?" +
                 "patient_id=" + pat_id +
-                "&doctor_id=" +user_id,
+                "&doctor_id=" + user_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
@@ -481,21 +546,22 @@ public class DoctorVideoActivity extends AppCompatActivity {
                                     TextView famHistoryView = findViewById(R.id.famHistoryView);
 
 
-                                    if (allergies != null && !allergies.equals("")){
+                                    if (allergies != null && !allergies.equals("")) {
                                         allergiesView.setText(allergies);
 
                                     }
-                                    if (previous_symp != null && !previous_symp.equals("")){
-                                        previous_symp = previous_symp.replace(",","\n");
+                                    if (previous_symp != null && !previous_symp.equals("")) {
+                                        previous_symp = previous_symp.replace(",", "\n");
                                         preSympView.setText(previous_symp);
 
-                                    }if (family_history != null && !family_history.equals("")){
+                                    }
+                                    if (family_history != null && !family_history.equals("")) {
 
-                                        family_history = family_history.replace("{","");
-                                        family_history = family_history.replace("\"","");
-                                        family_history = family_history.replace(","," - ");
-                                        family_history = family_history.replace("};","\n\n");
-                                        family_history = family_history.replace(":"," : ");
+                                        family_history = family_history.replace("{", "");
+                                        family_history = family_history.replace("\"", "");
+                                        family_history = family_history.replace(",", " - ");
+                                        family_history = family_history.replace("};", "\n\n");
+                                        family_history = family_history.replace(":", " : ");
 
                                         famHistoryView.setText(family_history);
 
@@ -894,7 +960,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
         LinearLayout pharmacyLayout = findViewById(R.id.pharmacyLayout);
         TextView pharmacySelectedNameView = findViewById(R.id.pharmacySelectedNameView);
 
-        pharmacySelectedNameView.setText(selected_pharmacy_name +", "+selected_pharmacy_address);
+        pharmacySelectedNameView.setText(selected_pharmacy_name + ", " + selected_pharmacy_address);
         pharmacyLayout.setVisibility(View.VISIBLE);
 
     }

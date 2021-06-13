@@ -16,6 +16,7 @@ import com.med.medservice.CartActivity;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.DosageDialog;
+import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.ViewDialog;
 import com.squareup.picasso.Picasso;
 
@@ -74,7 +75,7 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
 
         if (type.equals("medicine")) {
             Picasso.get()
-                    .load(image)
+                    .load(new GlobalUrlApi().getNewHomeUrl() + "uploads/" + image)
                     // .placeholder(context.getResources().getDrawable(R.drawable.ic))
                     .into(holder.cartImageView, new com.squareup.picasso.Callback() {
                         @Override
@@ -86,8 +87,12 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
 
                         @Override
                         public void onError(Exception e) {
+
                         }
+
                     });
+
+
         }
         else if (type.equals("lab-test")){
 

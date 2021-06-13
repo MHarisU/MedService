@@ -66,8 +66,9 @@ public class DoctorVideoActivity extends AppCompatActivity {
     private PermissionRequest mPermissionRequest;
 
     private static final int REQUEST_CAMERA_PERMISSION = 1;
-    private static final String[] PERM_CAMERA =
-            {Manifest.permission.CAMERA};
+    private static final String[] PERM_CAMERA = {
+            Manifest.permission.CAMERA
+    };
 
 
     String name, user_id, role, user_email;
@@ -262,17 +263,22 @@ public class DoctorVideoActivity extends AppCompatActivity {
                             JSONObject data = jsonResponse.getJSONObject("Data");
 
 
-
                             patient_name = data.getString("patient_name");
                             patient_age = data.getString("patient_age");
                             setPatNameAndAge(patient_name, patient_age);
 
 
-                            String last_name = child.getString("last_name");
-                            String email = child.getString("email");
-                            String specialization = child.getString("specialization");
+                            JSONObject symptoms = data.getJSONObject("symptoms");
+                            setSymptomsView(symptoms);
 
-                            String full_name = "Dr. " + name + " " + last_name;
+                            JSONArray medical_profile = data.getJSONArray("medical_profile");
+                            JSONObject medical_profile_obj = medical_profile.getJSONObject(0);
+                            //Log.d("token_api_response", medical_profile.toString());
+                            setPatientMedicalProfile(medical_profile_obj);
+
+                            JSONArray visit_history = data.getJSONArray("visit_history");
+                            Log.d("Visit_history", visit_history.toString());
+                            setupPrevisionSessionHistoryView(visit_history);
 
 
                         } catch (JSONException e) {
@@ -284,6 +290,103 @@ public class DoctorVideoActivity extends AppCompatActivity {
                 }
         );
 
+    }
+
+    private void setupPrevisionSessionHistoryView(JSONArray visit_history) throws JSONException {
+
+        sessionRecycler = findViewById(R.id.sessionsRecycler);
+        sessionRecycler.setLayoutManager(new LinearLayoutManager(this));
+        sessionsListOldApis = new ArrayList<SessionsList_OldApi>();
+
+
+        for (int i = 0; i < visit_history.length(); i++) {
+            JSONObject child = visit_history.getJSONObject(i);
+            String session_id = child.getString("session_id");
+            String doctor_id = user_id;
+            String date = child.getString("created_at");
+            String name = child.getString("doctor_first_name");
+            String last_name = child.getString("doctor_last_name");
+
+            sessionsListOldApis.add(new SessionsList_OldApi(session_id, doctor_id, date, name, last_name));
+
+
+        }
+
+
+        SessionsAdapter_OldApi adapter = new SessionsAdapter_OldApi(sessionsListOldApis, DoctorVideoActivity.this);
+        sessionRecycler.setAdapter(adapter);
+
+    }
+
+    private void setPatientMedicalProfile(JSONObject medical_profile) throws JSONException {
+        String user_id = medical_profile.getString("user_id");
+        String allergies = medical_profile.getString("allergies");
+        String previous_symp = medical_profile.getString("previous_symp");
+        String family_history = medical_profile.getString("family_history");
+
+
+        TextView allergiesView = findViewById(R.id.allergiesView);
+        TextView preSympView = findViewById(R.id.preSympView);
+        TextView famHistoryView = findViewById(R.id.famHistoryView);
+
+
+        if (allergies != null && !allergies.equals("")) {
+            allergiesView.setText(allergies);
+
+        }
+        if (previous_symp != null && !previous_symp.equals("")) {
+            previous_symp = previous_symp.replace(",", "\n");
+            preSympView.setText(previous_symp);
+
+        }
+        if (family_history != null && !family_history.equals("")) {
+
+            family_history = family_history.replace("[", "");
+            family_history = family_history.replace("]", "");
+            family_history = family_history.replace("{", "");
+            family_history = family_history.replace("\"", "");
+            family_history = family_history.replace(",", " - ");
+            family_history = family_history.replace("};", "\n\n");
+            family_history = family_history.replace(":", " : ");
+            family_history = family_history.replace("}", "\n");
+
+            famHistoryView.setText(family_history);
+
+        }
+
+
+    }
+
+    private void setSymptomsView(JSONObject symptoms) throws JSONException {
+        String symptom_id = symptoms.getString("symptom_id");
+        String headache = symptoms.getString("symptoms_headache");
+        String fever = symptoms.getString("symptoms_fever");
+        String flu = symptoms.getString("symptoms_flu");
+        String nausea = symptoms.getString("symptoms_nausea");
+        String others = symptoms.getString("symptoms_others");
+        String symptoms_description = symptoms.getString("symptoms_description");
+
+        String symps = "";
+        if (headache.equals("1"))
+            symps = symps + "\nHeadache";
+
+        if (fever.equals("1"))
+            symps = symps + "\nFever";
+
+        if (flu.equals("1"))
+            symps = symps + "\nFlu";
+
+        if (nausea.equals("1"))
+            symps = symps + "\nNausea";
+
+        if (others.equals("1"))
+            symps = symps + "\nOther";
+
+        if (symptoms_description != null && !symptoms_description.equals(""))
+            symps = symps + "\nDescription: " + symptoms_description;
+
+        TextView symptomView = findViewById(R.id.symptomView);
+        symptomView.setText(symps);
     }
 
     private void setPatNameAndAge(String patient_name, String patient_age) {
@@ -400,7 +503,6 @@ public class DoctorVideoActivity extends AppCompatActivity {
                                 JSONArray parent = new JSONArray(response);
                                 // doctorNames = new String[parent.length()];
                                 //  doctorId = new String[parent.length()];
-
                                 // doctorNames[0] = "Select Doctor";
                                 //  doctorId[0] = "";
 

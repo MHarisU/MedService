@@ -91,7 +91,7 @@ public class SearchPharmaciesDialog {
                     if (!query.equals("")) {
                         pharmaciesRecycler = null;
                         pharmaciesList = null;
-                        SearchPharmaciesByZip(new GlobalUrlApi().getBaseUrl() + "get_lat_long_by_zip.php?zip=" + query);
+                        SearchPharmaciesByZip(new GlobalUrlApi().getNewBaseUrl() + "getNearbyLabsPharmacy?zipcode=" + query);
                     }
                 } else {
                     queryCount++;
@@ -111,6 +111,7 @@ public class SearchPharmaciesDialog {
     private void SearchPharmaciesByZip(String SearchURL) {
 
 
+        /*
         final String[] lat = {""};
         final String[] long_ = {""};
 
@@ -154,7 +155,170 @@ public class SearchPharmaciesDialog {
                     }
                 });
         // asyncTask.execute();
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
+
+        pharmaciesRecycler = null;
+        pharmaciesList = null;
+
+        pharmaciesRecycler = (RecyclerView) dialog.findViewById(R.id.pharmaciesRecycler);
+        // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        pharmaciesRecycler.setLayoutManager(new LinearLayoutManager(context));
+        pharmaciesList = new ArrayList<PharmaciesList>();
+        pharmaciesRecycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            GestureDetector gestureDetector = new GestureDetector(context,
+                    new GestureDetector.SimpleOnGestureListener() {
+                        @Override
+                        public boolean onSingleTapUp(MotionEvent motionEvent) {
+                            return true;
+                        }
+                    });
+
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
+                ChildView = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+                if (ChildView != null && gestureDetector.onTouchEvent(motionEvent)) {
+                    GetItemPosition = recyclerView.getChildAdapterPosition(ChildView);
+
+                    PharmaciesList selectedPharmacy = pharmaciesList.get(GetItemPosition);
+
+                    String selected_Pharmacy_id = selectedPharmacy.getPharmacy_id();
+                    String selected_Pharmacy_name = selectedPharmacy.getPharmacy_name();
+                    String selected_Pharmacy_address = selectedPharmacy.getPharmacy_address();
+
+                    if (context instanceof DoctorVideoActivity) {
+                        ((DoctorVideoActivity) context).setPharmacy(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
+                        ViewDialog viewDialog = new ViewDialog();
+                        dialog.dismiss();
+                        viewDialog.showDialog(context, "Pharmacy selected");
+                    }
+
+
+                    // Toast.makeText(getActivity(), "" + selectedCourse.getLessons_ids().get(0), Toast.LENGTH_SHORT).show();
+
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+            }
+        });
+
+        /*
+        ApiCallerNew asyncTask = new ApiCallerNew(link,
+                new ApiCallerNew.AsyncApiResponse() {
+
+                    @Override
+                    public void processFinish(String response) {
+                        try {
+                            try {
+
+                                Log.d("ApiResponse", response);
+
+                                try {
+
+                                    JSONArray parent = new JSONArray(response);
+
+                                    for (int i = 0; i < parent.length(); i++) {
+                                        JSONObject child = parent.getJSONObject(i);
+                                        String id = child.getString("id");
+                                        String name = child.getString("name");
+                                        String state = child.getString("state");
+                                        String address = child.getString("address");
+                                        String city = child.getString("city");
+                                        String zip_code = child.getString("zip_code");
+                                        String marker_type = child.getString("marker_type");
+                                        String marker_icon = ""; //child.getString("marker_icon");
+                                        String lat = child.getString("lat");
+                                        String long_ = child.getString("long");
+
+                                        pharmaciesList.add(new PharmaciesList(id, name, state, address, city, zip_code, marker_type,
+                                                marker_icon, lat, long_));
+
+
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            } catch (NullPointerException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        } catch (Exception e) {
+                            Log.d("EXCEPTION", e.toString());
+
+                        }
+
+
+                        PharmaciesAdapter adapter = new PharmaciesAdapter(pharmaciesList, context);
+                        pharmaciesRecycler.setAdapter(adapter);
+
+                    }
+
+                });
+
+        // asyncTask.execute();
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
+
+        new ApiTokenCaller(context, SearchURL,
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+
+
+                                JSONObject child = arrayData.getJSONObject(i);
+
+                                String id = child.getString("id");
+                                String name = child.getString("name");
+                                String state = child.getString("state");
+                                String address = child.getString("address");
+                                String city = child.getString("city");
+                                String zip_code = child.getString("zip_code");
+                                String marker_type = child.getString("marker_type");
+                                String marker_icon = ""; //child.getString("marker_icon");
+                                String lat = child.getString("lat");
+                                String long_ = child.getString("long");
+
+                                pharmaciesList.add(new PharmaciesList(id, name, state, address, city, zip_code, marker_type,
+                                        marker_icon, lat, long_));
+
+
+                            }
+
+
+                            PharmaciesAdapter adapter = new PharmaciesAdapter(pharmaciesList, context);
+                            pharmaciesRecycler.setAdapter(adapter);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }
+        );
+
+
     }
 
     private void SearchPharmaciesByLatLong(String link) {

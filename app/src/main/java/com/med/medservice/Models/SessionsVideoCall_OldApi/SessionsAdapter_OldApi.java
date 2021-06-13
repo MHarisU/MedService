@@ -1,16 +1,19 @@
 package com.med.medservice.Models.SessionsVideoCall_OldApi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.R;
+import com.med.medservice.SessionDetailActivity;
 
 import java.util.ArrayList;
 
@@ -42,6 +45,7 @@ public class SessionsAdapter_OldApi extends RecyclerView.Adapter<SessionsAdapter
 
         SessionsList_OldApi currentData = list.get(position);
 
+        String session_id = currentData.getSession_id();
         String first_name = currentData.getDoctor_first_name();
         String last_name = currentData.getDoctor_last_name();
         String date = currentData.getSession_date();
@@ -52,8 +56,8 @@ public class SessionsAdapter_OldApi extends RecyclerView.Adapter<SessionsAdapter
         holder.sessionCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //context.startActivity(new Intent(context, SessionDetailActivity.class));
-
+                context.startActivity(new Intent(context, SessionDetailActivity.class));
+                Toast.makeText(context, ""+session_id, Toast.LENGTH_SHORT).show();
             }
         });
 

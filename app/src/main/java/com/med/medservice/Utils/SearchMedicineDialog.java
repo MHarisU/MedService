@@ -87,9 +87,9 @@ public class SearchMedicineDialog {
                     if (!query.equals("")) {
                         popularMedsRecycler = null;
                         popularMedsList = null;
-                        SearchPharmacyQuery(new GlobalUrlApi().getBaseUrl() + "search_medicines_by_name.php?q=" + query);
+                        SearchPharmacyQuery(new GlobalUrlApi().getNewBaseUrl() + "getSearchProducts?keyword="+query+"&limit=100&mode=medicine");
                     } else {
-                        SearchPharmacyQuery(new GlobalUrlApi().getBaseUrl() + "get_medicines_rand.php");
+                        SearchPharmacyQuery(new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=medicine");
 
                     }
                 } else {
@@ -99,7 +99,7 @@ public class SearchMedicineDialog {
             }
         });
 
-        SearchPharmacyQuery(new GlobalUrlApi().getBaseUrl() + "get_medicines_rand.php");
+        SearchPharmacyQuery(new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=medicine");
 
 
 
@@ -120,6 +120,8 @@ public class SearchMedicineDialog {
         popularMedsList = new ArrayList<MedicineList>();
 
 
+        //old api
+        /*
         ApiCallerNew asyncTask = new ApiCallerNew(SearchURL,
                 new ApiCallerNew.AsyncApiResponse() {
 
@@ -179,6 +181,64 @@ public class SearchMedicineDialog {
 
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+*/
+
+
+        new ApiTokenCaller(context, SearchURL,
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+
+
+
+
+                                JSONObject child = arrayData.getJSONObject(i);
+
+
+                                String id = child.getString("id");
+                                String name = child.getString("name");
+                                String parent_category = child.getString("parent_category");
+                                String sub_category = child.getString("sub_category");
+                                String featured_image = child.getString("featured_image");
+                                String sale_price = child.getString("sale_price");
+                                String regular_price = child.getString("regular_price");
+                                String quantity = child.getString("quantity");
+                                String short_description = child.getString("short_description");
+                                String description = child.getString("description");
+                                String stock_status = child.getString("stock_status");
+
+                                popularMedsList.add(new MedicineList(id, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                        quantity, short_description, description, stock_status));
+
+
+                            }
+
+
+
+                            MedicineSearchAdapter adapter = new MedicineSearchAdapter(popularMedsList, context);
+                            popularMedsRecycler.setAdapter(adapter);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                    }
+                }
+        );
     }
 
 }

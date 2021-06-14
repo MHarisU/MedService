@@ -44,12 +44,14 @@ public class SearchMedicineDialog {
 
     Dialog dialog;
     Context context;
+    String session_id;
 
     public SearchMedicineDialog() {
     }
 
-    public void showSearchMedicineDialog(final Context activity) {
+    public void showSearchMedicineDialog(final Context activity, String session_id) {
         context = activity;
+        this.session_id = session_id;
         dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -226,7 +228,7 @@ public class SearchMedicineDialog {
 
 
 
-                            MedicineSearchAdapter adapter = new MedicineSearchAdapter(popularMedsList, context);
+                            MedicineSearchAdapter adapter = new MedicineSearchAdapter(popularMedsList, context, session_id);
                             popularMedsRecycler.setAdapter(adapter);
 
 

@@ -214,6 +214,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
                             EditText notesView = findViewById(R.id.notesView);
                             intent.putExtra("diagnosis", diagnosisView.getText().toString());
                             intent.putExtra("notes", notesView.getText().toString());
+                            intent.putExtra("session_id", session_id);
                             startActivity(intent);
                             finish();
                         }
@@ -848,7 +849,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
                     //Toast.makeText(DoctorVideoActivity.this, "Medicines", Toast.LENGTH_SHORT).show();
                     SearchMedicineDialog searchMedicineDialog = new SearchMedicineDialog();
-                    searchMedicineDialog.showSearchMedicineDialog(DoctorVideoActivity.this);
+                    searchMedicineDialog.showSearchMedicineDialog(DoctorVideoActivity.this, session_id);
 
                 }
                 if (item.getTitle().equals("Labs")) {

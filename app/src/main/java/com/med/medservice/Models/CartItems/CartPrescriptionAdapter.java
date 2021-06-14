@@ -92,6 +92,9 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
 
                     });
 
+            if (Activity.equals("PrescriptionActivity")){
+                holder.dosageButton.setVisibility(View.VISIBLE);
+            }
 
         }
         else if (type.equals("lab-test")){
@@ -104,9 +107,7 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
 
         }
 
-        if (Activity.equals("PrescriptionActivity")){
-            holder.dosageButton.setVisibility(View.VISIBLE);
-        }
+
 
 
         holder.cartRemoveItem.setOnClickListener(new View.OnClickListener() {

@@ -46,12 +46,13 @@ public class MedicineSearchAdapter extends RecyclerView.Adapter<MedicineSearchAd
     UpdateCartInterface cartUpdateContext;
 
     boolean checkAdded = false;
+    String session_id;
 
 
     public MedicineSearchAdapter() {
     }
 
-    public MedicineSearchAdapter(ArrayList<MedicineList> list, Context context, UpdateCartInterface cartUpdateContext) {
+ /*   public MedicineSearchAdapter(ArrayList<MedicineList> list, Context context, UpdateCartInterface cartUpdateContext) {
         this.list = list;
         this.context = context;
         this.cartUpdateContext = cartUpdateContext;
@@ -69,6 +70,20 @@ public class MedicineSearchAdapter extends RecyclerView.Adapter<MedicineSearchAd
     public MedicineSearchAdapter(ArrayList<MedicineList> list, Context context) {
         this.list = list;
         this.context = context;
+
+        mydb = new CartDBHelper(context);
+        sessionManager = new SessionManager(context);
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        name = user.get(sessionManager.FIRST_NAME);
+        name = name + " " + user.get(sessionManager.LAST_NAME);
+        email = user.get(sessionManager.EMAIL);
+        user_id = user.get(sessionManager.ID);
+    }*/
+
+    public MedicineSearchAdapter(ArrayList<MedicineList> list, Context context, String session_id) {
+        this.list = list;
+        this.context = context;
+        this.session_id = session_id;
 
         mydb = new CartDBHelper(context);
         sessionManager = new SessionManager(context);
@@ -192,6 +207,9 @@ public class MedicineSearchAdapter extends RecyclerView.Adapter<MedicineSearchAd
                     holder.medicine_add_cart_view.setBackgroundResource(R.color.skybluedark);
                     holder.medicine_add_cart_view.setText("Added");
                     checkAdded = true;
+
+
+
                 } else {
                     holder.medicine_add_cart_view.setBackgroundResource(R.color.Black50);
                     holder.medicine_add_cart_view.setText("Add");

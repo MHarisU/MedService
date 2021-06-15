@@ -1,6 +1,7 @@
 package com.med.medservice.Models.CartItems;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,12 @@ import com.med.medservice.CartActivity;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.DosageDialog;
+import com.med.medservice.Utils.DosageList;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.ViewDialog;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -36,11 +40,21 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
     public CartPrescriptionAdapter() {
     }
 
-    public CartPrescriptionAdapter(ArrayList<CartItemsList> list, Context context, String activity) {
+ //   ArrayList<DosageList dosageLists;
+
+    public interface AsyncApiResponse {
+        void processFinish(DosageList dosageList);
+    }
+
+    public AsyncApiResponse delegate = null;
+
+    public CartPrescriptionAdapter(ArrayList<CartItemsList> list, Context context, String activity, AsyncApiResponse delegate) {
+        this.delegate = delegate;
         this.list = list;
         this.context = context;
         mydb = new CartDBHelper(context);
         Activity = activity;
+      //  dosageLists = new ArrayList<DosageList>();
 
     }
 
@@ -169,7 +183,21 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
             @Override
             public void onClick(View view) {
                 DosageDialog dosageDialog = new DosageDialog();
-                dosageDialog.showDosageDialog(context);
+                try {
+                    dosageDialog.showDosageDialog(context, new DosageDialog.AsyncApiResponse() {
+                        @Override
+                        public void processFinish(String response) {
+
+                            Log.d("response_prescription", response);
+                            DosageList dosageList= new DosageList(currentData.ITEM_ID, currentData.TYPE, response);
+                           // dosageLists.add(dosageList);
+                            delegate.processFinish(dosageList);
+
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -226,4 +254,6 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
 
         }
     }
+
+
 }

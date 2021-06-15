@@ -152,7 +152,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
         //load website by URL
 
         //  myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=tcgij5htuo&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vdW1icmVsbGFtZC5jb20vdmlkZW9fY2hhdC8iLCJkaXNhYmxlVmlkZW8iOjAsImRpc2FibGVBdWRpbyI6MCwiZGlzYWJsZVNjcmVlblNoYXJlIjoxLCJkaXNhYmxlV2hpdGVib2FyZCI6MCwiZGlzYWJsZVRyYW5zZmVyIjoxLCJhdXRvQWNjZXB0VmlkZW8iOjEsImF1dG9BY2NlcHRBdWRpbyI6MSwiaXNBZG1pbiI6MX0&isAdmin=1");
-        myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=abcd123&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxfQ&isAdmin=1");
+        myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=qwerty&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxLCJpc0FkbWluIjoxfQ&isAdmin=1");
         //register token for notification
 
         // this.onStart();
@@ -194,7 +194,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
                 Log.d("WebView", "your current url when webpage loading.. finish" + url);
                 super.onPageFinished(view, url);
 
-                if (url.equals("https://suunnoo.com/pages/1")) {
+                if (url.equals("https://suunnoo.com/")) {
 
                     final Dialog dialog = new Dialog(DoctorVideoActivity.this);
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -801,7 +801,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
     private void EndSessionGlobal() {
         reference.child("calling").child(user_id).child("isAvailable").setValue(false);
-        myWebView.loadUrl("https://suunnoo.com/pages/1");
+        myWebView.loadUrl("https://suunnoo.com/");
 
         /*
         final Dialog dialog = new Dialog(DoctorVideoActivity.this);
@@ -930,7 +930,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
             historyLayout.setVisibility(View.GONE);
             notesLayout.setVisibility(View.GONE);
 
-            OpenPrescribedItems prescribedItems = new OpenPrescribedItems(DoctorVideoActivity.this, "DoctorVideoActivity");
+            OpenPrescribedItems prescribedItems = new OpenPrescribedItems(DoctorVideoActivity.this, "DoctorVideoActivity", session_id);
 
             prescriptionButton.setBackgroundResource(R.drawable.red_bg);
             prescriptionButton.setTextColor(Color.WHITE);

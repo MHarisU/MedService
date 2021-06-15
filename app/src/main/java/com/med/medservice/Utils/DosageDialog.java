@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,7 +49,15 @@ public class DosageDialog {
     public DosageDialog() {
     }
 
-    public void showDosageDialog(final Context activity) {
+
+    public interface AsyncApiResponse {
+        void processFinish(String response);
+    }
+
+    public AsyncApiResponse delegate = null;
+
+    public void showDosageDialog(final Context activity, AsyncApiResponse delegate) throws JSONException {
+        this.delegate = delegate;
         context = activity;
         dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -57,9 +66,47 @@ public class DosageDialog {
 
 
         ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
+
+        RadioButton twentyFourHoursRadio = (RadioButton) dialog.findViewById(R.id.twentyFourHoursRadio);
+        RadioButton twelveHoursRadio = (RadioButton) dialog.findViewById(R.id.twelveHoursRadio);
+        RadioButton eightHoursRadio = (RadioButton) dialog.findViewById(R.id.eightHoursRadio);
+        RadioButton sixHoursRadio = (RadioButton) dialog.findViewById(R.id.sixHoursRadio);
+
+        EditText quantityEditView = (EditText) dialog.findViewById(R.id.quantityEditView);
+        EditText NumberOfDaysEditView = (EditText) dialog.findViewById(R.id.NumberOfDaysEditView);
+        EditText instructionEditView = (EditText) dialog.findViewById(R.id.instructionEditView);
+
+
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String day="24hr";
+
+                if (twentyFourHoursRadio.isChecked()) {
+                    day = "24hr";
+                } else if (twelveHoursRadio.isChecked()) {
+                    day = "12hr";
+                } else if (eightHoursRadio.isChecked()) {
+                    day = "8hr";
+                } else if (sixHoursRadio.isChecked()) {
+                    day = "6hr";
+                }
+
+                String jsonString = null;
+                try {
+                    jsonString = new JSONObject()
+                            .put("comment", instructionEditView.getText().toString())
+                            .put("quantity", quantityEditView.getText().toString())
+                            .put("usage", "Dosage: Every "+day+" for "+NumberOfDaysEditView.getText().toString()+" day")
+                            .toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(jsonString);
+                delegate.processFinish(jsonString);
+
                 dialog.dismiss();
             }
         });

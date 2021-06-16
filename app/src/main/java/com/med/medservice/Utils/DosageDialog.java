@@ -81,16 +81,16 @@ public class DosageDialog {
             @Override
             public void onClick(View view) {
 
-                String day="24hr";
+                String day="24hrs";
 
                 if (twentyFourHoursRadio.isChecked()) {
-                    day = "24hr";
+                    day = "24hrs";
                 } else if (twelveHoursRadio.isChecked()) {
-                    day = "12hr";
+                    day = "12hrs";
                 } else if (eightHoursRadio.isChecked()) {
-                    day = "8hr";
+                    day = "8hrs";
                 } else if (sixHoursRadio.isChecked()) {
-                    day = "6hr";
+                    day = "6hrs";
                 }
 
                 String jsonString = null;

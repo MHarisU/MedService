@@ -11,10 +11,10 @@ public class SessionsItemsList implements Serializable {
     public String prescription_comment;
     public String usage;
     public String quantity;
-    public String created_at;
+    public String product_status;
 
     public SessionsItemsList(String session_id, String product_id, String product_name, String product_mode,
-                             String prescription_comment, String usage, String quantity, String created_at) {
+                             String prescription_comment, String usage, String quantity, String product_status) {
         this.session_id = session_id;
         this.product_id = product_id;
         this.product_name = product_name;
@@ -22,7 +22,7 @@ public class SessionsItemsList implements Serializable {
         this.prescription_comment = prescription_comment;
         this.usage = usage;
         this.quantity = quantity;
-        this.created_at = created_at;
+        this.product_status = product_status;
     }
 
     public String getSession_id() {
@@ -53,7 +53,7 @@ public class SessionsItemsList implements Serializable {
         return quantity;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public String getProduct_status() {
+        return product_status;
     }
 }

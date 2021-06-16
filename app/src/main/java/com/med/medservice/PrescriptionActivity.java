@@ -26,6 +26,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.med.medservice.Utils.DosageList;
 import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.OpenPrescribedItems;
@@ -69,6 +72,7 @@ public class PrescriptionActivity extends AppCompatActivity {
         diagnosisView.setText(intent.getStringExtra("diagnosis"));
         notesView.setText(intent.getStringExtra("notes"));
         session_id = intent.getStringExtra("session_id");
+        Log.d("Logss", "Fetched session id " + session_id);
 
     }
 
@@ -101,6 +105,8 @@ public class PrescriptionActivity extends AppCompatActivity {
         final String requestBody = orderJsonObject.toString();
         // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
 
+        Log.d("Logss", requestBody+" "+(new GlobalUrlApi().getNewBaseUrl() +"updateDiagnosisAndNotes/" + session_id));
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, new GlobalUrlApi().getNewBaseUrl() +
                 "updateDiagnosisAndNotes/" + session_id,
@@ -128,8 +134,15 @@ public class PrescriptionActivity extends AppCompatActivity {
                                 prescribedItems.addPrescribeItems(new OpenPrescribedItems.AsyncApiResponse() {
                                     @Override
                                     public void processFinish(ArrayList<PrescriptionIDList> prescriptionIDLists, ArrayList<DosageList> dosageLists) {
-                                        Log.d("response_prescription", "Prescription Items" + prescriptionIDLists.size());
-                                        Log.d("response_prescription", "dosage Items" + dosageLists.size());
+                                        Gson gson = new GsonBuilder().create();
+                                        JsonArray presJson = gson.toJsonTree(prescriptionIDLists).getAsJsonArray();
+                                        JsonArray dosageJson = gson.toJsonTree(dosageLists).getAsJsonArray();
+
+                                        Log.d("Logss", "Prescription Items " + presJson.toString());
+                                        Log.d("Logss", "dosage Items " + dosageJson.toString());
+
+                                        Log.d("response_prescription", "Prescription Items size " + prescriptionIDLists.size());
+                                        Log.d("response_prescription", "dosage Items size " + dosageLists.size());
                                         insertDosageOnline(prescriptionIDLists, dosageLists);
 
                                     }
@@ -261,12 +274,24 @@ public class PrescriptionActivity extends AppCompatActivity {
             PrescriptionIDList prescriptionIDList = prescriptionIDLists.get(i);
             for (int j = 0; j < dosageLists.size(); j++) {
                 DosageList dosageList = dosageLists.get(j);
-                if (dosageList.getItem_id() == prescriptionIDList.getItem_id()) {
+                if (dosageList.getItem_id().equals(prescriptionIDList.getItem_id())) {
                     dosageList.setPrescription_id(prescriptionIDList.getPrescription_id());
                     dosageLists.set(j, dosageList);
+                    Gson gson = new GsonBuilder().create();
+                    // JsonArray presJson = gson.toJsonTree(prescriptionIDLists).getAsJsonArray();
+                    JsonArray dosageJson = gson.toJsonTree(dosageLists).getAsJsonArray();
+                    Log.d("Logss", "inserting prescription ID " + dosageJson.toString());
+
                 }
             }
         }
+
+        Gson gson = new GsonBuilder().create();
+       // JsonArray presJson = gson.toJsonTree(prescriptionIDLists).getAsJsonArray();
+        JsonArray dosageJson = gson.toJsonTree(dosageLists).getAsJsonArray();
+
+      //  Log.d("Logss", "Prescription Items" + presJson.toString());
+        Log.d("Logss", "dosage Items " + dosageJson.toString());
 
         insertDosageNetworkCall(dosageLists);
 
@@ -293,6 +318,8 @@ public class PrescriptionActivity extends AppCompatActivity {
             final String requestBody = dosageList.getDosageDetails();
             // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
 
+            Log.d("Logss", "adding dosage " + dosageList.getDosageDetails()+" "+(new GlobalUrlApi().getNewBaseUrl() +"updatePrescribedMedicines/" + dosageList.getPrescription_id()));
+
 
             StringRequest stringRequest = new StringRequest(Request.Method.PUT, new GlobalUrlApi().getNewBaseUrl() +
                     "updatePrescribedMedicines/" + dosageList.getPrescription_id(),
@@ -318,10 +345,12 @@ public class PrescriptionActivity extends AppCompatActivity {
                                     //Toast.makeText(PrescriptionActivity.this, "Dosage", Toast.LENGTH_SHORT).show();
 
                                     Log.d("response_prescription", jsonMessage);
-                                    if (check_response_size[0] < dosageLists.size()) {
-                                        check_response_size[0]++;
-                                    } else {
+                                    check_response_size[0]++;
+                                    if (check_response_size[0] == dosageLists.size()) {
+                                        Log.d("response_prescription", "Session end called");
                                         EndSessionOnline();
+                                    } else {
+
                                     }
 
 
@@ -457,7 +486,7 @@ public class PrescriptionActivity extends AppCompatActivity {
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, new GlobalUrlApi().getNewBaseUrl() +
-                "endVideoSession" ,
+                "endVideoSession",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -468,10 +497,10 @@ public class PrescriptionActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONObject jsonResponse = jsonObject.getJSONObject("Response");
-                            //   JSONObject jsonData = jsonResponse.getJSONObject("Data");
+                            JSONObject jsonData = jsonResponse.getJSONObject("Data");
                             // String SessionID = jsonResponse.getString("SessionID");
                             String jsonStatus = jsonResponse.getString("Status");
-                            String jsonMessage = jsonResponse.getString("Message");
+                            String jsonMessage = jsonData.getString("session_status");
 
                             if (jsonStatus.equals("True")) {
 

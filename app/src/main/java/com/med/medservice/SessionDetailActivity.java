@@ -59,7 +59,7 @@ public class SessionDetailActivity extends AppCompatActivity {
         itemsList = new ArrayList<SessionsItemsList>();
 
         new ApiTokenCaller(SessionDetailActivity.this, new GlobalUrlApi().getNewBaseUrl() +
-                "getPrescribedMedicines?session_id=14" /*currentData.getSession_id()*/,
+                "getPrescribedMedicines?session_id=" +currentData.getSession_id(),
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -85,11 +85,11 @@ public class SessionDetailActivity extends AppCompatActivity {
                                 String prescription_comment = child.getString("prescription_comment");
                                 String usage = child.getString("usage");
                                 String quantity = child.getString("quantity");
-                                String created_at = child.getString("created_at");
+                                String product_status = child.getString("product_status");
 
 
 
-                                itemsList.add(new SessionsItemsList(session_id, product_id, product_name, product_mode, prescription_comment, usage, quantity, created_at));
+                                itemsList.add(new SessionsItemsList(session_id, product_id, product_name, product_mode, prescription_comment, usage, quantity, product_status));
 
 
                             }

@@ -188,7 +188,7 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
                         @Override
                         public void processFinish(String response) {
 
-                            Log.d("response_prescription", response);
+                            Log.d("response_prescription", currentData.ITEM_ID+" "+currentData.TYPE+" "+response);
                             DosageList dosageList= new DosageList(currentData.ITEM_ID, currentData.TYPE, response);
                            // dosageLists.add(dosageList);
                             delegate.processFinish(dosageList);

@@ -413,8 +413,8 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
                     pat_id = snapshot.getValue().toString();
 
-                    GetPatientAge(pat_id);
-                    GetPatientMedicalHistory(pat_id);
+                    //GetPatientAge(pat_id);
+                    //GetPatientMedicalHistory(pat_id);
                     GetSymptops(pat_id, user_id);
                     GetCurrentSession(pat_id, user_id);
 

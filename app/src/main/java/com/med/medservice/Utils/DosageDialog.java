@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,6 +67,8 @@ public class DosageDialog {
 
 
         ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
+        CardView submitDosage = (CardView) dialog.findViewById(R.id.submitDosage);
+
 
         RadioButton twentyFourHoursRadio = (RadioButton) dialog.findViewById(R.id.twentyFourHoursRadio);
         RadioButton twelveHoursRadio = (RadioButton) dialog.findViewById(R.id.twelveHoursRadio);
@@ -78,6 +81,40 @@ public class DosageDialog {
 
 
         closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String day="24hrs";
+
+                if (twentyFourHoursRadio.isChecked()) {
+                    day = "24hrs";
+                } else if (twelveHoursRadio.isChecked()) {
+                    day = "12hrs";
+                } else if (eightHoursRadio.isChecked()) {
+                    day = "8hrs";
+                } else if (sixHoursRadio.isChecked()) {
+                    day = "6hrs";
+                }
+
+                String jsonString = null;
+                try {
+                    jsonString = new JSONObject()
+                            .put("comment", instructionEditView.getText().toString())
+                            .put("quantity", quantityEditView.getText().toString())
+                            .put("usage", "Dosage: Every "+day+" for "+NumberOfDaysEditView.getText().toString()+" day")
+                            .toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(jsonString);
+                delegate.processFinish(jsonString);
+
+                dialog.dismiss();
+            }
+        });
+
+        submitDosage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

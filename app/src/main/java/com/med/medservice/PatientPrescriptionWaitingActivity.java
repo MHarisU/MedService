@@ -190,6 +190,7 @@ public class PatientPrescriptionWaitingActivity extends AppCompatActivity {
 
         CartDBHelper mydb;
         mydb = new CartDBHelper(this);
+        mydb.removeAllItems(0);
 
 
         for (SessionsItemsList item: itemsList){

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -1377,10 +1377,10 @@
                         android:id="@+id/sendInvitationText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/red_bg"
+                        android:background="@drawable/green_bg"
                         android:fontFamily="@font/geo_sans_light"
                         android:gravity="center"
-                        android:text="END SESSION"
+                        android:text="Order Now"
                         android:textColor="@color/White"
                         android:textSize="22sp"
                         android:textStyle="bold" />

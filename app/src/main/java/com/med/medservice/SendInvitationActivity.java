@@ -124,6 +124,7 @@ public class SendInvitationActivity extends AppCompatActivity {
                                             if (!checkCallStarted) {
                                                 checkCallStarted = true;
                                                 Intent intent = new Intent(SendInvitationActivity.this, PatientVideoActivity.class);
+                                                intent.putExtra("session_id", session_id);
                                                 intent.putExtra("selectedDoctor", currentData);
                                                 startActivity(intent);
                                                 //startActivity(new Intent(SendInvitationActivity.this, PatientVideoActivity.class));

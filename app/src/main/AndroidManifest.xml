@@ -28,10 +28,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderDetailActivity"></activity>
-        <activity android:name=".OrderHistoryActivity">
+        <activity android:name=".PatientPrescriptionWaitingActivity">
+
 
         </activity>
+        <activity android:name=".OrderDetailActivity" />
+        <activity android:name=".OrderHistoryActivity"></activity>
         <activity android:name=".PrescriptionActivity" />
         <activity android:name=".PatientVideoActivity" />
         <activity android:name=".DoctorVideoActivity" />
@@ -59,45 +61,28 @@
         <activity android:name=".DoctorScheduleActivity" />
         <activity android:name=".DoctorCalendarScheduleActivity" />
         <activity android:name=".SessionDetailActivity" />
-        <activity android:name=".SessionActivity" >
-
-
-
-
-
-        </activity>
-        <activity android:name=".EvisitActivity" >
-
-
-        </activity>
+        <activity android:name=".SessionActivity"></activity>
+        <activity android:name=".EvisitActivity"></activity>
         <activity android:name=".BookAppointmentActivity" />
         <activity android:name=".LabDetailActivity" />
         <activity android:name=".LabsActivity" />
-        <activity android:name=".CheckoutActivity"></activity>
+        <activity android:name=".CheckoutActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".MedDetailActivity" />
         <activity android:name=".PharmacyActivity" />
         <activity android:name=".DoctorAppointmentsActivity" />
         <activity android:name=".PatientAppointmentsActivity" />
         <activity android:name=".DoctorProfileActivity" />
-        <activity android:name=".PatientProfileActivity" >
-
-
-
-
-
-        </activity>
+        <activity android:name=".PatientProfileActivity"></activity>
         <activity android:name=".DoctorMainActivity" />
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".MainActivity" />
 

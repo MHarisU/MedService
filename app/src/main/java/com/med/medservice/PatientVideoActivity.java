@@ -69,6 +69,9 @@ public class PatientVideoActivity extends AppCompatActivity{
 
     CountDownTimer downTimer;
 
+    String symptoms_id, desc, session_id;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,7 @@ public class PatientVideoActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         currentData = (OnlineDoctorsList) intent.getSerializableExtra("selectedDoctor");
+        session_id = intent.getStringExtra("session_id");
 
 
         myWebView = (WebView) findViewById(R.id.webView1);
@@ -170,6 +174,11 @@ public class PatientVideoActivity extends AppCompatActivity{
                         @Override
                         public void onClick(View v) {
                             dialog.dismiss();
+                            Intent intent = new Intent(PatientVideoActivity.this, PatientPrescriptionWaitingActivity.class);
+                            intent.putExtra("session_id", session_id);
+                            intent.putExtra("selectedDoctor", currentData);
+                            startActivity(intent);
+                            //startActivity(new Intent(SendInvitationActivity.this, PatientVideoActivity.class));
                             finish();
                         }
                     });

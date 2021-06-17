@@ -71,7 +71,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
     SwitchCompat switchButton;
     TextView doctorOnlineView;
 
-    String symptoms_id, desc, session_id;
+    String symptoms_id, desc, session_id, pat_id;
 
 
     @Override
@@ -103,8 +103,30 @@ public class WaitingRoomActivity extends AppCompatActivity {
         FirebaseUserModel userModel = new FirebaseUserModel(user_id, name, user_email, android_id);
         reference.child(user_id).setValue(userModel);
 
-        Query checkUser = reference.child("calling").child(user_id).child("pat_name");
+        Query checkUser = reference.child("calling").child(user_id).child("incoming");
         checkUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                try {
+
+
+                    pat_id = snapshot.getValue().toString();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        Query checkUserName = reference.child("calling").child(user_id).child("pat_name");
+        checkUserName.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -494,6 +516,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
         reference.child("calling").child(user_id).child("isAvailable").setValue(true);
         Intent intent = new Intent(WaitingRoomActivity.this, DoctorVideoActivity.class);
         intent.putExtra("session_id", session_id);
+        intent.putExtra("pat_id", pat_id);
         startActivity(intent);
         finish();
     }

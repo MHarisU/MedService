@@ -26,6 +26,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -47,11 +49,15 @@ import java.util.Map;
 public class PrescriptionActivity extends AppCompatActivity {
 
     EditText diagnosisView, notesView;
-    String session_id;
+    String session_id, pat_id;
 
     OpenPrescribedItems prescribedItems;
 
     ProgressDialog progress;
+
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +78,8 @@ public class PrescriptionActivity extends AppCompatActivity {
         diagnosisView.setText(intent.getStringExtra("diagnosis"));
         notesView.setText(intent.getStringExtra("notes"));
         session_id = intent.getStringExtra("session_id");
+        pat_id = intent.getStringExtra("pat_id");
+
         Log.d("Logss", "Fetched session id " + session_id);
 
     }
@@ -504,6 +512,9 @@ public class PrescriptionActivity extends AppCompatActivity {
 
                             if (jsonStatus.equals("True")) {
 
+                                EndSessionFuncFirebase();
+
+
                                 Toast.makeText(PrescriptionActivity.this, "Medicines Prescribed to the patient", Toast.LENGTH_SHORT).show();
                                 progress.dismiss();
                                 // progressDialog.dismiss();
@@ -648,6 +659,12 @@ public class PrescriptionActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+    }
+
+    private void EndSessionFuncFirebase() {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users");
+        reference.child("sessionEnded").child(pat_id).child("session_id").setValue(session_id);
     }
 
     public interface VolleyCallback {

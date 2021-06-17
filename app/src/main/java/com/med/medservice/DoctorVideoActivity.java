@@ -215,6 +215,8 @@ public class DoctorVideoActivity extends AppCompatActivity {
                             intent.putExtra("diagnosis", diagnosisView.getText().toString());
                             intent.putExtra("notes", notesView.getText().toString());
                             intent.putExtra("session_id", session_id);
+                            intent.putExtra("pat_id", pat_id);
+
                             startActivity(intent);
                             finish();
                         }
@@ -401,6 +403,8 @@ public class DoctorVideoActivity extends AppCompatActivity {
     private void getSessionID() {
         Intent intent = getIntent();
         session_id = intent.getStringExtra("session_id");
+        pat_id = intent.getStringExtra("pat_id");
+
     }
 
     private void GetPatientDetails() {

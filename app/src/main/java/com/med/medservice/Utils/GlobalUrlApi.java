@@ -15,9 +15,9 @@ public class GlobalUrlApi {
         newHomeUrl ="http://umbrellamd.migmediacompany.com/";
 
         
-        UrlAppFolder ="http://harisdev.com/medical/";
-        BaseUrl ="http://harisdev.com/medical/";
-        HomeUrl ="http://harisdev.com/";
+        UrlAppFolder ="https://ezeearn.co/harisDev_beckup/medical/";
+        BaseUrl ="https://ezeearn.co/harisDev_beckup/medical/";
+        HomeUrl ="https://ezeearn.co/harisDev_beckup/";
     }
 
     public String getUrlAppFolder() {

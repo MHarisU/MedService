@@ -28,12 +28,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PatientPrescriptionWaitingActivity">
-
-
-        </activity>
+        <activity android:name=".ComingSoonActivity"></activity>
+        <activity android:name=".SubstanceAbuseActivity" />
+        <activity android:name=".PatientPrescriptionWaitingActivity" />
         <activity android:name=".OrderDetailActivity" />
-        <activity android:name=".OrderHistoryActivity"></activity>
+        <activity android:name=".OrderHistoryActivity" />
         <activity android:name=".PrescriptionActivity" />
         <activity android:name=".PatientVideoActivity" />
         <activity android:name=".DoctorVideoActivity" />
@@ -61,8 +60,8 @@
         <activity android:name=".DoctorScheduleActivity" />
         <activity android:name=".DoctorCalendarScheduleActivity" />
         <activity android:name=".SessionDetailActivity" />
-        <activity android:name=".SessionActivity"></activity>
-        <activity android:name=".EvisitActivity"></activity>
+        <activity android:name=".SessionActivity" />
+        <activity android:name=".EvisitActivity" />
         <activity android:name=".BookAppointmentActivity" />
         <activity android:name=".LabDetailActivity" />
         <activity android:name=".LabsActivity" />
@@ -73,7 +72,7 @@
         <activity android:name=".DoctorAppointmentsActivity" />
         <activity android:name=".PatientAppointmentsActivity" />
         <activity android:name=".DoctorProfileActivity" />
-        <activity android:name=".PatientProfileActivity"></activity>
+        <activity android:name=".PatientProfileActivity" />
         <activity android:name=".DoctorMainActivity" />
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".LoginActivity" />

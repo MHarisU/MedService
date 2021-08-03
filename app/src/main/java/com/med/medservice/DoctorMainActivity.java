@@ -282,4 +282,14 @@ public class DoctorMainActivity extends AppCompatActivity {
                 });
         dialog.show();
     }
+
+    public void OpenComingSoon(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, ComingSoonActivity.class));
+
+    }
+
+    public void OpenSubstanceAbuse(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, SubstanceAbuseActivity.class));
+
+    }
 }

@@ -308,6 +308,16 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
         }
     }
 
+    public void OpenSubstanceAbuse(View view) {
+        startActivity(new Intent(PatientMainActivity.this, SubstanceAbuseActivity.class));
+
+    }
+
+    public void OpenComingSoon(View view) {
+        startActivity(new Intent(PatientMainActivity.this, ComingSoonActivity.class));
+
+    }
+
 /*
     private class AuthAsyncTask extends AsyncTask<String, String, String> {
 

@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SubstanceAbuseActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_background_button"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:elevation="7dp"
+                android:onClick="Close"
+                android:padding="10dp"
+                android:src="@drawable/ic_back_white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/geo_sans_light"
+                        android:gravity="center"
+                        android:text="Substance Abuse"
+                        android:textColor="@color/White"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/Black30" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="start"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="5dp"
+                        android:text="Umbrella Health Care Systems provide best quality psychiatric services and consultations to all age groups.We are a staff of professionals committed to helping patients through all stages of their lives. We see children, adolescent, general adults, and older adults. Explore our site to learn about our services, useful resources on various health topics, our contact information, and how to prepare for your first visit."
+                        android:textColor="@color/Gray"
+                        android:textSize="14sp"
+                        android:textStyle="" />
+
+
+                    <!-- General Info -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="start"
+                                android:text="General Info"
+                                android:textColor="@color/Gray"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.15"
+                                    android:orientation="vertical">
+
+
+                                    <LinearLayout
+                                        android:onClick="selfpayClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/green_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Self-pay Fees"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                    <LinearLayout
+                                        android:onClick="firstVisit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/blue_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="First Visit"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+                                    <LinearLayout
+                                        android:onClick="prepareFirstVisit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/yellow_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Preparing Your First Visit"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+
+                    <!-- Services Layout -->
+                    <LinearLayout
+                        android:id="@+id/patient_timeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="start"
+                                android:text="Services"
+                                android:textColor="@color/Gray"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.15"
+                                    android:orientation="vertical">
+
+
+                                    <LinearLayout
+                                        android:onClick="womenClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/green_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Women"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                    <LinearLayout
+                                        android:onClick="generalAdultsClick"
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/blue_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="General Adults"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+                                    <LinearLayout
+                                        android:onClick="otherAdultsClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/yellow_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Other Adults"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+                                    <LinearLayout
+                                        android:onClick="childrenClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/red_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Children"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                    <LinearLayout
+                                        android:onClick="telemedicineClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/green_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Telemedicine"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                    <LinearLayout
+                                        android:onClick="adolescentClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/blue_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Adolescent"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/gray20" />
+
+
+                    <!-- Self-pay Fees -->
+                    <LinearLayout
+                        android:id="@+id/selfpayLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Self-pay Fees"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="We accept self-pay patients who either don't have insurance or have insurance that we don't take. Our initial office visit is $175.00, payable at the time of check-in. Our follow-up visit fee is $75, payable at the time of check-in. We only accept cash and credit card at this time. If you have insurance that we don't take, we will give you the billing statement which you can submit to your insurance company for reimbursement."
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- First Visit -->
+                    <LinearLayout
+                        android:id="@+id/firstVisitLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="First Visit"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="The purpose of the initial psychiatric visit is to thoroughly assess the presenting condition and then make appropriate treatment recommendations. Here are some of the commonly asked questions about the first visit.\n\nWhat happens during the initial visit? How is the assessment done?\nThe initial assessment is problem-focused. The clinician collects and reviews detailed information collected from the patient, and family interview where applicable, and the intake paperwork filled out before the assessment. The information collected includes but not limited to the nature, duration, and severity of the problem, prior treatments, personal and medical history, family history, internal or external factors affecting the presenting condition, etc. Based on the assessment, the clinician will order appropriate testing or evaluations, present treatment options, and discuss prognosis.\n\nWhy do I have to fill out all this paperwork? Why can’t I see the doctor and tell him about my problem?\nAs noted above, to conduct a proper assessment and to develop an appropriate treatment plan, the healthcare provider needs detailed information from various aspects of your life relating to your current problem. The initial paperwork helps you organize this information in a format that is useful for the provider and makes your visit more productive. The provider reviews this information with you and does further assessment.
+
+Some examples of the information you are required to fill out include past and present treatment history, family history, general health history, developmental history, current medications, allergies, brief screening questionnaires, etc.\n\nI have been advised to see a psychiatrist. However, I don’t think I need any medications. Should I still schedule a visit?\nMedication is one of the treatment options among many options, such as individual counseling, family counseling, group therapy, stress management, lifestyle changes, exercise, etc. Seeing a psychiatrist doesn’t necessarily mean that you will be prescribed medication automatically.\n\nI have done some research, and I think I know what medicine I need. Will the doctor prescribe me the drug I want?\nTreatment planning is a collaborative process where the clinician presents various treatment options, answer questions regarding those options, and listens to the patient for their input. Although the clinician will be open to discuss any treatment suggestions from the patient, he or she will not prescribe any medicine that is not appropriate or safe for the condition.\n\nHow early should I arrive for my appointment?\nIf this is your first visit, please come at least one hour earlier to fill out all the appropriate paperwork. For follow-up appointments, just try to be there on time."
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- Preparing Your First Visit -->
+                    <LinearLayout
+                        android:id="@+id/prepareFirstVisitLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Preparing Your First Visit"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="Our health care staff wants your first visit to be successful and meaningful. To help us ensure your visit’s success, please do the following:\n\n* Arrive at least one hour before your appointment time to fill out the health forms, which will help the caregivers understand your concerns.\n\n* Bring a valid picture ID and your insurance information.\n\n* Please help us understand your health history. If you have a long or complicated health history, create a one-page summary that contains crucial issues and information that will provide a clear picture of your needs to the provider, quickly and thoroughly. Be sure to include important dates, any diagnoses you’ve received, and other information that you think your doctor should know. Here are some of the items for you to consider:\n\n* List of current medications with dosage, date started, the reason for taking it, and who prescribed it.\n\n* History: Any prior diagnoses, any treatments received, when, duration, outcomes, etc. Who provided the treatment?\n\n* Any hospitalizations?\n\n* Family history: Any psychiatric or medical conditions in your family.\n\n* Educational and Work history: Major milestones, challenges, etc\n\n* Bring bottles of any current medications you are taking.\n\n* Bring information regarding your current primary care provider and the most recent psychiatrist if you had one.\n\n* Any reports on recent diagnostic workup such as lab results, psychological assessments, educational assessments, etc."
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- women -->
+                    <LinearLayout
+                        android:id="@+id/womenLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Women"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="We evaluate and develop treatment plans for the following common conditions:\n\nEmotional Dysregulation associated with life-cycle changes\n\nDepression and other mood disorders\n\nAnxiety and Panic Disorders\n\nPost-traumatic stress disorder\n\nSleep issues\n\nAttention and focus issues."
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- General Adults -->
+                    <LinearLayout
+                        android:id="@+id/generalAdultsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="General Adults"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="We perform evaluation and develop a treatment plan for almost all psychiatric conditions. The most commonly managed conditions are:\n\n* Depression\n* Bipolar Disorder\n* General Mood disorders\n* Anxiety Disorders\n* Panic disorder\n* Obsessive-compulsive Disorders\n* Adult ADHD\n* Schizophrenia and other Psychotic Disorders\n* Post-traumatic stress disorder\n* Sleep issues"
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- Other Adults -->
+                    <LinearLayout
+                        android:id="@+id/otherAdultsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Other Adults"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="We evaluate and develop treatment plans for most psychiatric issues affecting Older Adults. Some of the common conditions managed at our office are:\n\n* Depression\n* Bipolar Disorder\n* Anxiety Disorders\n* Panic disorder\n* Schizophrenia and other Psychotic Disorders\n* Sleep issues"
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- Children -->
+                    <LinearLayout
+                        android:id="@+id/childrenLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Children"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="We see children starting from the age of 5. The most common conditions we see are:\n\n* Attention-Deficit Hyperactivity Disorder\n* Oppositional Defiant Disorder\n* Anxiety Disorders\n* Depression and other Mood disorders\n* Bipolar disorders\n\n- We also see children with developmental disorders such as Autism, PDD, Asperger's etc., who have problems in one or more of the following areas:\n\n* Behavior Issues\n* Emotional Instability\n* Difficulty Focusing\n* Hyperactivity\n* Aggression\n* Psychotic Symptoms\n\nIn addition, we are available for consultation for other conditions not listed here."
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- Telemedicine -->
+                    <LinearLayout
+                        android:id="@+id/telemedicineLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Telemedicine"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="We now offer telepsychiatry services for patients who cannot come to our clinics because of distance issues or other reasons.\n\nIf you are a Medicare or Medicaid patient, please call us first to ensure that Medicare/Medicaid will approve telepsychiatry services for your area. If you have private insurance or will pay cash for your visit, you can schedule an appointment with the front desk. We can provide billing codes that will enable you to submit the claim for your telepsychiatry visit directly to your insurance company, if applicable.\n\nWe use secure technology for our televisits, which are encrypted to ensure all video conversations comply with Federal HIPAA privacy laws. Please call us to find out more."
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- Adolescent -->
+                    <LinearLayout
+                        android:id="@+id/adolescentLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Adolescent"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="We see adolescents for the following common conditions:\n\n* Depression\n* Bipolar Disorder\n* Emotional Instability\n* Attention-Deficit\n* Hyperactivity Disorder\n* Anxiety Disorders\n* Panic Disorder\n* Obsessive-compulsive disorder\n\nWe also see adolescents with developmental disorders, such as Autism, PDD, and Asperger's, who have one or more of the following issues:\n\n* Behavior Issues\n* Hyperactivity\n* Aggression\n* Focus Issues\n* Emotional Instability\n* Psychotic symptoms"
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

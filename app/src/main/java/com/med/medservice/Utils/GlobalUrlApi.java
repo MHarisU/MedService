@@ -10,9 +10,12 @@ public class GlobalUrlApi {
 
     public GlobalUrlApi() {
        // newBaseUrl ="https://umbrellamd.com/api/";
-        newBaseUrl ="http://umbrellamd.migmediacompany.com/api/";
+     //   newBaseUrl ="http://umbrellamd.migmediacompany.com/api/";
+        newBaseUrl ="https://umbrellamd-video.com/api/";
+
        // newHomeUrl ="https://umbrellamd.com/";
-        newHomeUrl ="http://umbrellamd.migmediacompany.com/";
+      //  newHomeUrl ="http://umbrellamd.migmediacompany.com/";
+        newHomeUrl ="https://umbrellamd-video.com/";
 
         
         UrlAppFolder ="https://ezeearn.co/harisDev_beckup/medical/";

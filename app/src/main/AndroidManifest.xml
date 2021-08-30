@@ -28,7 +28,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ComingSoonActivity"></activity>
+        <activity android:name=".ImagingActivity"></activity>
+        <activity android:name=".ComingSoonActivity" />
         <activity android:name=".SubstanceAbuseActivity" />
         <activity android:name=".PatientPrescriptionWaitingActivity" />
         <activity android:name=".OrderDetailActivity" />

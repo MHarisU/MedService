@@ -61,6 +61,7 @@ public class DoctorMainActivity extends AppCompatActivity {
         TextView Name;
         Name = findViewById(R.id.docName);
         Name.setText(name);
+        Log.d("DoctorMainActivity",user_id);
 
 
         /*Update doctor online status for e-visit   */

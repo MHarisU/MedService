@@ -380,6 +380,12 @@ public class WaitingRoomActivity extends AppCompatActivity {
         JSONObject orderJsonObject = new JSONObject();
         try {
             orderJsonObject.put("active", status);
+            if (status.equals("1")) {
+                orderJsonObject.put("status", "online");
+            }
+            else
+                orderJsonObject.put("status", "offline");
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -388,6 +394,9 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         final String requestBody = orderJsonObject.toString();
         // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
+
+        Log.d("order_api_response", new GlobalUrlApi().getNewBaseUrl() + "updateDoctorStatus/"+user_id);
+
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, new GlobalUrlApi().getNewBaseUrl() + "updateDoctorStatus/"+user_id,

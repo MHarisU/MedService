@@ -174,6 +174,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 FirebaseUserModel userModel = new FirebaseUserModel(id, first_name+" "+last_name, email, android_id);
                                 reference.child(id).setValue(userModel);
+                                Log.d("firebase_info",id+" "+first_name+" "+last_name+" "+email+" "+android_id);
 
                                 //   Toast.makeText(LoginActivity.this, id + "\n" + first_name + "\n" + last_name + "\n" + email + "\n" + user_type + "\n" + phone, Toast.LENGTH_LONG).show();
 

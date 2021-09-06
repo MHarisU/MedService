@@ -74,6 +74,8 @@ public class PharmacyActivity extends AppCompatActivity implements UpdateCartInt
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_pharmacy);
+
+
         cartNumberView = findViewById(R.id.cartNumberView);
         mydb = new CartDBHelper(this);
 

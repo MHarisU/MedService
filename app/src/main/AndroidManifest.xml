@@ -28,7 +28,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ImagingActivity"></activity>
+        <activity
+            android:name=".ImagingDetailActivity"
+            android:exported="true" >
+
+
+
+
+        </activity>
+
+
+        <activity android:name=".ImagingActivity">
+
+
+        </activity>
         <activity android:name=".ComingSoonActivity" />
         <activity android:name=".SubstanceAbuseActivity" />
         <activity android:name=".PatientPrescriptionWaitingActivity" />
@@ -77,15 +90,18 @@
         <activity android:name=".DoctorMainActivity" />
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".MainActivity" />
-
+w
         <service
             android:name=".Utils.AuthService"
             android:process=":Auth_Process"

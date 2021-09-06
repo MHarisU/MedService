@@ -735,7 +735,10 @@ Paracetamol 500mg Tablets must not be given to children under 10 years of age."
     </RelativeLayout>
 
 
-</LinearLayout><!--
+</LinearLayout>
+
+
+    <!--
 <LinearLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"

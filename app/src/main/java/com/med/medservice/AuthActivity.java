@@ -17,9 +17,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.med.medservice.Utils.AuthService;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 
 import java.util.HashMap;
 import java.util.concurrent.Executor;

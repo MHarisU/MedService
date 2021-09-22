@@ -31,8 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.med.medservice.Utils.DosageList;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.Diaglogs.DosageList;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.OpenPrescribedItems;
 import com.med.medservice.Utils.PrescriptionIDList;
 import com.med.medservice.Utils.SessionManager;
@@ -41,7 +41,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

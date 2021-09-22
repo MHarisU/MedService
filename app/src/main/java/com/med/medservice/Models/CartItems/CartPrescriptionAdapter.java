@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.med.medservice.CartActivity;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.DosageDialog;
-import com.med.medservice.Utils.DosageList;
-import com.med.medservice.Utils.GlobalUrlApi;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.DosageDialog;
+import com.med.medservice.Diaglogs.DosageList;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
+import com.med.medservice.Diaglogs.ViewDialog;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -118,6 +118,15 @@ public class CartPrescriptionAdapter extends RecyclerView.Adapter<CartPrescripti
             holder.quantityLayout.setVisibility(View.GONE);
             holder.tagText.setText("Lab");
             holder.tagText.setBackgroundResource(R.color.purplesharp);
+
+        }
+        else if (type.equals("imaging")){
+
+            holder.cartImageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.imaging_simple2));
+
+            holder.quantityLayout.setVisibility(View.GONE);
+            holder.tagText.setText("Imaging");
+            holder.tagText.setBackgroundResource(R.color.orangeDark);
 
         }
 

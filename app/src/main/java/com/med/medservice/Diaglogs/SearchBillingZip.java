@@ -1,4 +1,4 @@
-package com.med.medservice.Utils;
+package com.med.medservice.Diaglogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -19,8 +19,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.CheckoutActivity;
+import com.med.medservice.Diaglogs.ViewDialog;
 import com.med.medservice.Models.ZipCityState.ZipCityAdapter;
 import com.med.medservice.Models.ZipCityState.ZipCityList;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.R;
 
 import org.json.JSONArray;

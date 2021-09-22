@@ -1,12 +1,10 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,13 +15,8 @@ import android.view.animation.AnimationUtils;
 
 import com.med.medservice.Models.PatientAppointments.AppointmentAdapter;
 import com.med.medservice.Models.PatientAppointments.AppointmentList;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
-import com.med.medservice.Models.SessionsPatient.SessionsAdapter;
-import com.med.medservice.Models.SessionsPatient.SessionsList;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONArray;

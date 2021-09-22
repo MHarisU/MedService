@@ -1,25 +1,18 @@
 package com.med.medservice.Models.Orders;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
-import com.med.medservice.OrderDetailActivity;
 import com.med.medservice.R;
-import com.med.medservice.SubcategoryProductsActivity;
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;

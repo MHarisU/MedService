@@ -1,4 +1,4 @@
-package com.med.medservice.Utils;
+package com.med.medservice.Diaglogs;
 
 public class DosageList {
     String prescription_id;

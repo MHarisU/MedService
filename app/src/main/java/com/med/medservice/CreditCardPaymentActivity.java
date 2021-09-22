@@ -25,7 +25,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.med.medservice.Models.OnlineDoctors.OnlineDoctorsList;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONException;

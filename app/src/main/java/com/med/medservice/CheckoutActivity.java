@@ -52,11 +52,11 @@ import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
 import com.med.medservice.Models.CartItems.CartItemsList;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
-import com.med.medservice.Utils.SearchBillingZip;
-import com.med.medservice.Utils.SearchLabDialogCheck;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
+import com.med.medservice.Diaglogs.SearchBillingZip;
+import com.med.medservice.Diaglogs.SearchLabDialogCheck;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;

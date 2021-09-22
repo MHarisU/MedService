@@ -33,14 +33,11 @@ import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.med.medservice.Models.DoctorAppointments.DocAppointmentAdapter;
-import com.med.medservice.Models.PatientAppointments.AppointmentAdapter;
 import com.med.medservice.Models.PatientAppointments.AppointmentList;
-import com.med.medservice.Models.ProductLabs.LabHorizAdapter;
-import com.med.medservice.Models.ProductLabs.LabsList;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,8 +50,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DoctorCalendarScheduleActivity extends AppCompatActivity {
 

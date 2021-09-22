@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -22,18 +23,15 @@ import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.Models.Category.CategorySquareAdapter;
 import com.med.medservice.Models.ProductImaging.ImagingList;
 import com.med.medservice.Models.ProductImaging.ImagingListAdapter;
-import com.med.medservice.Models.ProductLabs.LabsList;
-import com.med.medservice.Models.ProductLabs.LabsListAdapter;
-import com.med.medservice.Utils.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class ImagingActivity extends AppCompatActivity {
@@ -49,9 +47,9 @@ public class ImagingActivity extends AppCompatActivity {
     CardView cardProgress;
     LinearLayout layoutMain;
 
-    CartDBHelper mydb;
+   // CartDBHelper mydb;
 
-    TextView cartNumberView;
+  //  TextView cartNumberView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +60,10 @@ public class ImagingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_imaging);
 
 
-        cartNumberView = findViewById(R.id.cartNumberView);
-        mydb = new CartDBHelper(this);
+       // cartNumberView = findViewById(R.id.cartNumberView);
+       // mydb = new CartDBHelper(this);
 
-        UpdateCart();
+        //UpdateCart();
 
 
         cardProgress = findViewById(R.id.cardProgress);
@@ -164,7 +162,7 @@ public class ImagingActivity extends AppCompatActivity {
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
 
-        new ApiTokenCaller(ImagingActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=imaging&limit=10",
+        new ApiTokenCaller(ImagingActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getSearchProducts?keyword=MRI&limit=10&mode=imaging",
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -211,7 +209,7 @@ public class ImagingActivity extends AppCompatActivity {
                             }
 
 
-                            Collections.reverse(popularLabsList);
+                            //Collections.reverse(popularLabsList);
 
                             ImagingListAdapter adapter = new ImagingListAdapter(popularLabsList, ImagingActivity.this);
                             popularLabsRecycler.setAdapter(adapter);
@@ -221,7 +219,7 @@ public class ImagingActivity extends AppCompatActivity {
                                     R.anim.slide_up);
                             cardProgress.setVisibility(View.GONE);
                             layoutMain.setVisibility(View.VISIBLE);
-                            layoutMain.startAnimation(slide_up);
+                           // layoutMain.startAnimation(slide_up);
 
 
                         } catch (JSONException e) {
@@ -239,7 +237,7 @@ public class ImagingActivity extends AppCompatActivity {
 
     private void GetCategories() {
         categoryRecycler = findViewById(R.id.categoryRecycler);
-        categoryRecycler.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.HORIZONTAL, false));
+        categoryRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         categoryList = new ArrayList<CategoryList>();
         categoryRecycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             GestureDetector gestureDetector = new GestureDetector(getApplicationContext(),
@@ -258,7 +256,7 @@ public class ImagingActivity extends AppCompatActivity {
 
                     CategoryList selectedCategory = categoryList.get(GetItemPosition);
 
-                    Intent i = new Intent(getApplicationContext(), LabsCategoryActivity.class);
+                    Intent i = new Intent(getApplicationContext(), ImagingCategoryActivity.class);
                     i.putExtra("selectedCategory", selectedCategory);
                     startActivity(i);
 
@@ -321,6 +319,7 @@ public class ImagingActivity extends AppCompatActivity {
 
     }
 
+/*
 
     public void UpdateCart() {
 
@@ -332,6 +331,7 @@ public class ImagingActivity extends AppCompatActivity {
         }
 
     }
+*/
 
     public void Close(View view) {
         finish();
@@ -343,7 +343,7 @@ public class ImagingActivity extends AppCompatActivity {
 
     public void openSearch(View view) {
         Intent intent = new Intent(ImagingActivity.this, SearchActivity.class);
-        intent.putExtra("from", "pharmacy");
+        intent.putExtra("from", "imaging");
         startActivity(intent);
     }
 }

@@ -1,26 +1,29 @@
-package com.med.medservice.Utils;
+package com.med.medservice;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.text.Editable;
-import android.text.TextWatcher;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.med.medservice.Models.Category.CategoryList;
+import com.med.medservice.Models.ProductImaging.ImagingList;
+import com.med.medservice.Models.ProductImaging.ImagingListAdapter;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.Models.ProductLabs.LabsListAdapter;
-import com.med.medservice.Models.ProductLabs.LabsSearchAdapter;
-import com.med.medservice.R;
-import com.med.medservice.SearchActivity;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
+import com.med.medservice.Utils.CartDBHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,97 +31,63 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SearchLabDialog {
+public class ImagingCategoryActivity extends AppCompatActivity {
 
-    ArrayList<LabsList> popularLabsList;
-    RecyclerView popularMedsRecycler;
-    EditText searchEditView;
 
-    int queryCount = 0;
+    ArrayList<ImagingList> popularLabsList;
+    RecyclerView popularLabsRecycler;
 
-    String from;
+    CardView cardProgress;
+    LinearLayout layoutMain;
 
-    Dialog dialog;
-    Context context;
+    CategoryList selectedCategory;
 
-    public SearchLabDialog() {
+    CartDBHelper mydb;
+    TextView cartNumberView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_imaging_category);
+
+
+        Intent intent = getIntent();
+        selectedCategory = (CategoryList) intent.getSerializableExtra("selectedCategory");
+
+        cartNumberView = findViewById(R.id.cartNumberView);
+        mydb = new CartDBHelper(this);
+      //  UpdateCart();
+
+
+        cardProgress = findViewById(R.id.cardProgress);
+        layoutMain = findViewById(R.id.layoutMain);
+
+
+        try {
+
+
+            GetPopular();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void showSearchLabsDialog(final Context activity) {
-        context = activity;
-        dialog = new Dialog(activity);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.search_labs_dialog_layout);
+    private void GetPopular() {
 
 
-        ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-
-        searchEditView = (EditText) dialog.findViewById(R.id.searchEditView);
-        searchEditView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                String query = searchEditView.getText().toString();
-
-                if (queryCount > 1) {
-
-                    queryCount = 0;
-                    if (!query.equals("")) {
-                        popularMedsRecycler = null;
-                        popularLabsList = null;
-                        SearchLabsQuery(new GlobalUrlApi().getNewBaseUrl() + "getSearchProducts?keyword="+query+"&limit=100&mode=lab-test");
-                    } else {
-                        SearchLabsQuery(new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=lab-test");
-
-                    }
-                } else {
-                    queryCount++;
-                }
-
-            }
-        });
-
-        SearchLabsQuery(new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=lab-test");
-
-
-        dialog.show();
-        Window window = dialog.getWindow();
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-
-    }
-
-
-    private void SearchLabsQuery(String SearchURL) {
-
-        popularMedsRecycler = null;
-        popularLabsList = null;
-
-        popularMedsRecycler = (RecyclerView) dialog.findViewById(R.id.medicinesSearchRecycler);
+        popularLabsRecycler = findViewById(R.id.medicinesInCategoryRecycler);
         // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        popularMedsRecycler.setLayoutManager(new LinearLayoutManager(context));
-        popularLabsList = new ArrayList<LabsList>();
+        popularLabsRecycler.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
+        popularLabsList = new ArrayList<ImagingList>();
 
         //old api
         /*
-        ApiCallerNew asyncTask = new ApiCallerNew(SearchURL,
+
+        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_lab_by_category.php?cat_id="+selectedCategory.getCategory_id(),
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
@@ -149,29 +118,47 @@ public class SearchLabDialog {
 
                                         popularLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
                                                 quantity, short_description, description, stock_status));
+
+
                                     }
+
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+
                             } catch (NullPointerException e) {
                                 e.printStackTrace();
                             }
+
+
                         } catch (Exception e) {
                             Log.d("EXCEPTION", e.toString());
 
                         }
 
-                        LabsSearchAdapter adapter = new LabsSearchAdapter(popularLabsList, context);
-                        popularMedsRecycler.setAdapter(adapter);
+
+                        LabsListAdapter adapter = new LabsListAdapter(popularLabsList, LabsCategoryActivity.this);
+                        popularLabsRecycler.setAdapter(adapter);
+
+
+                        Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                                R.anim.slide_up);
+                        cardProgress.setVisibility(View.GONE);
+                        layoutMain.setVisibility(View.VISIBLE);
+                        layoutMain.startAnimation(slide_up);
+
+
                     }
+
                 });
+
         // asyncTask.execute();
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 */
 
 
-        new ApiTokenCaller(context, SearchURL,
+        new ApiTokenCaller(ImagingCategoryActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?parent_category="+selectedCategory.getCategory_id(),
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -191,26 +178,43 @@ public class SearchLabDialog {
 
                                 String id = child.getString("id");
                                 String name = child.getString("name");
-                                String panel_name = child.getString("panel_name");
+                                String slug = child.getString("slug");
                                 String parent_category = child.getString("parent_category");
                                 String sub_category = child.getString("sub_category");
                                 String featured_image = child.getString("featured_image");
                                 String sale_price = child.getString("sale_price");
                                 String regular_price = child.getString("regular_price");
                                 String quantity = child.getString("quantity");
+                                String mode = child.getString("mode");
+                                String medicine_type = child.getString("medicine_type");
+                                String is_featured = child.getString("is_featured");
                                 String short_description = child.getString("short_description");
                                 String description = child.getString("description");
+                                String cpt_code = child.getString("cpt_code");
+                                String test_details = child.getString("test_details");
+                                String including_test = child.getString("including_test");
                                 String stock_status = child.getString("stock_status");
 
-                                popularLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
-                                        quantity, short_description, description, stock_status));
+
+
+                                popularLabsList.add(new ImagingList(Integer.parseInt(id), name, slug, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                        quantity, mode, medicine_type, is_featured, short_description, description,
+                                        cpt_code, test_details, including_test, stock_status));
 
 
                             }
 
 
-                            LabsSearchAdapter adapter = new LabsSearchAdapter(popularLabsList, context);
-                            popularMedsRecycler.setAdapter(adapter);
+
+
+                            ImagingListAdapter adapter = new ImagingListAdapter(popularLabsList, ImagingCategoryActivity.this);
+                            popularLabsRecycler.setAdapter(adapter);
+
+
+                            Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                                    R.anim.slide_up);
+                            cardProgress.setVisibility(View.GONE);
+                            layoutMain.setVisibility(View.VISIBLE);
 
 
                         } catch (JSONException e) {
@@ -222,6 +226,23 @@ public class SearchLabDialog {
                     }
                 }
         );
+
+
     }
 
+    public void OpenCart(View view) {
+        startActivity(new Intent(getApplicationContext(), CartActivity.class));
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+       // UpdateCart();
+    }
+
+
+    public void Close(View view) {
+        finish();
+    }
 }

@@ -1,4 +1,4 @@
-package com.med.medservice.Utils;
+package com.med.medservice.Diaglogs;
 
 import android.app.Dialog;
 import android.content.Context;

@@ -35,18 +35,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.med.medservice.Models.OnlineDoctors.OnlineDoctorAdapter;
-import com.med.medservice.Models.OnlineDoctors.OnlineDoctorsList;
+import com.med.medservice.Diaglogs.SearchImagingDialog;
 import com.med.medservice.Models.SessionsVideoCall_OldApi.SessionsAdapter_OldApi;
 import com.med.medservice.Models.SessionsVideoCall_OldApi.SessionsList_OldApi;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.OpenPrescribedItems;
-import com.med.medservice.Utils.SearchLabDialog;
-import com.med.medservice.Utils.SearchMedicineDialog;
-import com.med.medservice.Utils.SearchPharmaciesDialog;
+import com.med.medservice.Diaglogs.SearchLabDialog;
+import com.med.medservice.Diaglogs.SearchMedicineDialog;
+import com.med.medservice.Diaglogs.SearchPharmaciesDialog;
 import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONArray;
@@ -624,7 +623,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
     private void GetPatientMedicalHistory(String pat_id) {
 
-        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_pat_medical_history.php?id=" + pat_id,
+        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "getMedicalProfile?user_id=" + pat_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
@@ -700,7 +699,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
     private void GetPatientAge(String pat_id) {
 
 
-        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_user_details.php?id=" + pat_id,
+        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "getUserProfile?id=" + pat_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
@@ -869,6 +868,9 @@ public class DoctorVideoActivity extends AppCompatActivity {
                     //   Intent intent = new Intent(DoctorVideoActivity.this, ChangePasswordActivity.class);
                     //   startActivity(intent);
 
+                    SearchImagingDialog searchImagingDialog = new SearchImagingDialog();
+                    searchImagingDialog.showSearchImagingDialog(DoctorVideoActivity.this);
+
                 }
 
                 return true;
@@ -884,8 +886,8 @@ public class DoctorVideoActivity extends AppCompatActivity {
 
         if (!patInfoCheck) {
 
-            GetPatientAge(pat_id);
-            GetPatientMedicalHistory(pat_id);
+           // GetPatientAge(pat_id);
+           // GetPatientMedicalHistory(pat_id);
 
             patInfoLayout.setVisibility(View.VISIBLE);
             prescriptionLayout.setVisibility(View.GONE);

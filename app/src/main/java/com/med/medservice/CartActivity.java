@@ -8,7 +8,6 @@ import android.animation.Animator;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -19,9 +18,7 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.med.medservice.Models.CartItems.CartAdapter;
 import com.med.medservice.Models.CartItems.CartItemsList;
-import com.med.medservice.Models.ProductMedicine.MedicineAdapter;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.ViewDialog;
 
 import java.util.ArrayList;
 
@@ -90,10 +87,13 @@ public class CartActivity extends AppCompatActivity {
 
     public void CalculateTotal(ArrayList<CartItemsList> cartItemsLists) {
 
+        Log.d("cartItems", "Items in cart: "+cartItemsLists.size());
 
         TextView subTotalPrice = findViewById(R.id.subTotalPrice);
         TextView totalPrice = findViewById(R.id.totalPrice);
         TextView shippingTextView = findViewById(R.id.shippingTextView);
+
+        Total = 0;
 
 
         for (int i = 0; i < cartItemsLists.size(); i++) {

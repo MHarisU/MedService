@@ -1,13 +1,11 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,15 +13,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,17 +30,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.med.medservice.Models.CartItems.CartItemsList;
-import com.med.medservice.Models.ProductLabs.LabHorizAdapter;
-import com.med.medservice.Models.ProductLabs.LabsList;
-import com.med.medservice.Models.SessionsPatient.SessionsAdapter;
-import com.med.medservice.Models.SessionsPatient.SessionsList;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.SymptomSelectorDialogFragment;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.SymptomSelectorDialogFragment;
+import com.med.medservice.Diaglogs.ViewDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;

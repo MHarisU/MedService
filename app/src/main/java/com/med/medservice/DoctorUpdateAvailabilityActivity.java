@@ -12,26 +12,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.applandeo.materialcalendarview.EventDay;
 import com.med.medservice.Models.DoctorAppointments.DocAppointmentAdapter;
-import com.med.medservice.Models.PatientAppointments.AppointmentAdapter;
 import com.med.medservice.Models.PatientAppointments.AppointmentList;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 
 public class DoctorUpdateAvailabilityActivity extends AppCompatActivity {

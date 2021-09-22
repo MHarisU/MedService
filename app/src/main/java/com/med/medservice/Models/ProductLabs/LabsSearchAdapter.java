@@ -18,8 +18,6 @@ import com.med.medservice.LabDetailActivity;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.UpdateCartInterface;
-import com.med.medservice.Utils.ViewDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;

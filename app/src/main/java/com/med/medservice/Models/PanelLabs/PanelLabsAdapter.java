@@ -2,8 +2,6 @@ package com.med.medservice.Models.PanelLabs;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,19 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.LabDetailActivity;
-import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.R;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class PanelLabsAdapter extends RecyclerView.Adapter<PanelLabsAdapter.LabsHolder> {
 

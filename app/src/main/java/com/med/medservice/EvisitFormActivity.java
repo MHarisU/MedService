@@ -27,11 +27,10 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.med.medservice.Models.OnlineDoctors.OnlineDoctorsList;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.SymptomSelectorDialogFragment;
+import com.med.medservice.Diaglogs.SymptomSelectorDialogFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;

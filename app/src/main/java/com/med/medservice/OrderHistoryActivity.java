@@ -9,18 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.med.medservice.Models.Orders.Billing;
 import com.med.medservice.Models.Orders.CartItem;
 import com.med.medservice.Models.Orders.OrderAdapter;
 import com.med.medservice.Models.Orders.OrderList;
 import com.med.medservice.Models.Orders.Shipping;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONArray;
@@ -28,7 +24,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderHistoryActivity extends AppCompatActivity {
 

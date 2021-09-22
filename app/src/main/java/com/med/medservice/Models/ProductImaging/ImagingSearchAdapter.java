@@ -1,11 +1,9 @@
-package com.med.medservice.Models.ProductLabs;
+package com.med.medservice.Models.ProductImaging;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,21 +15,20 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.LabDetailActivity;
+import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.UpdateCartInterface;
-import com.med.medservice.Diaglogs.ViewDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHolder> {
+public class ImagingSearchAdapter extends RecyclerView.Adapter<ImagingSearchAdapter.ImagingHolder> {
 
 
-    ArrayList<LabsList> list;
+    ArrayList<ImagingList> list;
     Context context;
     View view;
 
@@ -42,10 +39,13 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
     String name, user_id, email;
     SessionManager sessionManager;
 
-    public LabsListAdapter() {
+    boolean checkAdded = false;
+
+
+    public ImagingSearchAdapter() {
     }
 
-    public LabsListAdapter(ArrayList<LabsList> list, Context context) {
+    public ImagingSearchAdapter(ArrayList<ImagingList> list, Context context) {
         this.list = list;
         this.context = context;
 
@@ -60,25 +60,23 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
 
     @NonNull
     @Override
-    public LabsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(context).inflate(R.layout.labs_list_row, parent, false);
+    public ImagingHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        view = LayoutInflater.from(context).inflate(R.layout.lab_search_row, parent, false);
 
 
-        return new LabsHolder(view);
+        return new ImagingHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final LabsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ImagingHolder holder, int position) {
 
-        final LabsList currentData = list.get(position);
+        final ImagingList currentData = list.get(position);
 
-        final String lab_id = currentData.getLab_id();
-        final String lab_name = currentData.getLab_name();
-        final String lab_desc = currentData.getLab_short_desc();
-        final String lab_price = currentData.getLab_sale_price();
-        final String lab_regular_price = currentData.getLab_regular_price();
-
-        final String lab_image = currentData.getLab_image();
+        final String lab_id = String.valueOf(currentData.getId());
+        final String lab_name = currentData.getName();
+        final String lab_desc = currentData.getShort_description();
+        final String lab_price = currentData.getRegular_price();
+        final String lab_image = currentData.getFeatured_image();
 
         //   category_name = category_name.replace("&#8211;", "-");
 
@@ -119,44 +117,16 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
 
          */
 
-        holder.lab_image_view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.flask_icon));
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            holder.lab_name_view.setText(Html.fromHtml(lab_name, Html.FROM_HTML_MODE_COMPACT));
-            holder.lab_short_desc.setText(Html.fromHtml(lab_desc, Html.FROM_HTML_MODE_COMPACT));
-
-        } else {
-
-            holder.lab_name_view.setText(Html.fromHtml(lab_name));
-            holder.lab_short_desc.setText(Html.fromHtml(lab_desc));
-        }
+        holder.lab_image_view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.imaging_simple2));
 
 
-        if (lab_price != null && !lab_price.equals("null") && !lab_price.equals("")) {
-            holder.lab_price_view.setText("$" + lab_price + "");
-
-        } else
-            holder.lab_price_view.setText("$" + lab_regular_price + "");
-
-        //holder.lab_price_view.setText("$" + lab_price + ".00");
+        holder.lab_name_view.setText(lab_name);
+        holder.lab_short_desc.setText(lab_desc);
+        holder.lab_price_view.setText("$" + lab_price + ".00");
 
         holder.lab_name_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String sentence = holder.lab_name_view.getText().toString();
-                String search  = "Panel";
-
-                if ( sentence.toLowerCase().indexOf(search.toLowerCase()) != -1 ) {
-
-                    System.out.println("I found the keyword");
-
-                } else {
-
-                    System.out.println("not found");
-
-                }
-
                 Intent intent = new Intent(context, LabDetailActivity.class);
                 intent.putExtra("selectedLab", currentData);
                 context.startActivity(intent);
@@ -166,20 +136,6 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
         holder.lab_image_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String sentence = holder.lab_name_view.getText().toString();
-                String search  = "Panel";
-
-                if ( sentence.toLowerCase().indexOf(search.toLowerCase()) != -1 ) {
-
-                    System.out.println("I found the keyword");
-
-                } else {
-
-                    System.out.println("not found");
-
-                }
-
                 Intent intent = new Intent(context, LabDetailActivity.class);
                 intent.putExtra("selectedLab", currentData);
                 context.startActivity(intent);
@@ -190,17 +146,32 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
             @Override
             public void onClick(View view) {
 
+                if (!checkAdded) {
+
+                    mydb.insertCartItem(user_id, lab_id, lab_name, "1", (lab_price!=null && !lab_price.equals(""))?lab_price:"120", "0", "imaging", lab_image);
+                    holder.lab_add_cart_view.setBackgroundResource(R.color.skybluedark);
+                    holder.lab_add_cart_view.setText("Added");
+                    checkAdded = true;
+                } else {
+                    holder.lab_add_cart_view.setBackgroundResource(R.color.Black50);
+                    holder.lab_add_cart_view.setText("Add");
+
+                    checkAdded = false;
+                    mydb.removeItemId(Integer.parseInt(lab_id));
+
+                }
+
+                /*
                 mydb.insertCartItem(user_id, lab_id, lab_name, "1", lab_price, "0", "lab-test", lab_image);
 
-                /*ViewDialog alert = new ViewDialog();
-                alert.showDialog(context, "Lab added in Cart");*/
-
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(context, "" + lab_name + "\nAdded in Cart");
+                alert.showDialog(context, "Lab added in Cart");
 
                 if (context instanceof UpdateCartInterface) {
                     ((UpdateCartInterface) context).UpdateCart();
                 }
+
+                 */
             }
         });
 
@@ -212,7 +183,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
     }
 
 
-    public class LabsHolder extends RecyclerView.ViewHolder {
+    public class ImagingHolder extends RecyclerView.ViewHolder {
 
         TextView lab_name_view;
         TextView lab_short_desc;
@@ -221,7 +192,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
         TextView lab_add_cart_view;
 
 
-        public LabsHolder(@NonNull View itemView) {
+        public ImagingHolder(@NonNull View itemView) {
             super(itemView);
 
             lab_name_view = itemView.findViewById(R.id.medicine_name_view);

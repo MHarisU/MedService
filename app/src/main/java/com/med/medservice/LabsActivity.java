@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -22,14 +21,12 @@ import android.widget.TextView;
 
 import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.Models.Category.CategorySquareAdapter;
-import com.med.medservice.Models.ProductLabs.LabHorizAdapter;
 import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.Models.ProductLabs.LabsListAdapter;
 import com.med.medservice.Models.ProductLabs.LabsPanelAdapter;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.UpdateCartInterface;
 
 import org.json.JSONArray;
@@ -39,8 +36,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class LabsActivity extends AppCompatActivity implements UpdateCartInterface {
-
-
 
 
     ArrayList<CategoryList> categoryList;
@@ -214,7 +209,6 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                         }
 
 
-
                     }
                 }
         );
@@ -317,8 +311,8 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                                 String stock_status = child.getString("stock_status");
 
                                 if (!name.equals("Shahzaib Test Panel"))
-                                commonLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
-                                        quantity, short_description, description, stock_status));
+                                    commonLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                            quantity, short_description, description, stock_status));
 
 
                             }
@@ -336,7 +330,6 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
 
 
                     }
@@ -430,7 +423,7 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
-                        //Log.d("token_api_response", response);
+                        Log.d("token_api_response", response);
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -450,8 +443,18 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                                 String parent_category = child.getString("parent_category");
                                 String sub_category = child.getString("sub_category");
                                 String featured_image = child.getString("featured_image");
-                                String sale_price = child.getString("sale_price");
-                                String regular_price = child.getString("regular_price");
+                                String sale_price;
+                                if (child.getString("sale_price") != null && !child.getString("sale_price").equals("null")) {
+                                    sale_price = child.getString("sale_price");
+                                }else{
+                                    sale_price = "110.00";
+                                }
+                                String regular_price;
+                                if (child.getString("regular_price") != null && !child.getString("regular_price").equals("null")) {
+                                    regular_price = child.getString("regular_price");
+                                }else{
+                                    regular_price = "110.00";
+                                }
                                 String quantity = child.getString("quantity");
                                 String short_description = child.getString("short_description");
                                 String description = child.getString("description");
@@ -462,8 +465,6 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
 
 
                             }
-
-
 
 
                             LabsListAdapter adapter = new LabsListAdapter(popularLabsList, LabsActivity.this);
@@ -480,7 +481,6 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
 
 
                     }

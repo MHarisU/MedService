@@ -17,8 +17,8 @@ import android.widget.LinearLayout;
 
 import com.med.medservice.Models.SessionsPatient.SessionsAdapter;
 import com.med.medservice.Models.SessionsPatient.SessionsList;
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
 import org.json.JSONArray;

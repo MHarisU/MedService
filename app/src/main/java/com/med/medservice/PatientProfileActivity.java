@@ -17,10 +17,10 @@ import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -128,7 +128,7 @@ public class PatientProfileActivity extends AppCompatActivity {
                             }
 
 
-                            LoadMedicalHistoryUI();
+                            LoadMedicalHistoryUI(arrayData.length());
 
                             //   SessionsAdapter adapter = new SessionsAdapter(sessionsLists, PatientProfileActivity.this);
                             //   sessionsRecycler.setAdapter(adapter);
@@ -144,46 +144,53 @@ public class PatientProfileActivity extends AppCompatActivity {
         );
     }
 
-    private void LoadMedicalHistoryUI() throws JSONException {
+    private void LoadMedicalHistoryUI(int dataLength) throws JSONException {
 
-        TextView allergiesView, medicalHistoryView, familyHistory;
-        allergiesView = findViewById(R.id.allergiesView);
-        medicalHistoryView = findViewById(R.id.medicalHistoryView);
-        familyHistory = findViewById(R.id.familyHistory);
 
         CardView cardProgress = findViewById(R.id.cardProgress);
         CardView medicalInfoCard = findViewById(R.id.medicalInfoCard);
 
-        allergiesView.setText(allergies);
+        if (dataLength > 0) {
 
-        previous_symp = previous_symp.replace("hyper", " * Hyper");
-        previous_symp = previous_symp.replace("diab", " * Diab");
-        previous_symp = previous_symp.replace("canc", " * Canc");
-        previous_symp = previous_symp.replace("hear", " * Hear");
-        previous_symp = previous_symp.replace("ches", " * Chest");
 
-        previous_symp = previous_symp.replace("short", " * Short");
-        previous_symp = previous_symp.replace("swol", " * Swol");
-        previous_symp = previous_symp.replace("palp", " * Palp");
-        previous_symp = previous_symp.replace("stro", " * Stro");
+            TextView allergiesView, medicalHistoryView, familyHistory;
+            allergiesView = findViewById(R.id.allergiesView);
+            medicalHistoryView = findViewById(R.id.medicalHistoryView);
+            familyHistory = findViewById(R.id.familyHistory);
 
-        medicalHistoryView.setText(previous_symp.replace(",", "\n"));
 
-        family_history = family_history.replace("\\", "");
-        JSONArray familyArray = new JSONArray(family_history);
+            allergiesView.setText(allergies);
 
-        String family = "";
+            previous_symp = previous_symp.replace("hyper", " * Hyper");
+            previous_symp = previous_symp.replace("diab", " * Diab");
+            previous_symp = previous_symp.replace("canc", " * Canc");
+            previous_symp = previous_symp.replace("hear", " * Hear");
+            previous_symp = previous_symp.replace("ches", " * Chest");
 
-        for (int i = 0; i < familyArray.length(); i++) {
-            JSONObject object = familyArray.getJSONObject(i);
-            family = family +
-                    "Relation: " + object.getString("family") +"\n"+
-                    "Age: " + object.getString("age")+"\n"+
-                    "Disease: " + object.getString("disease")+"\n\n";
+            previous_symp = previous_symp.replace("short", " * Short");
+            previous_symp = previous_symp.replace("swol", " * Swol");
+            previous_symp = previous_symp.replace("palp", " * Palp");
+            previous_symp = previous_symp.replace("stro", " * Stro");
+
+            medicalHistoryView.setText(previous_symp.replace(",", "\n"));
+
+            family_history = family_history.replace("\\", "");
+            JSONArray familyArray = new JSONArray(family_history);
+
+            String family = "";
+
+            for (int i = 0; i < familyArray.length(); i++) {
+                JSONObject object = familyArray.getJSONObject(i);
+                family = family +
+                        "Relation: " + object.getString("family") + "\n" +
+                        "Age: " + object.getString("age") + "\n" +
+                        "Disease: " + object.getString("disease") + "\n\n";
+
+            }
+
+            familyHistory.setText(family);
 
         }
-
-        familyHistory.setText(family);
 
         cardProgress.setVisibility(View.GONE);
         medicalInfoCard.setVisibility(View.VISIBLE);
@@ -343,7 +350,7 @@ public class PatientProfileActivity extends AppCompatActivity {
     public void settingProfile(View view) {
         PopupMenu menu = new PopupMenu(this, view);
 
-     //   menu.getMenu().add("Change Profile");
+        //   menu.getMenu().add("Change Profile");
         menu.getMenu().add("Edit Account");
         menu.getMenu().add("Change Password");
 

@@ -1,4 +1,4 @@
-package com.med.medservice.Utils;
+package com.med.medservice.Diaglogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -18,13 +18,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.med.medservice.CartActivity;
 import com.med.medservice.DoctorVideoActivity;
-import com.med.medservice.Models.ProductLabs.LabsSearchAdapter;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Models.ProductMedicine.MedicineSearchAdapter;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesAdapter;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.R;
 
 import org.json.JSONArray;

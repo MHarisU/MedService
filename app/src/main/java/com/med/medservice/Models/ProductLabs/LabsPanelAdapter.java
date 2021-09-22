@@ -21,7 +21,7 @@ import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,6 +76,7 @@ public class LabsPanelAdapter extends RecyclerView.Adapter<LabsPanelAdapter.Labs
         final String lab_name = currentData.getLab_name();
         final String lab_desc = currentData.getLab_short_desc();
         final String lab_price = currentData.getLab_sale_price();
+        final String lab_regular_price = currentData.getLab_regular_price();
         final String lab_image = currentData.getLab_image();
 
         //   category_name = category_name.replace("&#8211;", "-");
@@ -129,7 +130,14 @@ public class LabsPanelAdapter extends RecyclerView.Adapter<LabsPanelAdapter.Labs
             holder.lab_short_desc.setText(Html.fromHtml(lab_desc));
         }
 
-        holder.lab_price_view.setText("$" + lab_price + ".00");
+
+        if (lab_price != null && !lab_price.equals("null") && !lab_price.equals("")) {
+            holder.lab_price_view.setText("$" + lab_price + "");
+
+        } else
+            holder.lab_price_view.setText("$" + lab_regular_price + "");
+
+       // holder.lab_price_view.setText("$" + lab_price + "");
 
         holder.lab_name_view.setOnClickListener(new View.OnClickListener() {
             @Override

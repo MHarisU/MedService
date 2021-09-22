@@ -1,17 +1,13 @@
 package com.med.medservice;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,14 +16,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
 import com.med.medservice.Models.SubCategory.SubCategoryList;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.UpdateCartInterface;
 
 import org.json.JSONArray;

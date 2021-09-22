@@ -9,17 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.AppointmentDetailActivity;
-import com.med.medservice.CartActivity;
-import com.med.medservice.MedDetailActivity;
-import com.med.medservice.Models.CartItems.CartItemsList;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.ViewDialog;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

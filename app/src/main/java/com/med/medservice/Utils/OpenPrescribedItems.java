@@ -1,15 +1,9 @@
 package com.med.medservice.Utils;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,10 +18,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.med.medservice.BookAppointmentActivity;
+import com.med.medservice.Diaglogs.DosageList;
 import com.med.medservice.DoctorVideoActivity;
 import com.med.medservice.Models.CartItems.CartItemsList;
 import com.med.medservice.Models.CartItems.CartPrescriptionAdapter;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.PrescriptionActivity;
 import com.med.medservice.R;
 

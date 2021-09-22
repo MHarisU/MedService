@@ -9,22 +9,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.med.medservice.Utils.ApiTokenCaller;
 import com.med.medservice.Utils.AuthService;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
 import com.med.medservice.Utils.MyCountDownTimer;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
@@ -315,6 +309,11 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
 
     public void OpenComingSoon(View view) {
         startActivity(new Intent(PatientMainActivity.this, ComingSoonActivity.class));
+
+    }
+
+    public void OpenImaging(View view) {
+        startActivity(new Intent(PatientMainActivity.this, ImagingActivity.class));
 
     }
 

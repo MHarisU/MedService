@@ -1,7 +1,6 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,19 +17,16 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.med.medservice.Models.PanelLabs.PanelLabsAdapter;
 import com.med.medservice.Models.PanelLabs.PanelLabsList;
 import com.med.medservice.Models.ProductLabs.LabsList;
-import com.med.medservice.Models.ProductMedicine.MedicineList;
-import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
-import com.med.medservice.Utils.ApiCallerNew;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -140,7 +136,7 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
         FetchPanels();
 
 
-        labsPriceView.setText("$" + lab_price + ".00");
+        labsPriceView.setText("$" + lab_price + "");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             labsShortDesc.setText(Html.fromHtml(lab_desc, Html.FROM_HTML_MODE_COMPACT));
@@ -279,7 +275,7 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
 
     public void AddToCart(View view) {
 
-        mydb.insertCartItem(user_id, lab_id, lab_name, ProductQuantity.getText().toString(), lab_price, "0", "lab-test", lab_image);
+        mydb.insertCartItem(user_id, lab_id, lab_name, ProductQuantity.getText().toString().trim(), lab_price, "0", "lab-test", lab_image);
 
         ViewDialog alert = new ViewDialog();
         alert.showDialog(this, "(" + ProductQuantity.getText().toString() + ") " + lab_name + "\nAdded in Cart");

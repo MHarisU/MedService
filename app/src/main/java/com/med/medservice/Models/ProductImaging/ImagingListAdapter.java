@@ -16,13 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.ImagingDetailActivity;
-import com.med.medservice.LabDetailActivity;
-import com.med.medservice.Models.ProductLabs.LabsList;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;

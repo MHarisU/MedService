@@ -1,10 +1,8 @@
-package com.med.medservice.Utils;
+package com.med.medservice.Diaglogs;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -13,14 +11,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.med.medservice.CheckoutActivity;
+import com.med.medservice.DoctorVideoActivity;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesAdapter;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
+import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.R;
 
 import org.json.JSONArray;
@@ -29,7 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SearchLabDialogCheck {
+public class DosageDialog {
 
     ArrayList<PharmaciesList> pharmaciesList;
     RecyclerView pharmaciesRecycler;
@@ -45,61 +47,106 @@ public class SearchLabDialogCheck {
     Dialog dialog;
     Context context;
 
-    String type;
-
-    public SearchLabDialogCheck() {
+    public DosageDialog() {
     }
 
-    public void showSearchLabsDialog(final Context activity, String type) {
 
-        this.type = type;
+    public interface AsyncApiResponse {
+        void processFinish(String response);
+    }
+
+    public AsyncApiResponse delegate = null;
+
+    public void showDosageDialog(final Context activity, AsyncApiResponse delegate) throws JSONException {
+        this.delegate = delegate;
         context = activity;
         dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
-        dialog.setContentView(R.layout.search_pharmacies_dialog_layout);
+        dialog.setContentView(R.layout.dosage_dialog_layout);
 
 
         ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
+        CardView submitDosage = (CardView) dialog.findViewById(R.id.submitDosage);
+
+
+        RadioButton twentyFourHoursRadio = (RadioButton) dialog.findViewById(R.id.twentyFourHoursRadio);
+        RadioButton twelveHoursRadio = (RadioButton) dialog.findViewById(R.id.twelveHoursRadio);
+        RadioButton eightHoursRadio = (RadioButton) dialog.findViewById(R.id.eightHoursRadio);
+        RadioButton sixHoursRadio = (RadioButton) dialog.findViewById(R.id.sixHoursRadio);
+
+        EditText quantityEditView = (EditText) dialog.findViewById(R.id.quantityEditView);
+        EditText NumberOfDaysEditView = (EditText) dialog.findViewById(R.id.NumberOfDaysEditView);
+        EditText instructionEditView = (EditText) dialog.findViewById(R.id.instructionEditView);
+
+
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String day="24hrs";
+
+                if (twentyFourHoursRadio.isChecked()) {
+                    day = "24hrs";
+                } else if (twelveHoursRadio.isChecked()) {
+                    day = "12hrs";
+                } else if (eightHoursRadio.isChecked()) {
+                    day = "8hrs";
+                } else if (sixHoursRadio.isChecked()) {
+                    day = "6hrs";
+                }
+
+                String jsonString = null;
+                try {
+                    jsonString = new JSONObject()
+                            .put("comment", instructionEditView.getText().toString())
+                            .put("quantity", quantityEditView.getText().toString())
+                            .put("usage", "Dosage: Every "+day+" for "+NumberOfDaysEditView.getText().toString()+" day")
+                            .toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(jsonString);
+                delegate.processFinish(jsonString);
+
                 dialog.dismiss();
             }
         });
 
-        searchEditView = (EditText) dialog.findViewById(R.id.searchEditView);
-        searchEditView.addTextChangedListener(new TextWatcher() {
+        submitDosage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onClick(View view) {
 
-            }
+                String day="24hrs";
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                String query = searchEditView.getText().toString();
-
-                if (query.length() > 4) {
-
-                    queryCount = 0;
-                    if (!query.equals("")) {
-                        pharmaciesRecycler = null;
-                        pharmaciesList = null;
-                        SearchPharmaciesByZip(new GlobalUrlApi().getBaseUrl() + "get_lat_long_by_zip.php?zip=" + query);
-                    }
-                } else {
-                    queryCount++;
+                if (twentyFourHoursRadio.isChecked()) {
+                    day = "24hrs";
+                } else if (twelveHoursRadio.isChecked()) {
+                    day = "12hrs";
+                } else if (eightHoursRadio.isChecked()) {
+                    day = "8hrs";
+                } else if (sixHoursRadio.isChecked()) {
+                    day = "6hrs";
                 }
 
+                String jsonString = null;
+                try {
+                    jsonString = new JSONObject()
+                            .put("comment", instructionEditView.getText().toString())
+                            .put("quantity", quantityEditView.getText().toString())
+                            .put("usage", "Dosage: Every "+day+" for "+NumberOfDaysEditView.getText().toString()+" day")
+                            .toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(jsonString);
+                delegate.processFinish(jsonString);
+
+                dialog.dismiss();
             }
         });
-
 
         dialog.show();
         Window window = dialog.getWindow();
@@ -187,25 +234,12 @@ public class SearchLabDialogCheck {
                     String selected_Pharmacy_id = selectedPharmacy.getPharmacy_id();
                     String selected_Pharmacy_name = selectedPharmacy.getPharmacy_name();
                     String selected_Pharmacy_address = selectedPharmacy.getPharmacy_address();
-                    String selected_Pharmacy_lat = selectedPharmacy.getPharmacy_lat();
-                    String selected_Pharmacy_long = selectedPharmacy.getPharmacy_long();
 
-                    if (context instanceof CheckoutActivity) {
-
-                        if (type.equals("lab")) {
-                            ((CheckoutActivity) context).setLab(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
-                            ViewDialog viewDialog = new ViewDialog();
-                            dialog.dismiss();
-                            viewDialog.showDialog(context, "Lab selected");
-                        }
-                        else if (type.equals("med")){
-
-                            ((CheckoutActivity) context).setMed(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
-                            ((CheckoutActivity) context).setPharmacyMarker(selected_Pharmacy_name, selected_Pharmacy_lat, selected_Pharmacy_long);
-                            ViewDialog viewDialog = new ViewDialog();
-                            dialog.dismiss();
-                            viewDialog.showDialog(context, "Pharmacy selected");
-                        }
+                    if (context instanceof DoctorVideoActivity) {
+                        ((DoctorVideoActivity) context).setPharmacy(selected_Pharmacy_id, selected_Pharmacy_name, selected_Pharmacy_address);
+                        ViewDialog viewDialog = new ViewDialog();
+                        dialog.dismiss();
+                        viewDialog.showDialog(context, "Pharmacy selected");
                     }
 
 

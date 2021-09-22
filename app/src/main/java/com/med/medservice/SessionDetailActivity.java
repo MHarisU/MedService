@@ -1,7 +1,6 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,11 +14,9 @@ import android.widget.TextView;
 
 import com.med.medservice.Models.SessionItems.SessionsItemsAdapter;
 import com.med.medservice.Models.SessionItems.SessionsItemsList;
-import com.med.medservice.Models.SessionsPatient.SessionsAdapter;
 import com.med.medservice.Models.SessionsPatient.SessionsList;
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
-import com.med.medservice.Utils.SessionManager;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;

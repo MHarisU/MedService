@@ -641,7 +641,7 @@
                             android:layout_marginTop="20dp"
                             android:fontFamily="@font/open_sans_regular"
                             android:gravity="start"
-                            android:text="How is this test performed?"
+                            android:text="Imagings"
                             android:textColor="@color/Gray"
                             android:textSize="16sp"
                             android:textStyle="" />
@@ -656,13 +656,7 @@
                             android:fontFamily="@font/geo_sans_light"
                             android:gravity="start"
 
-                            android:text="This test is performed on a blood sample. The blood is obtained from the vein and this is performed by a healthcare provider in the following way.
-
-clean the skin
-put an elastic band above the area
-insert a needle into a vein (usually in the arm inside of the elbow or on the back of the hand)
-pull the blood sample into a vial or syringe
-take off the elastic band and remove the needle from the vein"
+                            android:text="Green Imaging is a full service virtual medical imaging network owned and operated by a group of board-certified radiologists. We help patients make the most informed decisions about MRIs, CTs, and other imaging procedures. Unlike other imaging facilities, the cash-pay price we provide is the final price you pay. There is no extra charge for the radiologist fee. You pay for your procedures up front, with no surprise bill after the fact."
                             android:textColor="@color/Gray"
                             android:textSize="16sp"
                             android:textStyle="" />

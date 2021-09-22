@@ -1,4 +1,4 @@
-package com.med.medservice.Utils;
+package com.med.medservice.NetworkAPI;
 
 import android.os.AsyncTask;
 

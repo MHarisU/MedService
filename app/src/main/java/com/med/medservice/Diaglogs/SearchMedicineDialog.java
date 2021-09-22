@@ -1,28 +1,24 @@
-package com.med.medservice;
+package com.med.medservice.Diaglogs;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
+import android.app.Dialog;
+import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.ImageView;
 
-import com.med.medservice.Models.Category.CategoryList;
-import com.med.medservice.Models.ProductLabs.LabsList;
-import com.med.medservice.Models.ProductLabs.LabsListAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.med.medservice.Models.ProductMedicine.MedicineList;
+import com.med.medservice.Models.ProductMedicine.MedicineSearchAdapter;
 import com.med.medservice.NetworkAPI.ApiTokenCaller;
-import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
-import com.med.medservice.Utils.UpdateCartInterface;
+import com.med.medservice.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,62 +26,99 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class LabsCategoryActivity extends AppCompatActivity implements UpdateCartInterface {
+public class SearchMedicineDialog {
 
+    ArrayList<MedicineList> popularMedsList;
+    RecyclerView popularMedsRecycler;
+    EditText searchEditView;
 
-    ArrayList<LabsList> popularLabsList;
-    RecyclerView popularLabsRecycler;
+    int queryCount = 0;
 
-    CardView cardProgress;
-    LinearLayout layoutMain;
+    String from;
 
-    CategoryList selectedCategory;
+    Dialog dialog;
+    Context context;
+    String session_id;
 
-    CartDBHelper mydb;
-    TextView cartNumberView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_labs_category);
-
-        Intent intent = getIntent();
-        selectedCategory = (CategoryList) intent.getSerializableExtra("selectedCategory");
-
-        cartNumberView = findViewById(R.id.cartNumberView);
-        mydb = new CartDBHelper(this);
-        UpdateCart();
-
-
-        cardProgress = findViewById(R.id.cardProgress);
-        layoutMain = findViewById(R.id.layoutMain);
-
-
-        try {
-
-
-            GetPopular();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+    public SearchMedicineDialog() {
     }
 
-    private void GetPopular() {
+    public void showSearchMedicineDialog(final Context activity, String session_id) {
+        context = activity;
+        this.session_id = session_id;
+        dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.search_medicine_dialog_layout);
 
 
-        popularLabsRecycler = findViewById(R.id.medicinesInCategoryRecycler);
+        ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        searchEditView = (EditText) dialog.findViewById(R.id.searchEditView);
+        searchEditView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                String query = searchEditView.getText().toString();
+
+                if (queryCount > 1) {
+
+                    queryCount = 0;
+                    if (!query.equals("")) {
+                        popularMedsRecycler = null;
+                        popularMedsList = null;
+                        SearchPharmacyQuery(new GlobalUrlApi().getNewBaseUrl() + "getSearchProducts?keyword="+query+"&limit=100&mode=medicine");
+                    } else {
+                        SearchPharmacyQuery(new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=medicine");
+
+                    }
+                } else {
+                    queryCount++;
+                }
+
+            }
+        });
+
+        SearchPharmacyQuery(new GlobalUrlApi().getNewBaseUrl() + "getProducts?mode=medicine");
+
+
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+    }
+
+    private void SearchPharmacyQuery(String SearchURL) {
+
+        popularMedsRecycler = null;
+        popularMedsList = null;
+
+        popularMedsRecycler = (RecyclerView) dialog.findViewById(R.id.medicinesSearchRecycler);
         // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        popularLabsRecycler.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+        popularMedsRecycler.setLayoutManager(new LinearLayoutManager(context));
+        popularMedsList = new ArrayList<MedicineList>();
 
-        popularLabsList = new ArrayList<LabsList>();
 
         //old api
         /*
-
-        ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_lab_by_category.php?cat_id="+selectedCategory.getCategory_id(),
+        ApiCallerNew asyncTask = new ApiCallerNew(SearchURL,
                 new ApiCallerNew.AsyncApiResponse() {
 
                     @Override
@@ -103,7 +136,6 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
                                         JSONObject child = parent.getJSONObject(i);
                                         String id = child.getString("id");
                                         String name = child.getString("name");
-                                        String panel_name = child.getString("panel_name");
                                         String parent_category = child.getString("parent_category");
                                         String sub_category = child.getString("sub_category");
                                         String featured_image = child.getString("featured_image");
@@ -114,7 +146,7 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
                                         String description = child.getString("description");
                                         String stock_status = child.getString("stock_status");
 
-                                        popularLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                        popularMedsList.add(new MedicineList(id, name, parent_category, sub_category, featured_image, sale_price, regular_price,
                                                 quantity, short_description, description, stock_status));
 
 
@@ -136,16 +168,8 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
                         }
 
 
-                        LabsListAdapter adapter = new LabsListAdapter(popularLabsList, LabsCategoryActivity.this);
-                        popularLabsRecycler.setAdapter(adapter);
-
-
-                        Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
-                                R.anim.slide_up);
-                        cardProgress.setVisibility(View.GONE);
-                        layoutMain.setVisibility(View.VISIBLE);
-                        layoutMain.startAnimation(slide_up);
-
+                        MedicineSearchAdapter adapter = new MedicineSearchAdapter(popularMedsList, context);
+                        popularMedsRecycler.setAdapter(adapter);
 
                     }
 
@@ -156,7 +180,7 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
 */
 
 
-        new ApiTokenCaller(LabsCategoryActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProducts?parent_category="+selectedCategory.getCategory_id(),
+        new ApiTokenCaller(context, SearchURL,
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -171,12 +195,15 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
 
 
                             for (int i = 0; i < arrayData.length(); i++) {
+
+
+
+
                                 JSONObject child = arrayData.getJSONObject(i);
 
 
                                 String id = child.getString("id");
                                 String name = child.getString("name");
-                                String panel_name = child.getString("panel_name");
                                 String parent_category = child.getString("parent_category");
                                 String sub_category = child.getString("sub_category");
                                 String featured_image = child.getString("featured_image");
@@ -187,7 +214,7 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
                                 String description = child.getString("description");
                                 String stock_status = child.getString("stock_status");
 
-                                popularLabsList.add(new LabsList(id, panel_name, name, parent_category, sub_category, featured_image, sale_price, regular_price,
+                                popularMedsList.add(new MedicineList(id, name, parent_category, sub_category, featured_image, sale_price, regular_price,
                                         quantity, short_description, description, stock_status));
 
 
@@ -195,17 +222,8 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
 
 
 
-
-
-                            LabsListAdapter adapter = new LabsListAdapter(popularLabsList, LabsCategoryActivity.this);
-                            popularLabsRecycler.setAdapter(adapter);
-
-
-                            Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
-                                    R.anim.slide_up);
-                            cardProgress.setVisibility(View.GONE);
-                            layoutMain.setVisibility(View.VISIBLE);
-                            layoutMain.startAnimation(slide_up);
+                            MedicineSearchAdapter adapter = new MedicineSearchAdapter(popularMedsList, context, session_id);
+                            popularMedsRecycler.setAdapter(adapter);
 
 
                         } catch (JSONException e) {
@@ -217,32 +235,6 @@ public class LabsCategoryActivity extends AppCompatActivity implements UpdateCar
                     }
                 }
         );
-
-
     }
 
-    public void OpenCart(View view) {
-        startActivity(new Intent(getApplicationContext(), CartActivity.class));
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        UpdateCart();
-    }
-
-    @Override
-    public void UpdateCart() {
-
-        if (mydb.numberOfRows() > 0) {
-            cartNumberView.setText("" + mydb.numberOfRows());
-        } else {
-            cartNumberView.setText("");
-        }
-    }
-
-    public void Close(View view) {
-        finish();
-    }
 }

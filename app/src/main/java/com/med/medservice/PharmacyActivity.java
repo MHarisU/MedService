@@ -7,11 +7,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -22,19 +19,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.med.medservice.Models.Category.CategoryAdapter;
 import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.Models.ProductMedicine.MedicineAdapter;
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Models.ProductMedicine.MedicineListAdapter;
-import com.med.medservice.Models.SubCategory.SubCategoryAdapter;
-import com.med.medservice.Models.SubCategory.SubCategoryList;
-import com.med.medservice.Utils.ApiCallerNew;
-import com.med.medservice.Utils.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.UpdateCartInterface;
 
 import org.json.JSONArray;
@@ -42,7 +35,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class PharmacyActivity extends AppCompatActivity implements UpdateCartInterface {
 

@@ -2,10 +2,7 @@ package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -17,10 +14,10 @@ import android.widget.TextView;
 
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.Diaglogs.ViewDialog;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -182,10 +179,10 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
     public void AddToCart(View view) {
 
         if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")) {
-            mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price_sale, "0", "medicine", medicine_image);
+            mydb.insertCartItem(user_id, medicine_id, medicine_name, ProductQuantity.getText().toString().trim(), medicine_price_sale, "0", "medicine", medicine_image);
 
         } else
-            mydb.insertCartItem(user_id, medicine_id, medicine_name, "1", medicine_price, "0", "medicine", medicine_image);
+            mydb.insertCartItem(user_id, medicine_id, medicine_name, ProductQuantity.getText().toString().trim(), medicine_price, "0", "medicine", medicine_image);
 
 
         ViewDialog alert = new ViewDialog();

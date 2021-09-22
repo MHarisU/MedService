@@ -1,9 +1,6 @@
 package com.med.medservice.Models.CartItems;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +13,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.med.medservice.CartActivity;
-import com.med.medservice.Models.Category.CategoryList;
 import com.med.medservice.R;
 import com.med.medservice.Utils.CartDBHelper;
-import com.med.medservice.Utils.GlobalUrlApi;
-import com.med.medservice.Utils.ViewDialog;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
+import com.med.medservice.Diaglogs.ViewDialog;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder> {
 
@@ -100,6 +94,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder> {
             holder.quantityLayout.setVisibility(View.GONE);
             holder.tagText.setText("Lab");
             holder.tagText.setBackgroundResource(R.color.purplesharp);
+
+        }
+
+        else if (type.equals("imaging")){
+
+            holder.cartImageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.imaging_simple2));
+
+            holder.quantityLayout.setVisibility(View.GONE);
+            holder.tagText.setText("Imaging");
+            holder.tagText.setBackgroundResource(R.color.orangeDark);
 
         }
 

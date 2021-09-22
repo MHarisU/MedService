@@ -11,16 +11,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.med.medservice.Models.Orders.Billing;
 import com.med.medservice.Models.Orders.CartItem;
-import com.med.medservice.Models.Orders.OrderAdapter;
 import com.med.medservice.Models.Orders.OrderItemsAdapter;
 import com.med.medservice.Models.Orders.OrderList;
 import com.med.medservice.Models.Orders.Shipping;
-import com.med.medservice.Utils.ApiTokenCaller;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;

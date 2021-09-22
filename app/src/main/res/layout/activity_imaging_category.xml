@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ImagingActivity">
+    tools:context=".ImagingCategoryActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,11 +44,12 @@
 
                 <TextView
 
+                    android:id="@+id/categoryNameView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/geo_sans_light"
                     android:gravity="center"
-                    android:text="Imaging"
+                    android:text="Category"
                     android:textColor="@color/White"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -59,9 +60,10 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:visibility="gone"
 
+        <RelativeLayout
+
+            android:visibility="gone"
             android:padding="5dp"
             android:onClick="OpenCart"
             android:layout_alignParentEnd="true"
@@ -95,30 +97,28 @@
         android:layout_marginTop="0dp"
         android:background="@color/Black" />
 
+
+
     <androidx.cardview.widget.CardView
-        android:padding="5dp"
         android:id="@+id/cardProgress"
         android:layout_marginBottom="30dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        app:cardCornerRadius="25dp"
+        app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
         >
 
         <ProgressBar
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_width="59dp"
+            android:layout_height="match_parent" />
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
+
             android:visibility="gone"
             android:id="@+id/layoutMain"
             android:layout_width="match_parent"
@@ -126,51 +126,104 @@
             android:orientation="vertical">
 
 
-
-            <androidx.cardview.widget.CardView
-
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="center_vertical"
-                android:onClick="openSearch"
-                app:cardCornerRadius="25dp"
-                app:cardElevation="4dp">
 
-                <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <LinearLayout
+
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1.4"
+                    android:orientation="vertical">
 
 
-                    <TextView
+                    <LinearLayout
+
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="20sp"
-                        android:layout_toLeftOf="@+id/searchButton"
-                        android:background="@color/Transparent"
-                        android:fontFamily="@font/open_sans_regular"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="start"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+
+
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:fontFamily="@font/geo_sans_light"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:text="Hey,"
+                            android:textColor="@color/Gray"
+                            android:textSize="20sp"
+                            android:textStyle="" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:fontFamily="@font/geo_sans_light"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:text="Haris"
+                            android:textColor="@color/Gray"
+                            android:textSize="22sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
                         android:gravity="center_vertical"
-                        android:hint=" Search"
-                        android:textSize="15sp" />
+                        android:orientation="horizontal">
 
 
-                    <ImageView
-                        android:id="@+id/searchButton"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="10dp"
-                        android:padding="5dp"
-                        android:src="@drawable/ic_search" />
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:fontFamily="@font/geo_sans_light"
+                            android:gravity="start"
+                            android:text="Let's get your Medicines"
+                            android:textColor="@color/Gray"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
 
-                </RelativeLayout>
+                    </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/pharmacy_banner_new" />
+
+            </LinearLayout>
 
             <LinearLayout
 
@@ -178,7 +231,61 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:gravity="start"
+                    android:text="HOME >"
+                    android:textColor="@color/Gray"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:gravity="start"
+                    android:text="Imaging >"
+                    android:textColor="@color/Gray"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:gravity="start"
+                    android:text="CATEGORY "
+                    android:textColor="@color/bluelighter"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -191,9 +298,21 @@
                     android:layout_marginStart="5dp"
                     android:fontFamily="@font/geo_sans_light"
                     android:gravity="start"
-                    android:text="Categories"
+                    android:text="Imagings"
                     android:textColor="@color/Gray"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:id="@+id/MedicinesInView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/geo_sans_light"
+                    android:gravity="start"
+                    android:textColor="@color/Gray"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
@@ -218,36 +337,9 @@
 
             </LinearLayout>
 
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:gravity="start"
-                    android:text="Select by catergory"
-                    android:textColor="@color/Gray"
-                    android:textSize="14sp"
-                    android:textStyle="" />
-
-
-            </LinearLayout>
-
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categoryRecycler"
+                android:id="@+id/medicinesInCategoryRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -255,94 +347,12 @@
 
 
 
-
-
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="0dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/geo_sans_light"
-                    android:gravity="start"
-                    android:text="Popular"
-                    android:textColor="@color/Gray"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp">
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:gravity="end"
-                        android:text=""
-                        android:textColor="@color/Gray"
-                        android:textSize="16sp"
-                        android:textStyle="" />
-
-                </RelativeLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:gravity="start"
-                    android:text="Our Most Popular"
-                    android:textColor="@color/Gray"
-                    android:textSize="14sp"
-                    android:textStyle="" />
-
-
-            </LinearLayout>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/popularMedsRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.recyclerview.widget.RecyclerView>
 
 
 
         </LinearLayout>
 
 
-    </androidx.core.widget.NestedScrollView>
 
 
 </LinearLayout>

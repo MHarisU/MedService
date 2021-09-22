@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -31,7 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.med.medservice.Utils.GlobalUrlApi;
+import com.med.medservice.NetworkAPI.GlobalUrlApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,8 +41,6 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PatientRegisterActivity extends AppCompatActivity {
 
@@ -229,8 +226,8 @@ public class PatientRegisterActivity extends AppCompatActivity {
             jsonBody.put("date_of_birth", DOB);
             jsonBody.put("phone_number", phone);
             jsonBody.put("office_address", address);
-            jsonBody.put("nip_number", "123456");
-            jsonBody.put("upin", "123456");
+            jsonBody.put("nip_number", "0");
+            jsonBody.put("upin", "0");
             jsonBody.put("specialization", "1");
             jsonBody.put("country_id", "2");
             jsonBody.put("city_id", "3");

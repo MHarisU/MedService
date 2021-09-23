@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_cart.xml" value="0.17296416938110748" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_choose_register.xml" value="0.17467105263157895" />
+        <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_main.xml" value="0.17296416938110748" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_register.xml" value="0.17467105263157895" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_video.xml" value="0.17467105263157895" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_imaging.xml" value="0.17467105263157895" />
@@ -19,6 +20,7 @@
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_patient_profile.xml" value="0.17296416938110748" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_patient_register.xml" value="0.17467105263157895" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_pharmacy.xml" value="0.17467105263157895" />
+        <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_send_invitation.xml" value="0.17467105263157895" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_waiting_room.xml" value="0.17467105263157895" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/cart_prescription_row.xml" value="0.17467105263157895" />
         <entry key="..\:/Users/Haris Unar/AndroidStudioProjects/MedService/app/src/main/res/layout/cart_row.xml" value="0.17467105263157895" />

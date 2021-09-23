@@ -293,4 +293,9 @@ public class DoctorMainActivity extends AppCompatActivity {
         startActivity(new Intent(DoctorMainActivity.this, SubstanceAbuseActivity.class));
 
     }
+
+    public void OpenImaging(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, ImagingActivity.class));
+
+    }
 }

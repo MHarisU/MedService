@@ -1572,14 +1572,14 @@
                             android:layout_marginBottom="20dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:onClick="OpenDoctorAppointment"
+                            android:onClick="OpenImaging"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
 
                             <LinearLayout
+                                android:background="@drawable/green_bg"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/red_bg"
                                 android:gravity="center"
                                 android:orientation="vertical">
 
@@ -1588,8 +1588,8 @@
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_gravity="center"
-                                    android:padding="13dp"
-                                    android:src="@drawable/appointments_simple" />
+                                    android:padding="10dp"
+                                    android:src="@drawable/imaging_simple" />
 
 
                                 <TextView
@@ -1600,10 +1600,10 @@
                                     android:layout_marginTop="0dp"
                                     android:fontFamily="@font/open_sans_regular"
                                     android:gravity="center"
-                                    android:paddingStart="0dp"
-                                    android:paddingEnd="0dp"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="10dp"
                                     android:paddingBottom="10dp"
-                                    android:text="Appointment"
+                                    android:text="Imaging"
                                     android:textColor="@color/White"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -1727,24 +1727,29 @@
 
                         </androidx.cardview.widget.CardView>
 
+
                         <androidx.cardview.widget.CardView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+
+
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginEnd="20dp"
                             android:layout_marginBottom="20dp"
+
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:onClick="OpenPatientsList"
+                            android:onClick="OpenDoctorAppointment"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
 
                             <LinearLayout
+                                android:background="@drawable/red_bg"
+
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/green_bg"
                                 android:gravity="center"
                                 android:orientation="vertical">
 
@@ -1754,7 +1759,7 @@
                                     android:layout_height="80dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    android:src="@drawable/patients_simple" />
+                                    android:src="@drawable/appointments_simple" />
 
 
                                 <TextView
@@ -1765,12 +1770,12 @@
                                     android:layout_marginTop="0dp"
                                     android:fontFamily="@font/open_sans_regular"
                                     android:gravity="center"
-                                    android:paddingStart="10dp"
-                                    android:paddingEnd="10dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="0dp"
                                     android:paddingBottom="10dp"
-                                    android:text="Patients"
+                                    android:text="Appointment"
                                     android:textColor="@color/White"
-                                    android:textSize="15sp"
+                                    android:textSize="14sp"
                                     android:textStyle="bold" />
 
 
@@ -1797,7 +1802,7 @@
                             android:layout_marginBottom="20dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:onClick="OpenComingSoon"
+                            android:onClick="OpenPatientsList"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
 
@@ -1814,8 +1819,8 @@
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_gravity="center"
-                                    android:padding="13dp"
-                                    android:src="@drawable/imaging_simple" />
+                                    android:padding="11dp"
+                                    android:src="@drawable/patients_simple" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -1828,7 +1833,7 @@
                                     android:paddingStart="10dp"
                                     android:paddingEnd="10dp"
                                     android:paddingBottom="10dp"
-                                    android:text="Imaging"
+                                    android:text="Patients"
                                     android:textColor="@color/White"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />

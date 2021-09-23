@@ -1,6 +1,5 @@
 package com.med.medservice;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,12 +12,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.med.medservice.Models.OnlineDoctors.OnlineDoctorsList;
 import com.med.medservice.NetworkAPI.ApiCallerNew;
 import com.med.medservice.Utils.FirebaseUserModel;
@@ -30,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.UUID;
 
 public class SendInvitationActivity extends AppCompatActivity {
@@ -96,6 +97,14 @@ public class SendInvitationActivity extends AppCompatActivity {
 
 
     public void SendInvitation(View view) {
+
+
+        String room_id = createRandomRoomId();
+        Log.d("SendInvitationActivity", room_id);
+
+        updateLinksOnline(room_id);
+
+/*
 
         if (!sendInvitationCheck){
 
@@ -167,9 +176,231 @@ public class SendInvitationActivity extends AppCompatActivity {
             sendInvitationCheck = true;
         }
 
+*/
 
 
     }
+
+    private String createRandomRoomId() {
+
+        int randNum = getRandNum();
+        String randString = getRandString();
+
+
+        return (user_id+"_"+randNum+"_"+randString+"_"+(currentData.getDoctor_id()));
+    }
+
+    private String getRandString() {
+
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 5;
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++) {
+            int randomLimitedInt = leftLimit + (int)
+                    (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+        String generatedString = buffer.toString();
+
+       // System.out.println(generatedString);
+
+        return generatedString;
+    }
+
+    private int getRandNum() {
+
+        Random rand = new Random(); //instance of random class
+        int upperbound = 100000;
+        //generate random values from 0-24
+        int int_random = rand.nextInt(upperbound);
+
+        return int_random;
+    }
+/*
+
+    private void updateLinksOnline(String room_id) {
+
+
+   //     { "room_id": 5, "short_agent_url": 5, "short_visitor_url": 5, "symptoms_id": 5, "session_id": 13 }
+
+
+        JSONObject orderJsonObject = new JSONObject();
+        try {
+            orderJsonObject.put("patient_link", "https://www.suunnoo.com/pages/r.html?room="+room_id+"&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxfQ");
+            orderJsonObject.put("patient_id", new SessionManager(SendInvitationActivity.this).getUserId());
+            orderJsonObject.put("doctor_id", currentData.getDoctor_id());
+            orderJsonObject.put("doctor_link", "https://www.suunnoo.com/pages/r.html?room="+room_id+"&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxLCJpc0FkbWluIjoxfQ&isAdmin=1");
+            orderJsonObject.put("room_id", room_id);
+            orderJsonObject.put("short_agent_url", "https://www.suunnoo.com/pages/r.html?room="+room_id+"&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxLCJpc0FkbWluIjoxfQ&isAdmin=1");
+            orderJsonObject.put("short_visitor_url", "https://www.suunnoo.com/pages/r.html?room="+room_id+"&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxfQ");
+            orderJsonObject.put("symptom_id", symptoms_id);
+            orderJsonObject.put("session_id", session_id);
+
+
+            ///////
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        final String requestBody = orderJsonObject.toString();
+        // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, new GlobalUrlApi().getNewBaseUrl() +
+                "createSentInvitation",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.d("order_api_response", response);
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+                            //   JSONObject jsonData = jsonResponse.getJSONObject("Data");
+                            String SessionID = jsonResponse.getString("SessionID");
+                            String jsonStatus = jsonResponse.getString("Status");
+
+                            if (jsonStatus.equals("True")) {
+
+                                Toast.makeText(CreditCardPaymentActivity.this, ""+SessionID, Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(CreditCardPaymentActivity.this, SendInvitationActivity.class);
+                                intent.putExtra("session_id", SessionID);
+                                intent.putExtra("symptoms_id", symptoms_id);
+                                intent.putExtra("desc", desc);
+                                intent.putExtra("selectedDoctor", currentData);
+                                startActivity(intent);
+
+                                //startActivity(new Intent(CreditCardPaymentActivity.this, SendInvitationActivity.class));
+                                finish();
+
+
+                            } else {
+
+                                // progressDialog.dismiss();
+                                final Dialog dialog = new Dialog(CreditCardPaymentActivity.this);
+                                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                dialog.setCancelable(false);
+                                dialog.setContentView(R.layout.text_dialog_ok);
+
+                                TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+                                text.setText("payment not successful");
+
+                                Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+                                dialogButton.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                        finish();
+
+                                    }
+                                });
+
+                                dialog.show();
+
+                                Window window = dialog.getWindow();
+                                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            //   login_button.setVisibility(View.VISIBLE);
+                            //   progress_bar.setVisibility(View.GONE);
+                            // Toast.makeText(LoginActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreditCardPaymentActivity.this, "Json Error.", Toast.LENGTH_SHORT).show();
+                            // progressDialog.dismiss();
+                            //  login_text.setVisibility(View.VISIBLE);
+                            // login_text.setText("JSON Error");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //  login_button.setVisibility(View.VISIBLE);
+                        //  progress_bar.setVisibility(View.GONE);
+                        //  Toast.makeText(LoginActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+                        //Login(email, password);
+                        //    login_text.setVisibility(View.VISIBLE);
+                        //   login_text.setText("Error from php");
+
+                        //  login_button.setVisibility(View.VISIBLE);
+                        // progress_bar.setVisibility(View.GONE);
+                        //progressDialog.dismiss();
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(CreditCardPaymentActivity.this, R.style.DialogTheme)
+                                .setTitle("Warning!")
+                                .setMessage("Volley Error\n"+error.toString())
+                                .setCancelable(false)
+                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        //  login_button.setVisibility(View.VISIBLE);
+                                        //  progress_bar.setVisibility(View.GONE);
+
+                                    }
+                                });
+                        //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+                        dialog.show();
+
+                    }
+                }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                    return null;
+                }
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                String auth = "Bearer " + new SessionManager(CreditCardPaymentActivity.this).getToken();
+                headers.put("Authorization", auth);
+                return headers;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 10000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 0; //retry turn off
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+*/
+
 
     private void CreateSession(String user_id, String doctor_id, String description, String symptom_id) {
 

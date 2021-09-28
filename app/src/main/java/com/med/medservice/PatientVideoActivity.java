@@ -69,7 +69,7 @@ public class PatientVideoActivity extends AppCompatActivity{
 
     CountDownTimer downTimer;
 
-    String symptoms_id, desc, session_id;
+    String symptoms_id, desc, session_id, patient_link, room_id;
 
 
 
@@ -93,6 +93,8 @@ public class PatientVideoActivity extends AppCompatActivity{
         Intent intent = getIntent();
         currentData = (OnlineDoctorsList) intent.getSerializableExtra("selectedDoctor");
         session_id = intent.getStringExtra("session_id");
+        patient_link = intent.getStringExtra("patient_link");
+        room_id = intent.getStringExtra("room_id");
 
 
         myWebView = (WebView) findViewById(R.id.webView1);
@@ -118,7 +120,7 @@ public class PatientVideoActivity extends AppCompatActivity{
         //load website by URL
 
      //   myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=tcgij5htuo&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vdW1icmVsbGFtZC5jb20vdmlkZW9fY2hhdC8iLCJkaXNhYmxlVmlkZW8iOjAsImRpc2FibGVBdWRpbyI6MCwiZGlzYWJsZVNjcmVlblNoYXJlIjoxLCJkaXNhYmxlV2hpdGVib2FyZCI6MCwiZGlzYWJsZVRyYW5zZmVyIjoxLCJhdXRvQWNjZXB0VmlkZW8iOjEsImF1dG9BY2NlcHRBdWRpbyI6MX0");
-        myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=qwerty&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxfQ");
+        myWebView.loadUrl(patient_link);
         //register token for notification
 
         // this.onStart();

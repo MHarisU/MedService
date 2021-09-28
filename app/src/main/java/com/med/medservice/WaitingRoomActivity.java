@@ -42,6 +42,7 @@ import com.med.medservice.Utils.FirebaseUserModel;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,7 +65,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
     SwitchCompat switchButton;
     TextView doctorOnlineView;
 
-    String symptoms_id, desc, session_id, pat_id;
+    String symptoms_id, desc, session_id, pat_id, doctor_link, room_id;
 
 
     @Override
@@ -155,6 +156,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
                     Toast.makeText(WaitingRoomActivity.this, ""+snapshot.getValue().toString()+" Session ID", Toast.LENGTH_SHORT).show();
 
                     session_id = snapshot.getValue().toString();
+                    getDoctorLink();
                    // patNameView.setText(snapshot.getValue().toString());
                    // onlinePatCard.setVisibility(View.VISIBLE);
 
@@ -174,6 +176,55 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         GetDoctorStatus();
 
+
+    }
+
+    private void getDoctorLink() {
+        new ApiTokenCaller(WaitingRoomActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getVideoLinks?session_id="+session_id,
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        //Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+                            Log.d("api_response", jsonResponse.toString());
+
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+                                String id = child.getString("id");
+                                //patient_link = child.getString("patient_link");
+                                doctor_link = child.getString("doctor_link");
+                                room_id = child.getString("room_id");
+                                // String thumbnail = child.getString("thumbnail");
+
+
+
+                            }
+
+
+                            //sendFirebaseInvitation();
+
+                            //categoryList.add(new CategoryList("0", "Other", "lab-test", "none", "thumbnail"));
+
+
+                            //CategorySquareAdapter adapter = new CategorySquareAdapter(categoryList, getApplicationContext());
+                            //categoryRecycler.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }
+        );
 
     }
 
@@ -518,6 +569,8 @@ public class WaitingRoomActivity extends AppCompatActivity {
         reference.child("calling").child(user_id).child("isAvailable").setValue(true);
         Intent intent = new Intent(WaitingRoomActivity.this, DoctorVideoActivity.class);
         intent.putExtra("session_id", session_id);
+        intent.putExtra("doctor_link", doctor_link);
+        intent.putExtra("room_id", room_id);
         intent.putExtra("pat_id", pat_id);
         startActivity(intent);
         finish();

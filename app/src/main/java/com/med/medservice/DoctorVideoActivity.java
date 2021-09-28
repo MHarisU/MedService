@@ -98,7 +98,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
     ArrayList<SessionsList_OldApi> sessionsListOldApis;
     RecyclerView sessionRecycler;
 
-    String symptoms_id, desc, session_id;
+    String symptoms_id, desc, session_id, doctor_link;
 
     String patient_name;
     String patient_age;
@@ -151,7 +151,7 @@ public class DoctorVideoActivity extends AppCompatActivity {
         //load website by URL
 
         //  myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=tcgij5htuo&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vdW1icmVsbGFtZC5jb20vdmlkZW9fY2hhdC8iLCJkaXNhYmxlVmlkZW8iOjAsImRpc2FibGVBdWRpbyI6MCwiZGlzYWJsZVNjcmVlblNoYXJlIjoxLCJkaXNhYmxlV2hpdGVib2FyZCI6MCwiZGlzYWJsZVRyYW5zZmVyIjoxLCJhdXRvQWNjZXB0VmlkZW8iOjEsImF1dG9BY2NlcHRBdWRpbyI6MSwiaXNBZG1pbiI6MX0&isAdmin=1");
-        myWebView.loadUrl("https://www.suunnoo.com/pages/r.html?room=qwerty&p=eyJsc1JlcFVybCI6Imh0dHBzOi8vd3d3LnN1dW5ub28uY29tLyIsImRpc2FibGVWaWRlbyI6MCwiZGlzYWJsZUF1ZGlvIjowLCJkaXNhYmxlU2NyZWVuU2hhcmUiOjEsImRpc2FibGVXaGl0ZWJvYXJkIjowLCJkaXNhYmxlVHJhbnNmZXIiOjEsImF1dG9BY2NlcHRWaWRlbyI6MSwiYXV0b0FjY2VwdEF1ZGlvIjoxLCJpc0FkbWluIjoxfQ&isAdmin=1");
+        myWebView.loadUrl(doctor_link);
         //register token for notification
 
         // this.onStart();
@@ -402,6 +402,8 @@ public class DoctorVideoActivity extends AppCompatActivity {
     private void getSessionID() {
         Intent intent = getIntent();
         session_id = intent.getStringExtra("session_id");
+        doctor_link = intent.getStringExtra("doctor_link");
+
         pat_id = intent.getStringExtra("pat_id");
 
     }

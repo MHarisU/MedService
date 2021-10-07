@@ -204,7 +204,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, new GlobalUrlApi().getNewBaseUrl() +
-                "updateUserProfile/"+user_id,
+                "updateUserProfile/" + user_id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -221,12 +221,28 @@ public class EditProfileActivity extends AppCompatActivity {
                             if (jsonStatus.equals("True")) {
 
                                 finish();
-                                PatientProfileActivity.getInstance().UpdateSuccessful();
+                                try {
+
+
+                                    PatientProfileActivity.getInstance().UpdateSuccessful();
+
+                                } catch (NullPointerException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+
+
+                                    DoctorProfileActivity.getInstance().UpdateSuccessful();
+
+                                } catch (NullPointerException e) {
+                                    e.printStackTrace();
+                                }
 
 
                             } else {
 
-                               // progressDialog.dismiss();
+                                // progressDialog.dismiss();
                                 final Dialog dialog = new Dialog(EditProfileActivity.this);
                                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                                 dialog.setCancelable(false);
@@ -281,7 +297,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         //progressDialog.dismiss();
                         AlertDialog.Builder dialog = new AlertDialog.Builder(EditProfileActivity.this, R.style.DialogTheme)
                                 .setTitle("Warning!")
-                                .setMessage("Volley Error\n"+error.toString())
+                                .setMessage("Volley Error\n" + error.toString())
                                 .setCancelable(false)
                                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override

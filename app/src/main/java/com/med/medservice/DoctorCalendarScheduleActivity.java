@@ -32,9 +32,13 @@ import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
+import com.med.medservice.Models.Category.CategoryList;
+import com.med.medservice.Models.Category.CategorySquareAdapter;
 import com.med.medservice.Models.DoctorAppointments.DocAppointmentAdapter;
 import com.med.medservice.Models.PatientAppointments.AppointmentList;
 import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.ApiPostCall;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Diaglogs.ViewDialog;
@@ -47,6 +51,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -71,7 +76,6 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
     String selectedTime;
 
     ArrayList<String> availDates;
-
 
 
     RecyclerView appointmentRecycler;
@@ -123,14 +127,14 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-dd-MM");
 
                     clickedDate = simpleDateFormat.format(clickedDayCalendar.getTime());
-                   // UpdateDialog alert = new UpdateDialog();
-                  //  alert.updateDialog(DoctorCalendarScheduleActivity.this, simpleDateFormat.format(clickedDayCalendar.getTime()), clickedDayCalendar);
+                    // UpdateDialog alert = new UpdateDialog();
+                    //  alert.updateDialog(DoctorCalendarScheduleActivity.this, simpleDateFormat.format(clickedDayCalendar.getTime()), clickedDayCalendar);
                     Intent intent = new Intent(DoctorCalendarScheduleActivity.this, DoctorUpdateAvailabilityActivity.class);
                     intent.putExtra("date", clickedDate);
                     startActivity(intent);
 
                 } else {
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-dd-MM");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                     clickedDate = simpleDateFormat.format(clickedDayCalendar.getTime());
                     //  SetupTimeSpinner();
@@ -156,6 +160,66 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
         appointmentRecycler.setLayoutManager(new LinearLayoutManager(this));
         appointmentList = new ArrayList<AppointmentList>();
 
+
+        new ApiTokenCaller(DoctorCalendarScheduleActivity.this, new GlobalUrlApi().getNewBaseUrl() +
+                "getPatientAppointment?status=pending&doctor_id=" + user_id + "&limit=10",
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+                        Log.d("token_api_response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+
+                            JSONArray arrayData = jsonResponse.getJSONArray("Data");
+
+
+                            for (int i = 0; i < arrayData.length(); i++) {
+                                JSONObject child = arrayData.getJSONObject(i);
+                                String id = child.getString("id");
+                                String patient_id = child.getString("patient_id");
+                                String doctor_id = child.getString("doctor_id");
+                                String patient_name = child.getString("patient_name");
+                                String doctor_name = child.getString("doctor_name");
+                                String email = child.getString("email");
+                                String phone = child.getString("phone");
+                                String date = child.getString("date");
+                                String time = child.getString("time");
+                                String problem = child.getString("problem");
+                                String status = child.getString("status");
+                                String day = child.getString("day");
+
+                                appointmentList.add(new AppointmentList(id, patient_id, doctor_id, patient_name, doctor_name, email, phone,
+                                        date, time, problem, status, day));
+
+                            }
+
+                            Collections.reverse(appointmentList
+                            );
+
+                            DocAppointmentAdapter adapter = new DocAppointmentAdapter(appointmentList, DoctorCalendarScheduleActivity.this);
+                            appointmentRecycler.setAdapter(adapter);
+
+
+                            Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                                    R.anim.slide_up);
+                            // cardProgress.setVisibility(View.GONE);
+                            //  layoutMain.setVisibility(View.VISIBLE);
+                            //  layoutMain.startAnimation(slide_up);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }
+        );
+
+        //old api
+        /*
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "get_doctor_upcoming_appointment.php?doctor_id="+user_id,
                 new ApiCallerNew.AsyncApiResponse() {
 
@@ -222,7 +286,7 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
                 });
 
         // asyncTask.execute();
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
 
     }
 
@@ -293,7 +357,7 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                       // Toast.makeText(DoctorCalendarScheduleActivity.this, "" + availDates.get(0), Toast.LENGTH_LONG).show();
+                        // Toast.makeText(DoctorCalendarScheduleActivity.this, "" + availDates.get(0), Toast.LENGTH_LONG).show();
 
 
                     }
@@ -305,7 +369,7 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
     }
 
 
-    private void SetupTimeSpinner(final Spinner spinner_time) {
+    private void SetupTimeSpinnerEnd(final Spinner spinner_time) {
 
 
         String slotStartTime = "01:00:00";
@@ -385,6 +449,86 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
 
     }
 
+    private void SetupTimeSpinnerStart(final Spinner spinner_time) {
+
+
+        String slotStartTime = "01:00:00";
+        String slotEndTime = "24:00:00";
+
+        String format = "yyyy-dd-MM HH:mm:SS";
+
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+
+        Date dateObj1 = null;
+        Date dateObj2 = null;
+        try {
+            dateObj1 = sdf.parse(clickedDate + " " + slotStartTime);
+            dateObj2 = sdf.parse(clickedDate + " " + slotEndTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        slotArray = new ArrayList<>();
+        long dif = dateObj1.getTime();
+        while (dif <= dateObj2.getTime()) {
+            Date slot = new Date(dif);
+
+            // SimpleDateFormat form = new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat form = new SimpleDateFormat("hh:mm a");
+            slotArray.add("" + form.format(slot));
+
+            System.out.println("Minute Slot ---> " + form.format(slot) + " SIZE:" + slotArray.size());
+            dif += 1800000;
+        }
+
+        try {
+
+            timeSlots = new String[slotArray.size()];
+
+            for (int jj = 0; jj < slotArray.size(); jj++) {
+                timeSlots[jj] = slotArray.get(jj);
+            }
+        } catch (NullPointerException e) {
+            ViewDialog viewDialog = new ViewDialog();
+            //  viewDialog.showDialog(BookAppointmentActivity.this, "No timeslots available on this date");
+        }
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_item, timeSlots);
+
+
+        spinner_time.setAdapter(adapter);
+
+        spinner_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                int positions = spinner_time.getSelectedItemPosition();
+                //   Toast.makeText(PrefenceActivity.this, "" + itemsID[positions], Toast.LENGTH_SHORT).show();
+                // courseSpinnerID = courseID[positions];
+                //  if (positions != 0)
+                //selectedDoctorId = timeSlots[positions];
+                selectedTime = timeSlots[positions];
+                SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:SS");
+                SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+                try {
+                    Date date = parseFormat.parse(selectedTime);
+                    //Toast.makeText(DoctorCalendarScheduleActivity.this, "" + displayFormat.format(date), Toast.LENGTH_SHORT).show();
+                    clickedStartTime = "" + displayFormat.format(date);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+
+
+    }
+
 
     public void Close(View view) {
         finish();
@@ -399,9 +543,12 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
             dialog.setCancelable(false);
             dialog.setContentView(R.layout.custom_set_availability_layout);
 
-            Spinner spinner_time = (Spinner) dialog.findViewById(R.id.spinner_time);
+            Spinner spinner_time_start = (Spinner) dialog.findViewById(R.id.spinner_time_start);
+            Spinner spinner_time_end = (Spinner) dialog.findViewById(R.id.spinner_time);
 
-            SetupTimeSpinner(spinner_time);
+
+            SetupTimeSpinnerStart(spinner_time_start);
+            SetupTimeSpinnerEnd(spinner_time_end);
 
             TextView selectedDate = (TextView) dialog.findViewById(R.id.selectedDate);
             selectedDate.setText(msg);
@@ -458,6 +605,91 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
     }
 
     private void SetAvailability(final Dialog dialog, final Calendar clickedDayCalendar) {
+
+
+        JSONObject orderJsonObject = new JSONObject();
+        try {
+            orderJsonObject.put("title", "Availability");
+            orderJsonObject.put("start", clickedDate + " " + clickedStartTime);
+            orderJsonObject.put("end", clickedDate + " " + clickedEndTime);
+            orderJsonObject.put("doctorID", user_id);
+            orderJsonObject.put("slotStartTime", clickedStartTime);
+            orderJsonObject.put("slotEndTime", clickedEndTime);
+            orderJsonObject.put("date", clickedDate);
+
+            ///////
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        final String requestBody = orderJsonObject.toString();
+
+        new ApiPostCall(
+                DoctorCalendarScheduleActivity.this,
+                new GlobalUrlApi().getNewBaseUrl() + "setDoctorAvailability",
+                requestBody,
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+
+
+                        Log.d("order_api_response", response);
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+                            // JSONObject jsonData = jsonResponse.getJSONObject("Data");
+                            String jsonStatus = jsonResponse.getString("Status");
+                            Log.d("order_api_response", jsonStatus);
+
+
+                            if (jsonStatus.equals("True")) {
+
+
+                                events.add(new EventDay(clickedDayCalendar, R.drawable.ic_event));
+                                calendarView.setEvents(events);
+                                dialog.dismiss();
+
+                                final AlertDialog.Builder aDialog = new AlertDialog.Builder(DoctorCalendarScheduleActivity.this, R.style.DialogTheme)
+                                        .setTitle("")
+                                        .setMessage("Availability Added")
+                                        .setCancelable(false)
+                                        .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                            }
+                                        });
+                                aDialog.show();
+
+                            } else {
+
+                                final AlertDialog.Builder aDialog = new AlertDialog.Builder(DoctorCalendarScheduleActivity.this, R.style.DialogTheme)
+                                        .setTitle("")
+                                        .setMessage("Availability Not Added")
+                                        .setCancelable(false)
+                                        .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                            }
+                                        });
+                                aDialog.show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(DoctorCalendarScheduleActivity.this, "Json Error.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }
+        );
+
+        //old Api
+        /*
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "set_doctor_availability.php?" +
                 "doctor_id=" + user_id +
                 "&start_time=" + clickedStartTime +
@@ -522,7 +754,7 @@ public class DoctorCalendarScheduleActivity extends AppCompatActivity {
                 });
 
         // asyncTask.execute();
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
     }
 
     public void SelectStartTime(final TextView from_time) {

@@ -28,6 +28,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.med.medservice.Models.OnlineDoctors.OnlineDoctorsList;
 import com.med.medservice.NetworkAPI.ApiCallerNew;
+import com.med.medservice.NetworkAPI.ApiPostCall;
+import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Diaglogs.SymptomSelectorDialogFragment;
@@ -189,8 +191,79 @@ public class EvisitFormActivity extends AppCompatActivity implements SymptomSele
 
 
         final String requestBody = orderJsonObject.toString();
+
+        new ApiPostCall(
+                EvisitFormActivity.this,
+                new GlobalUrlApi().getNewBaseUrl() + "createSymptomsForSession",
+                requestBody,
+                new ApiTokenCaller.AsyncApiResponse() {
+                    @Override
+                    public void processFinish(String response) {
+
+
+                        Log.d("order_api_response", response);
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+                            JSONObject jsonData = jsonResponse.getJSONObject("Data");
+                            String jsonStatus = jsonResponse.getString("Status");
+
+                            if (jsonStatus.equals("True")) {
+
+                                symptoms_id = jsonData.getString("id");
+                                //Toast.makeText(EvisitFormActivity.this, "" + symptoms_id, Toast.LENGTH_LONG).show();
+
+
+                                Intent intent = new Intent(EvisitFormActivity.this, CreditCardPaymentActivity.class);
+                                intent.putExtra("symptoms_id", symptoms_id);
+                                intent.putExtra("desc", desc);
+                                intent.putExtra("selectedDoctor", currentData);
+                                startActivity(intent);
+
+                                //startActivity(new Intent(EvisitFormActivity.this, CreditCardPaymentActivity.class));
+                                finish();
+
+
+                            } else {
+
+                                // progressDialog.dismiss();
+                                final Dialog dialog = new Dialog(EvisitFormActivity.this);
+                                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                dialog.setCancelable(false);
+                                dialog.setContentView(R.layout.text_dialog_ok);
+
+                                TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+                                text.setText("Symptoms not created");
+
+                                Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+                                dialogButton.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                        finish();
+
+                                    }
+                                });
+
+                                dialog.show();
+
+                                Window window = dialog.getWindow();
+                                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(EvisitFormActivity.this, "Json Error.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }
+        );
         // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
 
+/*
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, new GlobalUrlApi().getNewBaseUrl() +
                 "createSymptomsForSession",
@@ -339,6 +412,7 @@ public class EvisitFormActivity extends AppCompatActivity implements SymptomSele
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+*/
 
     }
 

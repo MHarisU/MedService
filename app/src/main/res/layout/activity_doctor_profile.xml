@@ -65,7 +65,7 @@
                             app:cardCornerRadius="75dp">
 
                             <ImageView
-                                android:id="@+id/studentProfileImage"
+                                android:id="@+id/profileView"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
@@ -978,19 +978,19 @@
 
 
                                     <LinearLayout
-                                        android:onClick="ClickAugust"
                                         android:layout_width="match_parent"
                                         android:layout_height="45dp"
                                         android:layout_gravity="center"
                                         android:background="@color/colorAccent"
                                         android:gravity="center"
+                                        android:onClick="ClickAugust"
                                         android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_marginStart="10dp"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
+                                            android:layout_marginStart="10dp"
                                             android:padding="0dp"
                                             android:src="@drawable/ic_down_white" />
 
@@ -1011,11 +1011,11 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:visibility="gone"
                                         android:id="@+id/august_month"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="vertical">
+                                        android:orientation="vertical"
+                                        android:visibility="gone">
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
@@ -1278,7 +1278,6 @@
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
 
@@ -1326,19 +1325,19 @@
 
 
                                     <LinearLayout
-                                        android:onClick="ClickJuly"
                                         android:layout_width="match_parent"
                                         android:layout_height="45dp"
                                         android:layout_gravity="center"
                                         android:background="@color/colorAccent"
                                         android:gravity="center"
+                                        android:onClick="ClickJuly"
                                         android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_marginStart="10dp"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
+                                            android:layout_marginStart="10dp"
                                             android:padding="0dp"
                                             android:src="@drawable/ic_down_white" />
 
@@ -1359,11 +1358,11 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:visibility="gone"
                                         android:id="@+id/july_month"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="vertical">
+                                        android:orientation="vertical"
+                                        android:visibility="gone">
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
@@ -1624,7 +1623,6 @@
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
 
@@ -1746,12 +1744,13 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
 
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/open_sans_regular"
@@ -1761,10 +1760,35 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:onClick="settingProfile"
+                            android:padding="0dp"
+                            android:src="@drawable/ic_setting_gray" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
+
+                <ProgressBar
+                    android:id="@+id/progressBarProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:padding="120dp"
+                    android:visibility="gone" />
+
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/personalViewCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -1808,6 +1832,7 @@
                                     android:textStyle="" />
 
                                 <TextView
+                                    android:id="@+id/nameView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -1853,7 +1878,7 @@
                                     android:textStyle="" />
 
                                 <TextView
-                                    android:id="@+id/username_text"
+                                    android:id="@+id/dateView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -1898,6 +1923,7 @@
                                     android:textStyle="" />
 
                                 <TextView
+                                    android:id="@+id/emailView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -1942,6 +1968,7 @@
                                     android:textStyle="" />
 
                                 <TextView
+                                    android:id="@+id/phoneView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -1988,6 +2015,8 @@
                                     android:textStyle="" />
 
                                 <TextView
+                                    android:id="@+id/addressView"
+
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"

@@ -91,7 +91,36 @@
         android:textColor="@color/Gray"
         android:textSize="18sp"
         android:textStyle="" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="7dp">
+
+
+        <Spinner
+
+            android:id="@+id/spinner_time_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/black_stock_white_background"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_down" />
+
+    </RelativeLayout>
+
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
@@ -100,6 +129,7 @@
         android:layout_marginEnd="10dp"
         android:gravity="center"
         android:orientation="horizontal">
+
 
 
         <TextView

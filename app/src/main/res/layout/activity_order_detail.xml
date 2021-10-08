@@ -709,7 +709,7 @@
                                                 android:paddingTop="5dp"
                                                 android:paddingEnd="10dp"
                                                 android:paddingBottom="5dp"
-                                                android:text="fname"
+                                                android:text="Empty"
                                                 android:textColor="@color/Gray"
                                                 android:textSize="14sp"
                                                 android:textStyle="bold"/>
@@ -724,7 +724,7 @@
                                                 android:paddingTop="5dp"
                                                 android:paddingEnd="10dp"
                                                 android:paddingBottom="5dp"
-                                                android:text=""
+                                                android:text="Empty"
                                                 android:textColor="@color/Gray"
                                                 android:textSize="14sp"
                                                 android:textStyle="bold"/>
@@ -741,7 +741,7 @@
                                                 android:paddingTop="5dp"
                                                 android:paddingEnd="10dp"
                                                 android:paddingBottom="5dp"
-                                                android:text="state"
+                                                android:text="Empty"
                                                 android:textColor="@color/Gray"
                                                 android:textSize="14sp"
                                                 android:textStyle="bold"/>
@@ -760,7 +760,7 @@
                                                 android:paddingTop="5dp"
                                                 android:paddingEnd="10dp"
                                                 android:paddingBottom="5dp"
-                                                android:text="zip"
+                                                android:text="Empty"
                                                 android:textColor="@color/Gray"
                                                 android:textSize="14sp"
                                                 android:textStyle="bold"/>
@@ -777,7 +777,7 @@
                                                 android:paddingTop="5dp"
                                                 android:paddingEnd="10dp"
                                                 android:paddingBottom="5dp"
-                                                android:text="phone"
+                                                android:text="Empty"
                                                 android:textColor="@color/Gray"
                                                 android:textSize="14sp"
                                                 android:textStyle="bold"/>
@@ -795,7 +795,7 @@
                                                 android:paddingTop="5dp"
                                                 android:paddingEnd="10dp"
                                                 android:paddingBottom="5dp"
-                                                android:text="email"
+                                                android:text="Empty"
                                                 android:textColor="@color/Gray"
                                                 android:textSize="14sp"
                                                 android:textStyle="bold"/>

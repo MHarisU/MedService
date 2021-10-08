@@ -32,7 +32,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     OrderList currentOrder;
 
     TextView orderIdView, billingFirstName, billingMiddleName, billingLastName, billingAddress, billingState, billingCity, billingZip,
-            billingPhone, billingEmail,billingPaymentMethod, billingPaymentTitle;
+            billingPhone, billingEmail, billingPaymentMethod, billingPaymentTitle;
 
     TextView shippingFullName, shippingAddress, shippingState, shippingZip, shippingPhone, shippingEmail;
 
@@ -77,9 +77,6 @@ public class OrderDetailActivity extends AppCompatActivity {
         grandTotal = findViewById(R.id.grandTotal);
 
 
-
-
-
     }
 
     private void getOrder() {
@@ -94,7 +91,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
 
         new ApiTokenCaller(OrderDetailActivity.this, new GlobalUrlApi().getNewBaseUrl() +
-                "getOrders?id="+orderId,
+                "getOrders?id=" + orderId,
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -133,12 +130,12 @@ public class OrderDetailActivity extends AppCompatActivity {
                                 String lab_appointment_time = billingObject.getString("lab_appointment_time");
                                 String lab_zipcode = billingObject.getString("lab_zipcode");
                                 String lab_nearby_location = billingObject.getString("lab_nearby_location");
-                                Billing billing = new Billing(first_name,  last_name, address, state , state_code, city,
+                                Billing billing = new Billing(first_name, last_name, address, state, state_code, city,
                                         zip_code, phone_number, email_address, pharmacy_zipcode, pharmacy_nearby_location, lab_appointment_date, lab_appointment_time,
                                         lab_zipcode, lab_nearby_location
                                 );
 
-                                JSONObject shippingObject =child.getJSONObject("shipping");
+                                JSONObject shippingObject = child.getJSONObject("shipping");
                                 String full_name = shippingObject.getString("full_name");
 
                                 //String email_address_shipping = shippingObject.getString("email_address");
@@ -157,7 +154,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
                                 ArrayList<CartItem> cart_items = new ArrayList<>();
                                 JSONArray cart_items_array = child.getJSONArray("cart_items");
-                                for (int j = 0 ;j<cart_items_array.length();j++){
+                                for (int j = 0; j < cart_items_array.length(); j++) {
                                     JSONObject orderObject = cart_items_array.getJSONObject(j);
                                     String product_id = orderObject.getString("product_id");
                                     String product_qty = orderObject.getString("product_qty");
@@ -165,7 +162,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                                     String doc_session_id = orderObject.getString("doc_session_id");
                                     String product_mode = orderObject.getString("product_mode");
                                     String item_type = orderObject.getString("item_type");
-                                    CartItem item = new CartItem(product_id,product_qty,pres_id,doc_session_id,product_mode,item_type);
+                                    CartItem item = new CartItem(product_id, product_qty, pres_id, doc_session_id, product_mode, item_type);
                                     cart_items.add(item);
 
                                 }
@@ -173,7 +170,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                                 String order_status = child.getString("order_status");
                                 String created_at = child.getString("created_at");
 
-                                currentOrder =new OrderList(id, order_id, customer_id, total, billing, shipping, payment_title,
+                                currentOrder = new OrderList(id, order_id, customer_id, total, billing, shipping, payment_title,
                                         payment_method, cart_items, order_status, created_at);
 
 
@@ -185,20 +182,15 @@ public class OrderDetailActivity extends AppCompatActivity {
 
                                 loadPurchaseditems(cart_items);
 
-                                grandTotal.setText("$"+total+".00");
+                                grandTotal.setText("$" + total + ".00");
 
 
                             }
 
 
-
-
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
 
 
                     }
@@ -218,12 +210,24 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     private void setupShippingUI(Shipping shipping) {
 
-        shippingFullName.setText(shipping.full_name);
-        shippingAddress.setText(shipping.address);
-        shippingState.setText(shipping.state);
-        shippingZip.setText(shipping.zip_code);
-        shippingPhone.setText(shipping.phone_number);
-        shippingEmail.setText(shipping.email_address);
+        if (shipping.full_name != null && !shipping.full_name.equals("") && !shipping.full_name.equals("null"))
+            shippingFullName.setText(shipping.full_name);
+
+        if (shipping.address != null && !shipping.address.equals("") && !shipping.address.equals("null"))
+            shippingAddress.setText(shipping.address);
+
+        if(shipping.state != null && !shipping.state.equals("") && !shipping.state.equals("null"))
+            shippingState.setText(shipping.state);
+
+        if(shipping.zip_code != null && !shipping.zip_code.equals("") && !shipping.zip_code.equals("null"))
+            shippingZip.setText(shipping.zip_code);
+
+        if(shipping.phone_number != null && !shipping.phone_number.equals("") && !shipping.phone_number.equals("null"))
+            shippingPhone.setText(shipping.phone_number);
+
+        if(shipping.email_address != null && !shipping.email_address.equals("") && !shipping.email_address.equals("null"))
+            shippingEmail.setText(shipping.email_address);
+
 
 
 

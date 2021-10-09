@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +32,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.med.medservice.Diaglogs.SearchZipStateCity;
+import com.med.medservice.Diaglogs.ViewDialogRegistration;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
+import com.med.medservice.Utils.Validations;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,7 +49,9 @@ import java.util.Calendar;
 
 public class PatientRegisterActivity extends AppCompatActivity {
 
-    EditText editText_username, editText_first, editText_last, editText_email, editText_phone, editText_address, editText_password;
+    EditText editText_username, editText_first, editText_last, editText_email, editText_phone, editText_address, editText_password, editText_password_confirm;
+    ScrollView registrationScroll;
+
     String selected_date_of_birht = "";
     String selected_state = "";
 
@@ -66,6 +73,8 @@ public class PatientRegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_register);
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
 
 
         statesSpinner = findViewById(R.id.spinner_state);
@@ -78,8 +87,24 @@ public class PatientRegisterActivity extends AppCompatActivity {
         editText_last = findViewById(R.id.editText_last);
         editText_email = findViewById(R.id.editText_email);
         editText_phone = findViewById(R.id.editText_phone);
+        registrationScroll = findViewById(R.id.registrationScroll);
         editText_address = findViewById(R.id.editText_address);
+        editText_address.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    //Toast.makeText(HelloFormStuff.this, edittext.getText(), Toast.LENGTH_SHORT).show();
+                    registrationScroll.fullScroll(View.FOCUS_DOWN);
+
+                    return true;
+                }
+                return false;
+            }
+        });
         editText_password = findViewById(R.id.editText_password);
+        editText_password_confirm = findViewById(R.id.editText_password_confirm);
         progress_bar = findViewById(R.id.progress_bar);
         patient_register_button = findViewById(R.id.patient_register_button);
 
@@ -174,43 +199,94 @@ public class PatientRegisterActivity extends AppCompatActivity {
         progress_bar.setVisibility(View.VISIBLE);
         patient_register_button.setVisibility(View.GONE);
 
-        final String username = editText_username.getText().toString();
         final String first = editText_first.getText().toString();
         final String last = editText_last.getText().toString();
-        final String email = editText_email.getText().toString();
         final String phone = editText_phone.getText().toString();
         final String address = editText_address.getText().toString();
+
+
+        final String email = editText_email.getText().toString();
         final String password = editText_password.getText().toString();
+        final String password_confirm = editText_password_confirm.getText().toString();
+        final String username = editText_username.getText().toString();
+
 
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 if (
-                        username != null && !username.equals("") &&
-                                first != null && !first.equals("") &&
-                                last != null && !last.equals("") &&
-                                selected_date_of_birht != null && !selected_date_of_birht.equals("") &&
-                                email != null && !email.equals("") &&
-                                phone != null && !phone.equals("") &&
-                                address != null && !address.equals("") &&
-                                selected_state != null && !selected_state.equals("") &&
-                                password != null && !password.equals("")) {
+                        Validations.isValidEmail(email)
+                                && Validations.isPasswordConfirmMatched(password, password_confirm)
+                                && Validations.isValidPassword(password)
+                                && Validations.isUsernameValid(username)
+                ){
+
+                    if (
+                            username != null && !username.equals("") &&
+                                    first != null && !first.equals("") &&
+                                    last != null && !last.equals("") &&
+                                    selected_date_of_birht != null && !selected_date_of_birht.equals("") &&
+                                    email != null && !email.equals("") &&
+                                    phone != null && !phone.equals("") &&
+                                    address != null && !address.equals("") &&
+                                    selected_state != null && !selected_state.equals("") &&
+                                    password != null && !password.equals("")) {
 
 
-                    Register(username, first, last, selected_date_of_birht, email, phone, address, selected_state, password);
-                    //Toast.makeText(PatientRegisterActivity.this, "All done", Toast.LENGTH_SHORT).show();
+                        Register(username, first, last, selected_date_of_birht, email, phone, address, selected_state, password);
+                        //Toast.makeText(PatientRegisterActivity.this, "All done", Toast.LENGTH_SHORT).show();
 
-                } else {
-                    Toast.makeText(PatientRegisterActivity.this, "Please fill details correctly", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Toast.makeText(PatientRegisterActivity.this, "Please fill details correctly", Toast.LENGTH_SHORT).show();
+                        String errors = "* Please fill all fields (in Personal Info)";
+                        ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+                        viewDialog.showDialog(PatientRegisterActivity.this, errors);
+
+
+                        progress_bar.setVisibility(View.GONE);
+                        patient_register_button.setVisibility(View.VISIBLE);
+                    }
+
+
+                }else {
+                    String errors = "";
+                    if (!Validations.isValidEmail(email)){
+                        errors += "* Invalid Email\n\n";
+                    }
+                    if (!Validations.isPasswordConfirmMatched(password, password_confirm)){
+                        errors += "* Password Mismatched\n\n";
+                    }else {
+                        if (!Validations.isValidPassword(password)){
+                            errors += "* Password must contain minimum eight characters, at-least one letter, one number and one special character\n\n";
+                        }
+                    }
+                    if (!Validations.isUsernameValid(username)){
+                        errors += "* Username must contain minimum eight characters, at-least one letter and one number\n\n";
+                    }
+
+                    ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+                    viewDialog.showDialog(PatientRegisterActivity.this, errors);
+
 
                     progress_bar.setVisibility(View.GONE);
                     patient_register_button.setVisibility(View.VISIBLE);
+
                 }
+
+
             }
         }, 10);
+
+
     }
+
+
+
+
+
 
     private void Register(String username, final String first, final String last, final String DOB, final String email, final String phone,
                           final String address, final String state, final String password) {
@@ -254,7 +330,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                                 progress_bar.setVisibility(View.GONE);
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(PatientRegisterActivity.this, R.style.DialogTheme)
                                         .setTitle("Info!")
-                                        .setMessage("User / Email already registered")
+                                        .setMessage("Username or Email already registered")
                                         .setCancelable(false)
                                         .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                             @Override
@@ -274,7 +350,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                                 progress_bar.setVisibility(View.GONE);
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(PatientRegisterActivity.this, R.style.DialogTheme)
                                         .setTitle("info")
-                                        .setMessage("Registration Complete Now Please Login")
+                                        .setMessage("Registration complete now please login to continue")
                                         .setCancelable(false)
                                         .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                             @Override
@@ -410,7 +486,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                         progress_bar.setVisibility(View.GONE);
                         AlertDialog.Builder dialog = new AlertDialog.Builder(PatientRegisterActivity.this, R.style.DialogTheme)
                                 .setTitle("Warning!")
-                                .setMessage("User / Email already registered")
+                                .setMessage("Username or Email already registered")
                                 .setCancelable(false)
                                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
@@ -502,9 +578,43 @@ public class PatientRegisterActivity extends AppCompatActivity {
             }
         };
 
-        new DatePickerDialog(PatientRegisterActivity.this, AlertDialog.THEME_HOLO_LIGHT, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+        DatePickerDialog dialog = new DatePickerDialog(PatientRegisterActivity.this,
+                AlertDialog.THEME_HOLO_LIGHT,
+                dateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+
+        dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+        dialog.show();
+
+      /*  new DatePickerDialog(
+                PatientRegisterActivity.this,
+                AlertDialog.THEME_HOLO_LIGHT,
+                dateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH))
+                .setMaxDate(System.currentTimeMillis())
+                .show();*/
 
 
     }
 
+    public void setZipCityState(String zip, String city, String state, String abb) {
+        TextView zip_TextView = findViewById(R.id.zip_TextView);
+        TextView editText_city = findViewById(R.id.editText_city);
+        TextView editText_state = findViewById(R.id.editText_state);
+
+        zip_TextView.setText(zip);
+        editText_city.setText(city);
+        editText_state.setText(state);
+        selected_state = state;
+
+    }
+
+    public void SearchZip(View view) {
+        SearchZipStateCity searchZipStateCity = new SearchZipStateCity();
+        searchZipStateCity.showSearchDialog(PatientRegisterActivity.this);
+    }
 }

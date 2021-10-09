@@ -40,7 +40,7 @@
             android:background="@drawable/black_stock_white_background"
             android:fontFamily="@font/open_sans_regular"
             android:hint=" Enter Zip Code"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingStart="15dp"
             android:textColor="#000"
             android:textSize="15sp" />

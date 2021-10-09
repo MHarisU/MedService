@@ -27,6 +27,8 @@
         android:roundIcon="@mipmap/ic_med_icon_pro_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustResize"
+
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ImagingCategoryActivity"
@@ -57,7 +59,9 @@
         <activity android:name=".SubcategoryProductsActivity" />
         <activity android:name=".CategoryProductsActivity" />
         <activity android:name=".DoctorRegisterActivity" />
-        <activity android:name=".PatientRegisterActivity" />
+        <activity android:name=".PatientRegisterActivity">
+
+        </activity>
         <activity android:name=".ChooseRegisterActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".InboxActivity" />

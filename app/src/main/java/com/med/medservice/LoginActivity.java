@@ -32,6 +32,7 @@ import com.med.medservice.Utils.FirebaseUserModel;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private static String URL_Login;
     GlobalUrlApi globalUrlApi;
-    //  SessionManagerPatient sessionManager;
     SessionManager sessionManager;
 
 
@@ -82,13 +82,11 @@ public class LoginActivity extends AppCompatActivity {
         final String email = editText_email.getText().toString();
         final String password = editText_password.getText().toString();
 
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (email != null && !email.equals("") && password != null && !password.equals("")) {
-
 
                     Login(email, password);
 
@@ -133,7 +131,6 @@ public class LoginActivity extends AppCompatActivity {
         final String requestBody = jsonBody.toString();
 
 
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_Login,
                 new Response.Listener<String>() {
                     @Override
@@ -141,16 +138,20 @@ public class LoginActivity extends AppCompatActivity {
 
                         Log.d("sign_api_response", response);
 
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                        } catch (JSONException jsonException) {
+                            jsonException.printStackTrace();
+                        }
 
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
                             JSONObject jsonResponse = jsonObject.getJSONObject("Response");
-                            JSONObject jsonData = jsonResponse.getJSONObject("Data");
-                            String jsonToken = jsonResponse.getString("Token");
                             String jsonStatus = jsonResponse.getString("Status");
 
-                            if (jsonStatus.equals("logged_inn")){
-
+                            if (jsonStatus.equals("logged_inn")) {
+                                JSONObject jsonData = jsonResponse.getJSONObject("Data");
+                                String jsonToken = jsonResponse.getString("Token");
 
                                 String id = jsonData.getString("id").trim();
                                 String first_name = jsonData.getString("name").trim();
@@ -169,9 +170,9 @@ public class LoginActivity extends AppCompatActivity {
                                 rootNode = FirebaseDatabase.getInstance();
                                 reference = rootNode.getReference("users");
 
-                                FirebaseUserModel userModel = new FirebaseUserModel(id, first_name+" "+last_name, email, android_id);
+                                FirebaseUserModel userModel = new FirebaseUserModel(id, first_name + " " + last_name, email, android_id);
                                 reference.child(id).setValue(userModel);
-                                Log.d("firebase_info",id+" "+first_name+" "+last_name+" "+email+" "+android_id);
+                                Log.d("firebase_info", id + " " + first_name + " " + last_name + " " + email + " " + android_id);
 
                                 //   Toast.makeText(LoginActivity.this, id + "\n" + first_name + "\n" + last_name + "\n" + email + "\n" + user_type + "\n" + phone, Toast.LENGTH_LONG).show();
 
@@ -192,8 +193,25 @@ public class LoginActivity extends AppCompatActivity {
                                 login_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);
 
-                            }
-                            else  {
+                            } else if (jsonStatus.equals("not_allowed")) {
+                                login_button.setVisibility(View.VISIBLE);
+                                progress_bar.setVisibility(View.GONE);
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
+                                        .setTitle("Warning!")
+                                        .setMessage("This account is not approved yet")
+                                        .setCancelable(false)
+                                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                login_button.setVisibility(View.VISIBLE);
+                                                progress_bar.setVisibility(View.GONE);
+
+                                            }
+                                        });
+                                //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+                                dialog.show();
+                            } else {
 
                                 login_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);
@@ -222,10 +240,18 @@ public class LoginActivity extends AppCompatActivity {
                             login_button.setVisibility(View.VISIBLE);
                             progress_bar.setVisibility(View.GONE);
                             // Toast.makeText(LoginActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(LoginActivity.this, "Api not responding.", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginActivity.this, "Api not responding.", Toast.LENGTH_SHORT).show();
                             //  login_text.setVisibility(View.VISIBLE);
                             // login_text.setText("JSON Error");
+
+                            try {
+                                checkException(jsonObject);
+                            } catch (JSONException jsonException) {
+                                jsonException.printStackTrace();
+                            }
                         }
+
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -297,8 +323,51 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void checkException(JSONObject jsonObject) throws JSONException {
+        JSONArray message = jsonObject.getJSONArray("message");
+        Log.d("loginActivity", message.toString());
+        if (message.toString().equals("These credentials do not match our records.")){
+
+            login_button.setVisibility(View.VISIBLE);
+            progress_bar.setVisibility(View.GONE);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
+                    .setTitle("Warning!")
+                    .setMessage("Incorrect Email or Password")
+                    .setCancelable(false)
+                    .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            login_button.setVisibility(View.VISIBLE);
+                            progress_bar.setVisibility(View.GONE);
+
+                        }
+                    });
+            //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+            dialog.show();
+        }else {
+            login_button.setVisibility(View.VISIBLE);
+            progress_bar.setVisibility(View.GONE);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this, R.style.DialogTheme)
+                    .setTitle("Warning!")
+                    .setMessage("Server not responding, please try again later.")
+                    .setCancelable(false)
+                    .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            login_button.setVisibility(View.VISIBLE);
+                            progress_bar.setVisibility(View.GONE);
+
+                        }
+                    });
+            //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+            dialog.show();
+        }
+    }
+
     public void OpenRegisterChooser(View view) {
-         startActivity(new Intent(getApplicationContext(), ChooseRegisterActivity.class));
+        startActivity(new Intent(getApplicationContext(), ChooseRegisterActivity.class));
 
     }
 

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,6 +49,8 @@ public class SearchZipStateCity {
     Dialog dialog;
     Context context;
 
+    CardView cardProgress;
+
 
     public SearchZipStateCity() {
     }
@@ -59,6 +62,8 @@ public class SearchZipStateCity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.search_pharmacies_dialog_layout);
+
+        CardView cardProgress = (CardView) dialog.findViewById(R.id.cardProgress);
 
 
         ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
@@ -120,6 +125,11 @@ public class SearchZipStateCity {
         // noticeRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         cityRecycler.setLayoutManager(new LinearLayoutManager(context));
         zipCityStateList = new ArrayList<ZipCityList>();
+
+
+        cardProgress.setVisibility(View.VISIBLE);
+        cityRecycler.setVisibility(View.GONE);
+
         cityRecycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             GestureDetector gestureDetector = new GestureDetector(context,
                     new GestureDetector.SimpleOnGestureListener() {
@@ -183,6 +193,8 @@ public class SearchZipStateCity {
                             try {
 
                                 Log.d("ApiResponse", response);
+                                cardProgress.setVisibility(View.GONE);
+                                cityRecycler.setVisibility(View.VISIBLE);
 
                                 try {
 

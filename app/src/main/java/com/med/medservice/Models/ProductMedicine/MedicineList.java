@@ -63,8 +63,16 @@ public class MedicineList implements Serializable {
         this.medicine_category = medicine_category;
         this.medicine_sub_category = medicine_sub_category;
         this.medicine_image = medicine_image;
-        this.medicine_sale_price = medicine_sale_price;
-        this.medicine_regular_price = medicine_regular_price;
+        if (medicine_sale_price != null && !medicine_sale_price.equals("null") && !medicine_sale_price.equals("")){
+            this.medicine_sale_price = medicine_sale_price;
+        }else {
+            this.medicine_sale_price = "0";
+        }
+        if (medicine_regular_price != null && !medicine_regular_price.equals("null") && !medicine_regular_price.equals("")){
+            this.medicine_regular_price = medicine_regular_price;
+        }else {
+            this.medicine_regular_price = "0";
+        }
         this.medicine_quantity = medicine_quantity;
         this.medicine_short_desc = medicine_short_desc;
         this.medicine_description = medicine_description;

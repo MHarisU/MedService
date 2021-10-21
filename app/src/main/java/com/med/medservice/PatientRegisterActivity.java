@@ -5,19 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,16 +51,24 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
+import java.util.Date;
 
 public class PatientRegisterActivity extends AppCompatActivity {
 
-    EditText editText_username, editText_first, editText_last, editText_email, editText_phone, editText_address, editText_password, editText_password_confirm;
+    EditText editText_representativeName, editText_username, editText_first, editText_last, editText_email, editText_phone, editText_address, editText_password, editText_password_confirm;
     ScrollView registrationScroll;
+    RadioButton radioMale, radioFemale, radioPatient, radioRepresentative;
+    TextView editText_relationToPatient;
+    LinearLayout layoutPatientRepresentative;
 
     String selected_date_of_birht = "";
     String selected_state = "";
+    String selected_gender = "male";
 
     ProgressBar progress_bar;
     Button patient_register_button;
@@ -73,16 +88,27 @@ public class PatientRegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_register);
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
         statesSpinner = findViewById(R.id.spinner_state);
 
         SetupDoctorSpinner();
 
+        radioMale = findViewById(R.id.radioMale);
+        radioFemale = findViewById(R.id.radioFemale);
+        radioPatient = findViewById(R.id.radioPatient);
+        radioRepresentative = findViewById(R.id.radioRepresentative);
+        layoutPatientRepresentative = findViewById(R.id.layoutPatientRepresentative);
+
+        setupRadioButton();
+
 
         editText_username = findViewById(R.id.editText_username);
+        editText_representativeName = findViewById(R.id.editText_representativeName);
+        editText_relationToPatient = findViewById(R.id.editText_relationToPatient);
+
+
         editText_first = findViewById(R.id.editText_first);
         editText_last = findViewById(R.id.editText_last);
         editText_email = findViewById(R.id.editText_email);
@@ -110,6 +136,46 @@ public class PatientRegisterActivity extends AppCompatActivity {
 
         globalUrlApi = new GlobalUrlApi();
         URL_Register = globalUrlApi.getNewBaseUrl() + "signup_from_app";
+
+
+    }
+
+    private void setupRadioButton() {
+        radioMale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (radioMale.isChecked())
+                    selected_gender = "male";
+                //Toast.makeText(PatientRegisterActivity.this, selected_gender, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        radioFemale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (radioFemale.isChecked())
+                    selected_gender = "female";
+                //Toast.makeText(PatientRegisterActivity.this, selected_gender, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        radioRepresentative.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (radioRepresentative.isChecked()) {
+                    layoutPatientRepresentative.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        radioPatient.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (radioPatient.isChecked()) {
+                    layoutPatientRepresentative.setVisibility(View.GONE);
+                }
+            }
+        });
 
 
     }
@@ -199,6 +265,14 @@ public class PatientRegisterActivity extends AppCompatActivity {
         progress_bar.setVisibility(View.VISIBLE);
         patient_register_button.setVisibility(View.GONE);
 
+        String representativeName = "";
+        String representativeRelation = "";
+
+        if (radioRepresentative.isChecked()) {
+            representativeName = editText_representativeName.getText().toString();
+            representativeRelation = editText_relationToPatient.getText().toString();
+        }
+
         final String first = editText_first.getText().toString();
         final String last = editText_last.getText().toString();
         final String phone = editText_phone.getText().toString();
@@ -211,8 +285,9 @@ public class PatientRegisterActivity extends AppCompatActivity {
         final String username = editText_username.getText().toString();
 
 
-
         Handler handler = new Handler();
+        final String finalRepresentativeName = representativeName;
+        final String finalRepresentativeRelation = representativeRelation;
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -222,48 +297,93 @@ public class PatientRegisterActivity extends AppCompatActivity {
                                 && Validations.isPasswordConfirmMatched(password, password_confirm)
                                 && Validations.isValidPassword(password)
                                 && Validations.isUsernameValid(username)
-                ){
+                ) {
 
-                    if (
-                            username != null && !username.equals("") &&
-                                    first != null && !first.equals("") &&
-                                    last != null && !last.equals("") &&
-                                    selected_date_of_birht != null && !selected_date_of_birht.equals("") &&
-                                    email != null && !email.equals("") &&
-                                    phone != null && !phone.equals("") &&
-                                    address != null && !address.equals("") &&
-                                    selected_state != null && !selected_state.equals("") &&
-                                    password != null && !password.equals("")) {
+                    if (radioRepresentative.isChecked()) {
+                        if (
+                                finalRepresentativeName != null && !finalRepresentativeName.equals("") &&
+                                        finalRepresentativeRelation != null && !finalRepresentativeRelation.equals("") &&
+                                        username != null && !username.equals("") &&
+                                        first != null && !first.equals("") &&
+                                        last != null && !last.equals("") &&
+                                        selected_date_of_birht != null && !selected_date_of_birht.equals("") &&
+                                        email != null && !email.equals("") &&
+                                        phone != null && !phone.equals("") &&
+                                        address != null && !address.equals("") &&
+                                        selected_state != null && !selected_state.equals("") &&
+                                        password != null && !password.equals("")) {
 
 
-                        Register(username, first, last, selected_date_of_birht, email, phone, address, selected_state, password);
-                        //Toast.makeText(PatientRegisterActivity.this, "All done", Toast.LENGTH_SHORT).show();
+                            Register(finalRepresentativeName, finalRepresentativeRelation, username, first, last, selected_date_of_birht, email, phone, address, selected_state, password);
+
+                            //Toast.makeText(PatientRegisterActivity.this, "All done", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            //Toast.makeText(PatientRegisterActivity.this, "Please fill details correctly", Toast.LENGTH_SHORT).show();
+                            String errors = "* Please fill all fields (in Personal Info)";
+                            ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+                            viewDialog.showDialog(PatientRegisterActivity.this, errors);
+
+
+                            progress_bar.setVisibility(View.GONE);
+                            patient_register_button.setVisibility(View.VISIBLE);
+                        }
 
                     } else {
-                        //Toast.makeText(PatientRegisterActivity.this, "Please fill details correctly", Toast.LENGTH_SHORT).show();
-                        String errors = "* Please fill all fields (in Personal Info)";
-                        ViewDialogRegistration viewDialog = new ViewDialogRegistration();
-                        viewDialog.showDialog(PatientRegisterActivity.this, errors);
 
 
-                        progress_bar.setVisibility(View.GONE);
-                        patient_register_button.setVisibility(View.VISIBLE);
+                        if (
+                                username != null && !username.equals("") &&
+                                        first != null && !first.equals("") &&
+                                        last != null && !last.equals("") &&
+                                        selected_date_of_birht != null && !selected_date_of_birht.equals("") &&
+                                        email != null && !email.equals("") &&
+                                        phone != null && !phone.equals("") &&
+                                        address != null && !address.equals("") &&
+                                        selected_state != null && !selected_state.equals("") &&
+                                        password != null && !password.equals("")) {
+
+
+                            if (calculateAge() > 17) {
+                                Register(finalRepresentativeName, finalRepresentativeRelation, username, first, last, selected_date_of_birht, email, phone, address, selected_state, password);
+                            } else {
+                                String errors = "* Patient age is less then 18 years please register as Representative";
+                                ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+                                viewDialog.showDialog(PatientRegisterActivity.this, errors);
+
+
+                                progress_bar.setVisibility(View.GONE);
+                                patient_register_button.setVisibility(View.VISIBLE);
+                            }                            //Toast.makeText(PatientRegisterActivity.this, "All done", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            //Toast.makeText(PatientRegisterActivity.this, "Please fill details correctly", Toast.LENGTH_SHORT).show();
+                            String errors = "* Please fill all fields (in Personal Info)";
+                            ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+                            viewDialog.showDialog(PatientRegisterActivity.this, errors);
+
+
+                            progress_bar.setVisibility(View.GONE);
+                            patient_register_button.setVisibility(View.VISIBLE);
+                        }
+
+
                     }
 
 
-                }else {
+                } else {
                     String errors = "";
-                    if (!Validations.isValidEmail(email)){
+                    if (!Validations.isValidEmail(email)) {
                         errors += "* Invalid Email\n\n";
                     }
-                    if (!Validations.isPasswordConfirmMatched(password, password_confirm)){
+                    if (!Validations.isPasswordConfirmMatched(password, password_confirm)) {
                         errors += "* Password Mismatched\n\n";
-                    }else {
-                        if (!Validations.isValidPassword(password)){
+                    } else {
+                        if (!Validations.isValidPassword(password)) {
                             errors += "* Password must contain minimum eight characters, at-least one letter, one number and one special character\n\n";
                         }
                     }
-                    if (!Validations.isUsernameValid(username)){
+                    if (!Validations.isUsernameValid(username)) {
                         errors += "* Username must contain minimum eight characters, at-least one letter and one number\n\n";
                     }
 
@@ -283,12 +403,48 @@ public class PatientRegisterActivity extends AppCompatActivity {
 
     }
 
+    private int calculateAge() {
+
+        //using Calendar Object
+        String s = selected_date_of_birht;
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date d = null;
+        try {
+            d = sdf.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH) + 1;
+        int date = c.get(Calendar.DATE);
+        LocalDate l1 = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            l1 = LocalDate.of(year, month, date);
+        }
+        LocalDate now1 = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            now1 = LocalDate.now();
+        }
+        Period diff1 = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            diff1 = Period.between(l1, now1);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            System.out.println("age:" + diff1.getYears() + "years");
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return diff1.getYears();
+        } else {
+            return 0;
+        }
+
+    }
 
 
-
-
-
-    private void Register(String username, final String first, final String last, final String DOB, final String email, final String phone,
+    private void Register(String finalRepresentativeName, String finalRepresentativeRelation, String username, final String first, final String last, final String DOB, final String email, final String phone,
                           final String address, final String state, final String password) {
 
         JSONObject jsonBody = new JSONObject();
@@ -308,6 +464,9 @@ public class PatientRegisterActivity extends AppCompatActivity {
             jsonBody.put("country_id", "2");
             jsonBody.put("city_id", "3");
             jsonBody.put("state_id", "4");
+            jsonBody.put("gender", selected_gender);
+            jsonBody.put("representative_name", finalRepresentativeName);
+            jsonBody.put("representative_relation", finalRepresentativeRelation);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -325,7 +484,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                             JSONObject jsonResponse = jsonObject.getJSONObject("Response");
                             String status = jsonResponse.getString("Status");
 
-                            if (status.equals("False")){
+                            if (status.equals("False")) {
                                 patient_register_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(PatientRegisterActivity.this, R.style.DialogTheme)
@@ -343,8 +502,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                                         });
                                 //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
                                 dialog.show();
-                            }
-                            else if (status.equals("True")){
+                            } else if (status.equals("True")) {
 
                                 patient_register_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);
@@ -365,8 +523,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                                 //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
                                 dialog.show();
 
-                            }
-                            else {
+                            } else {
                                 patient_register_button.setVisibility(View.VISIBLE);
                                 progress_bar.setVisibility(View.GONE);
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(PatientRegisterActivity.this, R.style.DialogTheme)
@@ -616,5 +773,51 @@ public class PatientRegisterActivity extends AppCompatActivity {
     public void SearchZip(View view) {
         SearchZipStateCity searchZipStateCity = new SearchZipStateCity();
         searchZipStateCity.showSearchDialog(PatientRegisterActivity.this);
+    }
+
+    public void selectRelationToPatient(View view) {
+        PopupMenu menu = new PopupMenu(this, view);
+
+        //   menu.getMenu().add("Change Profile");
+        menu.getMenu().add("Sibling");
+        menu.getMenu().add("Parent");
+        menu.getMenu().add("Grandparent");
+        menu.getMenu().add("Other");
+
+
+        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+
+
+                if (item.getTitle().equals("Sibling")) {
+                    editText_relationToPatient.setText("Sibling");
+
+
+                }
+                if (item.getTitle().equals("Parent")) {
+
+                    editText_relationToPatient.setText("Parent");
+
+
+                }
+                if (item.getTitle().equals("Grandparent")) {
+
+                    editText_relationToPatient.setText("Grandparent");
+
+
+                }
+                if (item.getTitle().equals("Other")) {
+
+                    editText_relationToPatient.setText("Other");
+
+
+                }
+
+                return true;
+            }
+        });
+
+        menu.show(); //showing popup menu
+
     }
 }

@@ -67,8 +67,16 @@ public class LabsList implements Serializable {
         this.lab_category = lab_category;
         this.lab_sub_category = lab_sub_category;
         this.lab_image = lab_image;
-        this.lab_sale_price = lab_sale_price;
-        this.lab_regular_price = lab_regular_price;
+        if (lab_sale_price != null && !lab_sale_price.equals("null") && !lab_sale_price.equals("")){
+            this.lab_sale_price = lab_sale_price;
+        }else {
+            this.lab_sale_price = "0";
+        }
+        if (lab_regular_price != null && !lab_regular_price.equals("null") && !lab_regular_price.equals("")){
+            this.lab_regular_price = lab_regular_price;
+        }else {
+            this.lab_regular_price = "0";
+        }
         this.lab_quantity = lab_quantity;
         this.lab_short_desc = lab_short_desc;
         this.lab_description = lab_description;
@@ -84,8 +92,16 @@ public class LabsList implements Serializable {
         this.lab_category = lab_category;
         this.lab_sub_category = lab_sub_category;
         this.lab_image = lab_image;
-        this.lab_sale_price = lab_sale_price;
-        this.lab_regular_price = lab_regular_price;
+        if (lab_sale_price != null && !lab_sale_price.equals("null") && !lab_sale_price.equals("")){
+            this.lab_sale_price = lab_sale_price;
+        }else {
+            this.lab_sale_price = "0";
+        }
+        if (lab_regular_price != null && !lab_regular_price.equals("null") && !lab_regular_price.equals("")){
+            this.lab_regular_price = lab_regular_price;
+        }else {
+            this.lab_regular_price = "0";
+        }
         this.lab_quantity = lab_quantity;
         this.lab_short_desc = lab_short_desc;
         this.lab_description = lab_description;

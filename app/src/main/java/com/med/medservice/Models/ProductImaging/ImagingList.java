@@ -30,8 +30,16 @@ public class ImagingList implements Serializable {
         this.parent_category = parent_category;
         this.sub_category = sub_category;
         this.featured_image = featured_image;
-        this.sale_price = sale_price;
-        this.regular_price = regular_price;
+        if (sale_price != null && !sale_price.equals("null") && !sale_price.equals("")){
+            this.sale_price = sale_price;
+        }else {
+            this.sale_price = "0";
+        }
+        if (regular_price != null && !regular_price.equals("null") && !regular_price.equals("")){
+            this.regular_price = regular_price;
+        }else {
+            this.regular_price = "0";
+        }
         this.quantity = quantity;
         this.mode = mode;
         this.medicine_type = medicine_type;

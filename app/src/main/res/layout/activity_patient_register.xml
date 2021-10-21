@@ -258,6 +258,10 @@
                     android:textColor="#000"
                     android:textSize="15sp" />
 
+
+
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -285,6 +289,97 @@
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <EditText
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/White"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" Please Select Account Type"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="15dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <RadioGroup
+                        android:layout_marginStart="0dp"
+
+                        android:id="@+id/radioGroup0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/radioPatient"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="I'm the Patient" />
+
+                        <RadioButton
+                            android:id="@+id/radioRepresentative"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I'm the Patient's Representative" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/layoutPatientRepresentative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <EditText
+                        android:id="@+id/editText_representativeName"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/black_stock_white_background"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" Full Name (Patient Representative)"
+                        android:inputType="text"
+                        android:paddingStart="15dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/editText_relationToPatient"
+
+                        android:onClick="selectRelationToPatient"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/black_stock_white_background"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" Relation to Patient (Choose Relation)"
+                        android:paddingStart="15dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
                 <EditText
                     android:id="@+id/editText_first"
 
@@ -294,7 +389,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/black_stock_white_background"
                     android:fontFamily="@font/open_sans_regular"
-                    android:hint=" First Name"
+                    android:hint=" Patient First Name"
                     android:inputType="text"
                     android:paddingStart="15dp"
                     android:textColor="#000"
@@ -309,11 +404,60 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/black_stock_white_background"
                     android:fontFamily="@font/open_sans_regular"
-                    android:hint=" Last Name"
+                    android:hint=" Patient Last Name"
                     android:inputType="text"
                     android:paddingStart="15dp"
                     android:textColor="#000"
                     android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/black_stock_white_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:background="@color/White"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" Gender"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioMale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="Male" />
+
+                        <RadioButton
+                            android:id="@+id/radioFemale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/date_time"
@@ -420,13 +564,13 @@
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="0dp">
+                    android:layout_marginBottom="0dp"
+                    android:visibility="gone">
 
 
                     <Spinner

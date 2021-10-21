@@ -205,7 +205,16 @@ public class PatientAppointmentsActivity extends AppCompatActivity {
     }
 
     public void OpenHome(View view) {
-        Intent i = new Intent(this, PatientMainActivity.class);
+        SessionManager sessionManager = new SessionManager(this);
+
+        Intent i =null;
+
+        if (sessionManager.getUserType().equals("patient")) {
+            i = new Intent(this, PatientMainActivity.class);
+        }
+        else if (sessionManager.getUserType().equals("doctor")) {
+            i = new Intent(this, DoctorMainActivity.class);
+        }
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
         startActivity(i);

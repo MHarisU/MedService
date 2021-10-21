@@ -95,8 +95,12 @@ public class EditProfileActivity extends AppCompatActivity {
         addressView = findViewById(R.id.addressView);
         dateView = findViewById(R.id.dateView);
 
-        nameView.setText(name);
-        nameLastView.setText(last_name);
+        //Toast.makeText(EditProfileActivity.this, name+" "+last_name, Toast.LENGTH_SHORT).show();
+
+
+        //nameView.setText(name);
+        nameView.setText(name+"");
+        nameLastView.setText(""+last_name);
         emailView.setText(email);
         phoneView.setText(phone_number);
         addressView.setText(office_address);
@@ -108,6 +112,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void SelectDate(View view) {
+
         final TextView date_time = findViewById(R.id.dateView);
 
         final Calendar calendar = Calendar.getInstance();
@@ -125,8 +130,17 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         };
 
-        new DatePickerDialog(EditProfileActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+       // new DatePickerDialog(EditProfileActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
 
+        DatePickerDialog dialog = new DatePickerDialog(EditProfileActivity.this,
+                AlertDialog.THEME_HOLO_LIGHT,
+                dateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+
+        dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+        dialog.show();
 
     }
 
@@ -219,6 +233,14 @@ public class EditProfileActivity extends AppCompatActivity {
                             String jsonStatus = jsonResponse.getString("Status");
 
                             if (jsonStatus.equals("True")) {
+
+
+
+                                sessionManager.setFirstName(nameView.getText().toString());
+                                sessionManager.setLastName(nameLastView.getText().toString());
+                                sessionManager.setDateBirth(dateView.getText().toString());
+                                sessionManager.setPhone(phoneView.getText().toString());
+                                sessionManager.setAddress(addressView.getText().toString());
 
                                 finish();
                                 try {

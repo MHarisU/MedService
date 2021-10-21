@@ -24,8 +24,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.med.medservice.Diaglogs.ViewDialogRegistration;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
+import com.med.medservice.Utils.Validations;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,7 +60,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
         editText_password_c = findViewById(R.id.editText_password_c);
 
 
-
         sessionManager = new SessionManager(this);
         HashMap<String, String> user = sessionManager.getUserDetail();
         // name = user.get(sessionManager.FIRST_NAME);
@@ -74,10 +75,15 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     public void ChangePassword(View view) {
 
-        if ( editText_password.getText().toString().equals(editText_password_c.getText().toString())
-                && !editText_password.getText().toString().equals("")
-                && editText_password_current.getText().toString().equals(new SessionManager(ChangePasswordActivity.this).getPassword())
-        ){
+        String password_new = editText_password.getText().toString();
+        String password_confirm = editText_password_c.getText().toString();
+        String password_current = editText_password_current.getText().toString();
+
+        if (
+                Validations.isPasswordConfirmMatched(password_new, password_confirm)
+                        && Validations.isValidPassword(password_new)
+                        && password_current.equals(new SessionManager(ChangePasswordActivity.this).getPassword())
+        ) {
 
             newPassword = editText_password.getText().toString();
 
@@ -179,9 +185,25 @@ public class ChangePasswordActivity extends AppCompatActivity {
             // asyncTask.execute();
             asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
 
-        }
-        else {
-            Toast.makeText(this, "Enter Password Correctly", Toast.LENGTH_SHORT).show();
+        } else {
+            String errors = "";
+            if (!Validations.isPasswordConfirmMatched(password_new, password_confirm)) {
+                errors += "* Password Mismatched\n\n";
+            }
+
+            else if(!Validations.isValidPassword(password_new)) {
+                errors += "* Password must contain minimum eight characters, at-least one letter, one number and one special character\n\n";
+            }
+
+            else if (!password_current.equals(new SessionManager(ChangePasswordActivity.this).getPassword())) {
+                errors += "* Wrong current password\n\n";
+            }
+
+
+
+
+            ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+            viewDialog.showDialog(this, errors);
         }
 
     }
@@ -205,7 +227,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, new GlobalUrlApi().getNewBaseUrl() +
-                "updateUserProfile/"+user_id,
+                "updateUserProfile/" + user_id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -203,7 +204,8 @@ public class PatientProfileActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         final HashMap<String, String> user = sessionManager.getUserDetail();
         name = user.get(sessionManager.FIRST_NAME);
-        name = name + " " + user.get(sessionManager.LAST_NAME);
+        //name = name + " " + user.get(sessionManager.LAST_NAME);
+        last_name = user.get(sessionManager.LAST_NAME);
         email = user.get(sessionManager.EMAIL);
         user_id = user.get(sessionManager.ID);
         date_of_birth = user.get(sessionManager.DOB);
@@ -220,7 +222,7 @@ public class PatientProfileActivity extends AppCompatActivity {
         dateView = findViewById(R.id.dateView);
         nameView = findViewById(R.id.nameView);
 
-        nameView.setText(name);
+        nameView.setText(name + " " + last_name);
         emailView.setText(email);
         dateView.setText(date_of_birth);
         phoneView.setText(phone_number);
@@ -395,5 +397,10 @@ public class PatientProfileActivity extends AppCompatActivity {
         super.onResume();
         LoadProfile();
 
+    }
+
+    public void openWeb(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(new GlobalUrlApi().getNewHomeUrl()+""));
+        startActivity(browserIntent);
     }
 }

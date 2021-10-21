@@ -19,6 +19,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.med.medservice.Models.CartItems.CartAdapter;
 import com.med.medservice.Models.CartItems.CartItemsList;
 import com.med.medservice.Utils.CartDBHelper;
+import com.med.medservice.Utils.SessionManager;
 
 import java.util.ArrayList;
 
@@ -161,7 +162,16 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void OpenHome(View view) {
-        Intent i = new Intent(this, PatientMainActivity.class);
+        SessionManager sessionManager = new SessionManager(this);
+
+        Intent i =null;
+
+        if (sessionManager.getUserType().equals("patient")) {
+            i = new Intent(this, PatientMainActivity.class);
+        }
+        else if (sessionManager.getUserType().equals("doctor")) {
+            i = new Intent(this, DoctorMainActivity.class);
+        }
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
         startActivity(i);

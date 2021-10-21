@@ -140,11 +140,12 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
         //  holder.medicine_image_view.setText(medicine_name.substring(0, 1));
 
         holder.medicine_name_view.setText(medicine_name);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && medicine_desc != null && !medicine_desc.equals("null") && !medicine_desc.equals("")) {
             holder.medicine_short_desc.setText(Html.fromHtml(medicine_desc, Html.FROM_HTML_MODE_COMPACT));
 
         } else {
-            holder.medicine_short_desc.setText(Html.fromHtml(medicine_desc));
+            if (medicine_desc != null && !medicine_desc.equals("null") && !medicine_desc.equals(""))
+                holder.medicine_short_desc.setText(Html.fromHtml(medicine_desc));
 
         }
 

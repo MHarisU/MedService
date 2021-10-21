@@ -27,6 +27,7 @@ import com.med.medservice.Models.ProductLabs.LabsPanelAdapter;
 import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.Utils.CartDBHelper;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
+import com.med.medservice.Utils.SessionManager;
 import com.med.medservice.Utils.UpdateCartInterface;
 
 import org.json.JSONArray;
@@ -510,7 +511,16 @@ public class LabsActivity extends AppCompatActivity implements UpdateCartInterfa
     }
 
     public void OpenHome(View view) {
-        Intent i = new Intent(this, PatientMainActivity.class);
+        SessionManager sessionManager = new SessionManager(this);
+
+        Intent i =null;
+
+        if (sessionManager.getUserType().equals("patient")) {
+            i = new Intent(this, PatientMainActivity.class);
+        }
+        else if (sessionManager.getUserType().equals("doctor")) {
+            i = new Intent(this, DoctorMainActivity.class);
+        }
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
         startActivity(i);

@@ -714,6 +714,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
 
 
     public void SelectDateTime(View view) {
+
         final TextView date_time = findViewById(R.id.date_time);
 
         final Calendar calendar = Calendar.getInstance();
@@ -745,15 +746,6 @@ public class PatientRegisterActivity extends AppCompatActivity {
         dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         dialog.show();
 
-      /*  new DatePickerDialog(
-                PatientRegisterActivity.this,
-                AlertDialog.THEME_HOLO_LIGHT,
-                dateSetListener,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH))
-                .setMaxDate(System.currentTimeMillis())
-                .show();*/
 
 
     }

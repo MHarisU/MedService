@@ -121,14 +121,17 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
 
         holder.lab_image_view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.flask_icon));
 
+        boolean desNull = lab_desc != null && !lab_desc.equals("null") && !lab_desc.equals("");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             holder.lab_name_view.setText(Html.fromHtml(lab_name, Html.FROM_HTML_MODE_COMPACT));
-            holder.lab_short_desc.setText(Html.fromHtml(lab_desc, Html.FROM_HTML_MODE_COMPACT));
+            if (desNull)
+                holder.lab_short_desc.setText(Html.fromHtml(lab_desc, Html.FROM_HTML_MODE_COMPACT));
 
         } else {
 
             holder.lab_name_view.setText(Html.fromHtml(lab_name));
-            holder.lab_short_desc.setText(Html.fromHtml(lab_desc));
+            if (desNull)
+                holder.lab_short_desc.setText(Html.fromHtml(lab_desc));
         }
 
 
@@ -145,9 +148,9 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
             public void onClick(View view) {
 
                 String sentence = holder.lab_name_view.getText().toString();
-                String search  = "Panel";
+                String search = "Panel";
 
-                if ( sentence.toLowerCase().indexOf(search.toLowerCase()) != -1 ) {
+                if (sentence.toLowerCase().indexOf(search.toLowerCase()) != -1) {
 
                     System.out.println("I found the keyword");
 
@@ -168,9 +171,9 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabsHo
             public void onClick(View view) {
 
                 String sentence = holder.lab_name_view.getText().toString();
-                String search  = "Panel";
+                String search = "Panel";
 
-                if ( sentence.toLowerCase().indexOf(search.toLowerCase()) != -1 ) {
+                if (sentence.toLowerCase().indexOf(search.toLowerCase()) != -1) {
 
                     System.out.println("I found the keyword");
 

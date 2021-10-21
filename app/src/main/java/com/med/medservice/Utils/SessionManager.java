@@ -36,7 +36,7 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String id, String fist_name,String last_name, String email, String password,  String user_type, String phone, String token, String dob, String address) {
+    public void createSession(String id, String fist_name, String last_name, String email, String password, String user_type, String phone, String token, String dob, String address) {
         editor.putBoolean(LOGIN, true);
         editor.putString(ID, id);
         editor.putString(FIRST_NAME, fist_name);
@@ -97,16 +97,19 @@ public class SessionManager {
         user.put(ADDRESS, sharedPreferences.getString(ADDRESS, null));
 
 
-
         return user;
     }
 
-    public String getToken(){
-        return sharedPreferences.getString(TOKEN,null);
+    public String getToken() {
+        return sharedPreferences.getString(TOKEN, null);
     }
 
-    public String getPassword(){
-        return sharedPreferences.getString(PASSWORD,null);
+    public String getUserType() {
+        return sharedPreferences.getString(USER_TYPE, null);
+    }
+
+    public String getPassword() {
+        return sharedPreferences.getString(PASSWORD, null);
     }
 
     public void setPassword(String password) {
@@ -117,17 +120,51 @@ public class SessionManager {
 
     }
 
-    public String getUserId(){
-        return sharedPreferences.getString(ID,null);
+    public void setFirstName(String firstName) {
+
+        editor.putString(FIRST_NAME, firstName);
+
+        editor.apply();
+
+    }
+    public void setLastName(String lastName) {
+
+        editor.putString(LAST_NAME, lastName);
+
+        editor.apply();
+
+    }
+    public void setDateBirth(String dateBirth) {
+
+        editor.putString(DOB, dateBirth);
+
+        editor.apply();
+
+    }public void setPhone(String phone) {
+
+        editor.putString(PHONE, phone);
+
+        editor.apply();
+
+    }public void setAddress(String address) {
+
+        editor.putString(ADDRESS, address);
+
+        editor.apply();
+
+    }
+
+    public String getUserId() {
+        return sharedPreferences.getString(ID, null);
     }
 
     public void logout() {
         editor.clear();
         editor.commit();
 
-           Intent i = new Intent(context, LoginActivity.class);
-           context.startActivity(i);
-           ((DoctorMainActivity) context).finish();
+        Intent i = new Intent(context, LoginActivity.class);
+        context.startActivity(i);
+        ((DoctorMainActivity) context).finish();
     }
 
     public void logoutPatient() {

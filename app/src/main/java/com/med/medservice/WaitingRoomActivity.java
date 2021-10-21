@@ -18,6 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +67,8 @@ public class WaitingRoomActivity extends AppCompatActivity {
     TextView doctorOnlineView;
 
     String symptoms_id, desc, session_id, pat_id, doctor_link, room_id;
+
+    LinearLayout statusLayout;
 
 
     @Override
@@ -171,6 +174,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
             }
         });
 
+        statusLayout = findViewById(R.id.statusLayout);
 
         SetupSwitchButton();
 
@@ -290,14 +294,14 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
                             String arrayData = jsonResponse.getString("Data");
 
-
+                            statusLayout.setVisibility(View.VISIBLE);
 
                             if (arrayData.equals("Online")){
                                 switchButton.setChecked(true);
                             }else if (arrayData.equals("Offline")){
                                 switchButton.setChecked(false);
                             }
-                            Toast.makeText(WaitingRoomActivity.this, ""+arrayData, Toast.LENGTH_SHORT).show();
+                           //Toast.makeText(WaitingRoomActivity.this, ""+arrayData, Toast.LENGTH_SHORT).show();
 
 
 
@@ -460,7 +464,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
                             if (jsonStatus.equals("True")) {
 
 
-                                Toast.makeText(WaitingRoomActivity.this, "Status Updated", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(WaitingRoomActivity.this, "Status Updated", Toast.LENGTH_SHORT).show();
 
 
                             } 

@@ -63,7 +63,7 @@ public class SearchZipStateCity {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.search_pharmacies_dialog_layout);
 
-        CardView cardProgress = (CardView) dialog.findViewById(R.id.cardProgress);
+        cardProgress = (CardView) dialog.findViewById(R.id.cardProgress);
 
 
         ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);

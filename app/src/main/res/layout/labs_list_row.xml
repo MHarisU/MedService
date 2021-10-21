@@ -56,7 +56,7 @@
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/open_sans_regular"
                     android:gravity="start"
-                    android:text="Vitamin C, Effervescent"
+                    android:text="Lab Name"
                     android:textColor="@color/Gray"
                     android:textSize="16sp"
                     android:textStyle="" />
@@ -75,7 +75,7 @@
                 android:layout_marginTop="0dp"
                 android:fontFamily="@font/geo_sans_light"
                 android:gravity="start"
-                android:text="Powdered Drink Mix"
+                android:text="No Description"
                 android:textColor="@color/Gray"
                 android:textSize="16sp"
                 android:textStyle="" />

@@ -74,10 +74,25 @@ public class LabsSearchAdapter extends RecyclerView.Adapter<LabsSearchAdapter.La
         final String lab_id = currentData.getLab_id();
         final String lab_name = currentData.getLab_name();
         final String lab_desc = currentData.getLab_short_desc();
-        final String lab_price = currentData.getLab_regular_price();
+        String lab_price = "0";
+
+        final String lab_sale_price = currentData.getLab_sale_price();
+        final String lab_regular_price = currentData.getLab_regular_price();
         final String lab_image = currentData.getLab_image();
 
         //   category_name = category_name.replace("&#8211;", "-");
+
+        if (lab_sale_price != null && !lab_sale_price.equals("null") && !lab_sale_price.equals("")) {
+            lab_price =lab_sale_price;
+
+        } else if (lab_regular_price != null && !lab_regular_price.equals("null") && !lab_regular_price.equals("")) {
+            lab_price =lab_regular_price;
+
+        }
+        else {
+            lab_price = "0";
+
+        }
 
 
         List<String> colors;
@@ -141,13 +156,14 @@ public class LabsSearchAdapter extends RecyclerView.Adapter<LabsSearchAdapter.La
             }
         });
 
+        String finalLab_price = lab_price;
         holder.lab_add_cart_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (!checkAdded) {
 
-                    mydb.insertCartItem(user_id, lab_id, lab_name, "1", lab_price, "0", "lab-test", lab_image);
+                    mydb.insertCartItem(user_id, lab_id, lab_name, "1", finalLab_price, "0", "lab-test", lab_image);
                     holder.lab_add_cart_view.setBackgroundResource(R.color.skybluedark);
                     holder.lab_add_cart_view.setText("Added");
                     checkAdded = true;

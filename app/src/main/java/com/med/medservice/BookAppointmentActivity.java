@@ -1,6 +1,7 @@
 package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;
@@ -17,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.med.medservice.Diaglogs.ViewDialogActivityClose;
 import com.med.medservice.NetworkAPI.ApiCallerNew;
 import com.med.medservice.NetworkAPI.ApiTokenCaller;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
@@ -71,6 +74,9 @@ public class BookAppointmentActivity extends AppCompatActivity implements Sympto
 
     TextView emailView, nameView;
 
+    LinearLayout appointmentLayout;
+    CardView cardProgress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +104,10 @@ public class BookAppointmentActivity extends AppCompatActivity implements Sympto
         symtoms_text = findViewById(R.id.symtoms_text);
         doctorSpinner = findViewById(R.id.spinner_doctor);
         spinner_time = findViewById(R.id.spinner_time);
+
+
+        appointmentLayout = findViewById(R.id.appointmentLayout);
+        cardProgress = findViewById(R.id.cardProgress);
 
         // SetupDoctorSpinner();
 
@@ -376,6 +386,16 @@ public class BookAppointmentActivity extends AppCompatActivity implements Sympto
 
                             }
 
+
+                            if (doctorNames.length>0){
+                                cardProgress.setVisibility(View.GONE);
+                                appointmentLayout.setVisibility(View.VISIBLE);
+                            }
+                            else {
+                                ViewDialogActivityClose activityClose = new ViewDialogActivityClose();
+                                activityClose.showDialog(BookAppointmentActivity.this, "You can not book an appointment, please goto E-Visit first, thank you");
+                                cardProgress.setVisibility(View.GONE);
+                            }
 
                             SetupDoctorSpinner();
 

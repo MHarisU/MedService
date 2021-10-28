@@ -49,6 +49,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
+import com.med.medservice.Diaglogs.ViewDialogRegistration;
 import com.med.medservice.Models.CartItems.CartItemsList;
 import com.med.medservice.Models.SearchPharmacies.PharmaciesList;
 import com.med.medservice.Utils.CartDBHelper;
@@ -89,6 +90,8 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
 
     SwitchCompat switchButton, switchButton2;
+    Boolean deliveryCheck = false;
+    Boolean sameShippingCheck = true;
 
     ArrayList<PharmaciesList> pharmaciesList;
     RecyclerView pharmaciesRecycler;
@@ -144,7 +147,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         Intent intent = getIntent();
 
         total = intent.getStringExtra("price");
-        Toast.makeText(this, ""+total, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + total, Toast.LENGTH_SHORT).show();
 
         getUser();
 
@@ -339,7 +342,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                 if (b) {
 
                     ShippingAddressSwitchCard.setVisibility(View.VISIBLE);
-
+                    deliveryCheck = true;
                     medicineDeliveryText.setText("Yes");
                     medicineDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.green_bg));
 
@@ -349,7 +352,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                     ShippingAddressSwitchCard.setVisibility(View.GONE);
                     ShippingAddressCard.setVisibility(View.GONE);
                     switchButton2.setChecked(true);
-
+                    deliveryCheck = false;
                     medicineDeliveryText.setText("No");
                     medicineDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.red_bg));
 
@@ -370,7 +373,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                 if (b) {
 
                     ShippingAddressCard.setVisibility(View.GONE);
-
+                    sameShippingCheck = true;
 
                     sameDeliveryText.setText("Yes");
                     sameDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.green_bg));
@@ -378,6 +381,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
                 } else {
 
                     ShippingAddressCard.setVisibility(View.VISIBLE);
+                    sameShippingCheck = false;
 
                     sameDeliveryText.setText("No");
                     sameDeliveryText.setBackgroundDrawable(getResources().getDrawable(R.drawable.red_bg));
@@ -668,11 +672,12 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
     public void ConfirmOrder(View view) {
 
-        progressDialog = new ProgressDialog(CheckoutActivity.this);
+        /*progressDialog = new ProgressDialog(CheckoutActivity.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setCancelable(false);
-        progressDialog.show();
+        progressDialog.show();*/
         CreateOrder();
+
 
 
         //august_month_check = true;
@@ -681,77 +686,174 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
     private void CreateOrder() {
 
-        JSONObject orderJsonObject = new JSONObject();
-        try {
-            orderJsonObject.put("customer_id", user_id);
-            orderJsonObject.put("currency", "US");
-            orderJsonObject.put("order_status", "processing");
-            orderJsonObject.put("payment_title", "Direct Bank Transfer");
-            orderJsonObject.put("payment_method", "via PayPal");
-            orderJsonObject.put("total_price", total);
 
-            JSONObject billingObject = new JSONObject();
+        Boolean checkOrderSequence = true;
 
-            billingObject.put("first_name", first_name);
-            billingObject.put("middle_name", null);
-            billingObject.put("last_name", last_name);
-            billingObject.put("address", billingAddressFull.getText().toString());
-            billingObject.put("state", billingState.getText().toString());
-            billingObject.put("state_code", "AK");
-            billingObject.put("city", billingCity.getText().toString());
-            billingObject.put("zip_code", billingAddressZip.getText().toString());
-            billingObject.put("phone_number", phoneNumber.getText().toString());
-            billingObject.put("email_address", emailAddress.getText().toString());
-            billingObject.put("medicines_delivery", "on");
-            billingObject.put("pharmacy_zipcode", pharmacySelectedNameView.getText().toString());
-            billingObject.put("pharmacy_nearby_location", "404");
-            billingObject.put("lab_appointment_date", selected_lab_appointment_date);
-            billingObject.put("lab_appointment_time", appointment_time);
-            billingObject.put("lab_zipcode", labSelectedNameView.getText().toString());
-            billingObject.put("lab_nearby_location", "410");
+        //Billing Section Params
+        String payment_card_number = cardNumber.getText().toString();
+        String payment_card_expiry = expiryDate.getText().toString();
+        String payment_card_cvc = cvcNumber.getText().toString();
 
-            orderJsonObject.put("billing", billingObject);
+        String billing_address_zip = billingAddressZip.getText().toString();
+        String billing_city = billingCity.getText().toString();
+        String billing_state = billingState.getText().toString();
+        String billing_address_full = billingAddressFull.getText().toString();
+        String billing_phone_number = phoneNumber.getText().toString();
+        String billing_email = emailAddress.getText().toString();
 
-            JSONObject shippingObject = new JSONObject();
 
-            shippingObject.put("full_name", shippingFullName.getText().toString());
-            shippingObject.put("email_address", shippingEmail.getText().toString());
-            shippingObject.put("phone_number", shippingPhone.getText().toString());
-            shippingObject.put("address", shippingAddress.getText().toString());
-            shippingObject.put("state", "Florida");
-            shippingObject.put("state_code", "FL");
-            shippingObject.put("zip_code", shippingZip.getText().toString());
+        String errors = "";
 
-            orderJsonObject.put("shipping", shippingObject);
+        // Validating Billing Section
+        if (!ValidateBillingSection(payment_card_number, payment_card_expiry, payment_card_cvc,
+                billing_address_zip, billing_city, billing_state, billing_address_full)) {
 
-            JSONObject paymentObject = new JSONObject();
+            errors += "* Please fill all fields (in Billing Section)\n\n";
+            ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+            viewDialog.showDialog(CheckoutActivity.this, errors);
+            checkOrderSequence = false;
+        } else {
 
-            paymentObject.put("card_number", "5105105105105100");
-            paymentObject.put("card_expiry", expiryDate.getText().toString());
-            paymentObject.put("cvc", "123");
-            paymentObject.put("payment_method", "online_bank_transfer");
-            paymentObject.put("payment_method_title", "Direct Bank Transfer / Online Payment");
-            paymentObject.put("transaction_id", "4AV75196BA3587207");
-            paymentObject.put("payment_status", "Paid");
 
-            orderJsonObject.put("payment", paymentObject);
+            //Shipping Section
+            String shipping_full_name = "";
+            String shipping_phone = "";
+            String shipping_email = "";
+            String shipping_address = "";
+            String shipping_state = "";
+            String shipping_city = "";
+            String shipping_zip = "";
 
-            JSONArray cartItemsArray = new JSONArray();
-            for (int i = 0; i < cartItemsLists.size(); i++) {
-                JSONObject cartItem1 = new JSONObject();
-                CartItemsList items = cartItemsLists.get(i);
-                cartItem1.put("product_id", items.getITEM_ID());
-                cartItem1.put("product_qty", items.getQUANTITY());
+            String deliver = "off";
+            if (deliveryCheck) {
+                deliver = "on";
 
-                cartItem1.put("pres_id", "111");
-                cartItem1.put("doc_session_id", "144");
-                cartItem1.put("product_mode", items.getTYPE());
-                cartItem1.put("item_type", "session");
+                if (sameShippingCheck) {
+                    shipping_full_name = first_name + " " + last_name;
+                    shipping_phone = billing_phone_number;
+                    shipping_email = billing_email;
+                    shipping_address = billing_address_full;
+                    shipping_state = billing_state;
+                    shipping_city = billing_city;
+                    shipping_zip = billing_address_zip;
+                } else {
+                    shipping_full_name = shippingFullName.getText().toString();
+                    shipping_phone = shippingPhone.getText().toString();
+                    shipping_email = shippingEmail.getText().toString();
+                    shipping_address = shippingAddress.getText().toString();
+                    shipping_state = billing_state;
+                    shipping_city = billing_city;
+                    shipping_zip = shippingZip.getText().toString();
+                }
 
-                cartItemsArray.put(cartItem1);
 
+            } else {
+                deliver = "off";
+            }
+
+            if (deliver.equals("on")) {
+
+                //
+                //
+                //     Will start From here
+                //
+                //
+                //
 
             }
+
+
+
+            String pharmacy_zip_name = "";
+            if (mydb.numberOfRowsMedicines() > 0) {
+                try {
+                    pharmacy_zip_name = pharmacySelectedNameView.getText().toString();
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            String lab_zip_name = "";
+            if (mydb.numberOfRowsLabs() > 0) {
+                lab_zip_name = labSelectedNameView.getText().toString();
+            }
+
+
+
+
+            JSONObject orderJsonObject = new JSONObject();
+            try {
+                orderJsonObject.put("customer_id", user_id);
+                orderJsonObject.put("currency", "US");
+                orderJsonObject.put("order_status", "processing");
+                orderJsonObject.put("payment_title", "Direct Bank Transfer");
+                orderJsonObject.put("payment_method", "via PayPal");
+                orderJsonObject.put("total_price", total);
+
+                JSONObject billingObject = new JSONObject();
+
+
+                billingObject.put("first_name", first_name);
+                billingObject.put("middle_name", null);
+                billingObject.put("last_name", last_name);
+                billingObject.put("address", billing_address_full);
+                billingObject.put("state", billing_state);
+                billingObject.put("state_code", "AK");
+                billingObject.put("city", billing_city);
+                billingObject.put("zip_code", billing_address_zip);
+                billingObject.put("phone_number", billing_phone_number);
+                billingObject.put("email_address", billing_email);
+                billingObject.put("medicines_delivery", deliver);
+                billingObject.put("pharmacy_zipcode", pharmacy_zip_name);
+                billingObject.put("pharmacy_nearby_location", "404");
+                billingObject.put("lab_appointment_date", selected_lab_appointment_date);
+                billingObject.put("lab_appointment_time", appointment_time);
+                billingObject.put("lab_zipcode", lab_zip_name);
+                billingObject.put("lab_nearby_location", "410");
+
+                orderJsonObject.put("billing", billingObject);
+
+                JSONObject shippingObject = new JSONObject();
+
+                shippingObject.put("full_name", shipping_full_name);
+                shippingObject.put("email_address", shipping_email);
+                shippingObject.put("phone_number", shipping_phone);
+                shippingObject.put("address", shipping_address);
+                shippingObject.put("state", shipping_state);
+                shippingObject.put("state_code", "FL");
+                shippingObject.put("zip_code", shipping_zip);
+
+                orderJsonObject.put("shipping", shippingObject);
+
+                JSONObject paymentObject = new JSONObject();
+
+                paymentObject.put("card_number", payment_card_number);
+                paymentObject.put("card_expiry", payment_card_expiry);
+                paymentObject.put("cvc", payment_card_cvc);
+                paymentObject.put("payment_method", "online_bank_transfer");
+                paymentObject.put("payment_method_title", "Direct Bank Transfer / Online Payment");
+                paymentObject.put("transaction_id", "4AV75196BA3587207");
+                paymentObject.put("payment_status", "Paid");
+
+                orderJsonObject.put("payment", paymentObject);
+
+                JSONArray cartItemsArray = new JSONArray();
+                for (int i = 0; i < cartItemsLists.size(); i++) {
+                    JSONObject cartItem1 = new JSONObject();
+                    CartItemsList items = cartItemsLists.get(i);
+                    cartItem1.put("product_id", items.getITEM_ID());
+                    cartItem1.put("product_qty", items.getQUANTITY());
+
+                    cartItem1.put("pres_id", "111");
+                    cartItem1.put("doc_session_id", "144");
+                    cartItem1.put("product_mode", items.getTYPE());
+                    cartItem1.put("item_type", "session");
+
+                    cartItemsArray.put(cartItem1);
+
+
+                }
             /*JSONObject cartItem1 = new JSONObject();
             cartItem1.put("product_id", "41");
             cartItem1.put("product_qty", "2");
@@ -773,164 +875,184 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
 
             cartItemsArray.put(cartItem2);*/
 
-            orderJsonObject.put("cart_items", cartItemsArray);
+                orderJsonObject.put("cart_items", cartItemsArray);
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            final String requestBody = orderJsonObject.toString();
+            // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
+
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, new GlobalUrlApi().getNewBaseUrl() + "createOrder",
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            Log.d("order_api_response", response);
+
+
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                JSONObject jsonResponse = jsonObject.getJSONObject("Response");
+                                JSONObject jsonData = jsonResponse.getJSONObject("Data");
+                                String jsonStatus = jsonResponse.getString("Status");
+
+                                if (jsonStatus.equals("True")) {
+
+
+                                    String OrderID = jsonData.getString("OrderID").trim();
+                                    String Message = jsonData.getString("Message").trim();
+
+                                    progressDialog.dismiss();
+                                    Toast.makeText(CheckoutActivity.this, "" + OrderID, Toast.LENGTH_LONG).show();
+
+                                    Animation slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
+                                            R.anim.slide_down);
+
+                                    Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                                            R.anim.slide_up);
+
+                                    TextView orderCompleteMessageView = findViewById(R.id.orderCompleteMessageView);
+                                    orderCompleteMessageView.setText("Thank you\nOrder Successfully Placed\nYour ORDER ID is " + OrderID);
+
+                                    payment_done_layout.setVisibility(View.VISIBLE);
+                                    payment_done_layout.startAnimation(slide_up);
+                                    EmptyCart();
+
+
+                                } else {
+
+                                    progressDialog.dismiss();
+                                    AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this, R.style.DialogTheme)
+                                            .setTitle("Warning!")
+                                            .setMessage("Order not created")
+                                            .setCancelable(false)
+                                            .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                                                }
+                                            });
+                                    //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+                                    dialog.show();
+
+
+                                }
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                //   login_button.setVisibility(View.VISIBLE);
+                                //   progress_bar.setVisibility(View.GONE);
+                                // Toast.makeText(LoginActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CheckoutActivity.this, "Json Error.", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                                //  login_text.setVisibility(View.VISIBLE);
+                                // login_text.setText("JSON Error");
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //  login_button.setVisibility(View.VISIBLE);
+                            //  progress_bar.setVisibility(View.GONE);
+                            //  Toast.makeText(LoginActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+                            //Login(email, password);
+                            //    login_text.setVisibility(View.VISIBLE);
+                            //   login_text.setText("Error from php");
+
+                            //  login_button.setVisibility(View.VISIBLE);
+                            // progress_bar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this, R.style.DialogTheme)
+                                    .setTitle("Warning!")
+                                    .setMessage("Volley Error")
+                                    .setCancelable(false)
+                                    .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                            //  login_button.setVisibility(View.VISIBLE);
+                                            //  progress_bar.setVisibility(View.GONE);
+
+                                        }
+                                    });
+                            //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
+                            dialog.show();
+
+                        }
+                    }) {
+                @Override
+                public String getBodyContentType() {
+                    return "application/json; charset=utf-8";
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    try {
+                        return requestBody == null ? null : requestBody.getBytes("utf-8");
+                    } catch (UnsupportedEncodingException uee) {
+                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                        return null;
+                    }
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<String, String>();
+                    String auth = "Bearer " + new SessionManager(CheckoutActivity.this).getToken();
+                    headers.put("Authorization", auth);
+                    return headers;
+                }
+            };
+
+            stringRequest.setRetryPolicy(new RetryPolicy() {
+                @Override
+                public int getCurrentTimeout() {
+                    return 10000;
+                }
+
+                @Override
+                public int getCurrentRetryCount() {
+                    return 0; //retry turn off
+                }
+
+                @Override
+                public void retry(VolleyError error) throws VolleyError {
+
+                }
+            });
+
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
+
         }
 
 
-        final String requestBody = orderJsonObject.toString();
-        // Toast.makeText(this, ""+requestBody, Toast.LENGTH_SHORT).show();
+    }
 
+    private boolean ValidateBillingSection(String payment_card_number, String payment_card_expiry, String payment_card_cvc,
+                                           String billing_address_zip, String billing_city, String billing_state, String billing_address_full) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, new GlobalUrlApi().getNewBaseUrl() + "createOrder",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+        return payment_card_number.length() == 16
+                && validateCardExpiryDate(payment_card_expiry)
+                && payment_card_cvc.length() == 3
+                && billing_address_zip != null && !billing_address_zip.equals("")
+                && billing_city != null && !billing_city.equals("")
+                && billing_state != null && !billing_state.equals("")
+                && billing_address_full != null && !billing_address_full.equals("");
 
-                        Log.d("order_api_response", response);
+    }
 
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONObject jsonResponse = jsonObject.getJSONObject("Response");
-                            JSONObject jsonData = jsonResponse.getJSONObject("Data");
-                            String jsonStatus = jsonResponse.getString("Status");
-
-                            if (jsonStatus.equals("True")) {
-
-
-                                String OrderID = jsonData.getString("OrderID").trim();
-                                String Message = jsonData.getString("Message").trim();
-
-                                progressDialog.dismiss();
-                                Toast.makeText(CheckoutActivity.this, "" + OrderID, Toast.LENGTH_LONG).show();
-
-                                Animation slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
-                                        R.anim.slide_down);
-
-                                Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
-                                        R.anim.slide_up);
-
-                                TextView orderCompleteMessageView = findViewById(R.id.orderCompleteMessageView);
-                                orderCompleteMessageView.setText("Thank you\nOrder Successfully Placed\nYour ORDER ID is " + OrderID);
-
-                                payment_done_layout.setVisibility(View.VISIBLE);
-                                payment_done_layout.startAnimation(slide_up);
-                                EmptyCart();
-
-
-                            } else {
-
-                                progressDialog.dismiss();
-                                AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this, R.style.DialogTheme)
-                                        .setTitle("Warning!")
-                                        .setMessage("Order not created")
-                                        .setCancelable(false)
-                                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-
-
-                                            }
-                                        });
-                                //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
-                                dialog.show();
-
-
-                            }
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            //   login_button.setVisibility(View.VISIBLE);
-                            //   progress_bar.setVisibility(View.GONE);
-                            // Toast.makeText(LoginActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(CheckoutActivity.this, "Json Error.", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                            //  login_text.setVisibility(View.VISIBLE);
-                            // login_text.setText("JSON Error");
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //  login_button.setVisibility(View.VISIBLE);
-                        //  progress_bar.setVisibility(View.GONE);
-                        //  Toast.makeText(LoginActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
-                        //Toast.makeText(LoginActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
-                        //Login(email, password);
-                        //    login_text.setVisibility(View.VISIBLE);
-                        //   login_text.setText("Error from php");
-
-                        //  login_button.setVisibility(View.VISIBLE);
-                        // progress_bar.setVisibility(View.GONE);
-                        progressDialog.dismiss();
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this, R.style.DialogTheme)
-                                .setTitle("Warning!")
-                                .setMessage("Volley Error")
-                                .setCancelable(false)
-                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                        //  login_button.setVisibility(View.VISIBLE);
-                                        //  progress_bar.setVisibility(View.GONE);
-
-                                    }
-                                });
-                        //      dialog.show().getWindow().setBackgroundDrawableResource(R.drawable.backgroud_alertbox_round);
-                        dialog.show();
-
-                    }
-                }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                try {
-                    return requestBody == null ? null : requestBody.getBytes("utf-8");
-                } catch (UnsupportedEncodingException uee) {
-                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
-                    return null;
-                }
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String, String>();
-                String auth = "Bearer " + new SessionManager(CheckoutActivity.this).getToken();
-                headers.put("Authorization", auth);
-                return headers;
-            }
-        };
-
-        stringRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 10000;
-            }
-
-            @Override
-            public int getCurrentRetryCount() {
-                return 0; //retry turn off
-            }
-
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
+    boolean validateCardExpiryDate(String expiryDate) {
+        return expiryDate.matches("(?:0[1-9]|1[0-2])/[0-9]{2}");
     }
 
     private void EmptyCart() {
@@ -956,12 +1078,11 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
     public void OpenHome(View view) {
         SessionManager sessionManager = new SessionManager(this);
 
-        Intent i =null;
+        Intent i = null;
 
         if (sessionManager.getUserType().equals("patient")) {
             i = new Intent(this, PatientMainActivity.class);
-        }
-        else if (sessionManager.getUserType().equals("doctor")) {
+        } else if (sessionManager.getUserType().equals("doctor")) {
             i = new Intent(this, DoctorMainActivity.class);
         }
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

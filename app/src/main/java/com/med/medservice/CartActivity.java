@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.med.medservice.Diaglogs.ViewDialogActivityClose;
 import com.med.medservice.Models.CartItems.CartAdapter;
 import com.med.medservice.Models.CartItems.CartItemsList;
 import com.med.medservice.Utils.CartDBHelper;
@@ -182,21 +183,32 @@ public class CartActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(CartActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
-        dialog.setContentView(R.layout.text_dialog_ok);
+        dialog.setContentView(R.layout.text_dialog_ok_cancel);
 
         TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
-        text.setText("Cart Empty");
+        text.setText("Delete all items from cart?");
 
         Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
-        mydb.removeAllItems(0);
+        Button btn_cancel_dialog = (Button) dialog.findViewById(R.id.btn_cancel_dialog);
 
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mydb.removeAllItems(0);
                 dialog.dismiss();
-                finish();
+                ViewDialogActivityClose activityClose = new ViewDialogActivityClose();
+                activityClose.showDialog(CartActivity.this, "Cart Empty");
             }
         });
+
+        btn_cancel_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
 
         dialog.show();
 

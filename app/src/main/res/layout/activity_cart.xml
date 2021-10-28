@@ -573,7 +573,7 @@
                         android:layout_marginTop="0dp"
                         android:fontFamily="@font/open_sans_regular"
                         android:gravity="center"
-                        android:text="Order Total"
+                        android:text="Your total amount is"
                         android:textColor="@color/White"
                         android:textSize="18sp"
                         android:textStyle="bold" />

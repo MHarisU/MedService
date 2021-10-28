@@ -761,6 +761,7 @@
 
 
                             <EditText
+                                android:maxLength="16"
                                 android:id="@+id/cardNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -768,7 +769,7 @@
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/black_stock_white_background"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:hint="Card Number"
+                                android:hint="Credit Card Number (16 digit)"
                                 android:inputType="number"
                                 android:padding="10dp"
                                 android:paddingStart="15dp"
@@ -800,6 +801,7 @@
                                     android:textSize="16sp" />
 
                                 <EditText
+                                    android:maxLength="3"
                                     android:id="@+id/cvcNumber"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -1451,6 +1453,87 @@
 
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/PharmacyZipCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="start"
+                                android:text="Select nearby Pharmacy"
+                                android:textColor="@color/Gray"
+                                android:textSize="20sp"
+                                android:textStyle="" />
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
+
+                                <TextView
+
+                                    android:id="@+id/pharmacySelectedNameView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/black_stock_white_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="center_vertical"
+                                    android:hint=" Zip Code"
+                                    android:onClick="SearchZip2"
+                                    android:padding="10dp"
+                                    android:paddingStart="15dp"
+                                    android:textSize="15sp" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/pharmacyMapLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+
+                                <fragment
+
+                                    android:id="@+id/fragmentMap"
+                                    class="com.google.android.gms.maps.SupportMapFragment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="200dp"
+                                    android:layout_marginTop="10dp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
 
                         android:id="@+id/LabZipCard"
                         android:layout_width="match_parent"
@@ -1570,85 +1653,6 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/PharmacyZipCard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="15dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="6dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="10dp">
-
-
-                            <TextView
-
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="0dp"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:gravity="start"
-                                android:text="Select nearby Pharmacy"
-                                android:textColor="@color/Gray"
-                                android:textSize="20sp"
-                                android:textStyle="" />
-
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
-
-
-                                <TextView
-
-                                    android:id="@+id/pharmacySelectedNameView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/black_stock_white_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:gravity="center_vertical"
-                                    android:hint=" Zip Code"
-                                    android:onClick="SearchZip2"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textSize="15sp" />
-
-
-                            </RelativeLayout>
-
-                            <LinearLayout
-                                android:id="@+id/pharmacyMapLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:visibility="gone">
-
-
-                                <fragment
-
-                                    android:id="@+id/fragmentMap"
-                                    class="com.google.android.gms.maps.SupportMapFragment"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="200dp"
-                                    android:layout_marginTop="10dp" />
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-
-                    </androidx.cardview.widget.CardView>
 
 
                 </LinearLayout>

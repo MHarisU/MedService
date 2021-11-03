@@ -98,7 +98,16 @@ public class CartItemsList implements Serializable {
         this.ITEM_ID = ITEM_ID;
         this.NAME = NAME;
         this.QUANTITY = QUANTITY;
-        this.PRICE = PRICE;
+        if (PRICE != null && !PRICE.equals("null") && !PRICE.equals("")){
+            this.PRICE = PRICE;
+        }else {
+            if (TYPE.equals("lab-test")){
+                this.PRICE = "20";
+            }
+            else {
+                this.PRICE = "0";
+            }
+        }
         this.DISCOUNT = DISCOUNT;
         this.TYPE = TYPE;
         this.IMAGE = IMAGE;

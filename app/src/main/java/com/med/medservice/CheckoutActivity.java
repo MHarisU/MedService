@@ -707,6 +707,8 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         if (!ValidateBillingSection(payment_card_number, payment_card_expiry, payment_card_cvc,
                 billing_address_zip, billing_city, billing_state, billing_address_full)) {
 
+
+
             errors += "* Please fill all fields (in Billing Section)\n\n";
             ViewDialogRegistration viewDialog = new ViewDialogRegistration();
             viewDialog.showDialog(CheckoutActivity.this, errors);

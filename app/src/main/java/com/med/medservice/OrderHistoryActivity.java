@@ -84,9 +84,17 @@ public class OrderHistoryActivity extends AppCompatActivity {
                                 String phone_number = billingObject.getString("phone_number");
                                 String email_address = billingObject.getString("email_address");
                                 String pharmacy_zipcode = billingObject.getString("pharmacy_zipcode");
-                                String pharmacy_nearby_location = billingObject.getString("pharmacy_nearby_location");
-                                String lab_appointment_date = billingObject.getString("lab_appointment_date");
-                                String lab_appointment_time = billingObject.getString("lab_appointment_time");
+                                String pharmacy_nearby_location = "";
+                                String lab_appointment_date = "";
+                                String lab_appointment_time = "";
+                                try {
+                                    pharmacy_nearby_location= billingObject.getString("pharmacy_nearby_location");
+                                    lab_appointment_date = billingObject.getString("lab_appointment_date");
+                                    lab_appointment_time = billingObject.getString("lab_appointment_time");
+
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
                                 String lab_zipcode = billingObject.getString("lab_zipcode");
                                 String lab_nearby_location = billingObject.getString("lab_nearby_location");
                                 Billing billing = new Billing(first_name,  last_name, address, state , state_code, city,

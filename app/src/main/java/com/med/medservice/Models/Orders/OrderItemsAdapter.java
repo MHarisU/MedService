@@ -55,7 +55,7 @@ public class OrderItemsAdapter extends RecyclerView.Adapter<OrderItemsAdapter.It
 
         holder.productName.setText(product_id);
         holder.quantityProduct.setText(product_qty);
-        
+
         loadProduct(holder, currentData, product_id);
 
 
@@ -64,7 +64,7 @@ public class OrderItemsAdapter extends RecyclerView.Adapter<OrderItemsAdapter.It
     private void loadProduct(final ItemsHolder holder, CartItem currentData, String product_id) {
 
 
-        new ApiTokenCaller(context, new GlobalUrlApi().getNewBaseUrl() +"getProducts?id="+product_id,
+        new ApiTokenCaller(context, new GlobalUrlApi().getNewBaseUrl() + "getProducts?id=" + product_id,
                 new ApiTokenCaller.AsyncApiResponse() {
                     @Override
                     public void processFinish(String response) {
@@ -98,8 +98,14 @@ public class OrderItemsAdapter extends RecyclerView.Adapter<OrderItemsAdapter.It
                                 if (sale_price != null && !sale_price.equals("null") && !sale_price.equals("")) {
                                     holder.productPrice.setText("$" + sale_price + ".00");
 
-                                } else
+                                } else if (regular_price != null && !regular_price.equals("null") && !regular_price.equals("")){
                                     holder.productPrice.setText("$" + regular_price + ".00");
+
+                                }
+                                else {
+                                    holder.productPrice.setText("$" + "0" + ".00");
+
+                                }
 
 
                               /*  popularMedsList.add(new MedicineList(id, name, parent_category, sub_category, featured_image, sale_price, regular_price,
@@ -126,7 +132,6 @@ public class OrderItemsAdapter extends RecyclerView.Adapter<OrderItemsAdapter.It
                         }
 
 
-
                     }
                 }
         );
@@ -145,7 +150,6 @@ public class OrderItemsAdapter extends RecyclerView.Adapter<OrderItemsAdapter.It
         TextView productName;
         TextView quantityProduct;
         TextView productPrice;
-
 
 
         public ItemsHolder(@NonNull View itemView) {

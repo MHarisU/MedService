@@ -233,7 +233,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         if(shipping.phone_number != null && !shipping.phone_number.equals("") && !shipping.phone_number.equals("null"))
             shippingPhone.setText(shipping.phone_number);
 
-        if(shipping.email_address != null && !shipping.email_address.equals("") && !shipping.email_address.equals("null"))
+        if(shipping.email_address != null && !shipping.email_address.equals("") && !shipping.email_address.equals("null") && !shipping.email_address.equals("email@gmail.com"))
             shippingEmail.setText(shipping.email_address);
 
 

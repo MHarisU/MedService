@@ -147,7 +147,7 @@ public class CheckoutActivity extends AppCompatActivity implements OnMapReadyCal
         Intent intent = getIntent();
 
         total = intent.getStringExtra("price");
-        Toast.makeText(this, "" + total, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "" + total, Toast.LENGTH_SHORT).show();
 
         getUser();
 

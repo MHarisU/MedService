@@ -138,12 +138,18 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
 
         labsPriceView.setText("$" + lab_price + "");
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            labsShortDesc.setText(Html.fromHtml(lab_desc, Html.FROM_HTML_MODE_COMPACT));
-        } else {
+        if (lab_desc != null && !lab_desc.equals("null") && !lab_desc.equals("")) {
 
-            labsShortDesc.setText(Html.fromHtml(lab_desc));
-        }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                labsShortDesc.setText(Html.fromHtml(lab_desc, Html.FROM_HTML_MODE_COMPACT));
+            } else {
+
+                labsShortDesc.setText(Html.fromHtml(lab_desc));
+            }
+
+        }else labsShortDesc.setText("Description for this product is not available");
+
+
 
 
     }
@@ -291,12 +297,11 @@ public class LabDetailActivity extends AppCompatActivity implements UpdateCartIn
     public void OpenHome(View view) {
         SessionManager sessionManager = new SessionManager(this);
 
-        Intent i =null;
+        Intent i = null;
 
         if (sessionManager.getUserType().equals("patient")) {
             i = new Intent(this, PatientMainActivity.class);
-        }
-        else if (sessionManager.getUserType().equals("doctor")) {
+        } else if (sessionManager.getUserType().equals("doctor")) {
             i = new Intent(this, DoctorMainActivity.class);
         }
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

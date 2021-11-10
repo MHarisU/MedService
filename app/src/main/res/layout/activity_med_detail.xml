@@ -181,7 +181,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/geo_sans_light"
                                 android:gravity="start"
-                                android:text="Vitamin C, Effervescent"
+                                android:text="Medicine Name"
                                 android:textColor="@color/Gray"
                                 android:textSize="25sp"
                                 android:textStyle="bold" />
@@ -227,7 +227,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/open_sans_regular"
                                 android:gravity="start"
-                                android:text="Powdered Drink Mix"
+                                android:text="No Description"
                                 android:textColor="@color/Gray"
                                 android:textSize="14sp"
                                 android:textStyle="" />
@@ -255,7 +255,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/geo_sans_light"
                                 android:gravity="start"
-                                android:text="$35.00"
+                                android:text="$00.00"
                                 android:textColor="@color/skybluedark"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />

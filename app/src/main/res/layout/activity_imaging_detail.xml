@@ -230,7 +230,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/open_sans_regular"
                                 android:gravity="start"
-                                android:text="test description"
+                                android:text="No Description"
                                 android:textColor="@color/Gray"
                                 android:textSize="14sp"
                                 android:textStyle="" />

@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.med.medservice.Diaglogs.ViewDialogRegistration;
 import com.med.medservice.NetworkAPI.GlobalUrlApi;
 import com.med.medservice.Utils.SessionManager;
 
@@ -99,8 +100,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         //nameView.setText(name);
-        nameView.setText(name+"");
-        nameLastView.setText(""+last_name);
+        nameView.setText(name + "");
+        nameLastView.setText("" + last_name);
         emailView.setText(email);
         phoneView.setText(phone_number);
         addressView.setText(office_address);
@@ -130,7 +131,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         };
 
-       // new DatePickerDialog(EditProfileActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+        // new DatePickerDialog(EditProfileActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
 
         DatePickerDialog dialog = new DatePickerDialog(EditProfileActivity.this,
                 AlertDialog.THEME_HOLO_LIGHT,
@@ -146,7 +147,15 @@ public class EditProfileActivity extends AppCompatActivity {
 
     public void Update(View view) {
 
-        UpdateOnline();
+        if (ValidateFields()) {
+            UpdateOnline();
+        }
+        else {
+            String errors = "* Please fill all fields";
+            ViewDialogRegistration viewDialog = new ViewDialogRegistration();
+            viewDialog.showDialog(EditProfileActivity.this, errors);
+        }
+
 
         /*
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "/update_user_info.php?" +
@@ -196,6 +205,15 @@ public class EditProfileActivity extends AppCompatActivity {
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);*/
     }
 
+    private boolean ValidateFields() {
+
+        return !nameView.getText().toString().equals("")
+                && !nameLastView.getText().toString().equals("")
+                && !dateView.getText().toString().equals("")
+                && !phoneView.getText().toString().equals("")
+                && !addressView.getText().toString().equals("");
+    }
+
     private void UpdateOnline() {
 
         JSONObject orderJsonObject = new JSONObject();
@@ -233,7 +251,6 @@ public class EditProfileActivity extends AppCompatActivity {
                             String jsonStatus = jsonResponse.getString("Status");
 
                             if (jsonStatus.equals("True")) {
-
 
 
                                 sessionManager.setFirstName(nameView.getText().toString());

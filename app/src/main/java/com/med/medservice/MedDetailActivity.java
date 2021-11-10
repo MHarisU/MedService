@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.med.medservice.Models.ProductMedicine.MedicineList;
 import com.med.medservice.Utils.CartDBHelper;
@@ -22,7 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
-public class MedDetailActivity extends AppCompatActivity  implements UpdateCartInterface {
+public class MedDetailActivity extends AppCompatActivity implements UpdateCartInterface {
 
     TextView ProductQuantity, ProductSubTotal;
 
@@ -80,7 +81,7 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
         MedicinePriceView = findViewById(R.id.MedicinePriceView);
 
         Picasso.get()
-                .load(new GlobalUrlApi().getNewHomeUrl()+"uploads/"+medicine_image)
+                .load(new GlobalUrlApi().getNewHomeUrl() + "uploads/" + medicine_image)
                 // .placeholder(context.getResources().getDrawable(R.drawable.ic))
                 .into(MedicineImageView, new com.squareup.picasso.Callback() {
                     @Override
@@ -98,19 +99,41 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
 
         MedicineNameView.setText(medicine_name);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
+        medicine_desc = medicine_desc.trim().toString();
+
+        /*if (MedicineShortDesc != null && !MedicineShortDesc.equals("null") && !MedicineShortDesc.equals("")) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                MedicineShortDesc.setText(Html.fromHtml(medicine_desc, Html.FROM_HTML_MODE_COMPACT));
+
+            } else {
+                MedicineShortDesc.setText(Html.fromHtml(medicine_desc));
+
+            }
+
+        }else MedicineShortDesc.setText("Description for this product is not available");*/
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && medicine_desc != null && !medicine_desc.equals("null") && !medicine_desc.equals("")) {
             MedicineShortDesc.setText(Html.fromHtml(medicine_desc, Html.FROM_HTML_MODE_COMPACT));
 
         } else {
-            MedicineShortDesc.setText(Html.fromHtml(medicine_desc));
+            if (medicine_desc != null && !medicine_desc.equals("null") && !medicine_desc.equals(""))
+                MedicineShortDesc.setText(Html.fromHtml(medicine_desc));
+            else MedicineShortDesc.setText("Description for this product is not available");
 
         }
-        if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")){
-            MedicinePriceView.setText("$"+medicine_price_sale+".00");
 
-        }else
-            MedicinePriceView.setText("$"+medicine_price+".00");
 
+
+
+        if (medicine_price_sale != null && !medicine_price_sale.equals("null") && !medicine_price_sale.equals("")) {
+            MedicinePriceView.setText("$" + medicine_price_sale + ".00");
+
+        } else
+            MedicinePriceView.setText("$" + medicine_price + ".00");
 
 
     }
@@ -129,7 +152,8 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
         }
         if (currentData != null) {
             medicine_price = currentData.getMedicine_regular_price();
-        }if (currentData != null) {
+        }
+        if (currentData != null) {
             medicine_price_sale = currentData.getMedicine_sale_price();
         }
 
@@ -186,7 +210,7 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
 
 
         ViewDialog alert = new ViewDialog();
-        alert.showDialog(this, "("+ProductQuantity.getText().toString()+") "+medicine_name+"\nAdded in Cart");
+        alert.showDialog(this, "(" + ProductQuantity.getText().toString() + ") " + medicine_name + "\nAdded in Cart");
 
         UpdateCart();
 
@@ -199,12 +223,11 @@ public class MedDetailActivity extends AppCompatActivity  implements UpdateCartI
     public void OpenHome(View view) {
         SessionManager sessionManager = new SessionManager(this);
 
-        Intent i =null;
+        Intent i = null;
 
         if (sessionManager.getUserType().equals("patient")) {
             i = new Intent(this, PatientMainActivity.class);
-        }
-        else if (sessionManager.getUserType().equals("doctor")) {
+        } else if (sessionManager.getUserType().equals("doctor")) {
             i = new Intent(this, DoctorMainActivity.class);
         }
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

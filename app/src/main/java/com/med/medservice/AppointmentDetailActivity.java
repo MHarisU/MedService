@@ -29,6 +29,7 @@ public class AppointmentDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_appointment_detail);
 
         Intent intent = getIntent();
+
         currentData = (AppointmentList) intent.getSerializableExtra("selectedAppointment");
 
         doctorName = findViewById(R.id.doctorName);

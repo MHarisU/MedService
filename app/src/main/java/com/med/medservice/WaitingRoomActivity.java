@@ -97,82 +97,91 @@ public class WaitingRoomActivity extends AppCompatActivity {
         user_email = user.get(sessionManager.EMAIL);
 
 
-        FirebaseUserModel userModel = new FirebaseUserModel(user_id, name, user_email, android_id);
-        reference.child(user_id).setValue(userModel);
+        try {
 
-        Query checkUser = reference.child("calling").child(user_id).child("incoming");
-        checkUser.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                try {
+            FirebaseUserModel userModel = new FirebaseUserModel(user_id, name, user_email, android_id);
+            reference.child(user_id).setValue(userModel);
 
 
-                    pat_id = snapshot.getValue().toString();
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+            Query checkUser = reference.child("calling").child(user_id).child("incoming");
+            checkUser.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    try {
+
+
+                        pat_id = snapshot.getValue().toString();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-
-        Query checkUserName = reference.child("calling").child(user_id).child("pat_name");
-        checkUserName.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                try {
-                    TextView patNameView = findViewById(R.id.patNameView);
-                    CardView onlinePatCard = findViewById(R.id.onlinePatCard);
-
-                    //Toast.makeText(WaitingRoomActivity.this, ""+snapshot.getValue().toString()+" is calling", Toast.LENGTH_SHORT).show();
-
-                    patNameView.setText(snapshot.getValue().toString());
-                    onlinePatCard.setVisibility(View.VISIBLE);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
-            }
+            });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+            Query checkUserName = reference.child("calling").child(user_id).child("pat_name");
+            checkUserName.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        Query session_node = reference.child("calling").child(user_id).child("session_id");
-        session_node.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    try {
+                        TextView patNameView = findViewById(R.id.patNameView);
+                        CardView onlinePatCard = findViewById(R.id.onlinePatCard);
 
-                try {
-                    //TextView patNameView = findViewById(R.id.patNameView);
-                   // CardView onlinePatCard = findViewById(R.id.onlinePatCard);
+                        //Toast.makeText(WaitingRoomActivity.this, ""+snapshot.getValue().toString()+" is calling", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(WaitingRoomActivity.this, ""+snapshot.getValue().toString()+" Session ID", Toast.LENGTH_SHORT).show();
+                        patNameView.setText(snapshot.getValue().toString());
+                        onlinePatCard.setVisibility(View.VISIBLE);
 
-                    session_id = snapshot.getValue().toString();
-                    getDoctorLink();
-                   // patNameView.setText(snapshot.getValue().toString());
-                   // onlinePatCard.setVisibility(View.VISIBLE);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+
+            Query session_node = reference.child("calling").child(user_id).child("session_id");
+            session_node.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    try {
+                        //TextView patNameView = findViewById(R.id.patNameView);
+                        // CardView onlinePatCard = findViewById(R.id.onlinePatCard);
+
+                        Toast.makeText(WaitingRoomActivity.this, ""+snapshot.getValue().toString()+" Session ID", Toast.LENGTH_SHORT).show();
+
+                        session_id = snapshot.getValue().toString();
+                        getDoctorLink();
+                        // patNameView.setText(snapshot.getValue().toString());
+                        // onlinePatCard.setVisibility(View.VISIBLE);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         statusLayout = findViewById(R.id.statusLayout);
 

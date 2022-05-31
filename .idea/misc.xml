@@ -10,6 +10,44 @@
         <entry key="..\:/Users/DS-MHaris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_lab_detail.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/DS-MHaris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_med_detail.xml" value="0.25" />
         <entry key="..\:/Users/DS-MHaris/AndroidStudioProjects/MedService/app/src/main/res/layout/medicine_list_row.xml" value="0.34739583333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_appointment_detail.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_auth.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_book_appointment.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_cart.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_chat.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_choose_register.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_credit_card_payment.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_appointments.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_calendar_schedule.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_main.xml" value="0.335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_profile.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_register.xml" value="0.335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_schedule.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_session.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_session_detail.xml" value="0.45" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctor_video.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_doctors_patient_viewable_profile.xml" value="0.375" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_email_verification.xml" value="0.45" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_evisit.xml" value="0.45" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_evisit_form.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_lab_approve.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_lab_report_view.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_login.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_patient_main.xml" value="0.3057017543859649" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_patient_profile.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_patient_register.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_patients_lab_report_list.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_profile_approve.xml" value="0.375" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_refill_requests.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_session.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_session_detail.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_splash.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_wallet.xml" value="0.335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/medical_history_edit_dialog_layout.xml" value="0.45" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/rating_dialog_layout.xml" value="0.45" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/search_labs_dialog_layout.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/search_medicine_dialog_layout.xml" value="0.45" />
+        <entry key="..\:/Users/Muhammad Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/search_pharmacies_dialog_layout.xml" value="0.36302083333333335" />
       </map>
     </option>
   </component>

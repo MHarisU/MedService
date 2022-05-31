@@ -79,9 +79,13 @@ public class DoctorProfileActivity extends AppCompatActivity {
         profileButton = findViewById(R.id.profileButton);
         earningButton = findViewById(R.id.earningButton);
         timelineButton = findViewById(R.id.timelineButton);
-
+/*
         august_month = findViewById(R.id.august_month);
-        july_month = findViewById(R.id.july_month);
+        july_month = findViewById(R.id.july_month);*/
+
+
+        //august_month = findViewById(R.id.august_month);
+        //july_month = findViewById(R.id.july_month);
 
         LoadProfile();
 

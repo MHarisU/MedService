@@ -50,28 +50,29 @@ public class DoctorMainActivity extends AppCompatActivity {
 
 
         sessionManager = new SessionManager(this);
-        sessionManager.checkLogin();
+        //sessionManager.checkLogin();
 
 
-        HashMap<String, String> user = sessionManager.getUserDetail();
-        name = user.get(sessionManager.FIRST_NAME);
-        name = name + " " + user.get(sessionManager.LAST_NAME);
-        email = user.get(sessionManager.EMAIL);
-        user_id = user.get(sessionManager.ID);
-        TextView Name;
-        Name = findViewById(R.id.docName);
-        Name.setText(name);
-        Log.d("DoctorMainActivity",user_id);
+        try {
 
+        } catch (Exception e) {
+            HashMap<String, String> user = sessionManager.getUserDetail();
+            name = user.get(sessionManager.FIRST_NAME);
+            name = name + " " + user.get(sessionManager.LAST_NAME);
+            email = user.get(sessionManager.EMAIL);
+            user_id = user.get(sessionManager.ID);
+            TextView Name;
+            Name = findViewById(R.id.docName);
+            Name.setText(name);
+            Log.d("DoctorMainActivity", user_id);
 
+        }
         /*Update doctor online status for e-visit   */
         //UpdateStatus("offline");
 
     }
 
     public void UpdateStatus(String status) {
-
-
 
 
         ApiCallerNew asyncTask = new ApiCallerNew(new GlobalUrlApi().getBaseUrl() + "update_doctor_online_status.php?" +
@@ -121,7 +122,7 @@ public class DoctorMainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     dialog.dismiss();
-                                   //finish();
+                                    //finish();
                                 }
                             });
 
@@ -297,5 +298,27 @@ public class DoctorMainActivity extends AppCompatActivity {
     public void OpenImaging(View view) {
         startActivity(new Intent(DoctorMainActivity.this, ImagingActivity.class));
 
+    }
+
+    public void OpenWallet(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, WalletActivity.class));
+    }
+
+    public void OpenSessions(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, DoctorSessionActivity.class));
+    }
+
+    public void openLabReport(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, PatientsLabReportListActivity.class));
+
+    }
+
+    public void OpenLabApprove(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, LabApproveActivity.class));
+
+    }
+
+    public void OpenRefillRequests(View view) {
+        startActivity(new Intent(DoctorMainActivity.this, RefillRequestsActivity.class));
     }
 }

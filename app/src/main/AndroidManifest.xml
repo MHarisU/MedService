@@ -27,16 +27,48 @@
         android:roundIcon="@mipmap/ic_med_icon_pro_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:windowSoftInputMode="adjustResize"
+        android:usesCleartextTraffic="true"
+        android:windowSoftInputMode="adjustResize">
+        <activity
+            android:name=".RefillRequestsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LabApproveActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LabReportViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PatientsLabReportListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DoctorSessionDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DoctorSessionActivity"
+            android:exported="true">
 
-        android:usesCleartextTraffic="true">
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".ProfileApproveActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EmailVerificationActivity"
+            android:exported="true" />
         <activity
             android:name=".ImagingCategoryActivity"
             android:exported="true" />
         <activity
             android:name=".ImagingDetailActivity"
-            android:exported="true"></activity>
-        <activity android:name=".ImagingActivity"></activity>
+            android:exported="true" />
+        <activity android:name=".ImagingActivity" />
         <activity android:name=".ComingSoonActivity" />
         <activity android:name=".SubstanceAbuseActivity" />
         <activity android:name=".PatientPrescriptionWaitingActivity" />
@@ -59,10 +91,43 @@
         <activity android:name=".SubcategoryProductsActivity" />
         <activity android:name=".CategoryProductsActivity" />
         <activity android:name=".DoctorRegisterActivity" />
-        <activity android:name=".PatientRegisterActivity">
+        <activity
+            android:name=".PatientRegisterActivity"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
 
         </activity>
-        <activity android:name=".ChooseRegisterActivity" />
+        <activity
+            android:name=".WalletActivity"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".ChooseRegisterActivity"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
         <activity android:name=".ChatActivity" />
         <activity android:name=".InboxActivity" />
         <activity android:name=".DoctorsPatientViewableProfileActivity" />
@@ -84,17 +149,40 @@
         <activity android:name=".PatientAppointmentsActivity" />
         <activity android:name=".DoctorProfileActivity" />
         <activity android:name=".PatientProfileActivity" />
-        <activity android:name=".DoctorMainActivity" />
-        <activity android:name=".PatientMainActivity" />
-        <activity android:name=".LoginActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".DoctorMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".PatientMainActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".MainActivity" />
 

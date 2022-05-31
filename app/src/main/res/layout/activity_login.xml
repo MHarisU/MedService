@@ -13,29 +13,27 @@
 
 
     <ImageView
-        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/splash_designs2"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/splash_designs2" />
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:background="@drawable/sp_new">
+        android:background="@drawable/sp_new"
+        android:gravity="center">
 
         <ImageView
-            android:layout_centerHorizontal="true"
-            android:scaleType="centerInside"
             android:layout_width="150dp"
-            android:background="@color/WhiteLowOpc50"
             android:layout_height="150dp"
-            android:src="@drawable/um_new_logo_mar"
-            android:layout_marginBottom="20dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@color/WhiteLowOpc50"
+            android:scaleType="centerInside"
+            android:src="@drawable/um_new_logo_mar" />
 
     </LinearLayout>
-
-
 
 
     <LinearLayout
@@ -46,8 +44,6 @@
         android:layout_marginBottom="45dp"
         android:gravity="center"
         android:orientation="vertical">
-
-
 
 
         <LinearLayout
@@ -78,11 +74,11 @@
                     android:textStyle="" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="0dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/geo_sans_light"
                     android:gravity="center"
                     android:paddingTop="5dp"
@@ -93,8 +89,6 @@
 
 
             </LinearLayout>
-
-
 
 
         </LinearLayout>
@@ -110,12 +104,12 @@
 
             <LinearLayout
 
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
 
                 <LinearLayout
@@ -217,18 +211,18 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:onClick="forgotPassword"
-                android:padding="10dp"
-                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/open_sans_regular"
+                android:onClick="forgotPassword"
+                android:padding="10dp"
                 android:text="Forgot Password?"
                 android:textColor="@color/Black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="visible" />
 
 
         </LinearLayout>
@@ -272,10 +266,10 @@
 
         <RelativeLayout
 
-            android:onClick="OpenRegisterChooser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:onClick="OpenRegisterChooser">
 
             <ImageView
                 android:layout_width="40dp"
@@ -334,7 +328,7 @@
         android:layout_marginBottom="0dp"
         android:fontFamily="@font/geo_sans_light"
         android:gravity="center"
-        android:text="© All rights reserved by Mig Media Company"
+        android:text="© All rights reserved by Umbrella Health Care Systems"
 
         android:textColor="@android:color/white"
         android:textSize="16sp"

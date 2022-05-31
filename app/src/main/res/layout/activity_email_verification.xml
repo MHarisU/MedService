@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@android:color/white"
+tools:context=".EmailVerificationActivity">
+
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    android:src="@drawable/splash_designs2" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@drawable/sp_new"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@color/WhiteLowOpc50"
+        android:scaleType="centerInside"
+        android:src="@drawable/um_new_logo_mar" />
+
+</LinearLayout>
+
+
+<LinearLayout
+    android:id="@+id/mainLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginBottom="45dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/WhiteLowOpc50"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/geo_sans_light"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="Email Verification Required"
+                android:textColor="@color/skyblue"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/geo_sans_light"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="Please check your email inbox and verify \nYour email address"
+                android:textColor="@color/Black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="0dp"
+    android:fontFamily="@font/geo_sans_light"
+    android:gravity="center"
+    android:text="© All rights reserved by Umbrella Health Care Systems"
+
+    android:textColor="@android:color/white"
+    android:textSize="16sp"
+    android:textStyle="bold" />
+
+</RelativeLayout>

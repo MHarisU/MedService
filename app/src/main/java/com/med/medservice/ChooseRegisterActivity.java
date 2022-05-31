@@ -25,14 +25,14 @@ public class ChooseRegisterActivity extends AppCompatActivity {
     }
 
     public void RegisterAsPatient(View view) {
-        finish();
+        //finish();
          startActivity(new Intent(getApplicationContext(), PatientRegisterActivity.class));
 
     }
 
     public void RegisterAsDoctor(View view) {
 
-        finish();
+        //finish();
         startActivity(new Intent(getApplicationContext(), DoctorRegisterActivity.class));
     }
 }

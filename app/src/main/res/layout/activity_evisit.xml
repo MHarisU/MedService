@@ -1009,6 +1009,72 @@
 
                     </LinearLayout>
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        >
+
+                        <LinearLayout
+                            android:background="@drawable/blue_background_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:padding="5dp"
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Initial visit price $80\nFollow-up visit price $50"
+                                android:textColor="@color/white"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:textSize="18sp"/>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_margin="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="5dp"
+                                >
+
+                                <LinearLayout
+                                    android:background="@drawable/green_bg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:textStyle="bold"
+                                        android:padding="10dp"
+                                        android:gravity="center"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Primacy Care"
+                                        android:textColor="@color/white"
+                                        android:fontFamily="@font/geo_sans_light"
+                                        android:textSize="22sp"/>
+
+
+                                </LinearLayout>
+
+
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+
+
+
+                    </androidx.cardview.widget.CardView>
+
                     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                         android:layout_marginTop="10dp"
                         android:id="@+id/pullToRefresh"
@@ -1016,6 +1082,7 @@
                         android:layout_height="match_parent">
 
                         <androidx.recyclerview.widget.RecyclerView
+                            android:visibility="gone"
                             android:id="@+id/onlineDoctorsRecycler"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">

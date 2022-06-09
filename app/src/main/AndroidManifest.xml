@@ -30,6 +30,12 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity
+            android:name=".LabRequisitionsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PainManagementActivity"
+            android:exported="true" />
+        <activity
             android:name=".RefillRequestsActivity"
             android:exported="true" />
         <activity
@@ -152,13 +158,24 @@
         <activity
             android:name=".DoctorMainActivity"
             android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".PatientMainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PatientMainActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">

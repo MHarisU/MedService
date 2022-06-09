@@ -1170,7 +1170,7 @@
                             <androidx.cardview.widget.CardView
 
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="4dp"
                                 android:layout_marginTop="5dp"
@@ -1222,14 +1222,14 @@
 
                                 android:layout_width="match_parent"
 
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginEnd="4dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="20dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:onClick="OpenComingSoon"
+                                android:onClick="OpenPainManagement"
                                 app:cardCornerRadius="20dp"
                                 app:cardElevation="0dp">
 
@@ -1247,7 +1247,7 @@
                                         android:layout_height="80dp"
                                         android:layout_gravity="center"
                                         android:padding="10dp"
-                                        android:src="@drawable/dermatology" />
+                                        android:src="@drawable/pain_m" />
 
 
                                     <TextView
@@ -1261,7 +1261,7 @@
                                         android:paddingStart="10dp"
                                         android:paddingEnd="10dp"
                                         android:paddingBottom="10dp"
-                                        android:text="Dermatology"
+                                        android:text="Pain Management"
                                         android:textColor="@color/White"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
@@ -1275,7 +1275,7 @@
                             <androidx.cardview.widget.CardView
 
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginEnd="20dp"

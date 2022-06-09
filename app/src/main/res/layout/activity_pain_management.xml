@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PainManagementActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_background_button"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:elevation="7dp"
+                android:onClick="Close"
+                android:padding="10dp"
+                android:src="@drawable/ic_back_white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/geo_sans_light"
+                        android:gravity="center"
+                        android:text="Pain Management"
+                        android:textColor="@color/White"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/Black30" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="start"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="5dp"
+                        android:text="If pain becomes chronic, it can disrupt your life and affect the people you love and care about. Our doctors at Umbrella Health Care Systems offers online pain management, nonnarcotic treatments that minimize the effects of pain on your life. We have physicians who specialize in managing and treating chronic pain."
+                        android:textColor="@color/Gray"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="start"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="5dp"
+                        android:text="* Conditions we treat : Our doctors have experience in treating all types of chronic pain. Our approach brings together experts in pain medicine, anesthesiology, psychology, pharmacy, and physical medicine and rehabilitation.\n* Expert treatment: We focus on nonsurgical, nonnarcotic treatments to relieve pain and improve your quality of life.\n* Whole-person care : Physical therapy and psychological support address chronic pain and its effects on your life. You receive care to help you improve your ability to function at work or school and participate in the activities you enjoy."
+                        android:textColor="@color/Gray"
+                        android:textSize="14sp"
+                        android:textStyle="" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="start"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="5dp"
+                        android:text="WHAT IS CHRONIC PAIN?"
+                        android:textColor="@color/Gray"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="start"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="5dp"
+                        android:text="Pain is a normal sensation in the nervous system that tells you when something is wrong, such as an illness or injury. Nerves transmit pain signals from the location of the problem to the brain. Acute pain is important. It tells you how severe an injury may be so you can get the right care. As your body heals, acute pain usually goes away. Sometimes, pain continues long after the original problem has healed — or you experience pain without having had a previous injury or illness. Pain becomes chronic when it lasts for three months or longer. It can be mild or severe and can be constant or come and go. Chronic pain symptoms can be:"
+                        android:textColor="@color/Gray"
+                        android:textSize="14sp"
+                        android:textStyle="" />
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="start"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="5dp"
+                        android:text="* Burning or stinging\n* Dull and aching\n *Shooting or electrical\n* Sore, tight or stiff\n *Throbbing"
+                        android:textColor="@color/Gray"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+
+                    <!-- General Info -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.15"
+                                    android:orientation="vertical">
+
+
+                                    <LinearLayout
+                                        android:onClick="selfpayClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/green_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Cancer-Related Pain"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                    <LinearLayout
+                                        android:onClick="firstVisit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/blue_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Joint And Muscle Pain"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+                                    <LinearLayout
+                                        android:onClick="prepareFirstVisit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/yellow_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Neck And Back Pain"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+                                    <LinearLayout
+                                        android:onClick="childrenClick"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+
+                                            android:layout_height="60dp"
+                                            android:layout_marginStart="10dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="1dp"
+                                                android:layout_height="60dp"
+                                                android:layout_centerInParent="true"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="@color/Gray"
+                                                android:gravity="center_vertical" />
+
+                                            <ImageView
+
+                                                android:layout_width="15dp"
+                                                android:layout_height="15dp"
+                                                android:layout_centerInParent="true"
+                                                android:src="@drawable/red_ring_circle" />
+
+                                        </RelativeLayout>
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:fontFamily="@font/geo_sans_light"
+                                            android:gravity="start"
+                                            android:text="Nerve-Related Pain"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_margin="0dp"
+                                        android:background="@color/BlackLighter" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+
+                    <!-- Services Layout -->
+                    <LinearLayout
+                        android:id="@+id/patient_timeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/gray20" />
+
+
+                    <!-- Self-pay Fees -->
+                    <LinearLayout
+                        android:id="@+id/selfpayLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Cancer-Related Pain"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="Pain can result from cancer or its treatments — even after treatment, in some cases. If you have pain during or after active treatment, we can help:\n\n* Relieve pain from cancer itself, especially if the cancer is advanced\n* Relieve pain due to cancer treatments, such as surgery, radiation therapy or chemotherapy\n* Manage chronic pain after cancer"
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- First Visit -->
+                    <LinearLayout
+                        android:id="@+id/firstVisitLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Joint And Muscle Pain"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="Musculoskeletal pain affects bones, muscles and connective tissue such as cartilage, ligaments and tendons. The most common causes of this pain are arthritis and injury. Musculoskeletal pain that we treat includes:\n\n* Joint pain:Inflammation (pain and swelling) in major joints such as the hip, knee and shoulder\n* Malignant compression fractures:Fractures in vertebrae that result from cancerous tumors, usually metastatic (tumors that start in another part of the body and spread to the vertebrae)\n* Benign compression fractures:Vertebral fractures typically due to osteoporosis, a condition that causes bones to become weak and brittle\n* Sacroiliac (SI) joint pain:Pain in the low back and buttocks due to arthritis, injury or another problem with the SI joint"
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- Preparing Your First Visit -->
+                    <LinearLayout
+                        android:id="@+id/prepareFirstVisitLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Neck And Back Pain"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="One of the most common causes of chronic pain is back and neck pain. Sharp pain or dull aches can result from injury, strain, poor posture, wear and tear or many other reasons. We treat pain all along the spine, from the top of your neck to your tailbone,\n\nincluding:\n* Degenerative disc disease:Vertebrae (spine bones) that rub together as the discs (rubbery tissue between vertebrae) wear out due to age or injury
+\n* Facet joint syndrome:Damage to facet joints (connections between vertebrae) due to injury, disc deterioration or wear and tear
+\n* Failed back syndrome:Back pain that returns after surgery
+\n* Herniated disc: A disc that breaks open (ruptures) or moves out of place due to injury or strenuous activity
+\n* Radiculopathy (pinched nerve):A damaged or compressed nerve root in the spine, causing pain and other symptoms in various areas of the body depending on where it develops
+\n* Sciatica: Radiculopathy that develops in the low back
+\n* Spinal stenosis: A narrowed area of the spinal canal that causes pain due to compression of the spinal cord or nerve roots"
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                    <!-- women -->
+                    <LinearLayout
+                        android:id="@+id/womenLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:text="Nerve-Related Pain"
+                            android:textColor="@color/Gray"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="start"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="Neuropathy, also called neuralgia, is nerve damage that causes pain, tingling, numbness and muscle weakness. Nerve-related pain can result from injury or conditions such as diabetes and atherosclerosis. Some common types of neuropathy include:\n\n* Complex regional pain syndrome:Chronic pain, usually in one limb, due to a problem with pain nerves that sometimes develops after an injury
+\n* Peripheral neuropathy:Neuropathy that affects nerves outside the brain and spinal cord, most commonly in the legs and feet; includes diabetic neuropathy
+\n* Postherpetic neuralgia:Nerve damage that develops after shingles, a viral infection that causes a blistering rash, usually on one side of the torso"
+                            android:textColor="@color/Gray"
+                            android:textSize="14sp"
+                            android:textStyle="" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

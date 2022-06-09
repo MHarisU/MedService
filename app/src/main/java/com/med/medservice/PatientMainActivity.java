@@ -71,6 +71,9 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
 
 
         sessionManager = new SessionManager(this);
+
+        //should be uncommented
+        /*
         sessionManager.checkLogin();
 
         HashMap<String, String> user = sessionManager.getUserDetail();
@@ -80,7 +83,7 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
         user_id = user.get(sessionManager.ID);
         TextView Name;
         Name = findViewById(R.id.patName);
-        Name.setText(name);
+        Name.setText(name);*/
 
         /*new ApiTokenCaller(PatientMainActivity.this, new GlobalUrlApi().getNewBaseUrl() + "getProductParentCategories?id=3",
                 new ApiTokenCaller.AsyncApiResponse() {
@@ -317,39 +320,9 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
 
     }
 
-/*
-    private class AuthAsyncTask extends AsyncTask<String, String, String> {
+    public void OpenPainManagement(View view) {
+        startActivity(new Intent(PatientMainActivity.this, PainManagementActivity.class));
+    }
 
 
-        @Override
-        protected String doInBackground(String... params) {
-
-            if (!isCancelled()) {
-// Do your stuff
-            }
-            return "resp";
-        }
-
-
-        @Override
-        protected void onPostExecute(String result) {
-            // execution of result of Long time consuming
-
-
-            if (!isCancelled()) {
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startService(new Intent(PatientMainActivity.this, AuthService.class));
-                        checkAuthQueue = false;
-                    }
-                }, 20000);
-            }
-
-
-        }
-
-
-    }*/
 }

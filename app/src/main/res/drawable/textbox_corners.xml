@@ -4,14 +4,12 @@
     <item>
 
         <shape>
-
             <solid
-                android:color="@color/White"/>
+                android:color="@color/Transparent"/>
             <stroke
-                android:color="#C9111111"
+                android:color="@color/White"
                 android:width="1dp"/>
-            <corners
-                android:radius="15dp"/>
+            <corners android:radius="20dp"/>
 
         </shape>
 

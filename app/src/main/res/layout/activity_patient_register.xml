@@ -11,21 +11,22 @@
     tools:context=".PatientRegisterActivity">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/splash_designs2" />
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/splash_designs2" />-->
 
     <RelativeLayout
+        android:background="#012A4C"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blue_background_button"
+        android:layout_height="?actionBarSize"
         android:paddingTop="5dp"
         android:paddingBottom="5dp">
 
         <ImageView
+            android:id="@+id/backButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:elevation="7dp"
@@ -33,40 +34,55 @@
             android:padding="10dp"
             android:src="@drawable/ic_back_white" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_toRightOf="@id/backButton"
+            android:gravity="center"
+            android:text="REGISTER AS A PATIENT"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:gravity="center"
-                android:orientation="horizontal">
 
 
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/geo_sans_light"
-                    android:gravity="center"
-                    android:text="Create Account"
-                    android:textColor="@color/White"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:orientation="vertical">-->
 
 
-            </LinearLayout>
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginStart="0dp"-->
+<!--                android:layout_marginTop="0dp"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal">-->
 
 
-        </LinearLayout>
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:fontFamily="@font/geo_sans_light"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="Create Account"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/White"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="26sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold" />&ndash;&gt;-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
 
 
     </RelativeLayout>
@@ -106,21 +122,21 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <TextView
-                    android:layout_width="match_parent"
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
 
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="@font/geo_sans_light"
-                    android:gravity="start"
-                    android:paddingStart="30dp"
-                    android:paddingTop="10dp"
-                    android:text="REGISTER AS A PATIENT"
-                    android:textColor="@color/skyblue"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginStart="0dp"-->
+<!--                    android:layout_marginTop="0dp"-->
+<!--                    android:fontFamily="@font/geo_sans_light"-->
+<!--                    android:gravity="start"-->
+<!--                    android:paddingStart="30dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:text="REGISTER AS A PATIENT"-->
+<!--                    android:textColor="@color/skyblue"-->
+<!--                    android:textSize="22sp"-->
+<!--                    android:textStyle="bold" />-->
 
 
             </LinearLayout>
@@ -191,21 +207,21 @@
 
 
                         <TextView
+                            android:textStyle="bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/open_sans_regular"
                             android:gravity="start"
                             android:text="ACCOUNT DETAILS"
-                            android:textColor="@color/Black"
-                            android:textSize="15sp" />
+                            android:textColor="#012A4C"
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
 
                     <EditText
                         android:id="@+id/editText_email"
-
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
@@ -228,7 +244,7 @@
                         android:layout_marginBottom="0dp"
                         android:background="@drawable/black_stock_white_background"
                         android:fontFamily="@font/open_sans_regular"
-                        android:hint=" Password"
+                        android:hint=" Username"
                         android:inputType="textPassword"
                         android:paddingStart="15dp"
                         android:textColor="#000"
@@ -244,7 +260,7 @@
                         android:layout_marginBottom="0dp"
                         android:background="@drawable/black_stock_white_background"
                         android:fontFamily="@font/open_sans_regular"
-                        android:hint=" Confirm Password"
+                        android:hint=" Password"
                         android:inputType="textPassword"
                         android:paddingStart="15dp"
                         android:textColor="#000"
@@ -253,14 +269,13 @@
                     <EditText
 
                         android:id="@+id/editText_username"
-
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/black_stock_white_background"
                         android:fontFamily="@font/open_sans_regular"
-                        android:hint=" Username"
+                        android:hint=" Confirm Password"
                         android:inputType="text"
                         android:paddingStart="15dp"
                         android:textColor="#000"
@@ -273,7 +288,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="30dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"

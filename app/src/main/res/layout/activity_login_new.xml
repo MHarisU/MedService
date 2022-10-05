@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".LoginActivity">
-
-
-    <!--    <ImageView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:scaleType="fitXY"-->
-    <!--        android:src="@drawable/splash_designs2" />-->
+    android:background="@color/White"
+    tools:context=".NewUI.LoginNewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:gravity="center">
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/um_new_logo_mar" />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/um_new_logo_mar" />
+
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/mainLinearLayout"
@@ -365,5 +356,6 @@
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
+
 
 </RelativeLayout>

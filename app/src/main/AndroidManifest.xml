@@ -30,6 +30,9 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity
+            android:name=".RegisterDoctorNewActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterPatientNewActivity"
             android:exported="false" />
         <activity

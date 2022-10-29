@@ -61,7 +61,7 @@
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="center"
                 android:text="Dec, 13th 2020"
-                android:textColor="@color/WhiteLowOpc90"
+                android:textColor="@color/Black"
                 android:textSize="16sp"
                 android:textStyle="" />
 

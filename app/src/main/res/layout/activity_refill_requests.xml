@@ -347,7 +347,6 @@
 
 
                                 <TextView
-                                    android:onClick="openSessionDetail"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -356,6 +355,7 @@
                                     android:background="@drawable/orange_background"
                                     android:fontFamily="@font/open_sans_regular"
                                     android:gravity="center"
+                                    android:onClick="openSessionDetail"
                                     android:padding="7dp"
                                     android:text="DETAILS"
                                     android:textColor="@color/white"

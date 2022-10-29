@@ -90,30 +90,29 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:padding="5dp"
                         android:id="@+id/cardProgress"
-                        android:layout_marginBottom="30dp"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:padding="5dp"
                         app:cardCornerRadius="25dp"
-                        app:cardElevation="10dp"
-                        >
+                        app:cardElevation="10dp">
 
                         <ProgressBar
-                            android:padding="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:layout_height="match_parent"
+                            android:padding="5dp" />
 
                     </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/appointmentLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="visible">
 
 
                         <LinearLayout
@@ -875,10 +874,6 @@
 
 
                 </LinearLayout>
-
-
-
-
 
 
             </androidx.core.widget.NestedScrollView>

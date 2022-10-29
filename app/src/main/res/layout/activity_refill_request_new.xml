@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI.RefillRequestNewActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/dark_blue_gradient_new">
+
+            <ImageView
+                android:id="@+id/menu_bar_new"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_back_white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="12dp"
+                android:gravity="end">
+
+                <ImageView
+                    android:id="@+id/notification_new"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_toRightOf="@id/menu_bar_new"
+                    android:src="@drawable/notifications_new" />
+
+                <ImageView
+                    android:id="@+id/cart_new"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/notification_new"
+                    android:src="@drawable/cart_new" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Refill Requests"
+            android:textColor="@color/DarkBlueNew"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="3dp"
+            android:text="All Refill Requests Are Listed Here"
+            android:textColor="@color/DarkBlueNew"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="230dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/current_balance_blue_new" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:text="Current Balance"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="$3000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="10dp"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Bethanechol Tablet "
+                                    android:textColor="@color/Black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Prescribed to :"
+                                        android:textColor="@color/Black"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Syed Baqir Raza"
+                                        android:textColor="@color/Black"
+                                        android:textSize="16sp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Dosage :"
+                                        android:textColor="@color/Black"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Every 24hrs for 30 days"
+                                        android:textColor="@color/Black"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Quantity :"
+                                        android:textColor="@color/Black"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="1"
+                                        android:textColor="@color/Black"
+                                        android:textSize="16sp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Session Date :"
+                                        android:textColor="@color/Black"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="May, 21st 2022"
+                                        android:textColor="@color/Black"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Purchased Date :"
+                                        android:textColor="@color/Black"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="May, 22nd 2022"
+                                        android:textColor="@color/Black"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:background="@drawable/dark_blue_gradient_new"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:onClick="OpenWaitingRoomNew"
+                                    android:text="Refill Request"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/White"
+                                    android:textSize="18sp" />
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/blue_background_button"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="center"
+                                    android:padding="8dp"
+                                    android:text="REFILL"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/request_button"
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/green_bg"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:onClick="OpenWaitingRoomNew"
+                                    android:text="Request Session"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/White"
+                                    android:textSize="18sp" />
+
+                                <Button
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_toRightOf="@id/request_button"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/orange_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:onClick="OpenWaitingRoomNew"
+                                    android:text="View Details"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/White"
+                                    android:textSize="18sp" />
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/green_bg"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="center"
+                                    android:padding="7dp"
+                                    android:text="REQUEST SESSION"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/orange_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="center"
+                                    android:onClick="openSessionDetail"
+                                    android:padding="7dp"
+                                    android:text="DETAILS"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

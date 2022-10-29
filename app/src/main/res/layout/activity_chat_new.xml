@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI.ChatNewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/dark_blue_gradient_new">
+
+            <ImageView
+                android:id="@+id/menu_bar_new"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_back_white" />
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/blue_background_button_invert"
+                        android:src="@drawable/profile_low" />
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dr. Haris Unar"
+                android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                </RelativeLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/dark_blue_gradient_new"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray10" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="0dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="180dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:gravity="start"
+                                            android:text="Thank you Doc,for the meds you recommended"
+                                            android:textColor="@color/White"
+                                            android:textSize="17sp"
+                                            android:textStyle="" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:text="10:35AM"
+                                            android:textColor="@color/WhiteLowOpc70"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="120dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray10"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/bluelight" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="0dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="180dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:gravity="start"
+                                            android:text="Welcome, I hope you get well soon."
+                                            android:textColor="@color/Gray"
+                                            android:textSize="17sp"
+                                            android:textStyle="" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:text="10:35AM"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/dark_blue_gradient_new"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray10" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="0dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="180dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:gravity="start"
+                                            android:text="Hello Doctor! How are you? I still feel pain."
+                                            android:textColor="@color/White"
+                                            android:textSize="17sp"
+                                            android:textStyle="" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:text="10:35AM"
+                                            android:textColor="@color/WhiteLowOpc70"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="120dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray10"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/bluelight" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="0dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="180dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:gravity="start"
+                                            android:text="How do you feel? I'd like to suggest to have session tomorrow"
+                                            android:textColor="@color/Gray"
+                                            android:textSize="17sp"
+                                            android:textStyle="" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:text="10:35AM"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray10">
+
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20sp"
+                            android:layout_toStartOf="@+id/sendButton"
+                            android:background="@color/Transparent"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center_vertical"
+                            android:hint=" Type message"
+                            android:textSize="16sp" />
+
+
+                        <ImageView
+                            android:id="@+id/sendButton"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_baseline_send_24" />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

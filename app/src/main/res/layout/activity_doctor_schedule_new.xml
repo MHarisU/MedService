@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI.DoctorScheduleNewActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/dark_blue_gradient_new">
+
+            <ImageView
+                android:id="@+id/menu_bar_new"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/drawer_menu_button_new" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="12dp"
+                android:gravity="end">
+
+                <ImageView
+                    android:id="@+id/notification_new"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_toRightOf="@id/menu_bar_new"
+                    android:src="@drawable/notifications_new" />
+
+                <ImageView
+                    android:id="@+id/cart_new"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/notification_new"
+                    android:src="@drawable/cart_new" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="My Schedule"
+                android:textColor="@color/Black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:onClick="openAddScheduleDoctorNew"
+                android:id="@+id/ScheduleButton"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/DarkBlueNew"
+                android:elevation="1dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Add Schedule"
+                android:textAllCaps="false"
+                android:textColor="@color/White"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:visibility="visible"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Date"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Start Time"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="End Time"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="Action"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/BlackLighter" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

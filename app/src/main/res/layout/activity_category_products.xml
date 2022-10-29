@@ -122,7 +122,7 @@
 
         <LinearLayout
 
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/layoutMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
 
@@ -266,7 +266,7 @@
 
                 <TextView
 
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -289,7 +289,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:gravity="center_vertical"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="4dp">
 
@@ -366,7 +366,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
 

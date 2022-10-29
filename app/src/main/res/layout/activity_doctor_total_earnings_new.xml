@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI.DoctorTotalEarningsNewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/dark_blue_gradient_new">
+
+            <ImageView
+                android:id="@+id/menu_bar_new"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_back_white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="12dp"
+                android:gravity="end">
+
+                <ImageView
+                    android:id="@+id/notification_new"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_toRightOf="@id/menu_bar_new"
+                    android:src="@drawable/notifications_new" />
+
+                <ImageView
+                    android:id="@+id/cart_new"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/notification_new"
+                    android:src="@drawable/cart_new" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Total Earnings"
+            android:textColor="@color/DarkBlueNew"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="230dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/current_balance_blue_new" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:text="Current Balance"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="$3000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="230dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/money_blue_new" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:text="Today's Earnings"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="$3000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="230dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/month_earning" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:text="This Month Earning"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="$3000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="230dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/total_earnings_blue_new" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:text="Lab Approval Earning"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="$3000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:id="@+id/CurrentBalance"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/current_balance_blue_new" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toRightOf="@id/CurrentBalance"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="-5dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="$1000"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="Current Balance"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:id="@+id/CurrentBalance"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/money_blue_new" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toRightOf="@id/CurrentBalance"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="-5dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="$300"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="Today's Earnings"
+                            android:textColor="@color/Black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:id="@+id/CurrentBalance"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/month_earning" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toRightOf="@id/CurrentBalance"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="-5dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="$2000"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="This Month Earning"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:id="@+id/CurrentBalance"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/total_earnings_blue_new" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toRightOf="@id/CurrentBalance"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="$300"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:gravity="center"
+                            android:text="Lab Approval Earning"
+                            android:textColor="@color/Black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="15dp"
+            android:text="Earning by sessions"
+            android:textColor="@color/DarkBlueNew"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Session ID"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_marginStart="0dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Patient Name"
+                android:textSize="18sp" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Date"
+                android:textSize="18sp" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Earning"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Session ID"
+                        android:textColor="@color/Black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Patient Name"
+                        android:textColor="@color/Black"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Date"
+                        android:textColor="@color/Black"
+                        android:textSize="14sp" />
+
+
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Earning"
+                        android:textColor="@color/Black"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="365"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Haris Unar"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="18-06-22"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="$5000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="365"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Haris Unar"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="18-06-22"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="$5000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="365"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Haris Unar"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="18-06-22"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="$5000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="365"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Haris Unar"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="18-06-22"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="$5000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="365"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Haris Unar"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="18-06-22"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="$5000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="365"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Haris Unar"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="18-06-22"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="$5000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

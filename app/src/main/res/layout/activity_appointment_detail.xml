@@ -79,9 +79,9 @@
             android:layout_height="match_parent">
 
             <androidx.core.widget.NestedScrollView
-                android:layout_above="@+id/checkout_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_above="@+id/checkout_layout">
 
 
                 <LinearLayout
@@ -90,12 +90,12 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <LinearLayout
 
@@ -604,9 +604,6 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="10dp"
                         android:background="@color/gray20" />
-
-
-
 
 
                 </LinearLayout>

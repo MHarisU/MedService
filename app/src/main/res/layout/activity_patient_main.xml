@@ -346,7 +346,7 @@
                             android:layout_height="50dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:visibility="gone">
+                            android:visibility="visible">
 
 
                             <TextView
@@ -817,11 +817,11 @@
                         android:orientation="vertical">
 
 
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
 

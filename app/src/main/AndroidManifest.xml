@@ -30,14 +30,95 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity
-            android:name=".RegisterDoctorNewActivity"
+            android:name=".NewUI.CheckoutNewActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterPatientNewActivity"
+            android:name=".NewUI.ChatNewActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginNewActivity"
+            android:name=".NewUI.ChangePasswordNewActivity"
             android:exported="false" />
+        <activity
+            android:name=".NewUI.CategoryProductsNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.CartNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.PatientBookingAppoitmentDetailsNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.AppointmentDetailsNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.PatientProfileNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.PatientOrdersNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.PatientDoctorsListNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.PharmacyNewMainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.OrderOnlineLabsNewActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewUI.BookAppointmentNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.DoctorProfileNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.RefillRequestNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.PatientE_VisitNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.DoctorTotalEarningsNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.DoctorAllSessionsNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.DoctorPendingAppointmentsNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.OnlineLabsNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.AllPatientsNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.DoctorScheduleNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.WaitingRoomNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.DoctorMainNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.PatientMainNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.RegisterDoctorNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.RegisterPatientNewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewUI.LoginNewActivity"
+            android:exported="true" />
         <activity
             android:name=".LabRequisitionsActivity"
             android:exported="true" />
@@ -179,11 +260,14 @@
         <activity
             android:name=".PatientMainActivity"
             android:exported="true">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".LoginActivity"

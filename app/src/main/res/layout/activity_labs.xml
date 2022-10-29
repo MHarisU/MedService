@@ -113,9 +113,9 @@
         android:layout_marginTop="0dp"
         android:background="@color/Black" />
 
-    <!--  Original Lab View Static
+     <!-- Original Lab View Static-->
     <androidx.core.widget.NestedScrollView
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -240,13 +240,13 @@
 
 
                     <TextView
-                        android:gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="20sp"
                         android:layout_toLeftOf="@+id/searchButton"
                         android:background="@color/Transparent"
                         android:fontFamily="@font/open_sans_regular"
+                        android:gravity="center_vertical"
                         android:hint=" Search"
                         android:textSize="15sp" />
 
@@ -342,7 +342,6 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
@@ -1140,6 +1139,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
                 android:id="@+id/popularMedsRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -1147,7 +1147,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -1378,7 +1378,6 @@
 
 
     </androidx.core.widget.NestedScrollView>
-    -->
 
 
     <androidx.cardview.widget.CardView

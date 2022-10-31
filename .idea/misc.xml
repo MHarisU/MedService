@@ -42,11 +42,13 @@
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/online_status_button_new.xml" value="0.112" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/patients_new.xml" value="0.112" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/records_new.xml" value="0.112" />
+        <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/red_background_button.xml" value="0.1695" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/refill_request.xml" value="0.112" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/refill_request_new.xml" value="0.112" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/reg_account.xml" value="0.1135" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/reports_new.xml" value="0.112" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/schedule.xml" value="0.112" />
+        <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/show_password.xml" value="0.1695" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/square_stock_white_background.xml" value="0.1275" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/success_blue_new.xml" value="0.1135" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/drawable/success_sign_new.xml" value="0.1975" />
@@ -104,7 +106,7 @@
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_labs_category.xml" value="0.2" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_login_new.xml" value="0.5" />
-        <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_main.xml" value="0.67" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_med_detail.xml" value="0.33" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_online_labs_new.xml" value="0.5" />
         <entry key="..\:/Users/Haris/AndroidStudioProjects/MedService/app/src/main/res/layout/activity_order_detail.xml" value="0.5" />

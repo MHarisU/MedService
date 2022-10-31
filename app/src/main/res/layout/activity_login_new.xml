@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,13 +12,13 @@
         android:layout_height="300dp"
         android:gravity="center">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/um_new_logo_mar" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/um_new_logo_mar" />
 
 
     </LinearLayout>
@@ -53,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/geo_sans_light"
+                    android:fontFamily="@font/open_sans_regular"
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:text="   Hello there! Welcome Back"
@@ -124,49 +123,112 @@
             </LinearLayout>
 
 
-            <EditText
-                android:id="@+id/editText_email"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="0dp"
-                android:background="@drawable/black_stock_white_background"
-                android:fontFamily="@font/open_sans_regular"
-                android:hint=" Email"
-                android:inputType="textEmailAddress"
-                android:paddingStart="15dp"
-                android:textColor="#000"
-                android:textColorHint="@color/Black"
-                android:textSize="15sp" />
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="5dp">
 
-            <EditText
-                android:id="@+id/editText_password"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/new_editbox_background">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20sp"
+                        android:layout_toLeftOf="@+id/searchButton"
+                        android:background="@color/Transparent"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint="Email"
+                        android:textSize="15sp" />
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/black_stock_white_background"
-                android:fontFamily="@font/open_sans_regular"
-                android:hint=" Password"
-                android:inputType="textPassword"
-                android:paddingStart="15dp"
-                android:textColor="#000"
-                android:textColorHint="@color/Black"
-                android:textSize="15sp" />
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/new_editbox_background">
 
 
-            <CheckBox
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20sp"
+                        android:layout_toLeftOf="@+id/searchButton"
+                        android:background="@color/Transparent"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint="Password"
+                        android:textSize="15sp" />
 
-                android:id="@+id/checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Remember me"
-                android:textColor="@color/colorAccent"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/searchButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/show_password" />
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/editText_email"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginTop="0dp"-->
+            <!--                android:background="@drawable/new_editbox_background"-->
+            <!--                android:fontFamily="@font/open_sans_regular"-->
+            <!--                android:hint=" Email"-->
+            <!--                android:inputType="textEmailAddress"-->
+            <!--                android:paddingStart="15dp"-->
+            <!--                android:textColor="#000"-->
+            <!--                android:textColorHint="@color/Black"-->
+            <!--                android:textSize="15sp" />-->
+
+            <!--            <EditText-->
+
+            <!--                android:id="@+id/editText_password"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:layout_marginBottom="0dp"-->
+            <!--                android:background="@drawable/new_editbox_background"-->
+            <!--                android:fontFamily="@font/open_sans_regular"-->
+            <!--                android:hint=" Password"-->
+            <!--                android:inputType="textPassword"-->
+            <!--                android:paddingStart="15dp"-->
+            <!--                android:textColor="#000"-->
+            <!--                android:textColorHint="@color/Black"-->
+            <!--                android:textSize="15sp" />-->
+
 
         </LinearLayout>
 
@@ -193,7 +255,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/blue_background_button"
+                android:background="@drawable/dark_blue_gradient_new"
                 android:elevation="5dp"
                 android:fontFamily="@font/open_sans_regular"
                 android:onClick="LoginButtonClick"
@@ -205,18 +267,39 @@
 
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="25dp"
-            android:fontFamily="@font/open_sans_regular"
-            android:gravity="end"
-            android:onClick="forgotPassword"
-            android:text="Forgot Password?"
-            android:textColor="@color/skyblue"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:visibility="visible" />
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Remember me"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:gravity="end"
+                android:onClick="forgotPassword"
+                android:text="Forgot Password?"
+                android:textColor="@color/skyblue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+
+        </LinearLayout>
 
 
         <LinearLayout
@@ -320,17 +403,19 @@
                     android:id="@+id/Register_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_regular"
                     android:text="Don't have account?"
                     android:textColor="@color/Black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:onClick="OpenRegisterPatientNew"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_toRightOf="@id/Register_text"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:onClick="OpenRegisterPatientNew"
                     android:text="Register"
                     android:textColor="@color/skyblue"
                     android:textSize="15sp"
@@ -351,12 +436,12 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="0dp"
-        android:fontFamily="@font/geo_sans_light"
+        android:fontFamily="@font/open_sans_regular"
         android:gravity="center"
         android:text="© All rights reserved by Umbrella Health Care Systems"
         android:textColor="@android:color/black"
         android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textStyle="" />
 
 
 </RelativeLayout>

@@ -108,5 +108,10 @@ dependencies {
     implementation 'com.github.barteksc:android-pdf-viewer:2.0.3'
 
 
+    // Outlined editbox
+//    implementation 'com.google.android.material:material:1.6.0'
+
+
+
 
 }

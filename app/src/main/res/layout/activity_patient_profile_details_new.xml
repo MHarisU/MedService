@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewUI.PatientProfileDetailsNewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/toolbar_blue_gradient">
+
+
+        <ImageView
+            android:id="@+id/menu_bar_new"
+            android:layout_width="@dimen/icon_size_1"
+            android:layout_height="@dimen/icon_size_1"
+            android:layout_gravity="center"
+            android:onClick="close"
+            android:padding="@dimen/padding_size_1"
+            android:src="@drawable/arrow_white_new" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/margin_for_sections_half"
+        android:layout_marginStart="@dimen/margin_for_sections"
+        android:layout_marginTop="@dimen/margin_for_sections">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/BlackText"
+            android:textSize="@dimen/h3_size"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_for_sections"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Name: Hairs Unar"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/p1_size"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="DOB: 08-sep-1996"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/p1_size"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_for_sections"
+        android:layout_marginTop="@dimen/margin_for_sections_half"
+        android:layout_marginEnd="@dimen/margin_for_sections"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:onClick="openSessionHistory"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size"
+            app:cardCornerRadius="@dimen/radius_normal"
+            app:cardElevation="@dimen/shadow_lightest"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/new_editbox_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_2"
+                    android:layout_height="@dimen/icon_size_2"
+                    android:layout_marginStart="@dimen/margin_size_2"
+                    android:src="@drawable/video_session" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size_3"
+                    android:text="Session History"
+                    android:textColor="@color/BlackText"
+                    android:textSize="@dimen/p2_size"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:onClick="openMedicalProfile"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            app:cardCornerRadius="@dimen/radius_normal"
+            app:cardElevation="@dimen/shadow_lightest"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/new_editbox_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:layout_width="@dimen/icon_size_2"
+                    android:layout_height="@dimen/icon_size_2"
+                    android:layout_marginStart="@dimen/margin_size_2"
+                    android:src="@drawable/reports_low" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size_3"
+                    android:text="Medical profile"
+                    android:textColor="@color/BlackText"
+                    android:textSize="@dimen/p2_size"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:onClick="openMedicationHistory"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            app:cardCornerRadius="@dimen/radius_normal"
+            app:cardElevation="@dimen/shadow_lightest"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/new_editbox_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_2"
+                    android:layout_height="@dimen/icon_size_2"
+                    android:layout_marginStart="@dimen/margin_size_2"
+                    android:src="@drawable/phamacy_simple3" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size_3"
+                    android:text="Medication History"
+                    android:textColor="@color/BlackText"
+                    android:textSize="@dimen/p2_size"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:onClick="openLabHistory"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            app:cardCornerRadius="@dimen/radius_normal"
+            app:cardElevation="@dimen/shadow_lightest"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/new_editbox_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_2"
+                    android:layout_height="@dimen/icon_size_2"
+                    android:layout_marginStart="@dimen/margin_size_2"
+                    android:src="@drawable/test_lab" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size_3"
+                    android:text="Lab History"
+                    android:textColor="@color/BlackText"
+                    android:textSize="@dimen/p2_size"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:onClick="openImagingHistory"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            app:cardCornerRadius="@dimen/radius_normal"
+            app:cardElevation="@dimen/shadow_lightest"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/new_editbox_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_2"
+                    android:layout_height="@dimen/icon_size_2"
+                    android:layout_marginStart="@dimen/margin_size_2"
+                    android:src="@drawable/imaging_simple" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size_3"
+                    android:text="Imaging History"
+                    android:textColor="@color/BlackText"
+                    android:textSize="@dimen/p2_size"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

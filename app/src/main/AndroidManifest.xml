@@ -30,95 +30,244 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity
-            android:name=".NewUI.CheckoutNewActivity"
+            android:name=".NewUI.PatientVideoNewActivity"
             android:exported="false" />
+        <activity
+            android:name=".NewUI.DoctorVideoNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.LabTestDetailsNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewUI.OtherLabTestsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.InfectiousDiseaseLabTestsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.STDLabTestsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.HeartHealthLabTestsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DigestiveHealthLabTestsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.MenHealthLAbTestsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.WomenHealthLabTestsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.GeneralHealthLabTestActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PendingAppointmentsDetailNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientImagingHistoryNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientLabHistoryNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientMedicationHistoryNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientMedicalProfileNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientSessionDetailsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientProfileDetailsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorNewAppointmentsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.AllDoctorsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.NotificationsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorSessionDetailsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientAppointmentsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorPendingRequisitionsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorRequisitionsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorApprovedLabsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorPendingOnlineLabsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorOrderLabsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientReportsNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.InboxNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.CreditCardPaymentNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.CheckoutNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.ChatNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.ChangePasswordNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.CategoryProductsNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.CartNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.PatientBookingAppoitmentDetailsNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.AppointmentDetailsNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.PatientProfileNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.PatientOrdersNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.PatientDoctorsListNewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.PharmacyNewMainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NewUI.OrderOnlineLabsNewActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.BookAppointmentNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorProfileNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.RefillRequestNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientE_VisitNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorTotalEarningsNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorAllSessionsNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorPendingAppointmentsNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.OnlineLabsNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.AllPatientsNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorScheduleNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.WaitingRoomNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.DoctorMainNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.PatientMainNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.RegisterDoctorNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.RegisterPatientNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NewUI.LoginNewActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".NewUI.BookAppointmentNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.DoctorProfileNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.RefillRequestNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.PatientE_VisitNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.DoctorTotalEarningsNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.DoctorAllSessionsNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.DoctorPendingAppointmentsNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.OnlineLabsNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.AllPatientsNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.DoctorScheduleNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.WaitingRoomNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.DoctorMainNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.PatientMainNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.RegisterDoctorNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.RegisterPatientNewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".NewUI.LoginNewActivity"
-            android:exported="true" />
         <activity
             android:name=".LabRequisitionsActivity"
             android:exported="true" />
@@ -268,31 +417,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             -->
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-
-        </activity>
+        </activity> <!-- <activity -->
+        <!-- android:name=".LoginActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- &lt;!&ndash; -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- &ndash;&gt; -->
+        <!-- </activity> -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".MainActivity" />
 

@@ -2,7 +2,10 @@ package com.med.medservice.NewUI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 
 import com.med.medservice.R;
 
@@ -11,6 +14,17 @@ public class PatientE_VisitNewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_patient_evisit_new);
+    }
+
+    public void GoBackToMain(View view) {
+        finish();
+    }
+
+    public void openAllDoctors(View view) {
+        startActivity(new Intent(PatientE_VisitNewActivity.this, AllDoctorsNewActivity.class));
+
     }
 }

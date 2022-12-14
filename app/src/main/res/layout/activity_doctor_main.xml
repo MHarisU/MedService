@@ -859,8 +859,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
                                 android:layout_weight="1"
-                                app:cardCornerRadius="10dp"
                                 android:onClick="OpenPatientsList"
+                                app:cardCornerRadius="10dp"
                                 app:cardElevation="10dp">
 
                                 <LinearLayout
@@ -991,11 +991,11 @@
                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
-                                android:onClick="OpenSessions"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
                                 android:layout_weight="1"
+                                android:onClick="OpenSessions"
                                 app:cardCornerRadius="10dp"
                                 app:cardElevation="10dp">
 
@@ -1737,10 +1737,10 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <androidx.cardview.widget.CardView
 

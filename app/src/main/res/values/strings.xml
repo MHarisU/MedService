@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Umbrella HCS</string>
+    <string name="heading1">20sp</string>
 
     <string-array name="symptoms_list">
 
@@ -8,6 +9,56 @@
         <item>Flu</item>
         <item>Nausea</item>
         <item>Other</item>
+
+    </string-array>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="profile">Profile</string>
+
+    <string-array name="gender">
+
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+
+
+    </string-array>
+
+
+    <string-array name="states">
+
+        <item>Select State</item>
+        <item>Alabama</item>
+        <item>Missouri</item>
+        <item>Colorado</item>
+
+
+    </string-array>
+
+    <string-array name="Cities">
+
+        <item>Select City</item>
+
+    </string-array>
+
+    <string-array name="doctorSpecialization">
+
+        <item>Select Specialization</item>
+        <item>Primary Care</item>
+        <item>Psychiatry</item>
+        <item>Pain Management</item>
+        <item>Substance Abuse</item>
+
+
+    </string-array>
+
+    <string-array name="patientReminders">
+
+        <item>Reminders</item>
+        <item>You Have 1 Pending Appointment</item>
+
 
     </string-array>
 

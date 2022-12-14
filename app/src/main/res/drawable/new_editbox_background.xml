@@ -6,12 +6,12 @@
         <shape>
 
             <solid
-                android:color="@color/White"/>
+                android:color="@color/white"/>
             <stroke
-                android:color="#C9111111"
-                android:width="1dp"/>
+                android:color="@color/BlackLighter"
+                android:width="0.4dp"/>
             <corners
-                android:radius="5dp"/>
+                android:radius="@dimen/radius_normal"/>
 
         </shape>
 

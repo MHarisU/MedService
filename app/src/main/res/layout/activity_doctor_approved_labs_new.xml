@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI.DoctorApprovedLabsNewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/toolbar_blue_gradient">
+
+
+            <ImageView
+                android:id="@+id/menu_bar_new"
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:onClick="GoBackToMain"
+                android:padding="@dimen/padding_size_1"
+                android:src="@drawable/arrow_white_new" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end">
+
+                <ImageView
+                    android:id="@+id/notification_new"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
+                    android:layout_toRightOf="@id/menu_bar_new"
+                    android:padding="@dimen/padding_size_1"
+                    android:src="@drawable/notifications_new" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/cart_new"
+                        android:layout_width="@dimen/icon_size_1"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/notification_new"
+                        android:onClick="OpenCartActivity"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/cart_new" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Approved Labs"
+                        android:textColor="@color/BlackText"
+                        android:textSize="@dimen/h3_size"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_box_size"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:background="@drawable/new_editbox_background">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toLeftOf="@+id/searchButton"
+                        android:background="@color/Transparent"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" Search"
+                        android:textSize="@dimen/p2_size" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:gravity="end">
+
+
+                        <ImageView
+                            android:id="@+id/searchButton"
+                            android:layout_width="60dp"
+                            android:layout_height="@dimen/icon_size_1"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/darkblue_gradient_for_searchbar"
+                            android:padding="@dimen/padding_size_1"
+                            android:src="@drawable/search_new" />
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_for_sections"
+                android:layout_marginTop="@dimen/margin_for_sections_half"
+                android:layout_marginEnd="@dimen/margin_for_sections"
+                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_size_1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order ID : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="22208910"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order Date : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="11-12-2022 / 10:30 PM"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Lab Product :"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="1) ALKALINE PHOSPHATASE \n2) ALLERGY EVALUATION 6, SOUTH CENTRAL \n3) ALLERGY MOLD PANEL, COMPLETE"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_size_1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order ID : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="22208910"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order Date : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="11-12-2022 / 10:30 PM"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Lab Product :"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="1) ALKALINE PHOSPHATASE \n2) ALLERGY EVALUATION 6, SOUTH CENTRAL \n3) ALLERGY MOLD PANEL, COMPLETE"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_size_1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order ID : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="22208910"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order Date : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="11-12-2022 / 10:30 PM"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Lab Product :"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="1) ALKALINE PHOSPHATASE \n2) ALLERGY EVALUATION 6, SOUTH CENTRAL \n3) ALLERGY MOLD PANEL, COMPLETE"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_size_1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order ID : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="22208910"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order Date : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="11-12-2022 / 10:30 PM"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Lab Product :"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="1) ALKALINE PHOSPHATASE \n2) ALLERGY EVALUATION 6, SOUTH CENTRAL \n3) ALLERGY MOLD PANEL, COMPLETE"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_size_1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order ID : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="22208910"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Order Date : "
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="11-12-2022 / 10:30 PM"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.4"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="Lab Product :"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:gravity="start"
+                                    android:text="1) ALKALINE PHOSPHATASE \n2) ALLERGY EVALUATION 6, SOUTH CENTRAL \n3) ALLERGY MOLD PANEL, COMPLETE"
+                                    android:textColor="@color/Black"
+                                    android:textSize="@dimen/p4_size" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+
+            </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

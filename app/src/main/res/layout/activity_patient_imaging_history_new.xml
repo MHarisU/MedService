@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewUI.PatientImagingHistoryNewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/toolbar_blue_gradient">
+
+
+        <ImageView
+            android:id="@+id/menu_bar_new"
+            android:layout_width="@dimen/icon_size_1"
+            android:layout_height="@dimen/icon_size_1"
+            android:layout_gravity="center"
+            android:onClick="close"
+            android:padding="@dimen/padding_size_1"
+            android:src="@drawable/arrow_white_new" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_for_sections"
+        android:layout_marginTop="@dimen/margin_for_sections"
+        android:layout_marginBottom="@dimen/margin_size_1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lab History"
+            android:textColor="@color/BlackText"
+            android:textSize="@dimen/h3_size"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_for_sections"
+        android:layout_marginTop="@dimen/margin_for_sections_half"
+        android:layout_marginEnd="@dimen/margin_for_sections_half"
+        android:layout_marginBottom="@dimen/margin_for_sections_half"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_for_sections_half"
+            app:cardCornerRadius="@dimen/radius_normal"
+            app:cardElevation="@dimen/shadow_lightest"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/new_editbox_background"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/profile_size1"
+                    android:layout_height="100dp"
+                    android:src="@drawable/for_empty"/>
+
+                <TextView
+                    android:layout_marginBottom="@dimen/margin_for_sections"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No Imaging History"
+                    android:textSize="@dimen/p2_size"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

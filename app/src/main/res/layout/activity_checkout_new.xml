@@ -16,654 +16,562 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/dark_blue_gradient_new">
+            android:background="@drawable/toolbar_blue_gradient">
+
 
             <ImageView
-                android:id="@+id/menu_bar_new"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:onClick="GoBackToCart"
+                android:padding="@dimen/padding_size_1"
                 android:src="@drawable/arrow_white_new" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:text="Cart"
-                    android:textColor="@color/white"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="-90dp"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginRight="0dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:text="Checkout"
-                    android:textColor="@color/white"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
 
 
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="5dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="280dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp">
-
-
-                    <Spinner
-                        android:id="@+id/spinner_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@drawable/new_editbox_background"
-                        android:spinnerMode="dropdown" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:text="Select Your Card*"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="5dp"
-                        android:src="@drawable/drop_downarrow_new" />
-
-                </RelativeLayout>
-
-
-                <Button
-                    android:layout_width="155dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/dark_blue_gradient_new"
-                    android:elevation="1dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:gravity="center"
-                    android:text="Add New Card"
-                    android:textAllCaps="false"
-                    android:textColor="@color/White"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray20" />
-
-        <androidx.cardview.widget.CardView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:gravity="center"
-                    android:text="Payment"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
 
-                    <EditText
-                        android:id="@+id/editText_email"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="First Name*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
+                        android:layout_height="80dp"
+                        android:layout_marginStart="@dimen/margin_for_sections_half"
+                        android:layout_marginTop="@dimen/margin_for_sections"
+                        android:layout_marginEnd="@dimen/margin_for_sections_half"
+                        app:cardCornerRadius="@dimen/radius_normal"
+                        app:cardElevation="@dimen/shadow_lightest">
 
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Last Name*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/new_editbox_background">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/margin_for_sections_half"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_weight="1">
 
 
-                </LinearLayout>
+                                <Spinner
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/new_editbox_background"
+                                    android:spinnerMode="dropdown" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="5dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/button_size_1"
+                                    android:gravity="center"
+                                    android:text="Select Your Card*"
+                                    android:textSize="@dimen/p2_size" />
 
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="@dimen/margin_size_1"
+                                    android:src="@drawable/drop_downarrow_new" />
 
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Email*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Phone Number*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
+                            </RelativeLayout>
 
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp">
-
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Enter 16 digits of your card number*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
+                            <Button
+                                android:id="@+id/addCardButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginStart="@dimen/margin_size_1"
+                                android:layout_weight="1"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:elevation="@dimen/shadow_normal"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center"
+                                android:text="Add New Card"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
 
 
-                </LinearLayout>
+                        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="15dp">
+                        </LinearLayout>
 
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Enter CVV / CVC*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Expiry Date: 10/22*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="15dp">
-
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Zip Code*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="State*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="City*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp">
-
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Address*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="start"
-                    android:text="Shipping Address For Medicines"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginTop="8dp"
-                        android:gravity="end"
+                        android:id="@+id/addNewCardLayout"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/online_status_button_new"/>
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_for_sections_half"
+                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                        android:layout_marginEnd="@dimen/margin_for_sections_half"
+                        android:layout_marginBottom="@dimen/margin_for_sections_half"
+                        app:cardCornerRadius="@dimen/radius_normal"
+                        app:cardElevation="@dimen/shadow_lightest">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/new_editbox_background">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_for_sections_half"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="Payment"
+                                        android:textColor="@color/DarkBlueNew"
+                                        android:textSize="@dimen/h3_size"
+                                        android:textStyle="bold" />
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="First Name*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size"
+                                            />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Last Name*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Email*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Phone Number*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Enter 16 digits of your card number*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Enter CVV / CVC*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Expiry Date: 10/22*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Zip Code*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="State*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="City*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Address*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_marginBottom="@dimen/margin_for_sections"
+                                        android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                        android:layout_marginStart="@dimen/margin_for_sections_half"
+                                        android:layout_marginTop="@dimen/margin_for_sections"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_marginTop="2dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="start"
+                                            android:text="Shipping Address For Medicines"
+                                            android:textColor="@color/DarkBlueNew"
+                                            android:textSize="@dimen/h3_size"
+                                            android:textStyle="bold" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end">
+
+                                            <Switch
+                                                android:checked="false"
+                                                android:id="@+id/shippingAddressSwitch"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="" />
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:id="@+id/shippingAddressLayout"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="First Name*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Last Name*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Email*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="@dimen/margin_size_1"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Phone Number*"
+                                            android:inputType="number"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="Zip Code*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="State*"
+                                            android:inputType="text"
+                                            android:padding="10dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+                                        <EditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/edit_box_size"
+                                            android:layout_marginStart="@dimen/margin_size_1"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/new_editbox_background"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:hint="City*"
+                                            android:inputType="number"
+                                            android:padding="10dp"
+                                            android:paddingStart="15dp"
+                                            android:textColor="@color/BlackLighter"
+                                            android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/edit_box_size"
+                                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                                        android:background="@drawable/new_editbox_background"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:hint="Address*"
+                                        android:inputType="text"
+                                        android:padding="10dp"
+                                        android:textColor="@color/BlackLighter"
+                                        android:textSize="@dimen/p2_size" />
+
+
+                                    </LinearLayout>
+
+
+                                    <Button
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/edit_box_size"
+                                        android:layout_marginTop="@dimen/margin_for_sections"
+                                        android:background="@drawable/dark_blue_gradient_new"
+                                        android:elevation="@dimen/shadow_lightest"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="center"
+                                        android:text="Pay Now"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p2_size"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="First Name*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Last Name*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="5dp">
-
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Email*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Phone Number*"
-                        android:inputType="number"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/White"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp">
-
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="Zip Code*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="State*"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/editText_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/new_editbox_background"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:hint="City*"
-                        android:inputType="number"
-                        android:padding="10dp"
-                        android:paddingStart="15dp"
-                        android:textColor="#000"
-                        android:textSize="15sp" />
-
-
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/editText_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/new_editbox_background"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:hint="Address*"
-                    android:inputType="text"
-                    android:padding="10dp"
-                    android:paddingStart="15dp"
-                    android:textColor="#000"
-                    android:textSize="15sp" />
-
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/dark_blue_gradient_new"
-                    android:elevation="1dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:gravity="center"
-                    android:text="Pay Now"
-                    android:textAllCaps="false"
-                    android:textColor="@color/White"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
             </LinearLayout>
 
-
-        </androidx.cardview.widget.CardView>
+        </ScrollView>
 
     </LinearLayout>
 

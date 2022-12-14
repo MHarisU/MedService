@@ -12,108 +12,130 @@
         android:orientation="vertical">
 
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/dark_blue_gradient_new">
+            android:background="@drawable/toolbar_blue_gradient"
+            >
+
 
             <ImageView
+                android:onClick="GoBackToMain"
                 android:id="@+id/menu_bar_new"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/drawer_menu_button_new" />
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:padding="@dimen/padding_size_1"
+
+                android:src="@drawable/arrow_white_new" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="12dp"
                 android:gravity="end">
 
                 <ImageView
+                    android:onClick="openNotifications"
                     android:id="@+id/notification_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
                     android:layout_toRightOf="@id/menu_bar_new"
+                    android:padding="@dimen/padding_size_1"
                     android:src="@drawable/notifications_new" />
 
-                <ImageView
-                    android:id="@+id/cart_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/notification_new"
-                    android:src="@drawable/cart_new" />
+                <LinearLayout
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/cart_new"
+                        android:layout_width="@dimen/icon_size_1"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/notification_new"
+                        android:onClick="OpenCartActivity"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/cart_new" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
 
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/open_sans_regular"
-            android:text="Online Labs"
-            android:textColor="@color/DarkBlueNew"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginStart="@dimen/margin_for_sections"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            android:layout_marginEnd="@dimen/margin_for_sections"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Online Labs"
+                android:textColor="@color/BlackText"
+                android:textSize="@dimen/h3_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_for_sections"
+            android:layout_marginStart="@dimen/margin_for_sections"
+            android:layout_marginEnd="@dimen/margin_for_sections"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="230dp"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:onClick="openOrderLabsNew"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginEnd="@dimen/margin_size_1"
                     android:layout_weight="1"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    >
 
                     <LinearLayout
+                        android:background="@drawable/new_editbox_background"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
 
                         <TextView
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text="Order Labs"
                             android:textColor="@color/DarkBlueNew"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/p2_size"
                             android:textStyle="bold" />
 
 
                         <ImageView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="100dp"
+                            android:layout_width="60dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginTop="0dp"
+                            android:layout_marginBottom="20dp"
                             android:src="@drawable/lab_simple2" />
-
-
 
 
                     </LinearLayout>
@@ -122,41 +144,38 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="230dp"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="@dimen/margin_size_1"
                     android:layout_weight="1"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="5dp">
+                    android:onClick="openPendingOnlineLabs"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    >
 
                     <LinearLayout
+                        android:background="@drawable/new_editbox_background"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
 
                         <TextView
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text="Pending Online Labs"
                             android:textColor="@color/DarkBlueNew"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/p2_size"
                             android:textStyle="bold" />
 
 
                         <ImageView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="100dp"
+                            android:layout_width="60dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginTop="0dp"
+                            android:layout_marginBottom="20dp"
                             android:src="@drawable/lab_simple" />
-
-
 
 
                     </LinearLayout>
@@ -169,143 +188,84 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_for_sections_half"
                 android:orientation="horizontal">
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="230dp"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginEnd="@dimen/margin_size_1"
                     android:layout_weight="1"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="5dp">
+                    android:onClick="openApprovedLabs"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    >
 
                     <LinearLayout
+                        android:background="@drawable/new_editbox_background"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
 
                         <TextView
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text="Approved Labs"
                             android:textColor="@color/DarkBlueNew"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/p2_size"
                             android:textStyle="bold" />
 
 
                         <ImageView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="100dp"
+                            android:layout_width="60dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginTop="0dp"
+                            android:layout_marginBottom="20dp"
                             android:src="@drawable/approved_labs" />
 
 
-
-
                     </LinearLayout>
 
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="230dp"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="@dimen/margin_size_1"
                     android:layout_weight="1"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="5dp">
+                    android:onClick="openDoctorRequisitions"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    >
 
                     <LinearLayout
+                        android:background="@drawable/new_editbox_background"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
 
                         <TextView
-                            android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:gravity="center"
-                            android:text="Patients Lab Reports"
-                            android:textColor="@color/DarkBlueNew"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-
-                        <ImageView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="0dp"
-                            android:src="@drawable/clipboard" />
-
-
-
-
-                    </LinearLayout>
-
-
-                </androidx.cardview.widget.CardView>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="230dp"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text="My Requisitions"
                             android:textColor="@color/DarkBlueNew"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/p2_size"
                             android:textStyle="bold" />
 
 
                         <ImageView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="100dp"
+                            android:layout_width="60dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginTop="0dp"
+                            android:layout_marginBottom="20dp"
                             android:src="@drawable/reports_low" />
-
-
 
 
                     </LinearLayout>
@@ -313,42 +273,53 @@
 
                 </androidx.cardview.widget.CardView>
 
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/margin_for_sections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_for_sections_half"
+                android:orientation="horizontal">
+
+
+
+
                 <androidx.cardview.widget.CardView
-                    android:layout_width="230dp"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
                     android:layout_weight="1"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="5dp">
+                    android:onClick="openPendingRequisitions"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    >
 
                     <LinearLayout
+                        android:background="@drawable/new_editbox_background"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
 
                         <TextView
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text="Pending Requisitions"
                             android:textColor="@color/DarkBlueNew"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/p2_size"
                             android:textStyle="bold" />
 
 
                         <ImageView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="0dp"
+                            android:layout_marginBottom="20dp"
                             android:src="@drawable/report_simple" />
-
-
 
 
                     </LinearLayout>
@@ -358,6 +329,8 @@
 
 
             </LinearLayout>
+
+
 
 
         </LinearLayout>

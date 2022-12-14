@@ -11,440 +11,595 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/dark_blue_gradient_new">
+            android:background="@drawable/toolbar_blue_gradient">
+
 
             <ImageView
+                android:onClick="GoBackToMain"
                 android:id="@+id/menu_bar_new"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_back_white" />
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:padding="@dimen/padding_size_1"
+
+                android:src="@drawable/arrow_white_new" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="12dp"
                 android:gravity="end">
 
                 <ImageView
+                    android:onClick="openNotifications"
                     android:id="@+id/notification_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
                     android:layout_toRightOf="@id/menu_bar_new"
+                    android:padding="@dimen/padding_size_1"
                     android:src="@drawable/notifications_new" />
 
-                <ImageView
-                    android:id="@+id/cart_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/notification_new"
-                    android:src="@drawable/cart_new" />
+                <LinearLayout
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:onClick="openCartActivity"
+                        android:id="@+id/cart_new"
+                        android:layout_width="@dimen/icon_size_1"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/notification_new"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/cart_new" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
 
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:text="All Patients"
-            android:textColor="@color/DarkBlueNew"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:elevation="10dp"
-                android:visibility="visible"
-                app:cardCornerRadius="5dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-
-                            android:layout_width="80dp"
-                            android:layout_height="70dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:src="@drawable/profile" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="15dp"
-                                android:text="Muhammad Haris Unar"
-                                android:textSize="22sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:text="Last Visit: OCT, 20TH 2022"
-                                android:textSize="18sp" />
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"
-                        android:orientation="horizontal">
-
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="0dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/dark_blue_gradient_new"
-                            android:elevation="1dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:text="View Profile"
-                            android:textAllCaps="false"
-                            android:textColor="@color/White"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:elevation="10dp"
-                android:visibility="visible"
-                app:cardCornerRadius="5dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-
-                            android:layout_width="80dp"
-                            android:layout_height="70dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:src="@drawable/baqir_profile" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="15dp"
-                                android:text="Syed Baqir Raza"
-                                android:textSize="22sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:text="Last Visit: OCT, 20TH 2022"
-                                android:textSize="18sp" />
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"
-                        android:orientation="horizontal">
-
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="0dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/dark_blue_gradient_new"
-                            android:elevation="1dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:text="View Profile"
-                            android:textAllCaps="false"
-                            android:textColor="@color/White"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:elevation="10dp"
-                android:visibility="visible"
-                app:cardCornerRadius="5dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-
-                            android:layout_width="80dp"
-                            android:layout_height="70dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:src="@drawable/hadi_profile" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="15dp"
-                                android:text="Abdul Hadi"
-                                android:textSize="22sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:text="Last Visit: OCT, 20TH 2022"
-                                android:textSize="18sp" />
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"
-                        android:orientation="horizontal">
-
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="0dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/dark_blue_gradient_new"
-                            android:elevation="1dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:text="View Profile"
-                            android:textAllCaps="false"
-                            android:textColor="@color/White"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:elevation="10dp"
-                android:visibility="visible"
-                app:cardCornerRadius="5dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-
-                            android:layout_width="80dp"
-                            android:layout_height="70dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:src="@drawable/shah_profile" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="15dp"
-                                android:text="Shah Sahab"
-                                android:textSize="22sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:text="Last Visit: OCT, 20TH 2022"
-                                android:textSize="18sp" />
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"
-                        android:orientation="horizontal">
-
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="0dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/dark_blue_gradient_new"
-                            android:elevation="1dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:text="View Profile"
-                            android:textAllCaps="false"
-                            android:textColor="@color/White"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-
-
-
-
         </LinearLayout>
 
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="All Patients"
+                        android:textColor="@color/BlackText"
+                        android:textSize="@dimen/h3_size"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Muhammad Haris Unar"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Last Visit: OCT, 20TH 2022"
+                                    android:textSize="14sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <Button
+                                android:onClick="openPatientProfileDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center"
+                                android:text="View Profile"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/baqir_profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Syed Baqir Raza"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Last Visit: OCT, 20TH 2022"
+                                    android:textSize="14sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center"
+                                android:text="View Profile"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/hadi_profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Abdul Hadi"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Last Visit: OCT, 20TH 2022"
+                                    android:textSize="14sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center"
+                                android:text="View Profile"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/shah_profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mr. Shah"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Last Visit: OCT, 20TH 2022"
+                                    android:textSize="14sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center"
+                                android:text="View Profile"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/profile_image_gray" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mohsin Magsi"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Last Visit: OCT, 20TH 2022"
+                                    android:textSize="14sp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:gravity="center"
+                                android:text="View Profile"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </ScrollView>
 
 
         <LinearLayout
@@ -661,429 +816,428 @@
 
 
         <LinearLayout
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/profile" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Haris Unar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/profile" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="OpenWaitingRoomNew"
-                        android:text="View Details"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="15dp" />
+                        android:text="Haris Unar"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/dark_blue_gradient_new"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:text="View Details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/baqir_profile" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Syed Baqir"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/baqir_profile" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="OpenWaitingRoomNew"
-                        android:text="View Details"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="15dp" />
+                        android:text="Syed Baqir"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/dark_blue_gradient_new"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:onClick="OpenWaitingRoomNew"
+                            android:text="View Details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/hadi_profile" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Abdul Hadi"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/hadi_profile" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="OpenWaitingRoomNew"
-                        android:text="View Details"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="15dp" />
+                        android:text="Abdul Hadi"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/dark_blue_gradient_new"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:onClick="OpenWaitingRoomNew"
+                            android:text="View Details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/shah_profile" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Shah"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/shah_profile" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="OpenWaitingRoomNew"
-                        android:text="View Details"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="15dp" />
+                        android:text="Shah"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/dark_blue_gradient_new"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:onClick="OpenWaitingRoomNew"
+                            android:text="View Details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/profile" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Haris Unar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/profile" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="OpenWaitingRoomNew"
-                        android:text="View Details"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="15dp" />
+                        android:text="Haris Unar"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/dark_blue_gradient_new"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:onClick="OpenWaitingRoomNew"
+                            android:text="View Details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/profile" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Haris Unar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/profile" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="OpenWaitingRoomNew"
-                        android:text="View Details"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="15dp" />
+                        android:text="Haris Unar"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/dark_blue_gradient_new"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:onClick="OpenWaitingRoomNew"
+                            android:text="View Details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="1dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/profile" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Haris Unar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/profile" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="OpenWaitingRoomNew"
-                        android:text="View Details"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="15dp" />
+                        android:text="Haris Unar"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/dark_blue_gradient_new"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:onClick="OpenWaitingRoomNew"
+                            android:text="View Details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

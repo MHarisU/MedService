@@ -8,6 +8,7 @@
             <gradient android:angle="90"
                 android:startColor="@color/orangeDark"
                 android:endColor="@color/orangeDarkLighter"/>
+            <corners android:radius="10dp"/>
 
         </shape>
 

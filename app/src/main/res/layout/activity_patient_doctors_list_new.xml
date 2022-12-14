@@ -11,134 +11,58 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/dark_blue_gradient_new">
+            android:background="@drawable/toolbar_blue_gradient">
+
 
             <ImageView
+                android:onClick="GoBackToMain"
                 android:id="@+id/menu_bar_new"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_back_white" />
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:padding="@dimen/padding_size_1"
+                android:src="@drawable/arrow_white_new" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="12dp"
                 android:gravity="end">
 
                 <ImageView
                     android:id="@+id/notification_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
                     android:layout_toRightOf="@id/menu_bar_new"
+                    android:padding="@dimen/padding_size_1"
                     android:src="@drawable/notifications_new" />
 
-                <ImageView
-                    android:id="@+id/cart_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/notification_new"
-                    android:src="@drawable/cart_new" />
+                <LinearLayout
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/cart_new"
+                        android:layout_width="@dimen/icon_size_1"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/notification_new"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/cart_new" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
 
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:text="My Doctors"
-            android:textColor="@color/DarkBlueNew"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:elevation="10dp"
-            android:visibility="gone"
-            app:cardCornerRadius="5dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/profile" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Dr. Muhammad Haris Unar"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Pain Management"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/dark_blue_gradient_new"
-                    android:elevation="1dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:text="View Profile"
-                    android:textAllCaps="false"
-                    android:textColor="@color/White"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-                <Button
-                    android:layout_width="170dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/green_bg"
-                    android:elevation="1dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:text="Book Appointment"
-                    android:textAllCaps="false"
-                    android:textColor="@color/White"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -149,63 +73,95 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="My Doctors"
+                        android:textColor="@color/BlackText"
+                        android:textSize="@dimen/h3_size"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half">
 
                 <androidx.cardview.widget.CardView
+
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="10dp"
-                    android:visibility="visible"
-                    app:cardCornerRadius="5dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
 
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
 
-                                android:layout_width="80dp"
-                                android:layout_height="70dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="25dp"
-                                android:src="@drawable/profile" />
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/profile" />
+
+                            </androidx.cardview.widget.CardView>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="25dp"
                                     android:text="Dr. Muhammad Haris Unar"
-                                    android:textSize="22sp"
+                                    android:textSize="@dimen/p1_size"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
                                     android:text="Pain Management"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
+
 
                                 <ImageView
-                                    android:layout_width="130dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginStart="2dp"
-                                    android:layout_marginTop="8dp"
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
                                     android:src="@drawable/rating" />
 
                             </LinearLayout>
@@ -215,32 +171,32 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
                             android:orientation="horizontal">
 
 
                             <Button
+                                android:id="@+id/viewDocBio"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/dark_blue_gradient_new"
-                                android:elevation="1dp"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:text="View Profile"
+                                android:text="View Bio"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
                             <Button
+                                android:onClick="openBookingAppointmentActivity"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="5dp"
                                 android:layout_weight="1"
@@ -250,7 +206,7 @@
                                 android:text="Book Appointment"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
@@ -264,60 +220,68 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="10dp"
-                    android:visibility="visible"
-                    app:cardCornerRadius="5dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
 
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
 
-                                android:layout_width="80dp"
-                                android:layout_height="70dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="25dp"
-                                android:src="@drawable/baqir_profile" />
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/baqir_profile" />
+
+                            </androidx.cardview.widget.CardView>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="25dp"
                                     android:text="Dr. Syed Baqir Raza"
-                                    android:textSize="22sp"
+                                    android:textSize="@dimen/p1_size"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
                                     android:text="Primary Care"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
+
 
                                 <ImageView
-                                    android:layout_width="130dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginStart="2dp"
-                                    android:layout_marginTop="8dp"
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
                                     android:src="@drawable/rating" />
 
                             </LinearLayout>
@@ -327,32 +291,30 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
                             android:orientation="horizontal">
 
 
                             <Button
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/dark_blue_gradient_new"
-                                android:elevation="1dp"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:text="View Profile"
+                                android:text="View Bio"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
                             <Button
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="5dp"
                                 android:layout_weight="1"
@@ -362,7 +324,7 @@
                                 android:text="Book Appointment"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
@@ -376,60 +338,68 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="10dp"
-                    android:visibility="visible"
-                    app:cardCornerRadius="5dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
 
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
 
-                                android:layout_width="80dp"
-                                android:layout_height="70dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="25dp"
-                                android:src="@drawable/hadi_profile" />
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/hadi_profile" />
+
+                            </androidx.cardview.widget.CardView>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="25dp"
                                     android:text="Dr. Abdul Hadi"
-                                    android:textSize="22sp"
+                                    android:textSize="@dimen/p1_size"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
                                     android:text="Psychiatrists"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
+
 
                                 <ImageView
-                                    android:layout_width="130dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginStart="2dp"
-                                    android:layout_marginTop="8dp"
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
                                     android:src="@drawable/rating" />
 
                             </LinearLayout>
@@ -439,32 +409,30 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
                             android:orientation="horizontal">
 
 
                             <Button
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/dark_blue_gradient_new"
-                                android:elevation="1dp"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:text="View Profile"
+                                android:text="View Bio"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
                             <Button
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="5dp"
                                 android:layout_weight="1"
@@ -474,7 +442,7 @@
                                 android:text="Book Appointment"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
@@ -488,60 +456,68 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="10dp"
-                    android:visibility="visible"
-                    app:cardCornerRadius="5dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
 
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
 
-                                android:layout_width="80dp"
-                                android:layout_height="70dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="25dp"
-                                android:src="@drawable/shah_profile" />
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/shah_profile" />
+
+                            </androidx.cardview.widget.CardView>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="25dp"
                                     android:text="Dr. Shah"
-                                    android:textSize="22sp"
+                                    android:textSize="@dimen/p1_size"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
                                     android:text="Substance Abuse"
-                                    android:textSize="18sp" />
+                                    android:textSize="14sp" />
+
 
                                 <ImageView
-                                    android:layout_width="130dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginStart="2dp"
-                                    android:layout_marginTop="8dp"
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
                                     android:src="@drawable/rating" />
 
                             </LinearLayout>
@@ -551,32 +527,30 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
                             android:orientation="horizontal">
 
 
                             <Button
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/dark_blue_gradient_new"
-                                android:elevation="1dp"
                                 android:fontFamily="@font/open_sans_regular"
-                                android:text="View Profile"
+                                android:text="View Bio"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
                             <Button
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                android:layout_height="@dimen/button_size_4"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="5dp"
                                 android:layout_weight="1"
@@ -586,7 +560,7 @@
                                 android:text="Book Appointment"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/p2_size"
                                 android:textStyle="bold" />
 
 
@@ -598,6 +572,7 @@
 
                 </androidx.cardview.widget.CardView>
 
+                </LinearLayout>
 
             </LinearLayout>
 

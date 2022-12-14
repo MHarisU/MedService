@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/toolbar_blue_gradient">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Doctor Bio"
+            android:textColor="@color/white"
+            android:textSize="@dimen/p1_size"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:gravity="end">
+
+
+            <ImageView
+                android:onClick="closeBio"
+                android:layout_width="@dimen/icon_size_3"
+                android:layout_height="@dimen/icon_size_3"
+                android:layout_gravity="center"
+                android:src="@drawable/close_white_new" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+            <TextView
+
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/black_de"
+                android:textSize="@dimen/p2_size"
+                android:layout_margin="@dimen/margin_for_sections"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dr. Haris Unar is a board-certified functional medicine practitioner (IFMCP) and a licensed and board-certified Doctor of Chiropractic (DC). His post-graduate training includes diagnosis"/>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

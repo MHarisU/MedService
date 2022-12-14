@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI.DoctorNewAppointmentsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/toolbar_blue_gradient">
+
+
+            <ImageView
+                android:id="@+id/menu_bar_new"
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:onClick="GoBackToMain"
+                android:padding="@dimen/padding_size_1"
+
+                android:src="@drawable/arrow_white_new" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end">
+
+                <ImageView
+                    android:onClick="openNotifications"
+                    android:id="@+id/notification_new"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
+                    android:layout_toRightOf="@id/menu_bar_new"
+                    android:padding="@dimen/padding_size_1"
+                    android:src="@drawable/notifications_new" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/cart_new"
+                        android:layout_width="@dimen/icon_size_1"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/notification_new"
+                        android:onClick="OpenCartActivity"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/cart_new" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="All Appointments"
+                        android:textColor="@color/BlackText"
+                        android:textSize="@dimen/h3_size"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_3"
+                            android:layout_height="@dimen/icon_size_3"
+                            android:src="@drawable/filter_blue_new" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_box_size"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:background="@drawable/new_editbox_background">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toLeftOf="@+id/searchButton"
+                        android:background="@color/Transparent"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint="Search"
+                        android:textSize="@dimen/p2_size" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:gravity="end">
+
+
+                        <ImageView
+                            android:id="@+id/searchButton"
+                            android:layout_width="60dp"
+                            android:layout_height="@dimen/icon_size_1"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/darkblue_gradient_for_searchbar"
+                            android:padding="@dimen/padding_size_1"
+                            android:src="@drawable/search_new" />
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                        app:cardCornerRadius="@dimen/radius_normal"
+                        app:cardElevation="@dimen/shadow_lightest"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_for_sections_half"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="S.No : "
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="1"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_for_sections_half"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Patient Name :"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Haris Unar"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_for_sections_half"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Symptoms : "
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Headache, Flu, Fever"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size" />
+
+                                </LinearLayout>
+
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:orientation="horizontal">
+
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/button_size_4"
+                                    android:background="@drawable/orange_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:text="Cancel"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/White"
+                                    android:textSize="@dimen/p2_size" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                        app:cardCornerRadius="@dimen/radius_normal"
+                        app:cardElevation="@dimen/shadow_lightest"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_for_sections_half"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="S.No : "
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="2"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_for_sections_half"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Patient Name :"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Baqir Raza"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_for_sections_half"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1.4"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Symptoms : "
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:gravity="start"
+                                        android:text="Headache, Flu, Fever"
+                                        android:textColor="@color/Black"
+                                        android:textSize="@dimen/p4_size" />
+
+                                </LinearLayout>
+
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:orientation="horizontal">
+
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/button_size_4"
+                                    android:background="@drawable/orange_background"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:text="Cancel"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/White"
+                                    android:textSize="@dimen/p2_size" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+
+                </LinearLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_for_sections"
+                    android:elevation="@dimen/shadow_normal"
+                    android:visibility="gone"
+                    app:cardCornerRadius="@dimen/radius_normal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_for_sections_half"
+                            android:layout_marginTop="@dimen/margin_for_sections_half"
+                            android:layout_marginEnd="@dimen/margin_for_sections_half"
+                            android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="Name"
+                                android:textColor="@color/BlackLighter"
+                                android:textSize="@dimen/p1_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Time"
+                                android:textColor="@color/BlackLighter"
+                                android:textSize="@dimen/p1_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Date"
+                                android:textColor="@color/BlackLighter"
+                                android:textSize="@dimen/p1_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="Details"
+                                android:textColor="@color/BlackLighter"
+                                android:textSize="@dimen/p1_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="0dp"
+                            android:background="@color/BlackLighter"
+                            android:visibility="visible" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_for_sections_half"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_for_sections_half"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:text="Haris Unar"
+                                    android:textColor="@color/BlackLighter"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10:30 PM"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="10-12-2022"
+                                    android:textSize="@dimen/p3_size" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="View Details"
+                                    android:textColor="@color/skyblue"
+                                    android:textSize="@dimen/p3_size"
+                                    android:textStyle="" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

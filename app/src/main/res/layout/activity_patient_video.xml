@@ -57,7 +57,7 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/endSession"
         android:layout_width="match_parent"
         android:layout_height="60dp"

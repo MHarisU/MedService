@@ -11,46 +11,58 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/dark_blue_gradient_new">
+            android:background="@drawable/toolbar_blue_gradient">
+
 
             <ImageView
+                android:onClick="GoBackToMain"
                 android:id="@+id/menu_bar_new"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_back_white" />
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:padding="@dimen/padding_size_1"
+                android:src="@drawable/arrow_white_new" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="12dp"
                 android:gravity="end">
 
                 <ImageView
                     android:id="@+id/notification_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
                     android:layout_toRightOf="@id/menu_bar_new"
+                    android:padding="@dimen/padding_size_1"
                     android:src="@drawable/notifications_new" />
 
-                <ImageView
-                    android:id="@+id/cart_new"
-                    android:layout_width="40dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/notification_new"
-                    android:src="@drawable/cart_new" />
+                <LinearLayout
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/cart_new"
+                        android:layout_width="@dimen/icon_size_1"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/notification_new"
+                        android:onClick="OpenCartActivity"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/cart_new" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
 
         <ScrollView
@@ -63,285 +75,352 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <RelativeLayout
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/new_editbox_background"
-                    android:elevation="5dp"
-                    app:cardCornerRadius="5dp">
+                    android:layout_height="@dimen/edit_box_size"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:background="@drawable/new_editbox_background">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="@dimen/margin_for_sections_half"
+                        android:background="@color/Transparent"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint=" Search"
+                        android:textSize="@dimen/p2_size" />
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:gravity="end">
+
+
+                        <ImageView
+                            android:id="@+id/searchButton"
+                            android:layout_width="60dp"
+                            android:layout_height="@dimen/icon_size_1"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/darkblue_gradient_for_searchbar"
+                            android:padding="@dimen/padding_size_1"
+                            android:src="@drawable/search_new" />
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections">
+
+
+                    <TextView
+                        android:fontFamily="@font/open_sans_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Categories"
+                        android:textColor="@color/BlackText"
+                        android:textSize="@dimen/h3_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:fontFamily="@font/open_sans_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Select medicines by category"
+                        android:textColor="@color/BlackText"
+                        android:textSize="@dimen/p2_size"
+                        android:textStyle="" />
+
+                </LinearLayout>
+
+
+                <HorizontalScrollView
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:layout_margin="@dimen/margin_for_sections"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="20dp"
-                            android:text="Search"
-                            android:textSize="18sp" />
-
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="12dp"
-                            android:gravity="end">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
+                                android:onClick="openPatientGeneralLabs"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:cardCornerRadius="30dp">
 
-                                android:id="@+id/notification_new"
-                                android:layout_width="40dp"
-                                android:layout_height="30dp"
-                                android:layout_toRightOf="@id/menu_bar_new"
-                                android:src="@drawable/search_new" />
+
+                                <ImageView
+                                    android:scaleType="fitXY"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/capsule" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="ADHD"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p4_size"
+                                android:textStyle="" />
+
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_marginStart="@dimen/margin_for_sections"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:onClick="openPatientGeneralLabs"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:cardCornerRadius="30dp">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/capsule" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Allergies"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p4_size"
+                                android:textStyle="" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginStart="@dimen/margin_for_sections"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:onClick="openPatientGeneralLabs"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:cardCornerRadius="30dp">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/capsule" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Alzheimers"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p4_size"
+                                android:textStyle="" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_marginStart="@dimen/margin_for_sections"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:onClick="openPatientGeneralLabs"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:cardCornerRadius="30dp">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/capsule" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Antibiotic"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p4_size"
+                                android:textStyle="" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_marginStart="@dimen/margin_for_sections"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:onClick="openPatientGeneralLabs"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:cardCornerRadius="30dp">
+
+
+                                <ImageView
+                                    android:scaleType="centerCrop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/capsule" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Antifungal"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p4_size"
+                                android:textStyle="" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_marginEnd="@dimen/margin_for_sections"
+                            android:layout_marginStart="@dimen/margin_for_sections"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:onClick="openPatientGeneralLabs"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:cardCornerRadius="30dp">
+
+
+                                <ImageView
+                                    android:scaleType="fitXY"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/capsule" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="12dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="View More"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p4_size"
+                                android:textStyle="" />
+
+
+                        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
                     </LinearLayout>
 
 
-                </androidx.cardview.widget.CardView>
+                </HorizontalScrollView>
+
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_for_sections"
+                android:layout_marginStart="@dimen/margin_for_sections"
+                android:layout_marginTop="@dimen/margin_for_sections">
 
                 <TextView
-
+                    android:fontFamily="@font/open_sans_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:gravity="start"
-                    android:text="Categories"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="2dp"
-                    android:gravity="start"
-                    android:text="Select medicines by category"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="15sp"
-                    android:textStyle="" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <androidx.cardview.widget.CardView
-
-
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:gravity="center_vertical"
-                            app:cardCornerRadius="40dp"
-                            app:cardElevation="5dp">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/wellness" />
-
-
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:gravity="center"
-                            android:text="Wellness"
-                            android:textColor="@color/Gray"
-                            android:textSize="14sp"
-                            android:textStyle="" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <androidx.cardview.widget.CardView
-
-
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:gravity="center_vertical"
-                            app:cardCornerRadius="40dp"
-                            app:cardElevation="5dp">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/woundcare" />
-
-
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:gravity="center"
-                            android:text="Wound Care"
-                            android:textColor="@color/Gray"
-                            android:textSize="14sp"
-                            android:textStyle="" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <androidx.cardview.widget.CardView
-
-
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:gravity="center_vertical"
-                            app:cardCornerRadius="40dp"
-                            app:cardElevation="5dp">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/antacids" />
-
-
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:gravity="center"
-                            android:text="Antacids"
-                            android:textColor="@color/Gray"
-                            android:textSize="14sp"
-                            android:textStyle="" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <androidx.cardview.widget.CardView
-
-
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:gravity="center_vertical"
-                            app:cardCornerRadius="40dp"
-                            app:cardElevation="5dp">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/herbal" />
-
-
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:gravity="center"
-                            android:text="Herbal"
-                            android:textColor="@color/Gray"
-                            android:textSize="14sp"
-                            android:textStyle="" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:text="Recently Bought"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="18sp"
+                    android:textColor="@color/BlackText"
+                    android:textSize="@dimen/h3_size"
                     android:textStyle="bold" />
 
-                <TextView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="2dp"
-                    android:gravity="start"
-                    android:text="Your Recently Bought Meds"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="15sp"
-                    android:textStyle="" />
+            </LinearLayout>
+
 
 
                 <ScrollView
@@ -356,21 +435,19 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:orientation="horizontal"
                             android:visibility="visible">
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_size_1"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -380,7 +457,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-                                        android:layout_height="100dp"
+                                        android:layout_height="50dp"
                                         android:layout_marginTop="0dp"
                                         android:background="@color/skyblueLight"
                                         android:padding="10dp"
@@ -396,7 +473,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -409,7 +486,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -425,7 +502,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"
@@ -466,16 +543,16 @@
 
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_size_1"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -485,9 +562,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-
-                                        android:layout_height="100dp"
-                                        android:layout_marginTop="0dp"
+                                        android:layout_height="50dp"
                                         android:background="@color/greenLighter"
                                         android:padding="10dp"
                                         android:src="@drawable/vitamic_c" />
@@ -502,7 +577,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -515,7 +590,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -531,7 +606,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"
@@ -576,21 +651,20 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:orientation="horizontal"
                             android:visibility="visible">
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -600,7 +674,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-                                        android:layout_height="100dp"
+                                        android:layout_height="50dp"
                                         android:layout_marginTop="0dp"
                                         android:background="@color/skyblueLight"
                                         android:padding="10dp"
@@ -616,7 +690,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -629,7 +703,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -645,7 +719,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"
@@ -686,16 +760,16 @@
 
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_size_1"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -705,9 +779,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-
-                                        android:layout_height="100dp"
-                                        android:layout_marginTop="0dp"
+                                        android:layout_height="50dp"
                                         android:background="@color/greenLighter"
                                         android:padding="10dp"
                                         android:src="@drawable/vitamic_c" />
@@ -722,7 +794,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -735,7 +807,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -751,7 +823,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"
@@ -796,21 +868,20 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:orientation="horizontal"
                             android:visibility="visible">
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -820,7 +891,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-                                        android:layout_height="100dp"
+                                        android:layout_height="50dp"
                                         android:layout_marginTop="0dp"
                                         android:background="@color/skyblueLight"
                                         android:padding="10dp"
@@ -836,7 +907,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -849,7 +920,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -865,7 +936,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"
@@ -906,16 +977,16 @@
 
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_size_1"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -925,9 +996,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-
-                                        android:layout_height="100dp"
-                                        android:layout_marginTop="0dp"
+                                        android:layout_height="50dp"
                                         android:background="@color/greenLighter"
                                         android:padding="10dp"
                                         android:src="@drawable/vitamic_c" />
@@ -942,7 +1011,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -955,7 +1024,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -971,7 +1040,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"
@@ -1016,21 +1085,20 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:orientation="horizontal"
                             android:visibility="visible">
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_for_sections"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1040,7 +1108,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-                                        android:layout_height="100dp"
+                                        android:layout_height="50dp"
                                         android:layout_marginTop="0dp"
                                         android:background="@color/skyblueLight"
                                         android:padding="10dp"
@@ -1056,7 +1124,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -1069,7 +1137,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -1085,7 +1153,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"
@@ -1126,16 +1194,16 @@
 
 
                             <androidx.cardview.widget.CardView
-
-                                android:layout_width="220dp"
-
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_marginBottom="10dp"
-                                android:gravity="center_vertical"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="3dp">
+                                android:layout_marginStart="@dimen/margin_size_1"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:layout_marginEnd="@dimen/margin_for_sections"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:layout_weight="1"
+                                android:onClick="openAllPatientsNew"
+                                app:cardCornerRadius="@dimen/radius_normal"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1145,9 +1213,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-
-                                        android:layout_height="100dp"
-                                        android:layout_marginTop="0dp"
+                                        android:layout_height="50dp"
                                         android:background="@color/greenLighter"
                                         android:padding="10dp"
                                         android:src="@drawable/vitamic_c" />
@@ -1162,7 +1228,7 @@
                                         android:gravity="center"
                                         android:text="Vitamin C, Effervescent"
                                         android:textColor="@color/Gray"
-                                        android:textSize="16sp"
+                                        android:textSize="14sp"
                                         android:textStyle="" />
 
                                     <TextView
@@ -1175,7 +1241,7 @@
                                         android:gravity="center"
                                         android:text="Powdered Drink Mix"
                                         android:textColor="@color/Gray"
-                                        android:textSize="15sp"
+                                        android:textSize="12sp"
                                         android:textStyle="" />
 
                                     <LinearLayout
@@ -1191,7 +1257,7 @@
 
 
                                         <TextView
-
+                                            android:layout_marginTop="@dimen/margin_size_1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="5dp"

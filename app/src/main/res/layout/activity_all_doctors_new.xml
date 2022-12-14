@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI.AllDoctorsNewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/toolbar_blue_gradient">
+
+
+            <ImageView
+                android:id="@+id/menu_bar_new"
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:onClick="GoBackToBookAppointment"
+                android:padding="@dimen/padding_size_1"
+                android:src="@drawable/arrow_white_new" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end">
+
+                <ImageView
+                    android:id="@+id/notification_new"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
+                    android:layout_toRightOf="@id/menu_bar_new"
+                    android:padding="@dimen/padding_size_1"
+                    android:src="@drawable/notifications_new" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/cart_new"
+                        android:layout_width="@dimen/icon_size_1"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/notification_new"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/cart_new" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="All Doctors"
+                        android:textColor="@color/BlackText"
+                        android:textSize="@dimen/h3_size"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dr. Muhammad Haris Unar"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pain Management"
+                                    android:textSize="14sp" />
+
+
+                                <ImageView
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:src="@drawable/rating" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
+                            android:orientation="horizontal">
+
+
+                            <Button
+                                android:id="@+id/viewDocBio"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="View Bio"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:onClick="openBookingAppointmentActivity"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/green_bg"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Book Appointment"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/baqir_profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dr. Syed Baqir Raza"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Primary Care"
+                                    android:textSize="14sp" />
+
+
+                                <ImageView
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:src="@drawable/rating" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
+                            android:orientation="horizontal">
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="View Bio"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/green_bg"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Book Appointment"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/hadi_profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dr. Abdul Hadi"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Psychiatrists"
+                                    android:textSize="14sp" />
+
+
+                                <ImageView
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:src="@drawable/rating" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
+                            android:orientation="horizontal">
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="View Bio"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/green_bg"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Book Appointment"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    app:cardCornerRadius="@dimen/radius_normal"
+                    app:cardElevation="@dimen/shadow_lightest">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginTop="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2">
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/profile_size1"
+                                android:layout_height="@dimen/profile_size1"
+                                app:cardCornerRadius="@dimen/profile_size1_radius">
+
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/shah_profile" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/p1_size"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dr. Shah"
+                                    android:textSize="@dimen/p1_size"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Substance Abuse"
+                                    android:textSize="14sp" />
+
+
+                                <ImageView
+                                    android:layout_marginStart="-12dp"
+                                    android:layout_width="100dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:src="@drawable/rating" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_size_2"
+                            android:layout_marginEnd="@dimen/margin_size_2"
+                            android:layout_marginBottom="@dimen/margin_size_2"
+                            android:orientation="horizontal">
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="View Bio"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/green_bg"
+                                android:elevation="1dp"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Book Appointment"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+            </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

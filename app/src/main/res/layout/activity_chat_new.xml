@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/dark_blue_gradient_new">
+            android:background="@drawable/toolbar_blue_gradient">
 
             <ImageView
                 android:id="@+id/menu_bar_new"
@@ -22,7 +22,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_back_white" />
+                android:src="@drawable/arrow_white_new" />
 
             <LinearLayout
 

@@ -8,1507 +8,1008 @@
     android:orientation="vertical"
     tools:context=".NewUI.RegisterPatientNewActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/toolbar_blue_gradient">
 
 
         <ImageView
-            android:id="@+id/backButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:elevation="7dp"
-            android:onClick="Close"
-            android:padding="10dp"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Patient Registration"
-                android:textColor="@color/DarkBlueNew"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+            android:id="@+id/menu_bar_new"
+            android:layout_width="@dimen/icon_size_1"
+            android:layout_height="@dimen/icon_size_1"
+            android:layout_gravity="center"
+            android:onClick="close"
+            android:padding="@dimen/padding_size_1"
+            android:src="@drawable/arrow_white_new" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Fill all form field to go to next step"
-                android:textColor="@color/DarkBlueNew" />
+    </LinearLayout>
 
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
-
-    <!-- First Step-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_for_sections"
+        android:orientation="vertical">
 
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/DarkBlueNew"
-                    android:gravity="center_vertical"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="5dp">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/reg_step_lock" />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:text="Account"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/GreyNew"
-                    android:gravity="center_vertical"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="5dp">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/reg_account" />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:text="Personal"
-                    android:textColor="@color/GreyNew"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/GreyNew"
-                    android:gravity="center_vertical"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="5dp">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/reg_medical" />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:text="Medical"
-                    android:textColor="@color/GreyNew"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/GreyNew"
-                    android:gravity="center_vertical"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="5dp">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/reg_pen" />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:text="Terms"
-                    android:textColor="@color/GreyNew"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/GreyNew"
-                    android:gravity="center_vertical"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="5dp">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_done_finish_complete_white" />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:text="Finish"
-                    android:textColor="@color/GreyNew"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:elevation="10dp"
-                android:padding="0dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:text="Account Information:"
-                            android:textColor="@color/DarkBlueNew"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="25dp"
-                            android:gravity="end"
-                            android:text="Step 1-5"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:elevation="5dp"
-                        app:cardCornerRadius="5dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/new_editbox_background">
-
-
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="20sp"
-                                android:layout_toLeftOf="@+id/searchButton"
-                                android:background="@color/Transparent"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:hint="Email*"
-                                android:textSize="15sp" />
-
-
-                        </RelativeLayout>
-
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:elevation="5dp"
-                        app:cardCornerRadius="5dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/new_editbox_background">
-
-
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="20sp"
-                                android:layout_toLeftOf="@+id/searchButton"
-                                android:background="@color/Transparent"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:hint="Username*"
-                                android:textSize="15sp" />
-
-
-                        </RelativeLayout>
-
-
-                    </androidx.cardview.widget.CardView>
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:elevation="5dp"
-                        app:cardCornerRadius="5dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/new_editbox_background">
-
-
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="20sp"
-                                android:layout_toLeftOf="@+id/searchButton"
-                                android:background="@color/Transparent"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:hint="Password"
-                                android:textSize="15sp" />
-
-
-                            <ImageView
-                                android:id="@+id/searchButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginEnd="10dp"
-                                android:padding="5dp"
-                                android:src="@drawable/show_password" />
-
-
-                        </RelativeLayout>
-
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:elevation="5dp"
-                        app:cardCornerRadius="5dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/new_editbox_background">
-
-
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="20sp"
-                                android:layout_toLeftOf="@+id/searchButton"
-                                android:background="@color/Transparent"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:hint="Confirm Password"
-                                android:textSize="15sp" />
-
-
-                            <ImageView
-                                android:id="@+id/searchButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginEnd="10dp"
-                                android:padding="5dp"
-                                android:src="@drawable/show_password" />
-
-
-                        </RelativeLayout>
-
-
-                    </androidx.cardview.widget.CardView>
-
-
-                    <!--                    <EditText-->
-                    <!--                        android:id="@+id/editText_email"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="40dp"-->
-                    <!--                        android:layout_marginStart="15dp"-->
-                    <!--                        android:layout_marginTop="10dp"-->
-                    <!--                        android:layout_marginEnd="15dp"-->
-                    <!--                        android:background="@drawable/new_editbox_background"-->
-                    <!--                        android:fontFamily="@font/open_sans_regular"-->
-                    <!--                        android:hint=" Email*"-->
-                    <!--                        android:inputType="textEmailAddress"-->
-                    <!--                        android:padding="10dp"-->
-                    <!--                        android:paddingStart="15dp"-->
-                    <!--                        android:textColor="#000"-->
-                    <!--                        android:textSize="15sp" />-->
-
-                    <!--                    <EditText-->
-                    <!--                        android:id="@+id/editText_email"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="40dp"-->
-                    <!--                        android:layout_marginStart="15dp"-->
-                    <!--                        android:layout_marginTop="20dp"-->
-                    <!--                        android:layout_marginEnd="15dp"-->
-                    <!--                        android:background="@drawable/new_editbox_background"-->
-                    <!--                        android:fontFamily="@font/open_sans_regular"-->
-                    <!--                        android:hint=" Username*"-->
-                    <!--                        android:inputType="textEmailAddress"-->
-                    <!--                        android:padding="10dp"-->
-                    <!--                        android:paddingStart="15dp"-->
-                    <!--                        android:textColor="#000"-->
-                    <!--                        android:textSize="15sp" />-->
-
-                    <!--                    <EditText-->
-                    <!--                        android:id="@+id/editText_email"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="40dp"-->
-                    <!--                        android:layout_marginStart="15dp"-->
-                    <!--                        android:layout_marginTop="20dp"-->
-                    <!--                        android:layout_marginEnd="15dp"-->
-                    <!--                        android:background="@drawable/new_editbox_background"-->
-                    <!--                        android:fontFamily="@font/open_sans_regular"-->
-                    <!--                        android:hint=" Password*"-->
-                    <!--                        android:inputType="textPassword"-->
-                    <!--                        android:padding="10dp"-->
-                    <!--                        android:paddingStart="15dp"-->
-                    <!--                        android:textColor="#000"-->
-                    <!--                        android:textSize="15sp" />-->
-
-                    <!--                    <EditText-->
-                    <!--                        android:id="@+id/editText_email"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="40dp"-->
-                    <!--                        android:layout_marginStart="15dp"-->
-                    <!--                        android:layout_marginTop="20dp"-->
-                    <!--                        android:layout_marginEnd="15dp"-->
-                    <!--                        android:background="@drawable/new_editbox_background"-->
-                    <!--                        android:fontFamily="@font/open_sans_regular"-->
-                    <!--                        android:hint=" Confirm Password*"-->
-                    <!--                        android:inputType="textPassword"-->
-                    <!--                        android:padding="10dp"-->
-                    <!--                        android:paddingStart="15dp"-->
-                    <!--                        android:textColor="#000"-->
-                    <!--                        android:textSize="15sp" />-->
-
-                    <!--                    <CheckBox-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_marginStart="10dp"-->
-                    <!--                        android:layout_marginTop="20dp"-->
-                    <!--                        android:text="Show password" />-->
-
-
-                    <Button
-                        android:id="@+id/login_button"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@drawable/dark_blue_gradient_new"
-                        android:elevation="10dp"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="LoginButtonClick"
-                        android:text="Next"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <!-- Second Step-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-
-        <LinearLayout
+            android:text="Patient Registration"
+            android:textColor="@color/DarkBlueNew"
+            android:textSize="@dimen/h2_size"
+            android:textStyle="bold" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:text="Fill all form field to go to next step"
+            android:textColor="@color/DarkBlueNew"
+            android:textSize="@dimen/p3_size" />
 
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:elevation="20dp"
-                android:padding="20dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:text="Personal Information:"
-                            android:textColor="@color/DarkBlueNew"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="25dp"
-                            android:gravity="end"
-                            android:text="Step 2-5"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:text="Patient" />
-
-
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="70dp"
-                            android:layout_marginTop="15dp"
-                            android:text="patient's Representative" />
-
-                    </LinearLayout>
-
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="visible">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                            <!-- Patient  -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:orientation="vertical"
-                                android:visibility="gone">
-
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/black_stock_white_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" First Name*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/black_stock_white_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Last Name*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <!--                            <EditText-->
-                                <!--                                android:drawableEnd="@drawable/drop_downarrow_new"-->
-                                <!--                                android:id="@+id/editText_email"-->
-                                <!--                                android:layout_width="match_parent"-->
-                                <!--                                android:layout_height="40dp"-->
-                                <!--                                android:layout_marginStart="15dp"-->
-                                <!--                                android:layout_marginTop="10dp"-->
-                                <!--                                android:layout_marginEnd="15dp"-->
-                                <!--                                android:background="@drawable/black_stock_white_background"-->
-                                <!--                                android:fontFamily="@font/open_sans_regular"-->
-                                <!--                                android:hint=" Gender*"-->
-                                <!--                                android:inputType="text"-->
-                                <!--                                android:padding="10dp"-->
-                                <!--                                android:paddingStart="15dp"-->
-                                <!--                                android:textColor="#000"-->
-                                <!--                                android:textSize="15sp" />-->
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp">
-
-
-                                    <Spinner
-                                        android:id="@+id/spinner_time"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="40dp"
-                                        android:background="@drawable/black_stock_white_background"
-                                        android:spinnerMode="dropdown" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:padding="10dp"
-                                        android:paddingStart="15dp"
-                                        android:text="Gender*"
-
-                                        android:textSize="15sp" />
-
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginEnd="5dp"
-                                        android:src="@drawable/drop_downarrow_new" />
-
-                                </RelativeLayout>
-
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/black_stock_white_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Date of Birth*"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/black_stock_white_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Contact No.*"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/black_stock_white_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Zip Code.*"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp">
-
-
-                                    <Spinner
-                                        android:id="@+id/spinner_time"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="40dp"
-                                        android:background="@drawable/black_stock_white_background"
-                                        android:spinnerMode="dropdown" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:padding="10dp"
-                                        android:paddingStart="15dp"
-                                        android:text="Select State*"
-                                        android:textSize="15sp" />
-
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginEnd="5dp"
-                                        android:src="@drawable/drop_downarrow_new" />
-
-                                </RelativeLayout>
-
-
-                                <!--                            <EditText-->
-                                <!--                                android:drawableEnd="@drawable/drop_downarrow_new"-->
-                                <!--                                android:id="@+id/editText_email"-->
-                                <!--                                android:layout_width="match_parent"-->
-                                <!--                                android:layout_height="40dp"-->
-                                <!--                                android:layout_marginStart="15dp"-->
-                                <!--                                android:layout_marginTop="10dp"-->
-                                <!--                                android:layout_marginEnd="15dp"-->
-                                <!--                                android:background="@drawable/black_stock_white_background"-->
-                                <!--                                android:fontFamily="@font/open_sans_regular"-->
-                                <!--                                android:hint=" Select State*"-->
-                                <!--                                android:inputType="text"-->
-                                <!--                                android:padding="10dp"-->
-                                <!--                                android:paddingStart="15dp"-->
-                                <!--                                android:textColor="#000"-->
-                                <!--                                android:textSize="15sp" />-->
-
-                                <!--                            <EditText-->
-                                <!--                                android:drawableEnd="@drawable/drop_downarrow_new"-->
-                                <!--                                android:id="@+id/editText_email"-->
-                                <!--                                android:layout_width="match_parent"-->
-                                <!--                                android:layout_height="40dp"-->
-                                <!--                                android:layout_marginStart="15dp"-->
-                                <!--                                android:layout_marginTop="10dp"-->
-                                <!--                                android:layout_marginEnd="15dp"-->
-                                <!--                                android:background="@drawable/black_stock_white_background"-->
-                                <!--                                android:fontFamily="@font/open_sans_regular"-->
-                                <!--                                android:hint=" Select City*"-->
-                                <!--                                android:inputType="text"-->
-                                <!--                                android:padding="10dp"-->
-                                <!--                                android:paddingStart="15dp"-->
-                                <!--                                android:textColor="#000"-->
-                                <!--                                android:textSize="15sp" />-->
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp">
-
-
-                                    <Spinner
-                                        android:id="@+id/spinner_time"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="40dp"
-                                        android:background="@drawable/black_stock_white_background"
-                                        android:spinnerMode="dropdown" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:padding="10dp"
-                                        android:paddingStart="15dp"
-                                        android:text="Select City*"
-                                        android:textSize="15sp" />
-
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginEnd="5dp"
-                                        android:src="@drawable/drop_downarrow_new" />
-
-                                </RelativeLayout>
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/black_stock_white_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Home Address*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-
-                            </LinearLayout>
-
-
-                            <!-- Representative  -->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:orientation="vertical"
-                                android:visibility="visible">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Representative Details:"
-                                    android:textColor="@color/DarkBlueNew"
-                                    android:textSize="17sp"
-                                    android:textStyle="bold" />
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Full Name*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Relation to patient*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:gravity="center"
-                                    android:text="Patient Details:"
-                                    android:textColor="@color/DarkBlueNew"
-                                    android:textSize="17sp"
-                                    android:textStyle="bold" />
-
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" First Name*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Last Name*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <!--                            <EditText-->
-                                <!--                                android:drawableEnd="@drawable/drop_downarrow_new"-->
-                                <!--                                android:id="@+id/editText_email"-->
-                                <!--                                android:layout_width="match_parent"-->
-                                <!--                                android:layout_height="40dp"-->
-                                <!--                                android:layout_marginStart="15dp"-->
-                                <!--                                android:layout_marginTop="10dp"-->
-                                <!--                                android:layout_marginEnd="15dp"-->
-                                <!--                                android:background="@drawable/black_stock_white_background"-->
-                                <!--                                android:fontFamily="@font/open_sans_regular"-->
-                                <!--                                android:hint=" Gender*"-->
-                                <!--                                android:inputType="text"-->
-                                <!--                                android:padding="10dp"-->
-                                <!--                                android:paddingStart="15dp"-->
-                                <!--                                android:textColor="#000"-->
-                                <!--                                android:textSize="15sp" />-->
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp">
-
-
-                                    <Spinner
-                                        android:id="@+id/spinner_time"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="40dp"
-                                        android:background="@drawable/new_editbox_background"
-                                        android:spinnerMode="dropdown" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:padding="10dp"
-                                        android:paddingStart="15dp"
-                                        android:text="Gender*"
-
-                                        android:textSize="15sp" />
-
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginEnd="5dp"
-                                        android:src="@drawable/drop_downarrow_new" />
-
-                                </RelativeLayout>
-
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Date of Birth*"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Contact No.*"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Zip Code.*"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp">
-
-
-                                    <Spinner
-                                        android:id="@+id/spinner_time"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="40dp"
-                                        android:background="@drawable/new_editbox_background"
-                                        android:spinnerMode="dropdown" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:padding="10dp"
-                                        android:paddingStart="15dp"
-                                        android:text="Select State*"
-                                        android:textSize="15sp" />
-
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginEnd="5dp"
-                                        android:src="@drawable/drop_downarrow_new" />
-
-                                </RelativeLayout>
-
-
-                                <!--                            <EditText-->
-                                <!--                                android:drawableEnd="@drawable/drop_downarrow_new"-->
-                                <!--                                android:id="@+id/editText_email"-->
-                                <!--                                android:layout_width="match_parent"-->
-                                <!--                                android:layout_height="40dp"-->
-                                <!--                                android:layout_marginStart="15dp"-->
-                                <!--                                android:layout_marginTop="10dp"-->
-                                <!--                                android:layout_marginEnd="15dp"-->
-                                <!--                                android:background="@drawable/black_stock_white_background"-->
-                                <!--                                android:fontFamily="@font/open_sans_regular"-->
-                                <!--                                android:hint=" Select State*"-->
-                                <!--                                android:inputType="text"-->
-                                <!--                                android:padding="10dp"-->
-                                <!--                                android:paddingStart="15dp"-->
-                                <!--                                android:textColor="#000"-->
-                                <!--                                android:textSize="15sp" />-->
-
-                                <!--                            <EditText-->
-                                <!--                                android:drawableEnd="@drawable/drop_downarrow_new"-->
-                                <!--                                android:id="@+id/editText_email"-->
-                                <!--                                android:layout_width="match_parent"-->
-                                <!--                                android:layout_height="40dp"-->
-                                <!--                                android:layout_marginStart="15dp"-->
-                                <!--                                android:layout_marginTop="10dp"-->
-                                <!--                                android:layout_marginEnd="15dp"-->
-                                <!--                                android:background="@drawable/black_stock_white_background"-->
-                                <!--                                android:fontFamily="@font/open_sans_regular"-->
-                                <!--                                android:hint=" Select City*"-->
-                                <!--                                android:inputType="text"-->
-                                <!--                                android:padding="10dp"-->
-                                <!--                                android:paddingStart="15dp"-->
-                                <!--                                android:textColor="#000"-->
-                                <!--                                android:textSize="15sp" />-->
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp">
-
-
-                                    <Spinner
-                                        android:id="@+id/spinner_time"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="40dp"
-                                        android:background="@drawable/new_editbox_background"
-                                        android:spinnerMode="dropdown" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:padding="10dp"
-                                        android:paddingStart="15dp"
-                                        android:text="Select City*"
-                                        android:textSize="15sp" />
-
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginEnd="5dp"
-                                        android:src="@drawable/drop_downarrow_new" />
-
-                                </RelativeLayout>
-
-                                <EditText
-                                    android:id="@+id/editText_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@drawable/new_editbox_background"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:hint=" Home Address*"
-                                    android:inputType="text"
-                                    android:padding="10dp"
-                                    android:paddingStart="15dp"
-                                    android:textColor="#000"
-                                    android:textSize="15sp" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="25dp"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <Button
-
-                                    android:id="@+id/previous_step_button"
-                                    android:layout_width="150dp"
-                                    android:layout_height="40dp"
-                                    android:layout_marginStart="20dp"
-                                    android:background="@drawable/red_background_button"
-                                    android:elevation="10dp"
-                                    android:fontFamily="@font/open_sans_regular"
-                                    android:onClick="LoginButtonClick"
-                                    android:text="Previous"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/White"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="end">
-
-
-                                    <Button
-                                        android:id="@+id/next_step_button"
-                                        android:layout_width="150dp"
-                                        android:layout_height="40dp"
-                                        android:layout_marginLeft="0dp"
-                                        android:layout_marginTop="20dp"
-                                        android:layout_marginEnd="20dp"
-                                        android:layout_marginBottom="20dp"
-                                        android:background="@drawable/dark_blue_gradient_new"
-                                        android:elevation="10dp"
-                                        android:fontFamily="@font/open_sans_regular"
-                                        android:onClick="LoginButtonClick"
-                                        android:text="Next"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/White"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-
-                    </ScrollView>
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-
-        </LinearLayout>
 
     </LinearLayout>
-
-    <!-- Third Step-->
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_for_sections_half"
+        android:layout_marginTop="@dimen/margin_for_sections"
+        android:layout_marginEnd="@dimen/margin_for_sections_half"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/accountCard"
+                android:layout_width="@dimen/profile_size2"
+                android:layout_height="@dimen/profile_size2"
+                app:cardBackgroundColor="@color/DarkBlueNew"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="@dimen/profile_size2_radius"
+                app:cardElevation="@dimen/shadow_light">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_3"
+                    android:layout_height="@dimen/icon_size_3"
+                    android:layout_gravity="center"
+                    android:src="@drawable/reg_step_lock" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:textColor="@color/DarkBlueNew"
+                android:id="@+id/accountInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Account"
+                android:textSize="@dimen/p3_size"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/personalCard"
+                android:layout_width="@dimen/profile_size2"
+                android:layout_height="@dimen/profile_size2"
+                app:cardBackgroundColor="@color/GreyNew"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="@dimen/profile_size2_radius"
+                app:cardElevation="@dimen/shadow_light">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_3"
+                    android:layout_height="@dimen/icon_size_3"
+                    android:layout_gravity="center"
+                    android:src="@drawable/reg_account" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/personalInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Personal"
+                android:textSize="@dimen/p3_size"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/medicalInfoCard"
+                android:layout_width="@dimen/profile_size2"
+                android:layout_height="@dimen/profile_size2"
+                app:cardBackgroundColor="@color/GreyNew"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="@dimen/profile_size2_radius"
+                app:cardElevation="@dimen/shadow_light">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_3"
+                    android:layout_height="@dimen/icon_size_3"
+                    android:layout_gravity="center"
+                    android:src="@drawable/reg_medical" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/medicalInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Medical"
+                android:textSize="@dimen/p3_size"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/termsCard"
+                android:layout_width="@dimen/profile_size2"
+                android:layout_height="@dimen/profile_size2"
+                app:cardBackgroundColor="@color/GreyNew"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="@dimen/profile_size2_radius"
+                app:cardElevation="@dimen/shadow_light">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_3"
+                    android:layout_height="@dimen/icon_size_3"
+                    android:layout_gravity="center"
+                    android:src="@drawable/reg_pen" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/termsInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Terms"
+                android:textAlignment="center"
+                android:textSize="@dimen/p3_size"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/finishCard"
+                android:layout_width="@dimen/profile_size2"
+                android:layout_height="@dimen/profile_size2"
+                app:cardBackgroundColor="@color/GreyNew"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="@dimen/profile_size2_radius"
+                app:cardElevation="@dimen/shadow_light">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_3"
+                    android:layout_height="@dimen/icon_size_3"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_done_finish_complete_white" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/finishRegText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Finish"
+                android:textSize="@dimen/p3_size"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- First Step-->
+
+    <LinearLayout
+        android:id="@+id/accountInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_for_sections"
+        android:layout_marginTop="@dimen/margin_for_sections"
+        android:layout_marginEnd="@dimen/margin_for_sections"
+        android:layout_marginBottom="@dimen/margin_for_sections_half"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            app:cardCornerRadius="@dimen/radius_normal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/new_editbox_background"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Account Information:"
+                            android:textColor="@color/DarkBlueNew"
+                            android:textSize="@dimen/p1_size"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="Step 1-5"
+                            android:textSize="@dimen/p2_size"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_box_size"
+                        android:layout_marginTop="@dimen/margin_for_sections"
+                        android:elevation="@dimen/shadow_normal"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/new_editbox_background">
+
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/Transparent"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Email*"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textSize="@dimen/p2_size" />
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_box_size"
+                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                        android:elevation="@dimen/shadow_normal"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/new_editbox_background">
+
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/Transparent"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Username*"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textSize="@dimen/p2_size" />
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_box_size"
+                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                        android:elevation="@dimen/shadow_normal"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            app:passwordToggleEnabled="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/edit_box_size"
+                            app:hintEnabled="false"
+                            android:background="@drawable/new_editbox_background">
+
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:background="@color/Transparent"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Password"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textSize="@dimen/p2_size" />
+
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_box_size"
+                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                        android:elevation="@dimen/shadow_normal"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            app:passwordToggleEnabled="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/edit_box_size"
+                            app:hintEnabled="false"
+                            android:background="@drawable/new_editbox_background">
+
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/Transparent"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Confirm Password"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textSize="@dimen/p2_size" />
+
+
+
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <Button
+                        android:id="@+id/accountButton"
+                        android:layout_width="200dp"
+                        android:layout_height="@dimen/button_size_4"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/margin_for_sections"
+                        android:background="@drawable/dark_blue_gradient_new"
+                        android:elevation="@dimen/shadow_light"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:onClick="openPersonalInfoLayout"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/White"
+                        android:textSize="@dimen/p2_size"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+    <!-- Second Step-->
+
+
+    <LinearLayout
+        android:id="@+id/personalInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_for_sections"
+        android:layout_marginTop="@dimen/margin_for_sections"
+        android:layout_marginEnd="@dimen/margin_for_sections"
+        android:layout_marginBottom="@dimen/margin_for_sections_half"
         android:orientation="vertical"
         android:visibility="gone">
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp"
-            android:elevation="20dp"
-            android:padding="20dp"
-            app:cardCornerRadius="10dp">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/radius_normal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:background="@drawable/new_editbox_background"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="Medical Record:"
-                        android:textColor="@color/DarkBlueNew"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="25dp"
-                        android:gravity="end"
-                        android:text="Step 3-5"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                </RelativeLayout>
-
-
-                <!--                    <androidx.cardview.widget.CardView-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="50dp"-->
-                <!--                        android:layout_marginStart="15dp"-->
-                <!--                        android:layout_marginTop="20dp"-->
-                <!--                        android:layout_marginEnd="15dp"-->
-                <!--                        android:background="@color/white"-->
-                <!--                        android:backgroundTint="@color/white"-->
-                <!--                        android:elevation="10dp"-->
-                <!--                        app:cardCornerRadius="15dp">-->
-
-                <!--                        <LinearLayout-->
-                <!--                            android:layout_width="match_parent"-->
-                <!--                            android:layout_height="match_parent"-->
-                <!--                            android:orientation="horizontal">-->
-
-                <!--                            <androidx.cardview.widget.CardView-->
-
-                <!--                                android:layout_width="110dp"-->
-                <!--                                android:layout_height="25dp"-->
-                <!--                                android:layout_marginStart="15dp"-->
-                <!--                                android:layout_marginTop="15dp"-->
-                <!--                                android:backgroundTint="@color/gray">-->
-
-                <!--                                <TextView-->
-                <!--                                    android:layout_width="wrap_content"-->
-                <!--                                    android:layout_height="wrap_content"-->
-                <!--                                    android:layout_gravity="center"-->
-                <!--                                    android:text="Choose File" />-->
-
-
-                <!--                            </androidx.cardview.widget.CardView>-->
-
-
-                <!--                            <TextView-->
-                <!--                                android:layout_width="wrap_content"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:layout_marginStart="10dp"-->
-                <!--                                android:layout_marginTop="18dp"-->
-                <!--                                android:text="No file chosen"-->
-                <!--                                android:textColor="@color/BlackLighter"-->
-                <!--                                android:textSize="15dp" />-->
-
-
-                <!--                        </LinearLayout>-->
-
-
-                <!--                    </androidx.cardview.widget.CardView>-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/new_editbox_background">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/background_white_gray"
-                            android:text=" Upload Files"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" No files chosen"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-
-                        android:id="@+id/previous_step_button"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="15dp"
-                        android:background="@drawable/red_background_button"
-                        android:elevation="10dp"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:onClick="LoginButtonClick"
-                        android:text="Previous"
-                        android:textAllCaps="false"
-                        android:textColor="@color/White"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="end">
+                        android:layout_marginStart="@dimen/margin_for_sections"
+                        android:layout_marginTop="@dimen/margin_for_sections_half"
+                        android:layout_marginEnd="@dimen/margin_for_sections"
+                        android:layout_marginBottom="@dimen/margin_for_sections_half"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Personal Information:"
+                                android:textColor="@color/DarkBlueNew"
+                                android:textSize="@dimen/p1_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="Step 2-5"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
 
 
-                        <Button
-                            android:id="@+id/next_step_button"
-                            android:layout_width="150dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginBottom="20dp"
-                            android:background="@drawable/dark_blue_gradient_new"
-                            android:elevation="10dp"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:onClick="LoginButtonClick"
-                            android:text="Next"
-                            android:textAllCaps="false"
-                            android:textColor="@color/White"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_for_sections"
+                            android:layout_marginBottom="@dimen/margin_for_sections_half"
+                            android:orientation="horizontal">
+
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/radioPatientCheckbox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="Patient" />
+
+
+                                <RadioButton
+                                    android:id="@+id/radioRepresentativeCheckbox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="patient's Representative" />
+
+                            </RadioGroup>
+
+
+                        </LinearLayout>
+
+
+                        <!-- Representative -->
+
+                        <LinearLayout
+                            android:id="@+id/patientRepresentativeLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Representative Details:"
+                                android:textColor="@color/DarkBlueNew"
+                                android:textSize="@dimen/p1_size"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Full Name*"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="Relation to patient*"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+
+                        </LinearLayout>
+
+                        <!-- Patient -->
+                        <LinearLayout
+                            android:id="@+id/patientLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_size_3"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_3"
+                                android:gravity="center"
+                                android:text="Patient Details:"
+                                android:textColor="@color/DarkBlueNew"
+                                android:textSize="@dimen/p1_size"
+                                android:textStyle="bold" />
+
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint="First Name*"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint=" Last Name*"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half">
+
+
+                                <Spinner
+                                    android:id="@+id/genderSpinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/new_editbox_background"
+                                    android:paddingStart="@dimen/padding_size_2"
+                                    android:spinnerMode="dropdown" />
+
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_3"
+                                    android:layout_height="@dimen/icon_size_3"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:src="@drawable/drop_downarrow_new" />
+
+                            </RelativeLayout>
+
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint=" Date of Birth*"
+                                android:inputType="number"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint=" Contact No.*"
+                                android:inputType="number"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint=" Zip Code.*"
+                                android:inputType="number"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half">
+
+
+                                <Spinner
+                                    android:id="@+id/stateSpinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/edit_box_size"
+                                    android:background="@drawable/new_editbox_background"
+                                    android:paddingStart="@dimen/padding_size_2"
+                                    android:spinnerMode="dropdown" />
+
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_3"
+                                    android:layout_height="@dimen/icon_size_3"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:src="@drawable/drop_downarrow_new" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half">
+
+
+                                <Spinner
+                                    android:id="@+id/citySpinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/edit_box_size"
+                                    android:background="@drawable/new_editbox_background"
+                                    android:paddingStart="@dimen/padding_size_2"
+                                    android:spinnerMode="dropdown" />
+
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_3"
+                                    android:layout_height="@dimen/icon_size_3"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:src="@drawable/drop_downarrow_new" />
+
+                            </RelativeLayout>
+
+                            <EditText
+                                android:id="@+id/editText_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_box_size"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:background="@drawable/new_editbox_background"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:hint=" Home Address*"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/p2_size" />
+
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_for_sections"
+                            android:layout_marginBottom="@dimen/margin_for_sections"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/previous_step_button"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_marginEnd="@dimen/margin_size_3"
+                                android:layout_weight="1"
+                                android:background="@drawable/red_background_button"
+                                android:elevation="@dimen/shadow_normal"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:onClick="backToAccountLayout"
+                                android:text="Previous"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/button_size_4"
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_weight="1"
+                                android:gravity="end">
+
+
+                                <Button
+                                    android:id="@+id/next_step_button"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/dark_blue_gradient_new"
+                                    android:elevation="@dimen/shadow_normal"
+                                    android:fontFamily="@font/open_sans_regular"
+                                    android:onClick="openMedicalLayout"
+                                    android:text="Next"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/White"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </ScrollView>
 
             </LinearLayout>
 
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+    <!-- Third Step-->
+
+
+    <LinearLayout
+        android:id="@+id/medicalInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_for_sections"
+        android:layout_marginTop="@dimen/margin_for_sections"
+        android:layout_marginEnd="@dimen/margin_for_sections"
+        android:layout_marginBottom="@dimen/margin_for_sections_half"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            app:cardCornerRadius="@dimen/radius_normal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/new_editbox_background"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections_half"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_size_1"
+                        android:layout_marginEnd="@dimen/margin_size_1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Medical Record:"
+                            android:textColor="@color/DarkBlueNew"
+                            android:textSize="@dimen/p1_size"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="Step 3-5"
+                            android:textSize="@dimen/p2_size"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_box_size"
+                        android:layout_marginTop="@dimen/margin_for_sections"
+                        android:background="@drawable/new_editbox_background">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:paddingEnd="@dimen/padding_size_2"
+                                android:layout_marginEnd="@dimen/margin_size_1"
+                                android:background="@drawable/darkblue_round_stock"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/padding_size_2"
+                                android:text="Upload Files"
+                                android:textSize="@dimen/p2_size" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_size_3"
+                                android:text=" No files chosen"
+                                android:textSize="@dimen/p2_size" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_for_sections"
+                        android:layout_marginBottom="@dimen/margin_for_sections_half"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/previous_step_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_4"
+                            android:layout_marginEnd="@dimen/margin_size_3"
+                            android:layout_weight="1"
+                            android:background="@drawable/red_background_button"
+                            android:elevation="@dimen/shadow_light"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:onClick="backToPersonalInfoLayout"
+                            android:text="Previous"
+                            android:textAllCaps="false"
+                            android:textColor="@color/White"
+                            android:textSize="@dimen/p2_size"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_size_4"
+                            android:layout_marginStart="@dimen/margin_size_3"
+                            android:layout_weight="1"
+                            android:gravity="end">
+
+
+                            <Button
+                                android:id="@+id/next_step_button"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/dark_blue_gradient_new"
+                                android:elevation="@dimen/shadow_light"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:onClick="openTermsLayout"
+                                android:text="Next"
+                                android:textAllCaps="false"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/p2_size"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
@@ -1518,95 +1019,105 @@
     <!-- Fourth Step-->
 
     <LinearLayout
+        android:id="@+id/termsLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_for_sections"
         android:orientation="vertical"
         android:visibility="gone">
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="700dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:elevation="20dp"
-            android:padding="20dp"
-            app:cardCornerRadius="10dp">
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/shadow_light"
+            app:cardCornerRadius="@dimen/radius_normal">
 
-            <LinearLayout
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="550dp"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ScrollView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
+                        android:layout_height="match_parent"
+                        android:background="@drawable/new_editbox_background"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/margin_for_sections_half"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="10dp"
-                                    android:text="TERMS OF USE:"
-                                    android:textColor="@color/DarkBlueNew"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="25dp"
-                                    android:gravity="end"
-                                    android:text="Step 4-5"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
+                                android:layout_height="550dp"
                                 android:orientation="vertical">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="5dp"
-                                    android:text="Last Revised: 10-06-22"
-                                    android:textColor="@color/Black" />
-
-
-                                <LinearLayout
+                                <ScrollView
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
+                                    android:layout_height="match_parent">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="5dp"
-                                        android:layout_marginEnd="5dp"
-                                        android:text="This website (“www.umbrellamd.com”) is owned and operated by Umbrella Health Care Systems (“Umbrella,” “we,” “our,” or “us”). The Site connects users with healthcare providers for virtual telehealth services and provides telemedicine solutions to users including access to pharmacy, laboratory testing, imaging, substance abuse, and dermatology services (the “Services”).
+                                        android:layout_margin="@dimen/margin_for_sections_half"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="TERMS OF USE:"
+                                                android:textColor="@color/DarkBlueNew"
+                                                android:textSize="@dimen/p1_size"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="end"
+                                                android:text="Step 4-5"
+                                                android:textSize="@dimen/p2_size"
+                                                android:textStyle="bold" />
+
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/margin_for_sections_half"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Last Revised: 10-06-22"
+                                                android:textColor="@color/Black" />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="This website (“www.umbrellamd.com”) is owned and operated by Umbrella Health Care Systems (“Umbrella,” “we,” “our,” or “us”). The Site connects users with healthcare providers for virtual telehealth services and provides telemedicine solutions to users including access to pharmacy, laboratory testing, imaging, substance abuse, and dermatology services (the “Services”).
 
 UMBRELLA IS NOT INTENDED TO PROVIDE MEDICAL ADVICE, DIAGNOSIS, OR SUGGESTIONS FOR TREATMENT. YOU CONTACT YOUR PHYSICIAN OR OTHER HEALTHCARE PROFESSIONAL CONCERNING YOUR PARTICULAR MEDICAL CONDITION OR CONCERNS. DO NOT DISREGARD PROFESSIONAL MEDICAL ADVICE, OR DELAY IN SEEKING IT BECAUSE OF SOMETHING YOU READ ON UMBRELLA.
 
@@ -1772,8 +1283,84 @@ Attn: Abdul Hadi
 6800 Olive Blvd
 Suite B, St. Louis, MO 63130
 ahadi@umbrellamd.com"
-                                        android:textColor="@color/Black" />
+                                                    android:textColor="@color/Black" />
 
+
+                                            </LinearLayout>
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                </ScrollView>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_size_1"
+                                android:layout_marginTop="@dimen/margin_for_sections"
+                                android:layout_marginEnd="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                android:gravity="bottom"
+                                android:orientation="vertical">
+
+                                <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="I agree with all terms and conditions" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_for_sections"
+                                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <Button
+                                        android:id="@+id/previous_step_button"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/button_size_4"
+                                        android:layout_marginEnd="@dimen/margin_size_3"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/red_background_button"
+                                        android:elevation="@dimen/shadow_light"
+                                        android:fontFamily="@font/open_sans_regular"
+                                        android:onClick="backToMedicalInfoLayout"
+                                        android:text="Previous"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p2_size"
+                                        android:textStyle="bold" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/button_size_4"
+                                        android:layout_marginStart="@dimen/margin_size_3"
+                                        android:layout_weight="1"
+                                        android:gravity="end">
+
+
+                                        <Button
+                                            android:id="@+id/next_step_button"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/dark_blue_gradient_new"
+                                            android:elevation="@dimen/shadow_light"
+                                            android:fontFamily="@font/open_sans_regular"
+                                            android:onClick="openFinishLayout"
+                                            android:text="Next"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/White"
+                                            android:textSize="@dimen/p2_size"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
 
                                 </LinearLayout>
 
@@ -1782,87 +1369,12 @@ ahadi@umbrellamd.com"
 
                         </LinearLayout>
 
-                    </ScrollView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="30dp"
-                    android:gravity="bottom"
-                    android:orientation="vertical">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="20dp"
-                        android:text="I agree with all terms and conditions" />
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <Button
-
-                                android:id="@+id/previous_step_button"
-                                android:layout_width="150dp"
-                                android:layout_height="40dp"
-                                android:layout_marginStart="20dp"
-                                android:background="@drawable/red_background_button"
-                                android:elevation="10dp"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:onClick="LoginButtonClick"
-                                android:text="Previous"
-                                android:textAllCaps="false"
-                                android:textColor="@color/White"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end">
-
-
-                            <Button
-                                android:id="@+id/next_step_button"
-                                android:layout_width="150dp"
-                                android:layout_height="40dp"
-                                android:layout_marginLeft="0dp"
-                                android:layout_marginTop="0dp"
-                                android:layout_marginEnd="20dp"
-                                android:layout_marginBottom="0dp"
-                                android:background="@drawable/dark_blue_gradient_new"
-                                android:elevation="10dp"
-                                android:fontFamily="@font/open_sans_regular"
-                                android:onClick="LoginButtonClick"
-                                android:text="Next"
-                                android:textAllCaps="false"
-                                android:textColor="@color/White"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
                     </LinearLayout>
 
-
                 </LinearLayout>
 
-            </LinearLayout>
+            </ScrollView>
+
 
         </androidx.cardview.widget.CardView>
 
@@ -1872,9 +1384,10 @@ ahadi@umbrellamd.com"
     <!-- Fifth Step-->
 
     <LinearLayout
+        android:id="@+id/finishLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
+        android:layout_margin="@dimen/margin_for_sections"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -1882,52 +1395,54 @@ ahadi@umbrellamd.com"
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
-            android:elevation="5dp"
-            app:cardCornerRadius="5dp">
+            android:elevation="@dimen/shadow_light"
+            app:cardCornerRadius="@dimen/radius_normal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:background="@drawable/new_editbox_background"
+                android:gravity="center"
                 android:orientation="vertical">
 
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_done_finish_complete_white" />
-
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:text="Success!"
                     android:textColor="@color/DarkBlueNew"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/h3_size"
                     android:textStyle="bold" />
 
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
+                    android:layout_marginTop="@dimen/margin_for_sections"
                     android:src="@drawable/success_blue_new" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
                     android:text="you have sucessfully signed up please check your email and verify your account."
                     android:textAlignment="center"
                     android:textColor="@color/DarkBlueNew"
-                    android:textSize="15dp" />
+                    android:textSize="@dimen/p2_size" />
+
+                <TextView
+                    android:onClick="openLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_for_sections"
+                    android:layout_marginTop="@dimen/margin_for_sections"
+                    android:layout_marginEnd="@dimen/margin_for_sections"
+                    android:text="LOGIN"
+                    android:textAlignment="center"
+                    android:textColor="@color/skyblue"
+                    android:textSize="@dimen/p1_size" />
 
 
             </LinearLayout>

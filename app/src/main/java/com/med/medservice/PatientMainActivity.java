@@ -67,7 +67,7 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
         mydb = new CartDBHelper(this);
         UpdateCart();
 
-        setUpNavigation();
+//        setUpNavigation();
 
 
         sessionManager = new SessionManager(this);
@@ -115,81 +115,81 @@ public class PatientMainActivity extends AppCompatActivity implements UpdateCart
 
     }
 
-    private void setUpNavigation() {
-
-        navigationView = findViewById(R.id.navigationView);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()) {
-                    case R.id.nav_profile:
-                        Intent i = new Intent(PatientMainActivity.this, PatientProfileActivity.class);
-                        // i.putExtra("studentInfo", studentList);
-                        startActivity(i);
-                        break;
-
-                    case R.id.nav_web:
-
-                        Uri uriUrl = Uri.parse("http://medical.suunnoo.com/");
-                        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-                        startActivity(launchBrowser);
-                        break;
-
-                    case R.id.nav_orders:
-
-                        Intent j = new Intent(PatientMainActivity.this, OrderHistoryActivity.class);
-                        // i.putExtra("studentInfo", studentList);
-                        startActivity(j);
-                        break;
-
-
-
-                    case R.id.nav_logout:
-                        sessionManager.logoutPatient();
-                        break;
-
-
-                    case R.id.nav_exit:
-
-                        final AlertDialog.Builder dialog = new AlertDialog.Builder(PatientMainActivity.this, R.style.DialogTheme)
-                                .setTitle("")
-                                .setMessage("Do you want to close the app?")
-                                .setCancelable(false)
-                                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                    }
-                                })
-                                .setNeutralButton("YES", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                     //   if (authAsyncTask != null)
-                                     //       authAsyncTask.cancel(true);
-
-                                        stopService(new Intent(PatientMainActivity.this, AuthService.class));
-                                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-                                        homeIntent.addCategory(Intent.CATEGORY_HOME);
-                                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        startActivity(homeIntent);
-                                        android.os.Process.killProcess(android.os.Process.myPid());
-                                        finish();
-                                        System.exit(0);
-                                    }
-                                });
-                        dialog.show();
-
-
-                        break;
-                }
-
-                return false;
-            }
-        });
-
-    }
+//    private void setUpNavigation() {
+//
+//        navigationView = findViewById(R.id.navigationView);
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//
+//                switch (menuItem.getItemId()) {
+//                    case R.id.nav_profile:
+//                        Intent i = new Intent(PatientMainActivity.this, PatientProfileActivity.class);
+//                        // i.putExtra("studentInfo", studentList);
+//                        startActivity(i);
+//                        break;
+//
+//                    case R.id.nav_web:
+//
+//                        Uri uriUrl = Uri.parse("http://medical.suunnoo.com/");
+//                        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+//                        startActivity(launchBrowser);
+//                        break;
+//
+//                    case R.id.nav_orders:
+//
+//                        Intent j = new Intent(PatientMainActivity.this, OrderHistoryActivity.class);
+//                        // i.putExtra("studentInfo", studentList);
+//                        startActivity(j);
+//                        break;
+//
+//
+//
+//                    case R.id.nav_logout:
+//                        sessionManager.logoutPatient();
+//                        break;
+//
+//
+//                    case R.id.nav_exit:
+//
+//                        final AlertDialog.Builder dialog = new AlertDialog.Builder(PatientMainActivity.this, R.style.DialogTheme)
+//                                .setTitle("")
+//                                .setMessage("Do you want to close the app?")
+//                                .setCancelable(false)
+//                                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                    }
+//                                })
+//                                .setNeutralButton("YES", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                     //   if (authAsyncTask != null)
+//                                     //       authAsyncTask.cancel(true);
+//
+//                                        stopService(new Intent(PatientMainActivity.this, AuthService.class));
+//                                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+//                                        homeIntent.addCategory(Intent.CATEGORY_HOME);
+//                                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                        startActivity(homeIntent);
+//                                        android.os.Process.killProcess(android.os.Process.myPid());
+//                                        finish();
+//                                        System.exit(0);
+//                                    }
+//                                });
+//                        dialog.show();
+//
+//
+//                        break;
+//                }
+//
+//                return false;
+//            }
+//        });
+//
+//    }
 
 
     public void OpenDrawer(View view) {

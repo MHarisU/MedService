@@ -87,7 +87,7 @@ public class BookAppointmentActivity extends AppCompatActivity implements Sympto
         setContentView(R.layout.activity_book_appointment);
 
         sessionManager = new SessionManager(this);
-        sessionManager.checkLogin();
+        //sessionManager.checkLogin();
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         name = user.get(sessionManager.FIRST_NAME);
@@ -386,16 +386,16 @@ public class BookAppointmentActivity extends AppCompatActivity implements Sympto
 
                             }
 
-
-                            if (doctorNames.length>0){
-                                cardProgress.setVisibility(View.GONE);
-                                appointmentLayout.setVisibility(View.VISIBLE);
-                            }
-                            else {
-                                ViewDialogActivityClose activityClose = new ViewDialogActivityClose();
-                                activityClose.showDialog(BookAppointmentActivity.this, "You can not book an appointment, please goto E-Visit first, thank you");
-                                cardProgress.setVisibility(View.GONE);
-                            }
+//
+//                            if (doctorNames.length>0){
+//                                cardProgress.setVisibility(View.GONE);
+//                                appointmentLayout.setVisibility(View.VISIBLE);
+//                            }
+//                            else {
+//                                ViewDialogActivityClose activityClose = new ViewDialogActivityClose();
+//                                activityClose.showDialog(BookAppointmentActivity.this, "You can not book an appointment, please goto E-Visit first, thank you");
+//                                cardProgress.setVisibility(View.GONE);
+//                            }
 
                             SetupDoctorSpinner();
 

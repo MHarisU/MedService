@@ -519,7 +519,6 @@
 
 
                                         <Spinner
-
                                             android:id="@+id/spinner_doctor"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
@@ -590,7 +589,6 @@
 
 
                                         <Spinner
-
                                             android:id="@+id/spinner_time"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"

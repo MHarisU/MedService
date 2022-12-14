@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewUI.WomenHealthLabTestsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/toolbar_blue_gradient">
+
+
+        <ImageView
+            android:id="@+id/menu_bar_new"
+            android:layout_width="@dimen/icon_size_1"
+            android:layout_height="@dimen/icon_size_1"
+            android:layout_gravity="center"
+            android:onClick="close"
+            android:padding="@dimen/padding_size_1"
+            android:src="@drawable/arrow_white_new" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end">
+
+            <ImageView
+                android:id="@+id/notification_new"
+                android:layout_width="@dimen/icon_size_1"
+                android:layout_height="@dimen/icon_size_1"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@id/menu_bar_new"
+                android:padding="@dimen/padding_size_1"
+                android:src="@drawable/notifications_new" />
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/cart_new"
+                    android:layout_width="@dimen/icon_size_1"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:layout_gravity="center"
+                    android:layout_toRightOf="@id/notification_new"
+                    android:padding="@dimen/padding_size_1"
+                    android:src="@drawable/cart_new" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_for_sections">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lab Tests Women's Health"
+                    android:textColor="@color/BlackText"
+                    android:textSize="@dimen/h3_size"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_box_size"
+                android:layout_marginStart="@dimen/margin_for_sections"
+                android:layout_marginTop="@dimen/margin_for_sections_half"
+                android:layout_marginEnd="@dimen/margin_for_sections"
+                android:background="@drawable/new_editbox_background">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_toLeftOf="@+id/searchButton"
+                    android:background="@color/Transparent"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:hint=" Search"
+                    android:textSize="@dimen/p2_size" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_size_1"
+                    android:gravity="end">
+
+
+                    <ImageView
+                        android:id="@+id/searchButton"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/icon_size_1"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/darkblue_gradient_for_searchbar"
+                        android:padding="@dimen/padding_size_1"
+                        android:src="@drawable/search_new" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_for_sections">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All lab tests include $6 Physician's fee."
+                    android:textColor="@color/redLighter"
+                    android:textSize="@dimen/p2_size"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/margin_for_sections_half"
+                android:layout_marginEnd="@dimen/margin_for_sections"
+                android:layout_marginStart="@dimen/margin_for_sections"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginEnd="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginStart="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginEnd="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginStart="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginEnd="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginStart="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/margin_for_sections_half"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginEnd="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginStart="@dimen/margin_size_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        app:cardCornerRadius="@dimen/radius_normal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_editbox_background"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_1"
+                                android:layout_height="@dimen/icon_size_1"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin_for_sections_half"
+                                android:src="@drawable/test_lab" />
+
+
+                            <TextView
+                                android:layout_marginStart="@dimen/margin_size_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Calcium, COMPLETE BLOOD COUNT (CBC)"
+                                android:textColor="@color/Gray"
+                                android:textSize="@dimen/p3_size"
+                                android:textStyle="" />
+
+
+
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_size_1"
+                                android:layout_marginBottom="@dimen/margin_size_3"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/margin_size_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="start"
+                                    android:text="$35.00"
+                                    android:textColor="@color/DarkBlueNew"
+                                    android:textSize="@dimen/p2_size"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/margin_size_3"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/darkblue_circle_background_new"
+                                        android:gravity="center"
+                                        android:text="+"
+                                        android:textColor="@color/White"
+                                        android:textSize="@dimen/p1_size" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

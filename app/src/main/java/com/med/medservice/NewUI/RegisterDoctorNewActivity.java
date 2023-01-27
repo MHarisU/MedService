@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -217,7 +218,18 @@ public class RegisterDoctorNewActivity extends AppCompatActivity {
         doctorFinishRegCard.setCardBackgroundColor(this.getResources().getColor(R.color.DarkBlueNew));
         doctorTermsText.setTextColor(this.getResources().getColor(R.color.GreyNew));
         doctorFinishRegText.setTextColor(this.getResources().getColor(R.color.DarkBlueNew));
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                // TODO: Your application init goes here.
+                Intent mInHome = new Intent(RegisterDoctorNewActivity.this, FinalRegistrationStepsActivity.class);
+                RegisterDoctorNewActivity.this.startActivity(mInHome);
+                RegisterDoctorNewActivity.this.finish();
+            }
+        }, 2000);
     }
+
 
 
     public void openLogin(View view) {

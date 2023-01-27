@@ -2,6 +2,7 @@ package com.med.medservice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -72,6 +73,7 @@ public class DoctorRegisterActivity extends AppCompatActivity {
 
     LinearLayout accountDetailsLayout, personalDetailsLayout, professionalDetailsLayout, termsDetailsLayout;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -914,7 +916,6 @@ public class DoctorRegisterActivity extends AppCompatActivity {
     boolean signCheck = false;
     public void clearPad(View view) {
         signCheck = false;
-
         mSignaturePad.clear();
     }
 }

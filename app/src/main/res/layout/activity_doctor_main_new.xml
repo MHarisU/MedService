@@ -6,24 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".NewUI.DoctorMainNewActivity"
-    >
-
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/drawer_menu_header"
-        app:itemIconSize="30dp"
-        app:itemIconTint="@color/DarkBlueNew"
-        app:itemTextAppearance="@style/geo_sans_style"
-        app:itemTextColor="@color/Gray"
-        app:menu="@menu/drawer_menu">
-
-
-    </com.google.android.material.navigation.NavigationView>
+    tools:context=".NewUI.DoctorMainNewActivity">
 
 
     <LinearLayout
@@ -120,7 +103,7 @@
                         android:elevation="@dimen/shadow_light"
                         android:fontFamily="@font/open_sans_regular"
                         android:onClick="OpenWaitingRoomNew"
-                        android:text="Goto Waiting Room"
+                        android:text="Waiting Room"
                         android:textAllCaps="false"
                         android:textColor="@color/White"
                         android:textSize="@dimen/p2_size"
@@ -637,6 +620,21 @@
 
 
     </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_menu_header"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/DarkBlueNew"
+        app:itemTextAppearance="@style/geo_sans_style"
+        app:itemTextColor="@color/Gray"
+        app:menu="@menu/drawer_menu_new">
+
+
+    </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

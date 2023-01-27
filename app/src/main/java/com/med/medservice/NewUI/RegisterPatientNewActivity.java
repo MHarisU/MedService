@@ -66,7 +66,7 @@ public class RegisterPatientNewActivity extends AppCompatActivity {
 
         //Patient info layouts
 
-        radioPatient = findViewById(R.id.radioPatientCheckbox);
+            radioPatient = findViewById(R.id.radioPatientCheckbox);
         radioRepresentative = findViewById(R.id.radioRepresentativeCheckbox);
 
         patientRepresentativeLayout = findViewById(R.id.patientRepresentativeLayout);

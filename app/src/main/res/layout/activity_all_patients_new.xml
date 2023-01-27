@@ -534,7 +534,7 @@
 
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/profile_image_gray" />
+                                    android:src="@drawable/mohsin" />
 
                             </androidx.cardview.widget.CardView>
 

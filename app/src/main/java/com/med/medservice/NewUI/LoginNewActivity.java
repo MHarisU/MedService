@@ -106,31 +106,31 @@ public class LoginNewActivity extends AppCompatActivity {
     }
 
     public void LoginButtonClick(View view) {
-//        finish();
-//        startActivity(new Intent(LoginNewActivity.this, DoctorMainNewActivity.class));
+        finish();
+        startActivity(new Intent(LoginNewActivity.this, DoctorMainNewActivity.class));
 
-        progressBar.setVisibility(View.VISIBLE);
-        loginButton.setVisibility(View.GONE);
-
-        final String email = editTextEmail.getText().toString();
-        final String password = editTextPassword.getText().toString();
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (email != null && !email.equals("") && password != null && !password.equals("")) {
-
-                    Login(email, password);
-
-                } else {
-                    Toast.makeText(LoginNewActivity.this, "Please enter Email and Password.", Toast.LENGTH_SHORT).show();
-
-                    progressBar.setVisibility(View.GONE);
-                    loginButton.setVisibility(View.VISIBLE);
-                }
-            }
-        }, 10);
+//        progressBar.setVisibility(View.VISIBLE);
+//        loginButton.setVisibility(View.GONE);
+//
+//        final String email = editTextEmail.getText().toString();
+//        final String password = editTextPassword.getText().toString();
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (email != null && !email.equals("") && password != null && !password.equals("")) {
+//
+//                    Login(email, password);
+//
+//                } else {
+//                    Toast.makeText(LoginNewActivity.this, "Please enter Email and Password.", Toast.LENGTH_SHORT).show();
+//
+//                    progressBar.setVisibility(View.GONE);
+//                    loginButton.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        }, 10);
 
     }
 
@@ -383,13 +383,9 @@ public class LoginNewActivity extends AppCompatActivity {
     }
 
 
-    public void OpenRegisterPatientNew(View view) {
 
-    }
 
-    public void OpenDoctorRegistration(View view) {
-        startActivity(new Intent(LoginNewActivity.this, RegisterDoctorNewActivity.class));
-    }
+
 
     public void OpenPatientDashboard(View view) {
         startActivity(new Intent(LoginNewActivity.this, PatientMainNewActivity.class));

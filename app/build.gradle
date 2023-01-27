@@ -24,6 +24,11 @@ android {
         }
     }
 
+    buildFeatures {
+        dataBinding true
+
+    }
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
@@ -110,6 +115,31 @@ dependencies {
 
     // Outlined editbox
 //    implementation 'com.google.android.material:material:1.6.0'
+
+    // Retrofit and Gson
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Lifecycle Extensions
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //Room and RxJava support
+    implementation 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    implementation 'androidx.room:room-rxjava2:2.2.5'
+
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //Scalable size units
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    //Rounded image view
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
 
 

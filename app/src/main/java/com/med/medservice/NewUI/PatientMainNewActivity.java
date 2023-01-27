@@ -6,14 +6,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.google.android.material.navigation.NavigationView;
@@ -29,6 +32,10 @@ public class PatientMainNewActivity extends AppCompatActivity {
     NavigationView patientNavigationView;
     DrawerLayout patientDrawer;
 
+    Dialog exitAppDialog;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,23 +46,49 @@ public class PatientMainNewActivity extends AppCompatActivity {
 
 
         setUpNavigation();
-        
+
     }
 
     private void setUpNavigation() {
 
-        patientDrawer = findViewById(R.id.patientDrawerLayout);
         patientNavigationView = findViewById(R.id.nav_view);
         patientNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                    case R.id.nav_profile:
-                        startActivity(new Intent(PatientMainNewActivity.this, PatientProfileNewActivity.class));
-                        return true;
+                switch (menuItem.getItemId()) {
+                    case R.id.navProfile:
+                        Intent i = new Intent(PatientMainNewActivity.this, PatientProfileNewActivity.class);
+                        // i.putExtra("studentInfo", studentList);
+                        startActivity(i);
+                        break;
 
+                    case R.id.navWeb:
+
+                        Uri uriUrl = Uri.parse("https://www.umbrellamd.com/");
+                        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                        startActivity(launchBrowser);
+                        break;
+
+
+                    case R.id.navLogout:
+//                        sessionManager.logout();
+                        break;
+
+
+                    case R.id.navExit:
+
+                        exitAppDialog = new Dialog(PatientMainNewActivity.this);
+                        exitAppDialog.setContentView(R.layout.close_app_dialog);
+                        exitAppDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        exitAppDialog.setCancelable(false);
+                        exitAppDialog.show();
+
+
+
+                        break;
                 }
+
                 return false;
             }
         });
@@ -74,7 +107,7 @@ public class PatientMainNewActivity extends AppCompatActivity {
 
 
     public void openPatientEVisit(View view) {
-            startActivity(new Intent(PatientMainNewActivity.this, PatientE_VisitNewActivity.class));
+        startActivity(new Intent(PatientMainNewActivity.this, PatientE_VisitNewActivity.class));
 
     }
 
@@ -111,6 +144,18 @@ public class PatientMainNewActivity extends AppCompatActivity {
     public void openNotifications(View view) {
         startActivity(new Intent(PatientMainNewActivity.this, NotificationsNewActivity.class));
 
+    }
+
+
+
+
+    public void closeDialog(View view) {
+        exitAppDialog.dismiss();
+    }
+
+    public void exitApp(View view) {
+        finish();
+        System.exit(0);
     }
 }
 

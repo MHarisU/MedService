@@ -1,4 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+    <group
+        android:id="@+id/id4"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navProfile"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/profile">
+
+        </item>
+
+    </group>
+
+
+    <group
+        android:id="@+id/id55"
+        android:checkableBehavior="single">
+
+        <item
+
+            android:id="@+id/navOrders"
+            android:icon="@drawable/ic_shopping_cart_black"
+            android:title="Order History">
+
+        </item>
+
+    </group>
+
+    <group
+        android:id="@+id/id5"
+        android:checkableBehavior="single">
+
+        <item
+
+            android:id="@+id/navWeb"
+            android:icon="@drawable/ic_web"
+            android:title="Visit Web">
+
+        </item>
+
+    </group>
+
+
+
+
+    <group
+        android:id="@+id/id6"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navLogout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout">
+
+        </item>
+
+    </group>
+
+    <group
+        android:id="@+id/id7"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navExit"
+            android:icon="@drawable/ic_exit"
+            android:title="Exit" />
+
+    </group>
+
+
 </menu>

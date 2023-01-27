@@ -285,6 +285,7 @@
 
 
                         <Button
+                            android:onClick="openReport"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/button_size_4"
                             android:background="@drawable/dark_blue_gradient_new"

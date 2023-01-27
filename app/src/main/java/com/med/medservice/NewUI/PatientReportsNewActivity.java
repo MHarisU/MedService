@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.med.medservice.DoctorMainActivity;
+import com.med.medservice.LabReportViewActivity;
+import com.med.medservice.LabsActivity;
 import com.med.medservice.R;
 
 public class PatientReportsNewActivity extends AppCompatActivity {
@@ -30,6 +33,11 @@ public class PatientReportsNewActivity extends AppCompatActivity {
 
     public void openNotifications(View view) {
         startActivity(new Intent(PatientReportsNewActivity.this, NotificationsNewActivity.class));
+
+    }
+
+    public void openReport(View view) {
+        startActivity(new Intent(PatientReportsNewActivity.this, LabReportViewActivity.class));
 
     }
 }

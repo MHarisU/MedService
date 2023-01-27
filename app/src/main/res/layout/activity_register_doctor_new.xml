@@ -37,6 +37,7 @@
 
 
             <LinearLayout
+                android:layout_marginBottom="@dimen/margin_for_sections_half"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_for_sections"
@@ -51,13 +52,13 @@
                     android:textSize="@dimen/h2_size"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Fill all form field to go to next step"
-                    android:textColor="@color/DarkBlueNew"
-                    android:textSize="@dimen/p3_size" />
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Fill all form field to go to next step"-->
+<!--                    android:textColor="@color/DarkBlueNew"-->
+<!--                    android:textSize="@dimen/p3_size" />-->
 
 
             </LinearLayout>
@@ -293,7 +294,7 @@
                     android:layout_marginEnd="@dimen/margin_for_sections"
                     android:layout_marginBottom="@dimen/margin_for_sections_half"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
 
                     <androidx.cardview.widget.CardView
@@ -782,7 +783,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_for_sections"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
 
                 <LinearLayout
@@ -895,7 +896,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="@dimen/edit_box_size"
                                                     android:background="@drawable/new_editbox_background"
-                                                    android:spinnerMode="dropdown"/>
+                                                    android:spinnerMode="dropdown" />
 
 
                                                 <ImageView
@@ -1484,20 +1485,20 @@ ahadi@umbrellamd.com"
                             android:layout_marginEnd="@dimen/margin_for_sections"
                             android:text="you have sucessfully signed up please check your email and verify your account."
                             android:textAlignment="center"
-                            android:textColor="@color/DarkBlueNew"
+                            android:textColor="@color/red"
                             android:textSize="@dimen/p2_size" />
 
-                        <TextView
-                            android:onClick="openLogin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_for_sections"
-                            android:layout_marginTop="@dimen/margin_for_sections"
-                            android:layout_marginEnd="@dimen/margin_for_sections"
-                            android:text="LOGIN"
-                            android:textAlignment="center"
-                            android:textColor="@color/skyblue"
-                            android:textSize="@dimen/p1_size" />
+                        <!--                        <TextView-->
+                        <!--                            android:onClick="openLogin"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginStart="@dimen/margin_for_sections"-->
+                        <!--                            android:layout_marginTop="@dimen/margin_for_sections"-->
+                        <!--                            android:layout_marginEnd="@dimen/margin_for_sections"-->
+                        <!--                            android:text="LOGIN"-->
+                        <!--                            android:textAlignment="center"-->
+                        <!--                            android:textColor="@color/skyblue"-->
+                        <!--                            android:textSize="@dimen/p1_size" />-->
 
 
                     </LinearLayout>

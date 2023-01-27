@@ -7,12 +7,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toolbar;
 
@@ -22,11 +24,16 @@ import com.med.medservice.DoctorProfileActivity;
 import com.med.medservice.PatientMainActivity;
 import com.med.medservice.PharmacyActivity;
 import com.med.medservice.R;
+import com.med.medservice.Utils.SessionManager;
 
 public class DoctorMainNewActivity extends AppCompatActivity {
 
     NavigationView doctorNavigationView;
     DrawerLayout doctorDrawer;
+
+    SessionManager sessionManager;
+
+    Dialog exitAppDialog;
 
 
 
@@ -40,6 +47,8 @@ public class DoctorMainNewActivity extends AppCompatActivity {
 
         setUpNavigation();
 
+        sessionManager = new SessionManager(this);
+
 
     }
 
@@ -51,49 +60,31 @@ public class DoctorMainNewActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 switch (menuItem.getItemId()) {
-                    case R.id.nav_profile:
+                    case R.id.navProfile:
                         Intent i = new Intent(DoctorMainNewActivity.this, DoctorProfileNewActivity.class);
-                        // i.putExtra("studentInfo", studentList);
                         startActivity(i);
                         break;
 
-                    case R.id.nav_web:
+                    case R.id.navWeb:
 
-                        Uri uriUrl = Uri.parse("http://medical.suunnoo.com/");
+                        Uri uriUrl = Uri.parse("https://www.umbrellamd.com/");
                         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
                         startActivity(launchBrowser);
                         break;
 
 
-                    case R.id.nav_logout:
-                        //sessionManager.logout();
+                    case R.id.navLogout:
+//                        sessionManager.logout();
                         break;
 
 
-                    case R.id.nav_exit:
+                    case R.id.navExit:
 
-                        final AlertDialog.Builder dialog = new AlertDialog.Builder(DoctorMainNewActivity.this, R.style.DialogTheme)
-                                .setTitle("")
-                                .setMessage("Do you want to close the app?")
-                                .setCancelable(false)
-                                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                    }
-                                })
-                                .setNeutralButton("YES", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        //  Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-                                        //  homeIntent.addCategory(Intent.CATEGORY_HOME);
-                                        //  homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        //  startActivity(homeIntent);
-                                        finish();
-                                        System.exit(0);
-                                    }
-                                });
-                        dialog.show();
+                        exitAppDialog = new Dialog(DoctorMainNewActivity.this);
+                        exitAppDialog.setContentView(R.layout.close_app_dialog);
+                        exitAppDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        exitAppDialog.setCancelable(false);
+                        exitAppDialog.show();
 
 
                         break;
@@ -163,6 +154,16 @@ public class DoctorMainNewActivity extends AppCompatActivity {
     public void openNotifications(View view) {
         startActivity(new Intent(DoctorMainNewActivity.this, NotificationsNewActivity.class));
 
+    }
+
+
+    public void closeDialog(View view) {
+        exitAppDialog.dismiss();
+    }
+
+    public void exitApp(View view) {
+        finish();
+        System.exit(0);
     }
 
 

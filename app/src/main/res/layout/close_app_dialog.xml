@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/toolbar_blue_gradient">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Do you want to close the app?"
+            android:textColor="@color/white"
+            android:textSize="@dimen/p1_size"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:gravity="end">
+
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_3"
+                android:layout_height="@dimen/icon_size_3"
+                android:layout_gravity="center"
+                android:onClick="closeDialog"
+                android:src="@drawable/close_white_new" />
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_margin="@dimen/margin_for_sections"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:onClick="exitApp"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            android:id="@+id/yesBtn"
+            android:layout_width="150dp"
+            android:layout_height="@dimen/button_size_4"
+            android:layout_marginEnd="@dimen/margin_size_1"
+            android:layout_weight="1"
+            android:background="@drawable/green_bg"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Yes"
+            android:textAllCaps="false"
+            android:textColor="@color/White"
+            android:textSize="@dimen/p2_size" />
+
+        <Button
+            android:onClick="closeDialog"
+            android:id="@+id/noBtn"
+            android:layout_marginTop="@dimen/margin_for_sections"
+            android:layout_marginStart="@dimen/margin_size_1"
+            android:layout_width="150dp"
+            android:layout_height="@dimen/button_size_4"
+            android:layout_weight="1"
+            android:background="@drawable/orange_background"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="No"
+            android:textAllCaps="false"
+            android:textColor="@color/White"
+            android:textSize="@dimen/p2_size" />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -37,7 +37,7 @@ public class WaitingRoomNewActivity extends AppCompatActivity {
     }
 
     public void openDoctorVideoNew(View view) {
-        startActivity(new Intent(WaitingRoomNewActivity.this, DoctorVideoNewActivity.class));
+        startActivity(new Intent(WaitingRoomNewActivity.this, PatientVideoNewActivity.class));
     }
 
 }
